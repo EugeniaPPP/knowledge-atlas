@@ -1,0 +1,1202 @@
+0:02
+Professor Ben Polak: So this is Game Theory Economics 159. If you're here for art history, you're either in the wrong room or stay anyway,
+0:08
+maybe this is the right room; but this is Game Theory, okay. You should have four handouts; everyone should have four
+0:16
+handouts. There is a legal release form--we'll talk about it in a minute--about the videoing.
+0:21
+There is a syllabus, which is a preliminary syllabus: it's also online. And there are two games labeled
+0:27
+Game 1 and Game 2. Can I get you all to look at Game 1 and start thinking about it.
+0:33
+And while you're thinking about it, I am hoping you can multitask a bit. I'll describe a bit about the class and we'll get a bit of admin under our belts.
+0:40
+But please try and look at--somebody's not looking at it, because they're using it as a fan here--so look at Game 1 and fill out that form for me, okay?
+0:49
+So while you're filling that out, let me tell you a little bit about what we're going to be doing here. So what is Game Theory? Game Theory is a method of
+0:57
+studying strategic situations. So what's a strategic situation? Well let's start off with what's not a strategic
+1:04
+situation. In your Economics - in your Intro Economics class in 115 or 110, you saw some pretty good
+1:09
+examples of situations that were not strategic. You saw firms working in perfect competition.
+1:16
+Firms in perfect competition are price takers: they don't particularly have to worry about the actions of their
+1:22
+competitors. You also saw firms that were monopolists and monopolists don't have any competitors to worry about, so that's not a particularly strategic
+1:28
+situation. They're not price takers but they take the demand curve. Is this looking familiar for
+1:33
+some of you who can remember doing 115 last year or maybe two years ago for some of you? Everything in between is
+1:39
+strategic. So everything that constitutes imperfect competition is a strategic setting.
+1:45
+Think about the motor industry, the motor car industry. Ford has to worry about what GM is doing and what Toyota is
+1:50
+doing, and for the moment at least what Chrysler is doing but perhaps not for long. So there's a small number of
+1:57
+firms and their actions affect each other. So for a literal definition of what strategic means:
+2:02
+it's a setting where the outcomes that affect you depend on actions, not just on your own actions,
+2:09
+but on actions of others. All right, that's as much as I'm going to say for preview right now, we're going to come
+2:14
+back and see plenty of this over the course of the next semester. So what I want to do is get on to where this applies.
+Chapter 2. Strategy: Where Does It Apply?
+2:19
+It obviously applies in Economics, but it also applies in politics, and in fact, this class will count as a
+2:25
+Political Science class if you're a Political Science major. You should go check with the DUS in Political Science. It count - Game Theory is very
+2:34
+important in law these days. So for those of you--for the half of you--that are going to end up in law school,
+2:39
+this is pretty good training. Game Theory is also used in biology and towards the middle of the semester we're actually
+2:45
+going to see some examples of Game Theory as applied to evolution. And not surprisingly,
+2:51
+Game Theory applies to sport. So let's talk about a bit of
+Chapter 3. (Administrative Issues)
+2:57
+admin. How are you doing on filling out those games? Everyone managing to multitask: filling in Game 1? Keep writing.
+3:03
+I want to get some admin out of the way and I want to start by getting out of the way what is obviously the elephant in the room. Some of you will have noticed
+3:10
+that there's a camera crew here, okay. So as some of you probably know, Yale is undergoing an open
+3:17
+education project and they're videoing several classes, and the idea of this, is to make educational
+3:25
+materials available beyond the walls of Yale. In fact, on the web, internationally,
+3:30
+so people in places, maybe places in the U.S. or places miles away, maybe in Timbuktu or whatever,
+3:35
+who find it difficult to get educational materials from the local university or whatever, can watch certain lectures from
+3:44
+Yale on the web. Some of you would have been in classes that do that before. What's going to different about
+3:49
+this class is that you're going to be participating in it. The way we teach this class is we're going to play games,
+3:55
+we're going to have discussions, we're going to talk among the class, and you're going to be learning from each other, and I want you to help people
+4:03
+watching at home to be able to learn too. And that means you're going to be on film, at the very least on
+4:09
+mike. So how's that going to work? Around the room are three T.A.s holding mikes.
+4:14
+Let me show you where they are: one here, one here, and one here. When I ask for classroom discussions, I'm going to have one of the T.A.s go to you with
+4:24
+a microphone much like in "Donahue" or something, okay. At certain times, you're going to be seen on film, so the camera is actually
+4:31
+going to come around and point in your direction. Now I really want this to happen. I had to argue for this to happen, cause I really feel that
+4:38
+this class isn't about me. I'm part of the class obviously, but it's about you teaching each other and
+4:43
+participating. But there's a catch, the catch is, that that means you have to sign that legal release form. So you'll see that you have in
+4:50
+front of you a legal release form, you have to be able to sign it, and what that says is that we can use you being shown in class.
+4:56
+Think of this as a bad hair day release form. All right, you can't sue Yale later if you had a bad hair day.
+5:03
+For those of you who are on the run from the FBI, your Visa has run out, or you're sitting next to your
+5:09
+ex-girlfriend, now would be a good time to put a paper bag over your head. All right, now just to get you
+5:15
+used to the idea, in every class we're going to have I think the same two people, so Jude is the
+5:20
+cameraman; why don't you all wave to Jude: this is Jude okay. And Wes is our audio guy:
+5:27
+this is Wes. And I will try and remember not to include Jude and Wes in the classroom discussions, but you should be aware that they're there.
+5:34
+Now, if this is making you nervous, if it's any consolation, it's making me very nervous. So, all right, we'll try and make this class
+5:40
+work as smoothly as we can, allowing for this extra thing. Let me just say, no one's making any money off
+5:45
+this--at least I'm hoping these guys are being paid--but me and the T.A.s are not being paid. The aim of this, that I think is a good aim, it's an educational project,
+5:53
+and I'm hoping you'll help us with it. The one difference it is going to mean, is that at times I might hold some of the discussions for the class,
+6:00
+coming down into this part of the room, here, to make it a little easier for Jude.
+6:07
+All right, how are we doing now on filling out those forms? Has everyone filled in their strategy for the first game?
+6:13
+Not yet. Okay, let's go on doing a bit more admin. The thing you mostly care about
+6:18
+I'm guessing, is the grades. All right, so how is the grade going to work for this class? 30% of the class will be on problem sets,
+6:25
+30% of the grade; 30% on the mid-term, and 40% on the final; so 30/30/40.
+6:31
+The mid-term will be held in class on October 17^(th); that is also in your syllabus. Please don't anybody tell me
+6:39
+late - any time after today you didn't know when the mid-term was and therefore it clashes with 17 different things.
+6:45
+The mid-term is on October 17^(th), which is a Wednesday, in class. All right, the problem sets:
+6:53
+there will be roughly ten problem sets and I'll talk about them more later on when I hand them out.
+6:59
+The first one will go out on Monday but it will be due ten days later. Roughly speaking they'll be
+7:05
+every week. The grade distribution: all right, so this is the rough grade distribution. Roughly speaking, a sixth of the class are going
+7:11
+to end up with A's, a sixth are going to end up with A-, a sixth are going to end up with B+, a sixth are going to end up with B,
+7:17
+a sixth are going to end up with B-, and the remaining sixth, if I added that up right, are going to end up with what I guess we're now calling the
+7:24
+presidential grade, is that right? That's not literally true. I'm going to squeeze it a bit,
+7:31
+I'm going to curve it a bit, so actually slightly fewer than a sixth will get straight A's, and fewer than a sixth will get
+7:38
+C's and below. We'll squeeze the middle to make them be more B's. One thing I can guarantee from
+7:44
+past experience in this class, is that the median grade will be a B+. The median will fall somewhere
+7:51
+in the B+'s. Just as forewarning for people who have forgotten what a median is, that means half of you--not
+7:57
+approximately half, it means exactly half of you--will be getting something like B+ and below and half will
+8:04
+get something like B+ and above. Now, how are you doing in filling in the forms? Everyone filled them in yet?
+8:09
+Surely must be pretty close to getting everyone filled in. All right, so last things to talk about before I actually
+8:15
+collect them in - textbooks. There are textbooks for this class. The main textbook is this one,
+8:21
+Dutta's book Strategy and Games. If you want a slightly tougher book, more rigorous book,
+8:28
+try Joel Watson's book, Strategies. Both of those books are available at the bookstore.
+8:33
+But I want to warn everybody ahead of time, I will not be following the textbook. I regard these books as safety nets.
+8:40
+If you don't understand something that happened in class, you want to reinforce an idea that came up in class, then you should read the relevant chapters in the book
+8:48
+and the syllabus will tell you which chapters to read for each class, or for each week of class, all right. But I will not be following
+8:54
+these books religiously at all. In fact, they're just there as back up. In addition,
+8:59
+I strongly recommend people read, Thinking Strategically. This is good bedtime reading.
+9:06
+Do any of you suffer from insomnia? It's very good bedtime reading if you suffer from insomnia.
+9:12
+It's a good book and what's more there's going to be a new edition of this book this year and Norton have allowed us to
+9:17
+get advance copies of it. So if you don't buy this book this week, I may be able to make the advance copy of the new
+9:24
+edition available for some of you next week. I'm not taking a cut on that either, all right,
+9:29
+there's no money changing hands. All right, sections are on the syllabus sign up - sorry on the website, sign up as usual. Put yourself down on the wait
+9:36
+list if you don't get into the section you want. You probably will get into the section you want once we're done. All right, now we must be done with the forms. Are we done with the forms?
+Chapter 4. Elements of a Game: Strategies, Actions, Outcomes and Payoffs
+9:43
+All right, so why don't we send the T.A.s, with or without mikes, up and down the aisles and collect in your Game #1;
+9:50
+not Game #2, just Game #1.
+10:05
+Just while we're doing that, I think the reputation of this class--I think--if you look at the course evaluations online or
+10:11
+whatever, is that this class is reasonably hard but reasonably fun.
+10:17
+So I'm hoping that's what the reputation of the class is. If you think this class is going to be easy,
+10:22
+I think it isn't actually an easy class. It's actually quite a hard class, but I think I can guarantee it's going to be a fun class.
+10:29
+Now one reason it's a fun class, is the nice thing about teaching Game Theory - quieten down folks--one thing about
+10:35
+teaching Game Theory is, you get to play games, and that's exactly what we've just been doing now.
+10:40
+This is our first game and we're going to play games
+10:46
+throughout the course, sometimes several times a week,
+10:51
+sometimes just once a week. We got all these things in? Everyone handed them in? So I need to get those counted.
+11:08
+Has anyone taken the Yale Accounting class? No one wants to - has aspirations to be - one person
+11:15
+has. I'll have a T.A. do it, it's all right, we'll have a T.A. do it. So Kaj, can you count those for me? Is that right?
+11:23
+Let me read out the game you've just played. "Game 1, a simple grade scheme for the class.
+11:28
+Read the following carefully. Without showing your neighbor what you are doing, put it in the box below either
+11:34
+the letter Alpha or the letter Beta. Think of this as a grade bid. I will randomly pair your form
+11:42
+with another form and neither you nor your pair will ever know with whom you were paired. Here's how the grades may be
+11:49
+assigned for the class. [Well they won't be, but we can pretend.] If you put Alpha and you're
+11:55
+paired with Beta, then you will get an A and your pair a C. If you and your pair both put
+12:00
+Alpha, you'll both get B-. If you put Beta and you're paired with Alpha, you'll get a C and your pair an
+12:05
+A. If you and your pair both put Beta, then you'll both get B+." So that's the thing you just
+12:11
+filled in. Now before we talk about this, let's just collect this information in a more useful
+12:16
+way. So I'm going to remove this for
+12:21
+now. We'll discuss this in a second, but why don't we actually record what the game is,
+12:30
+that we're playing, first. So this is our grade game, and what I'm going to do,
+12:36
+since it's kind of hard to absorb all the information just by reading a paragraph of text, I'm going to make a table to
+12:44
+record the information. So what I'm going to do is I'm going to put me here, and my pair,
+12:49
+the person I'm randomly paired with here, and Alpha and Beta, which are the choices I'm going
+12:55
+to make here and on the columns Alpha and Beta, the choices my pair is making. In this table,
+13:02
+I'm going to put my grades. So my grade if we both put
+13:09
+Alpha is B-, if we both put Beta, was B+. If I put Alpha and she put a Beta, I got an A,
+13:17
+and if I put Beta and she put an Alpha, I got a C. Is that correct? That's more or less right?
+13:24
+Yeah, okay while we're here, why don't we do the same for my
+13:29
+pair? So this is my grades on the left hand table, but now let's look at what my
+13:39
+pair will do, what my pair will get.
+13:45
+So I should warn the people sitting at the back that my handwriting is pretty bad, that's one reason for moving forward. The other thing I should
+13:51
+apologize at this stage of the class is my accent. I will try and improve the handwriting, there's not much I
+13:58
+can do about the accent at this stage. So once again if you both put Alpha then my pair gets a B-.
+14:05
+If we both put Beta, then we both get a B+; in particular, my pair gets a B+. If I put Alpha and my pair puts Beta, then she gets a C.
+14:14
+And if I put Beta and she puts Alpha, then she gets an A. So I now have all the information that was on the
+14:22
+sheet of paper that you just handed in. Now there's another way of organizing this that's standard
+14:27
+in Game Theory, so we may as well get used to it now on the first day. Rather then drawing two different tables like this, what I'm going to do is I'm
+14:35
+going to take the second table and super-impose it on top of the first table. Okay, so let me do that and
+14:42
+you'll see what I mean. What I'm going to do is draw a larger table, the same basic structure:
+14:48
+I'm choosing Alpha and Beta on the rows, my pair is choosing Alpha and Beta on the columns,
+14:55
+but now I'm going to put both grades in. So the easy ones are on the diagonal: you both get B- if we
+15:04
+both choose Alpha; we both get B+ if we both choose Beta. But if I choose Alpha and my
+15:13
+pair chooses Beta, I get an A and she gets a C. And if I choose Beta and she chooses Alpha,
+15:21
+then it's me who gets the C and it's her who gets the A. So notice what I did here. The first grade corresponds to
+15:29
+the row player, me in this case, and the second grade in each box corresponds to the column
+15:35
+player, my pair in this case. So this is a nice succinct way of recording what was in the
+15:41
+previous two tables. This is an outcome matrix; this tells us everything that was in the game.
+15:53
+Okay, so now seems a good time to start talking about what people did. So let's just have a show of
+15:59
+hands. How many of you chose Alpha? Leave your hands up so that Jude can catch that,
+16:07
+so people can see at home, okay. All right and how many of you chose Beta?
+16:12
+There's far more Alphas - wave your hands the Beta's okay. All right, there's a Beta here, okay.
+16:17
+So it looks like a lot of - well we're going to find out, we're going to count--but a lot more Alpha's than Beta's. Let me try and find out some reasons why people chose.
+16:24
+So let me have the Alpha's up again. So, the woman who's in red here, can we get a mike to the -
+16:32
+yeah, is it okay if we ask you? You're not on the run from the FBI? We can ask you why?
+16:37
+Okay, so you chose Alpha right? So why did you choose Alpha? Student: [inaudible] realized that my partner chose
+16:45
+Alpha, therefore I chose [inaudible]. Professor Ben Polak: All right, so you wrote out these
+16:51
+squares, you realized what your partner was going to do, and responded to that. Any other reasons for choosing Alpha around the room? Can we get the woman here?
+17:00
+Try not to be intimidated by these microphones, they're just mikes. It's okay. Student: The reason I chose Alpha, regardless of what
+17:08
+my partner chose, I think there would be better outcomes than choosing Beta. Professor Ben Polak: All
+17:14
+right, so let me ask your names for a second-so your name was? Student: Courtney. Professor Ben Polak: Courtney and your name was? Student: Clara Elise. Professor Ben Polak: Clara Elise.
+17:19
+So slightly different reasons, same choice Alpha. Clara Elise's reason - what did Clara Elise say?
+17:25
+She said, no matter what the other person does, she reckons she'd get a better grade if she chose Alpha.
+17:31
+So hold that thought a second, we'll come back to - is it Clara Elise, is that right? We'll come back to Clara Elise in a second. Let's talk to the Beta's a
+17:36
+second; let me just emphasize at this stage there are no wrong answers. Later on in the class there'll be some questions that have
+17:41
+wrong answers. Right now there's no wrong answers. There may be bad reasons but there's no wrong answers. So let's have the Beta's up
+17:47
+again. Let's see the Beta's. Oh come on! There was a Beta right here. You were a Beta right? You backed off the Beta, okay.
+17:56
+So how can I get a mike into a Beta? Let' s stick in this aisle a bit. Is that a Beta right there? Are you a Beta right there?
+18:01
+Can I get the Beta in here? Who was the Beta in here? Can we get the mike in there? Is that possible?
+18:07
+In here - you can leave your hand so that - there we go. Just point towards - that's fine, just speak into it,
+18:12
+that's fine. Student: So the reason right? Professor Ben Polak: Yeah, go ahead. Student: I personally don't like swings that much and it's the B-/B+ range,
+18:18
+so I'd much rather prefer that to a swing from A to C, and that's my reason. Professor Ben Polak: All
+18:25
+right, so you're saying it compresses the range. I'm not sure it does compress the range. I mean if you chose Alpha, you're swinging from A to B-;
+18:34
+and from Beta, swinging from B+ to C. I mean those are similar kind of ranges but it certainly is a
+18:40
+reason. Other reasons for choosing? Yeah, the guy in blue here, yep, good. That's all right. Don't hold the mike;
+18:48
+just let it point at you, that's fine. Student: Well I guess I thought we could be more collusive and kind of work together, but I guess not.
+18:56
+So I chose Beta. Professor Ben Polak: There's a siren in the background so I missed the answer. Stand up a second,
+19:02
+so we can just hear you. Student: Sure. Professor Ben Polak: Sorry, say again. Student: Sure. My name is Travis. I thought we could work together, but I guess not.
+19:08
+Professor Ben Polak: All right good. That's a pretty good reason. Student: If you had chosen Beta we would have all gotten B+'s but I guess not.
+19:14
+Professor Ben Polak: Good, so Travis is giving us a different reason, right? He's saying that maybe, some of you in the room might
+19:21
+actually care about each other's grades, right? I mean you all know each other in class. You all go to the same college. For example,
+19:28
+if we played this game up in the business school--are there any MBA students here today? One or two.
+19:36
+If we play this game up in the business school, I think it's quite likely we're going to get a lot of Alpha's chosen, right? But if we played this game up
+19:42
+in let's say the Divinity School, all right and I'm guessing that Travis' answer is reflecting what you guys are
+19:50
+reasoning here. If you played in the Divinity School, you might think that people in the Divinity School
+19:55
+might care about other people's grades, right? There might be ethical reasons--perfectly good, sensible, ethical reasons--for choosing Beta in this game.
+20:02
+There might be other reasons as well, but that's perhaps the reason to focus on. And perhaps, the lesson I want to draw out of this is that right now this
+20:10
+is not a game. Right now we have actions, strategies for people to take, and we know what the outcomes
+20:15
+are, but we're missing something that will make this a game. What are we missing here? Student: Objectives.
+20:21
+Professor Ben Polak: We're missing objectives. We're missing payoffs. We're missing what people care about, all right. So we can't really start
+20:27
+analyzing a game until we know what people care about, and until we know what the payoffs are. Now let's just say something now, which I'll probably forget
+20:34
+to say in any other moment of the class, but today it's relevant. Game Theory, me, professors at Yale, cannot tell you what your
+20:43
+payoff should be. I can't tell you in a useful way what it is that your goals in life should be or whatever.
+20:51
+That's not what Game Theory is about. However, once we know what your payoffs are, once we know what
+20:57
+your goals are, perhaps Game Theory can you help you get there. So we've had two different
+21:03
+kinds of payoffs mentioned here. We had the kind of payoff where we care about our own grade, and Travis has mentioned the
+21:08
+kind of payoff where you might care about other people's grades. And what we're going to do
+21:14
+today is analyze this game under both those possible payoffs. To start that off, let's put up some possible
+21:26
+payoffs for the game. And I promise we'll come back
+21:31
+and look at some other payoffs later. We'll revisit the Divinity School later.
+Chapter 5. Strictly Dominant versus Strictly Dominated Strategies
+21:38
+All right, so here once again is our same matrix with me and
+21:44
+my pair, choosing actions Alpha and Beta, but this time I'm
+21:49
+going to put numbers in here. And some of you will perhaps recognize these numbers, but that's not really relevant
+21:57
+for now. All right, so what's the idea here? Well the first idea is that these numbers represent utiles or utilities.
+22:05
+They represent what these people are trying to maximize, what they're to achieve, their goals.
+22:12
+The idea is - just to compare this to the outcome matrix - for the person who's me here, (A,C) yields a payoff of--(A,C)
+22:23
+is this box--so (A,C) yields a payoff of three,
+22:28
+whereas (B-,B-) yields a payoff of 0, and so on.
+22:39
+So what's the interpretation? It's the first interpretation: the natural interpretation that a lot of you jumped to straight
+22:44
+away. These are people--people with these payoffs are people--who only care about their own
+22:50
+grades. They prefer an A to a B+, they prefer a B+ to a B-, and they prefer a B- to a C.
+22:57
+Right, I'm hoping I the grades in order, otherwise it's going to ruin my curve at the end of the year. So these people only care about their own grades.
+23:08
+They only care about their own grades.
+23:16
+What do we call people who only care about their own grades? What's a good technical term for them?
+23:22
+In England, I think we refer to these guys - whether it's
+23:28
+technical or not - as "evil gits." These are not perhaps the most moral people in the universe.
+23:37
+So now we can ask a different question. Suppose, whether these are actually your payoffs or not, pretend they are for now. Suppose these are all payoffs.
+23:44
+Now we can ask, not what did you do, but what should you do? Now we have payoffs that can
+23:49
+really switch the question to a normative question: what should you do? Let's come back to - was it Clara Elise--where was Clara Elise before?
+23:57
+Let's get the mike on you again. So just explain what you did and why again. Student: Why I chose Alpha? Professor Ben Polak:
+24:03
+Yeah, stand up a second, if that's okay. Student: Okay. Professor Ben Polak: You chose Alpha; I'm assuming these were roughly your payoffs, more or less,
+24:08
+you were caring about your grades. Student: Yeah, I was thinking - Professor Ben Polak: Why did you choose Alpha? Student: I'm sorry? Professor Ben Polak: Why did you choose Alpha? Just repeat what you said
+24:15
+before. Student: Because I thought the payoffs - the two different payoffs that I could have gotten--were highest if I chose Alpha.
+24:22
+Professor Ben Polak: Good; so what Clara Elise is saying--it's an important idea--is this (and tell me if I'm paraphrasing you incorrectly
+24:28
+but I think this is more or less what you're saying): is no matter what the other person does, no matter what the pair does, she obtains a higher payoff by
+24:37
+choosing Alpha. Let's just see that. If the pair chooses Alpha and she chooses Alpha,
+24:44
+then she gets 0. If the pair chooses Alpha and she chose Beta, she gets -1.
+24:50
+0 is bigger than -1. If the pair chooses Beta,
+24:55
+then if she chooses Alpha she gets 3, Beta she gets 1, and 3 is bigger than 1. So in both cases,
+25:01
+no matter what the other person does, she receives a higher payoff from choosing Alpha, so she should choose Alpha.
+25:09
+Does everyone follow that line of reasoning? That's a stronger line of reasoning then the reasoning we had earlier. So the woman,
+25:15
+I have immediately forgotten the name of, in the red shirt, whose name was - Student: Courtney.
+25:20
+Professor Ben Polak: Courtney, so Courtney also gave a reason for choosing Alpha, and it was a perfectly good reason for choosing Alpha, nothing wrong with it, but notice that this reason's a
+25:27
+stronger reason. It kind of implies your reason. So let's get some definitions down here.
+25:35
+I think I can fit it in here. Let's try and fit it in here. Definition: We say that my strategy Alpha strictly
+25:56
+dominates my strategy Beta, if my payoff from Alpha is
+26:11
+strictly greater than that from Beta, [and this is the key
+26:24
+part of the definition], regardless of what others
+26:39
+do. Shall we just read that back? "We say that my strategy Alpha strictly dominates my strategy
+26:48
+Beta, if my payoff from Alpha is strictly greater than that from Beta, regardless of what others do."
+26:55
+Now it's by no means my main aim in this class to teach you jargon. But a few bits of jargon are
+27:01
+going to be helpful in allowing the conversation to move forward and this is certainly one. "Evil gits" is maybe one too,
+27:08
+but this is certainly one. Let's draw out some lessons from this. Actually, so you can still read
+27:15
+that, let me bring down and clean this board. So the first lesson of the class, and there are going to be
+27:24
+lots of lessons, is a lesson that emerges immediately from the definition of a dominated strategy and it's
+27:35
+this. So Lesson One of the course is:
+27:44
+do not play a strictly dominated strategy.
+27:58
+So with apologies to Strunk and White, this is in the passive form, that's dominated, passive voice.
+28:04
+Do not play a strictly dominated strategy.
+28:10
+Why? Somebody want to tell me why?
+28:15
+Do you want to get this guy? Stand up - yeah.
+28:20
+Student: Because everyone's going to pick the dominant outcome and then everyone's going to get the
+28:26
+worst result - the collectively worst result. Professor Ben Polak: Yeah, that's a possible answer. I'm looking for something more direct here.
+28:31
+So we look at the definition of a strictly dominated strategy. I'm saying never play one. What's a possible reason for
+28:37
+that? Let's - can we get the woman there? Student: [inaudible] Professor Ben Polak: "You'll always lose."
+28:43
+Well, I don't know: it's not about winning and losing. What else could we have? Could we get this guy in the pink down here?
+28:50
+Student: Well, the payoffs are lower. Professor Ben Polak: The payoffs are lower, okay. So here's an abbreviated version of that, I mean it's perhaps a little
+28:58
+bit longer. The reason I don't want to play a strictly dominated strategy is, if instead,
+29:05
+I play the strategy that dominates it, I do better in every case. The reason I never want to play
+29:11
+a strictly dominated strategy is, if instead I play the strategy that dominates it, whatever anyone else does I'm
+29:18
+doing better than I would have done. Now that's a pretty convincing argument. That sounds like a convincing argument.
+29:24
+It sounds like too obvious even to be worth stating in class, so let me now try and shake your faith a little bit in this
+Chapter 6. Contracts and Collusion
+29:33
+answer. You're somebody who's wanted by the FBI, right? Okay, so how about the
+29:41
+following argument? Look at the payoff matrix again
+29:46
+and suppose I reason as follows. Suppose I reason and say if we, me and my pair, both reason this way and choose
+29:54
+Alpha then we'll both get 0. But if we both reasoned a different way and chose Beta, then we'll both get 1.
+30:01
+So I should choose Beta: 1 is bigger than 0, I should choose Beta. What's wrong with that argument?
+30:08
+My argument must be wrong because it goes against the lesson of the class and the lessons of the class are gospel right, they're not wrong ever, so what's wrong with that argument?
+30:15
+Yes, Ale - yeah good. Student: Well because
+30:21
+you have to be able to agree, you have to be able to speak to them but we aren't allowed to show our partners what we wrote. Professor Ben Polak: All right, so it involves some
+30:29
+notion of agreeing. So certainly part of the problem here, with the reasoning I just gave you--the reasoning that said I should choose Beta,
+30:35
+because if we both reason the same way, we both do better that way--involves some kind of magical reasoning.
+30:41
+It's as if I'm arguing that if I reason this way and reason myself to choosing Beta, somehow I'm going to make the
+30:48
+rest of you reason the same way too. It's like I've got ESP or I'm some character out of the X-Men,
+30:53
+is that what it's called? The X-Men right? Now in fact, this may come as a surprise to you, I don't have ESP, I'm not a character out of the
+31:00
+X-Men, and so you can't actually see brain waves emitting from my head, and my reasoning doesn't affect your reasoning. So if I did reason that way,
+31:08
+and chose Beta, I'm not going to affect your choice one way or the other. That's the first thing that's
+31:14
+wrong with that reasoning. What else is wrong with that reasoning? Yeah, that guy down here.
+31:20
+Student: Well, the second that you choose Beta then someone's going - it's in someone's best interest to take advantage of it. Professor Ben Polak: All
+31:25
+right, so someone's going to take advantage of me, but even more than that, an even stronger argument: that's true, but even a stronger argument. Well how about this? Even if I was that guy in the
+31:33
+X-Men or the Matrix or whatever it was, who could reason his way into making people do things. Even if I could make everyone
+31:40
+in the room choose Beta by the force of my brain waves, what should I then do? I should choose Alpha.
+31:46
+If these are my payoffs I should go ahead and choose Alpha because that way I end up getting 3. So there's two things wrong with the argument.
+31:54
+One, there's this magical reasoning aspect, my reasoning is controlling your actions. That doesn't happen in the real world.
+32:00
+And two, even if that was the case I'd do better to myself
+32:08
+choose Alpha. So, nevertheless, there's an element of truth in what I just said.
+32:13
+It's the fact that there's an element of truth in it that makes it seem like a good argument.
+32:19
+The element of truth is this. It is true that by both choosing Alpha we both ended up with B-'s.
+32:27
+We both end up with payoffs of 0, rather than payoffs of 1.
+32:32
+It is true that by both choosing, by both following this lesson and not choosing the dominated strategy Beta,
+32:38
+we ended up with payoffs, (0,0), that were bad.
+32:43
+And that's probably the second lesson of the class.
+32:49
+So Lesson 2, and this lesson probably wouldn't be worth stating, if it wasn't for sort of a
+32:55
+century of thought and economics that said the opposite. So rational choice [in this case, people not choosing a
+33:02
+dominated strategy; people choosing a dominant strategy] rational choice can lead to
+33:11
+outcomes that - what do Americans call this?--that
+33:18
+"suck." If you want a more technical term for that (and you remember this from Economics 115),
+33:25
+it can lead to outcomes that are "inefficient," that are "Pareto inefficient," but "suck" will do for today. Rational choices by rational players, can lead to bad
+Chapter 7. The Failure of Collusion and Inefficient Outcomes: Prisoner's Dilemma
+33:35
+outcomes. So this is a famous example for this reason. It's a good illustration of this point. It's a famous example.
+33:41
+What's the name of this example, somebody? This is called Prisoner's Dilemma. How many of you have heard of the Prisoner's Dilemma before?
+33:48
+Most of you saw it in 115, why is it called the Prisoner's Dilemma? Yes, the guy here in orange.
+33:57
+That's okay; he can just point at you that's fine. Student: I think it's whether or not the prisoner's cooperate in the sentence they
+34:04
+have, and if they kind of rat out the other person, then they can have less; but if both rat out, then they like end up losing
+34:10
+large scale. Professor Ben Polak: Good, so in the standard story you've got these two crooks, or two accused crooks, and they're in separate cells
+34:18
+and they're being interviewed separately--kept apart--and they're both told that if neither of them rats the other
+34:24
+guy out, they'll go to jail for say a year. If they both rat each other out, they'll end up in jail for two years, But if you rat the
+34:31
+other guy out and he doesn't rat you out, then you will go home free and he'll go to jail for five years.
+34:37
+Put that all down and you pretty quickly see that, regardless whether the other guy rats you or not,
+34:42
+you're better off ratting him out. Now, if you have never seen that Prisoner's Dilemma,
+34:47
+you can see it pretty much every night on a show called Law & Order. How many of you have seen
+34:53
+Law & Order? If you haven't seen Law & Order, the way to see Law & Order is to go to a random TV set,
+34:59
+at a random time, and turn on a random channel.
+35:06
+This happens in every single episode, so much so that if any of you actually - I mean this might actually be true at Yale--but if you any of you or the TV guys: if any of you know
+35:13
+the guy who writes the plots for this, have him come to the class (so I guess to see the video now) and we get some better plot lines in there.
+35:20
+But, of course, that's not the only example. The grade game and this is not the only example. There are lots of examples of Prisoner's Dilemmas out there.
+35:28
+Let's try and find some other ones. So how many of you have roommates in your college? How many of you have roommates? Most of you have roommates
+35:36
+right? So I'm guessing now, I won't make you show your hands, because it's probably embarrassing, but what is the state of your
+35:42
+dorm rooms, your shared dorm rooms, at the end of the semester or the end of the school year?
+35:48
+So I'm just guessing, having been in a few of these things over the years, that by the end of the semester, or certainly by the end of the
+35:54
+school year, the state of the average Yale dorm room is quite disgusting. Why is it disgusting?
+36:02
+It's disgusting because people don't tidy up. They don't clean up those bits of pizza and bits of chewed bread and cheese, but why don't they tidy up?
+36:09
+Well let's just work it out. What would you like to happen if you're sharing a dorm room? You'd like to have the other
+36:15
+guy tidy up, right? The best thing for you is to have the other guy tidy up and the worst thing for you is to
+36:21
+tidy up for the other guy. But now work it out: it's a Prisoner's Dilemma. If the other guy doesn't tidy up, you're best off not tidying up either, because the last
+36:28
+thing you want is to be tidying up for the other guy. And if the other guy does tidy up, hey the room's clean,
+36:33
+who cares? So either way, you're not going to tidy up and you end up with a typical Yale dorm room. Am I being unfair? Are your dorm rooms all perfect? This may be a gender thing but
+36:41
+we're not going to go there. So there are lots of Prisoner's Dilemmas out there, anyone got any other examples?
+36:48
+Other examples? I didn't quite hear that, sorry. Let's try and get a mike on it so we can really hear it.
+36:55
+Student: [inaudible] Professor Ben Polak:
+37:01
+Okay, in divorce struggles, okay. You're too young to be worrying about such things but never
+37:07
+mind. Yeah, okay, that's a good example. All right, hiring lawyers, bringing in big guns. What about an Economics example?
+37:15
+What about firms who are competing in prices? Both firms have an incentive to undercut the other firm,
+37:22
+driving down profits for both. The last thing you want is to have the other firm undercut you, in an attempt to push
+37:27
+prices down. That's good for us the consumers, but bad for the firm, bad for industry profit.
+37:32
+What remedies do we see? We'll come back to this later on in the class, but let's have a preview. So what remedies do we see in society for Prisoner's Dilemmas?
+37:40
+What kind of remedies do we see? Let me try and get the guy here right in front. Student: Collusion.
+37:48
+Professor Ben Polak: Collusion; so firms could collude. So what prevents them from
+37:55
+colluding? One thing they could do, presumably, is they could write a contract, these firms.
+38:00
+They could say I won't lower my prices if you don't lower your prices, and they could put this contract in with the pricy lawyer, who's taking a day off from the
+38:06
+divorce court, and that would secure that they wouldn't lower prices on each other. Is that right? So why wouldn't that work?
+38:15
+Why wouldn't writing a contract here work? It's against the law. It's an illegal contract.
+38:23
+What about you with your roommates? How many of you have a written contract, stuck with a magnet on the fridge, telling you, when you're supposed to tidy
+38:31
+up. Very few of you. Why do you manage to get some cooperation between you and your
+38:37
+roommates even without a written contract? Student: It's not legally enforceable.
+38:42
+Professor Ben Polak: Well it probably is legally enforceable actually. This guy says not, but it probably is legally enforceable. He probably could have a written contract about tidying
+38:48
+up. The woman in here. Student: Repetition; you do it over and over. Professor Ben Polak: Yeah, so maybe even among your
+38:55
+roommates, maybe you don't need a contract because you can manage to achieve the same ends, by the fact that you're going
+39:01
+to be interacting with the same person, over and over again during your time at Yale. So we'll come back and revisit
+39:07
+the idea that repeating an interaction may allow you to obtain cooperation, but we're not going to come
+39:12
+back to that until after the mid-term. That's way down the road but we'll get there. Now one person earlier on had mentioned something about
+39:19
+communication. I think it was somebody in the front, right? So let's just think about this a second. Is communication the problem
+39:24
+here? Is the reason people behave badly--I don't know "badly"--people choose Alpha in this game here, is it the fact that they can't
+39:31
+communicate? Suppose you'd been able to talk before hand, so suppose the woman here whose name was…? Student: Mary.
+39:37
+Professor Ben Polak: …Mary, had been able to talk to the person next to her whose name is…? Student: Erica. Professor Ben Polak: Erica. And they said, suppose we know we're going to
+39:43
+be paired together, I'll choose Beta if you choose Beta. Would that work? Why wouldn't that work? Student: There's no
+39:53
+enforcement. Professor Ben Polak: There's no enforcement. So it isn't a failure of communication per se. A contract is more then
+40:00
+communication, a contract is communication with teeth. It actually changes the payoffs.
+40:05
+So I could communicate with Alice on agreements, but back home I'm going to go ahead and choose Alpha anyway;
+40:11
+all the better if he's choosing Beta. So we'll come back and talk about more of these things as the course goes on, but let's just come back to the
+40:17
+two we forgot there: so the collusion case and the case back in Law & Order with the prisoners in the
+40:23
+cell. How do they enforce their contracts? They don't always rat each other out and some firms manage to collude?
+40:28
+How do they manage to enforce those contracts? Those agreements, how are they enforced?
+40:34
+Student: They trust each other. Professor Ben Polak: It could be they trust each other, although if you trust a crook that's not… What else could it be? The guy here again with the
+40:41
+beard, yeah. Student: Could be a zero sum game. Professor Ben Polak: Well, but this is the game. So here's the game. Student: No, but the pay,
+40:47
+the way they value, the way of valuing each-- Professor Ben Polak: Okay, so the payoffs may be different. I have something simpler in
+40:53
+mind. Suppose they have a written contract, or even an unwritten contract, what enforces the
+41:00
+contract for colluding firms or crooks in jail? Yeah. Student: Gets off Scott
+41:05
+free in five years when the other guy gets out, he might run into a situation where [inaudible] Professor Ben Polak: Yeah,
+41:11
+so a short version of that is, it's a different kind of contract. If you rat someone out in jail,
+41:16
+someone puts a contract out on you. Tony Soprano enforces those contracts. That's the purpose of Tony Soprano.
+41:22
+It's the purpose of the mafia. The reason the mafia thrives in countries where it's hard to write legal contracts--let's say
+41:28
+some new parts of the former Soviet Union or some parts of Africa--the reason the mafia thrives in those environments,
+41:34
+is that it substitutes for the law and enforces both legal and illegal contracts. So I promised a while ago now,
+Chapter 8. Coordination Problems
+41:42
+that we were going to come back and look at this game under some other possible payoffs. So I wasn't under a contract
+41:50
+but let's come back and fulfill that promise anyway. So we're going to revisit, if not the Divinity School,
+41:58
+at least in people who have more morality than my friends up in the business school. We're going to ask for the same
+42:07
+grade game we played at the beginning. What would happen if player's payoffs looked different?
+42:19
+So these are "possible payoffs (2)." I'll give these a name.. We called the other guys "evil
+42:25
+gits." We'll call these guys "indignant angels." I can never spell indignant.. Is that roughly right?
+42:33
+Does that look right? I think it's right. In-dig-nant isn't it: indignant. Indignant angels, and we'll see why in a second. So here are their payoffs and
+42:43
+once again the basic structure of the game hasn't changed.
+42:51
+It's still I'm choosing Alpha and Beta, my pair is choosing Alpha and Beta, and the grades are the same as
+42:56
+they were before. They're hidden by that board but you saw them before. But this time the payoffs are
+43:02
+as follows. On the lead diagonal we still have (0,0) and (1,1). But now the grades here are
+43:09
+-1--I'm sorry--the payoffs are -1 and -3, and here they're -3 and -1. What's the idea here?
+43:16
+These aren't the only other possible payoffs. It's just an idea. Suppose I get an A and my pair
+43:23
+gets a C, then sure I get that initial payoff of 3, but unfortunately I can't sleep at night because I'm feeling so
+43:32
+guilty. I have some kind of moral conscience and after I've subtracted off my guilt feelings
+43:38
+I end up at -1, so think of this as guilt: some notion of morality. Conversely, if I chose a Beta
+43:46
+and my pair chooses an Alpha, so I end up with a C and she ends up with an A, then you know I have a bad time
+43:53
+explaining to my parents why I got a C in this class, and I have to say about how I'm going to be president anyway.
+43:59
+But then, in addition, I feel indignation against this person. It isn't just that I got a C; I got a C because she made me get a C, so that moral
+44:10
+indignation takes us down to -3. So again, I'm not claiming
+44:16
+these are the only other possible payoffs, but just another possibility to look at.
+44:21
+So suppose these were the payoffs in the game. Again, suspend disbelief a second and imagine that these
+44:27
+actually are your payoffs, and let me ask you what you would have done in this case. So think about it a second.
+44:33
+Write it down. Write down what you're going to do on the corner of your notepad. Just write down an Alpha or Beta: what you're going to do
+44:38
+here. You're not all writing. The guy in the England shirt isn't writing. You've got to be writing if you are in an England shirt.
+44:45
+Show it to your neighbor. Let's have a show of hands, again I want you to keep your hands up so that Jude can see it
+44:52
+now. So how many of you chose Alpha in this case? Raise your hands. Come on, don't be shy. Raise your hands.
+44:58
+How many chose Beta in this case? How many people abstained? Not allowed to abstain:
+45:04
+let's try it again. Alpha in this case? No abstentions here. Beta in this case?
+45:09
+So we're roughly splitting the room. Someone who chose Alpha? Again: raise the Alpha's again.
+45:15
+Let me get this guy here. So why did you choose Alpha? Student: You would minimize your losses;
+45:22
+you'd get 0 or -1 instead of -3 or 1. Professor Ben Polak: All right, so this gentleman is saying - Student: There's no dominant strategy so -
+45:28
+Professor Ben Polak: Right, so this gentleman's saying, a good reason for choosing Alpha in this game is it's less risky.
+45:35
+The worst case scenario is less bad, is a way of saying it. What about somebody who chose Beta? A lot of you chose Beta. Let's have a show of hands on
+45:43
+the Beta's again. Let me see the Beta's again. So, raise your hands. Can we get the woman here?
+45:48
+Can we ask her why she chose Beta? Student: Because if you choose Alpha, the best case scenario is you get 0,
+45:55
+so that's - Professor Ben Polak: Okay good, that's a good counter argument. So the gentleman here was looking at the worst case scenario, and the woman here was
+46:01
+looking at the best case scenario. And the best case scenario here looks like getting a 1 here.
+46:07
+Now, let's ask a different question. Is one of the strategies dominated in this game?
+46:14
+No, neither strategy is dominated. Let's just check. If my pair chooses Alpha, then my choosing Alpha yields 0, Beta -3: so Alpha would be
+46:22
+better. But if my pair chooses Beta then Alpha yields -1, Beta yields 1:
+46:28
+in this case Beta would be better. So Alpha in this case is better against Alpha,
+46:33
+and Beta is better against Beta, but neither dominates each other. So here's a game where we just
+46:40
+change the payoffs. We have the same basic structure, the same outcomes, but we imagine people cared
+46:45
+about different things and we end up with a very different answer. In the first game, it was kind of clear that we should choose Alpha and here
+46:52
+it's not at all clear what we can do--what we should do. In fact, this kind of game has a name and we'll revisit it
+46:58
+later on in the semester. This kind of game is called a
+47:04
+"coordination problem." We'll talk about coordination
+47:09
+problems later on. The main lesson I want to get out of this for today, is a simpler lesson. It's the lesson that payoffs matter.
+47:17
+We change the payoffs, we change what people cared about, and we get a very different game with a very
+47:23
+different outcome. So the basic lesson is that payoffs matter, but let me say it a different
+47:32
+way. So without giving away my age too much--I guess it will actually--when I was a kid growing up in England, there was this guy - there was
+47:39
+a pop star--a slightly post-punk pop star called Joe Jackson, who none of you would have heard of, because you were all
+47:45
+about ten years old, my fault. And Joe Jackson had this song which had the lyric,
+47:50
+something like, you can't get what you want unless you know what you want.
+47:56
+As a statement of logic, that's false. It could be that what you want just drops into your lap without
+48:03
+you knowing about it. But as a statement of strategy, it's a pretty good idea. It's a good idea to try and
+48:08
+figure out what your goals are--what you're trying to achieve--before you go ahead and analyze the game.
+48:14
+So payoffs matter. Let's put it in his version.
+48:21
+"You can't get what you want, till you know what you want."
+48:39
+Be honest, how many of you have heard of Joe Jackson? That makes me feel old, oh man, okay.
+48:47
+Goes down every year. So far we've looked at this game as played by people who are evil gits, and we've looked at
+48:57
+this game as played by people who are indignant angels. But we can do something more interesting.
+49:04
+We can imagine playing this game on a sort of mix and match. For example, imagine--this shouldn't be hard
+49:11
+for most of you--imagine that you are an evil git, but you know that the person you're playing against is an
+49:20
+indignant angel. So again, imagine that you know you're an evil git, but you know that the person
+49:26
+you're playing against or with, is an indignant angel. What should you do in that case? What should we do?
+49:36
+Who thinks you should choose Alpha in that case? Let's pan the room again if we can. Keep your hands up so that you can see.
+49:44
+Who thinks you should choose Beta in that case? Who's abstaining here? Not allowed to abstain in this
+49:50
+class: it's a complete no-no. Okay, we'll allow some abstention in the first day but not beyond today. Let's have a look. Let's analyze this combined
+49:59
+game. So what does this game look like? It's an evil git versus an
+50:07
+indignant angel and we can put the payoff matrix together by
+50:16
+combining the matrices we had before.
+50:22
+So in this case, this is me as always. This is my pair, the column player.
+50:30
+My payoffs are going to be what? My payoffs are going to be evil-git payoffs, so they come from the matrix up
+50:37
+there. So if someone will just help me reading it off there. That's a 0, a 3,a -1, and a 1.
+50:47
+My opponent or my partner's payoffs come from the indignant angel matrix. So they come from here.
+50:54
+There's a 0, a -3, a -1, and a 1.
+51:01
+Everyone see how I constructed that? So just to remind you again, the first payoff is the row player's payoff, in this case the evil git.
+51:08
+And the second payoff is the column player's payoff, in this case the indignant angel.
+51:14
+Now we've set it up as a matrix, let's try again that question I asked before. Suppose you're the row player
+51:20
+here. You're the evil git. Those are your payoffs. You're playing against an indignant angel, what would you do?
+51:27
+So once again, no abstentions this time: who would choose Alpha? Let's have a show of hands again, keep your hands up a second.
+51:34
+Who would choose Beta? Very few Beta's, but mostly Alpha's. Alpha, I think,
+51:40
+is the right answer here but why? Why is Alpha the right answer here?
+51:45
+Yeah, can we get this guy here? Student: It's the dominant strategy. Professor Ben Polak: Good. Actually nothing has changed from the game we started with. The fact that I changed the
+51:52
+other guy's payoffs didn't matter here. Alpha was dominant before--it dominated Beta before--and it
+51:58
+still dominates Beta. Let's just check. If my opponent chooses Alpha and I choose Alpha,
+52:04
+I get 0; Beta, I get -1. So Alpha would be better. If my opponent chooses Beta and I choose Alpha, I get 3;
+52:10
+Beta, I get 1. Once again Alpha is better. So as before, Alpha does better than Beta for
+52:15
+me, regardless of what the other person does. Alpha dominates Beta. What was the first lesson of
+52:24
+the class? Shout it out please. Right, so you should all have been choosing in this game,
+52:31
+you all should have chosen Alpha. So the one person who didn't we'll let him off for today.
+52:37
+So Alpha dominates Beta here. Let's flip things around.
+52:50
+Suppose now--harder to imagine, but let's try it--suppose now
+52:55
+that you are an indignant angel and you're playing against,
+53:00
+and you know this, you're playing against an evil
+53:06
+git. You're an indignant angel, so you have the payoffs that are still there and you're playing against an evil git, which is the payoffs we covered
+53:14
+up but we'll reproduce them. Let's produce that matrix. By the way, if this is beginning to sound like a
+53:19
+wrestling match, I don't mean it to. Let's try here: Alpha, Beta,
+53:26
+Alpha, Beta, pair, me. So my payoffs this time, are the indignant angel
+53:32
+payoffs. So mine are 0, -1, -3, and 1.
+53:41
+And my opponent's payoffs are what would have been my payoffs before. They come from the other matrix. Let's just show you it. They come from this matrix.
+53:48
+So they're going to be 0, -1,3, 1.
+53:56
+I took the second payoff from that matrix and made it the
+54:02
+second payoff in this matrix. Everyone see how I did that? Once again, the row player is the first payoff and the column
+54:11
+player is the other payoff. What should you do in this case? You're the indignant angel. You're playing against this
+54:18
+evil git. What should you do? Write down on your notepad what you should do. Show it to your neighbor so you can't cheat, or you can cheat
+54:26
+but you'll be shamed in front of your neighbor. Raise your hands. Let Jude see it.
+54:31
+Raise your hands and keep them up if you chose Alpha now.
+54:37
+How about if you chose Beta now? So one or two Beta's, mostly Alpha's. Well let's see.
+54:43
+Let's reason this through a second. Does my Alpha dominate my Beta? No, in fact,
+54:50
+Alpha doesn't dominate Beta for me. It doesn't dominate Beta. If my pair chooses Alpha then
+54:56
+Alpha gets me 0; Beta -3. So Alpha does better. But if my pair chooses Beta,
+55:01
+then Alpha gets me -1; Beta gets me 1. In this case Beta is better. As we saw before,
+55:06
+Alpha is better against Alpha. Beta is better against Beta. There's no dominance going on here.
+55:12
+Nevertheless, at least 90% of you chose Alpha here, and that's the right answer.
+55:17
+Why? Why should you choose Alpha here? Somebody … can we get the guy with the beard here?
+55:25
+Wait for the mike, great. Student: We had acknowledged that Alpha is a dominant strategy for my
+55:30
+opponent so we must choose based upon, or knowing that my partner is going to choose Alpha. Professor Ben Polak: Good, and your name is?
+55:36
+Student: Henry. Professor Ben Polak: Henry. So Henry is saying sure I don't have a dominated strategy. My Alpha doesn't dominate my
+55:44
+Beta. But look at my opponent. My opponent's Alpha dominates her Beta. If I choose Alpha and she chooses Alpha to get 0;
+55:54
+Beta she gets -1. Alpha is better. If I choose Beta, if she chooses Alpha she gets
+56:00
+3; Beta 1. Again Alpha is better. For my opponent, Alpha dominates Beta. So by thinking about my
+56:08
+opponent, by putting myself in my opponent's shoes, I realize that she has a dominant strategy,
+56:15
+Alpha. She's going to choose Alpha and my best response against Alpha is to choose Alpha myself.
+56:22
+So here, this time, my Alpha does not dominate Beta
+56:32
+but my pair's choice of Alpha dominates her choice,
+56:43
+her possible choice of Beta. So she will choose Alpha.
+56:55
+And once I know that she's going to choose Alpha, it's clear that I should choose Alpha and get 0 rather than Beta
+57:03
+and get -3. So I should choose Alpha also.
+57:13
+Okay, so now we've seen four different combinations. We've seen a case where an evil git was playing an evil git;
+57:19
+where an indignant angel was playing an indignant angel; and we've seen both the flips of those: the evil git versus the indignant angel; and the indignant angel against
+57:25
+the evil git. Why are we doing this? Because there's an important lesson here. What's the lesson here? The lesson is--comes from this
+57:32
+game--that a great way to analyze games, a great way to get used to the idea of strategic thinking,
+57:39
+perhaps even the essence of strategic thinking, is the ability to put yourself in someone else's shoes,
+57:46
+figure out what their payoffs are, and try and figure out what they're going to do. So the big lesson of this game
+57:54
+is--I forgot what number we're up too--I guess this is Lesson 4 I think. Lesson 4 is:
+58:03
+put yourself in others' shoes and try to figure out what they
+58:25
+will do. In a sense, this is the first
+58:30
+difficult lesson of the class. It's easy to spot when a strategy is dominant, more or less. It's pretty easy to figure out, you have to know about your own
+58:38
+payoffs. But the hard thing in life, is getting you to come out of your own selves a bit,
+58:43
+realizing it's "not all about you." You've got to put yourself in other people's shoes to figure out what they care about and what they're going to try and
+58:50
+do, so you can respond well to that. While we're here, let's just mention that things
+58:57
+will get more complicated in a world where I don't actually know the payoffs of my opponent. It's much easier to figure out
+59:04
+my own payoffs than to figure out my opponent's payoffs. I might not know whether I'm playing someone who's an evil
+59:10
+git or an indignant angel. So I'm going to have to figure out what the odds are of that in doing this exercise. And we're going to come back to that idea too way at the end of
+59:19
+the class, but that's getting a bit ahead of ourselves, but we'll get there. Now, it turns out that this
+59:24
+game, this Prisoner's Dilemma, with the Alpha's and Beta's, or essentially the same game, has been played many,
+59:30
+many, many times in experiments. So out there in the real world--I think we can do this
+59:35
+here--out there in the real world when they do these experiments, they find out that roughly 70%
+59:45
+of people choose Alpha and roughly 30% choose Beta.
+59:54
+Roughly, almost a third choose Beta. What do we think is going on? That's a third of the people
+1:00:01
+who seem to be choosing a dominated strategy … or is it? What's going on there? Why do you think 30% of people are choosing Beta?
+1:00:13
+Anybody? Can we catch this guy here? Student: They might be motivated by the fact that every
+1:00:21
+person who chooses Beta raises the average score. Professor Ben Polak: They could be moral people.
+1:00:26
+So one possibility is: this 30% of people in the real world who choose Beta are just nice people.
+1:00:32
+What else could it be? Yeah? Student: I know this might be changing the game a
+1:00:38
+little bit, but if you ever expected to play the same game with the partner you have more [inaudible] Professor Ben Polak: All right, they could be thinking they're going to play again.
+1:00:45
+Student: [inaudible] long run payoffs are greater if you choose Beta every time. Professor Ben Polak: So it could be that they think that this is actually--they haven't
+1:00:51
+understood the experiment and they think this is a multi shot game, not a one shot game, good. What else could it be? What's the simplest explanation?
+1:00:57
+What's the other obvious explanation? They could just be stupid, right? It could be., Are we allowed to say that in
+1:01:03
+class? Let's be honest here, when we say experiments in the real world in Game Theory--or the ones you read about in The New York Times--the real world
+1:01:11
+when it comes to experiments in Economics really means undergraduates at the University of Arizona.
+1:01:17
+I mean, I'm not making it up. It just does. They all are. I don't know anything about
+1:01:23
+… are any of you from Arizona, I don't know. I don't know whether the average undergrad at the University of Arizona just has a sunny personality or whether
+1:01:30
+they "spent too long in the sun." I just don't know which it is, right?
+1:01:36
+We can't really distinguish from this. How about at Yale. What's our numbers here.
+1:01:41
+How about in this class? Do you want to mike your
+1:01:46
+colleague here? So 238 at Yale--this is
+1:01:52
+Yale--versus 36. So even at my level of arithmetic that's a lot less than 30%.
+1:01:59
+That's more like less than 15%. It's about 15% I guess. So 236--I'm sorry 238--chose Alpha, and 36 chose Beta.
+1:02:09
+Now there's one more lesson in this class and this is going to be it. This isn't the end of the class but one more lesson to take home.
+1:02:15
+You guys are going to be playing games among each other today and until--whatever it is?--December 7,
+1:02:21
+whatever is the end of term. Look around each other. You better get to know each other a bit.
+1:02:26
+And what did we learn today about you guys?
+1:02:31
+The lesson here, Lesson 5, is "Yale students are
+1:02:39
+evil." Be aware of that when you're playing games.
+1:02:48
+I want to play one more game today in the remaining minutes. It doesn't matter if we finish a little bit early, but I want to try to get this game at least started.
+1:02:54
+So do you all have Game #2 in front of you? Just while you're reading that over, can I also make sure
+1:03:00
+you've all got your legal forms and you're going to sign. Don't walk away with your legal forms, we need to get those collected in. So at the end of talking about
+1:03:07
+this game, I'm going to collect in both the second game for the class and also the legal form. If you don't have a legal form,
+1:03:15
+if you've lost it or something, it's online. Let's have a look at that second game.
+1:03:20
+I'll read it out for you. Game 2: "pick a number."
+1:03:28
+Everyone got this? Anyone not got this? Everyone got it? Good. "Without showing your neighbor what you're doing,
+1:03:35
+put in the box below a whole number between 1 and a 100 [whole number between 1 and 100--integer.]
+1:03:42
+We will calculate the average number chosen in the class. The winner in this game is the person whose number is closest
+1:03:50
+to two-thirds times the average in the class." [Again: the winner is the person whose number is closest
+1:03:58
+to two-thirds times the average number in the class.] The winner will win $5 minus the difference in pennies
+1:04:07
+between her choice and that two-thirds of the average." Just to make sure you've understood this,
+1:04:16
+let me do an example on the board. I've got one more board; that's good.
+1:04:23
+So imagine there were three people in the class,
+1:04:29
+and imagine that they chose 25,5, and 60.
+1:04:35
+So 25 plus 5 plus 60 is 90. People should feel free to
+1:04:40
+correct my arithmetic because it's often wrong; 90 right? Two-thirds of 90,
+1:04:47
+whoops, what do I need, start again.
+1:04:54
+I need to divide it by three to get the average. So the average is 30. So the total is 90,
+1:05:03
+the average is 30, am I right so far? So two-thirds of the average is 20.
+1:05:14
+I'm looking desperately at the T.A. Is that right? Okay, so the average is 30 and two-thirds of the average is 20. So who's the winner here,
+1:05:22
+which number would have won here? 25 would have won. 25 would have been the closest,
+1:05:28
+and what would they have won? They would have won five bucks
+1:05:34
+minus five cents for a total of four ninety-five.
+1:05:40
+Now to make this interesting, let's play this for real. So this of course relies on me having brought some money and
+1:05:48
+we'll have to do this without dislodging the microphone. So I'm going to see if I have… sorry about that.
+1:05:55
+I'm going to see if I have enough money to do this in class for real. When we played this game in the old days, during the dot com boom with the MBA students,
+1:06:03
+you had to put fifty dollars on the table to get them interested. Graduate students:
+1:06:08
+five cents will do it. Okay, so this is a--there's some bloke with a beard on this one.
+1:06:14
+Yeah this is Lincoln apparently. Who knew, Lincoln? Okay, so this is a five-dollar note and I'm going to put
+1:06:21
+it--sorry about that again--I'm going to put it in an envelope. I'm not cheating anybody? No magic tricks here.
+1:06:30
+And this is going to be the prize for this game and we better give this to someone we trust.
+1:06:38
+It's the prize for 159.Who do you guys trust?
+1:06:47
+The camera guy. Okay Jude: we know Jude's going to be there next week. I'm giving it to Jude. You can't see this on camera.--people at home--but I'm
+1:06:54
+giving it to Jude okay. I'm going to put it here, and Jude has to show up next week with the prize.
+1:07:01
+I thought we should give it to the guy at the back, who is the moral guy. Who is our moral guy at the back? Well never mind, we will give it to Jude. We know Jude's going to be here.
+1:07:08
+All right, has everyone put a number down? Any questions? Just shout them out to me. Student: So given that we only have one five dollar
+1:07:14
+bill does there have to be one unique winner, and if so, how is that determined if we have multiple people who are - Professor Ben Polak: That's a good
+1:07:19
+question. If there's multiple winners, we'll divide it but we'll make sure everyone has a positive winning. Good question.
+1:07:26
+Given the number of people in the room there may be multiple winners, I accept that possibility. Has everyone written down a number now?
+1:07:31
+All right, so hand your numbers to the end of the row, but don't go yet. Hand it on to the end of the
+1:07:37
+row. Before you go I want five things from you. I want to know the five lessons
+1:07:44
+from this class. Tell me what you learnt? What were the five lessons? Without looking at your notes,
+1:07:50
+what were the five lessons? Anybody, shout out one of the lessons, yes madam. Student: Don't play a strictly dominated strategy. Professor Ben Polak:
+Chapter 9. Lesson Recap
+1:07:56
+Don't play a strictly dominated strategy, anything else? Yes sir. Student: Yale students are evil. Professor Ben Polak: Yale students are evil. Two lessons down, three to go.
+1:08:03
+The guy over here. Student: Rational choices can lead to bad outcomes. Professor Ben Polak: Rational choices can lead to bad
+1:08:09
+outcomes. We put it more graphically before but that's fine. Two more outcomes. Student: Put yourself in other people's shoes.
+1:08:15
+Professor Ben Polak: Put yourself in other people's shoes and I'm missing one, I can't recall which one I'm missing now. Student: You can't get
+1:08:20
+what you want so you - Professor Ben Polak: You can't get what you want. You could but it's a good idea to figure out what you want before you try and get what you
+1:08:25
+want. Five things you learnt today, hand in your numbers and the legal forms and I'll see you on
+1:08:32
+Monday.
