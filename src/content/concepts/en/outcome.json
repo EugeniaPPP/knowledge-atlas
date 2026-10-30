@@ -1,0 +1,13 @@
+{
+  "id": "outcome",
+  "title": "Outcome",
+  "definition": "An outcome is the result of a particular combination of all players’ strategies.",
+  "stepId": "outcomes",
+  "prerequisites": [
+    "strategy"
+  ],
+  "related": [
+    "payoff"
+  ],
+  "locale": "en"
+}

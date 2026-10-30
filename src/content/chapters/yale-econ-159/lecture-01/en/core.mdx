@@ -1,0 +1,330 @@
+---
+chapterId: yale-econ-159/lecture-01
+mode: core
+locale: en
+---
+
+import CoreStep from "../../../../../components/editorial/CoreStep.astro";
+import Activity from "../../../../../components/activities/Activity.tsx";
+import { config, models, chapter, activityContent } from "./data";
+
+Your decisions rarely exist in a vacuum. Sometimes you can understand a problem, assess your options and choose the best one. But sometimes your success also depends on what other people decide at the same time. These are the situations game theory studies.
+
+We will use a small experiment to uncover several important ideas: what strategies and payoffs are, how to find a dominant strategy, why individual rationality does not guarantee a good outcome for everyone, and why other people’s objectives matter.
+
+---
+
+<CoreStep id="strategic-situations" chapter={chapter}>
+
+## 01. When your decision depends on someone else’s
+
+Imagine you are setting the price of a new car. How can you work out which price will earn your company the most profit?
+
+If the firm is a **monopolist**, it does not anticipate a direct response from a competitor. It still needs to consider demand and buyers’ behavior, but in this model there is no other car manufacturer whose pricing decisions it must predict.
+
+Under **perfect competition**, by contrast, a firm is too small to influence the market price. It takes that price as given and decides how much to produce.
+
+Now consider a market with several large manufacturers. Cutting your price may attract more buyers. But if the other firms respond with price cuts of their own, the result will be very different from what happens if they keep their prices unchanged. **The same action can be beneficial or costly depending on what everyone else does.**
+
+This is a **strategic situation**: the result you care about depends not only on your own decision, but also on other participants’ decisions.
+
+Game theory therefore applies far beyond business. Political candidates consider their opponents’ actions, athletes consider their opponents’ tactics, and evolutionary biologists study how the success of a behavior depends on the behavior of other individuals.
+
+Let’s experience a strategic situation rather than just read its definition.
+
+### A game: which grade will you get?
+
+Imagine an unusual rule for a university course. Instead of the usual grading system, the result of one exercise will depend on **one decision you make** and on the decision of **another student chosen at random**. This is a hypothetical game, not an actual grading policy.
+
+Each of you independently writes down **α (alpha)** or **β (beta)**. You do not know who your partner will be, cannot see their answer, and cannot agree on your choices beforehand.
+
+The possible grades are **A, B+, B− and C**, from best to worst. The rules are:
+
+- If both choose **α**, both receive **B−**.
+- If both choose **β**, both receive **B+**.
+- If you choose **α** and your partner chooses **β**, you receive **A** and your partner receives **C**.
+- If you choose **β** and your partner chooses **α**, the result is reversed: you receive **C** and your partner receives **A**.
+
+<Activity kind="first-choice" config={config} models={models} copy={activityContent["first-choice"]} client:load />
+
+**Do not rush to find the “right” strategy.** We have not yet specified what matters to the players. Make your own choice for now; we will return to it.
+
+Your grade depends on someone else as well as on you. To understand the game, we need to keep both decisions in view.
+
+---
+
+</CoreStep>
+
+<CoreStep id="outcomes" chapter={chapter}>
+
+## 02. Four outcomes — one matrix
+
+Listing every combination of choices in words is cumbersome. Instead, we can use an **outcome matrix**: a table showing what happens for each combination of actions.
+
+The rows show **your choice**; the columns show **your partner’s choice**. Each cell contains two grades: **yours first, then your partner’s**.
+
+| Your choice ↓ / partner → | α | β |
+|:---|:---:|:---:|
+| **α** | **B−, B−** | **A, C** |
+| **β** | **C, A** | **B+, B+** |
+
+<Activity kind="outcome-explorer" config={config} models={models} copy={activityContent["outcome-explorer"]} client:load />
+
+We can now distinguish two things.
+
+A **strategy** is a choice available to a player. In this simple simultaneous game, each player has two strategies: α and β. In more complex games, a strategy can be a complete plan of action.
+
+An **outcome** is the result of a particular combination of all players’ strategies. For example, **(A, C)** is the outcome in which you receive A and your partner receives C.
+
+The matrix tells us exactly **what will happen** for each combination of decisions. But is that enough to work out **what to choose**?
+
+Not quite. One person may want an A at any cost. Another may prefer mutual B+ to an outcome in which their high grade comes at the expense of someone else’s low grade. The rules and grades are the same, but the players’ objectives differ.
+
+To analyze their decisions, we need a way to represent not only outcomes, but also **how much each player values those outcomes**.
+
+---
+
+</CoreStep>
+
+<CoreStep id="payoffs" chapter={chapter}>
+
+## 03. Why a grade and a payoff are different
+
+Start with the simplest case: **each player cares only about their own grade**. A is better than B+; B+ is better than B−; B− is better than C.
+
+For mathematical analysis, it is useful to represent these preferences with numbers. For example:
+
+| Grade | A | B+ | B− | C |
+|:---|:---:|:---:|:---:|:---:|
+| **Illustrative payoff** | **3** | **1** | **0** | **−1** |
+
+There is an important qualification: **this is not a formula for converting university grades into points**. These numbers are chosen for the model. They represent which outcomes a player prefers. In particular, 3 does not mean an A is “three times as enjoyable” as a B+.
+
+A number representing how desirable an outcome is to a player is called a **payoff**. It need not be money. A payoff may reflect a grade, comfort, reputation, a sense of fairness — whatever matters to the player.
+
+Replace the grades in the matrix with numbers. We are not changing the rules or the grades. We are **representing their value to players with specified preferences**.
+
+<Activity kind="matrix-layers" config={config} models={models} copy={activityContent["matrix-layers"]} client:load />
+
+For example, the outcome **(A, C)** is now represented by payoffs **(3, −1)**: the first player receives the desired A; the second receives the disappointing C. Both descriptions refer to exactly the same actions: you choose α and your partner chooses β.
+
+*An outcome describes what happens; a payoff represents how desirable that outcome is to a particular player.* We will need this distinction in the next argument.
+
+<details className="extra">
+
+<summary>A little deeper: why can we use these numbers?</summary>
+
+<p>To identify a strictly dominant strategy in this game, we only need to preserve the ranking of outcomes. Instead of 3, 1, 0, −1, we could use 10, 7, 4, 0: the comparisons within each column would be unchanged. When probabilities and risk enter the analysis, a numerical representation of utility must satisfy additional requirements. We will return to those later.</p>
+
+</details>
+
+---
+
+</CoreStep>
+
+<CoreStep id="dominance" chapter={chapter}>
+
+## 04. Finding a strategy that is always better
+
+The problem is now specified clearly enough: **we know the strategies, possible outcomes and payoffs**. Which decision is better if you care only about your own grade?
+
+Suppose your partner chooses **α**. You can get **0** by choosing α or **−1** by choosing β. For you, α is better.
+
+Now suppose your partner chooses **β**. You get **3** if you choose α and **1** if you choose β. Again, α is better.
+
+<Activity kind="dominance" config={config} models={models} copy={activityContent["dominance"]} client:load />
+
+This is stronger than saying “α will probably turn out well.” **Whatever your partner chooses, α gives you a higher payoff than β.** You do not even need to predict their decision.
+
+We say that strategy **α strictly dominates β**. Formally, a strategy strictly dominates another if it gives the player a **strictly higher payoff for every possible choice of the other players**.
+
+**This is different from being the best response to a particular action by your partner.** A best response can change when the other player’s choice changes. Dominance is stronger: the strategy wins the comparison in every possible case.
+
+> **PRINCIPLE 01. Do not play a strictly dominated strategy.**
+>
+> If another strategy is better for you whatever your opponent does, there is no reason to choose the strictly worse one — provided the model correctly represents your objectives.
+
+Your partner has exactly the same preferences, so for them α strictly dominates β too. Both players therefore have a compelling individual reason to choose α.
+
+And this leads to a surprise.
+
+---
+
+</CoreStep>
+
+<CoreStep id="prisoners-dilemma" chapter={chapter}>
+
+## 05. When rational choices lead to a bad outcome
+
+If you both choose **α**, each receives B−, giving each a payoff of **0**. The pair’s payoffs are **(0, 0)**.
+
+But the matrix also contains **(β, β)**. It would give you both B+, with payoffs **(1, 1)**. Each of you would be better off.
+
+<Activity kind="paradox" config={config} models={models} copy={activityContent["paradox"]} client:load />
+
+So what is the problem? Why not simply both choose β?
+
+Because **your decision does not control your partner’s decision**. If your partner chooses β, you personally gain by switching from β to α: you get **3** instead of **1**. Your partner faces exactly the same incentive.
+
+There is a conflict between **what benefits each player individually** and **what would be better for both together**.
+
+This structure is called a **prisoner’s dilemma**. Each player has an incentive to pursue their own interests in a particular way, but the combination of these individually beneficial actions produces an outcome worse for both than another feasible outcome.
+
+<details className="extra">
+
+<summary>Where does the name “prisoner’s dilemma” come from?</summary>
+
+<p>Two suspects are questioned separately. If both remain silent, each serves one year in prison. If both testify against the other, each serves two years. If one testifies while the other remains silent, the first goes free and the second serves five years.</p>
+
+<p>For each suspect, testifying is better regardless of what the other does. But if both testify, each spends two years in prison, whereas mutual silence would mean only one year each. The logic is the same as in the Grade Game, although the actions and consequences are very different.</p>
+
+</details>
+
+Economists call an outcome such as **(0, 0) Pareto inefficient**: another feasible outcome — **(1, 1)** — would make at least one player better off without making anyone else worse off. Here it would make both players better off.
+
+> **PRINCIPLE 02. Individual rationality does not guarantee a good collective outcome.**
+>
+> Each player can consistently pursue their own interests, yet their joint outcome can be worse than what cooperation could have achieved.
+
+### What if we make an agreement?
+
+Suppose you discuss the situation and agree to both choose β. The conversation alone does not remove the problem: if your partner keeps their promise, you still have an incentive to choose α. To make cooperation more sustainable, it may be necessary to **change the incentives** — for example, through enforceable commitments or consequences for breaking an agreement.
+
+Much can also change when players interact **more than once**: today’s behavior can affect what happens tomorrow. We will return to repeated games later.
+
+<details className="extra">
+
+<summary>More examples: a shared kitchen and price competition</summary>
+
+<p>Two flatmates may both benefit from a clean shared kitchen, while each would prefer the other to do the cleaning. This can produce a similar conflict of incentives. In an ongoing relationship, reputation and reciprocity can change the situation.</p>
+
+<p>Competing firms may both lose profits in a price war, even though each is trying to attract customers. This is a useful analogy with the prisoner’s dilemma, but any particular market needs its own analysis. Agreements between competitors to fix prices may be illegal; having a shared interest does not make such agreements permissible.</p>
+
+</details>
+
+So far we have assumed that each player cares **only about their own grade**. What if that assumption is wrong? The same outcome may be valued differently when someone also cares about their partner’s result.
+
+---
+
+</CoreStep>
+
+<CoreStep id="preferences" chapter={chapter}>
+
+## 06. The same rules, a different game
+
+Imagine a player who cares not only about getting a good grade, but also about not harming their partner for their own benefit. Receiving an A is appealing; yet if it means their partner gets a C, guilt may outweigh the pleasure. Conversely, receiving a C while the partner gets an A may be especially unpleasant because it feels unfair.
+
+**The grades and rules have not changed. Only the way the player values the outcomes has changed.** Consider this payoff model:
+
+| Your choice ↓ / partner → | α | β |
+|:---|:---:|:---:|
+| **α** | **0, 0** | **−1, −3** |
+| **β** | **−3, −1** | **1, 1** |
+
+In this illustrative model, guilt reduces the payoff from getting an A at the expense of the partner’s C from **3 to −1**. Receiving a C while the partner gets an A also becomes worse: a payoff of **−3** instead of **−1**.
+
+<Activity kind="motivation" config={config} models={models} copy={activityContent["motivation"]} client:load />
+
+Compare the actions again. If your partner chooses α, α is better for you: **0 rather than −3**. If your partner chooses β, β is better for you: **1 rather than −1**.
+
+**Neither α nor β strictly dominates the other.** The better choice depends on what your partner chooses.
+
+This is a **coordination problem**. In games like this, players need to align their actions and expectations. In this particular model, if both expect α, each prefers to stick with α; if both expect β, each prefers to stick with β. Mutual β is also better for both.
+
+There is an important difference from the previous game: **when your partner chooses β, β is better for you too**. There is no longer an automatic incentive to take advantage of someone willing to cooperate.
+
+> **PRINCIPLE 03. Before looking for the best strategy, establish what the players value.**
+>
+> The same external rules can create different strategic situations when the participants value the outcomes differently.
+
+For convenience, we can call the first preference type **self-interested** — caring only about one’s own grade — and the second **fairness-minded**. Polak calls the latter an **indignant angel**. These are preference types in the model, not diagnoses or moral judgments.
+
+<details className="extra">
+
+<summary>A coordination example outside the Grade Game</summary>
+
+<p>Two people want to meet but could go to either of two places. What matters most is choosing the same place; the alternatives may differ in convenience. If each is confident the other will choose a particular place, matching that choice may be beneficial. The difficulty lies in coordinating expectations, rather than necessarily in a conflict between individual and collective interests.</p>
+
+</details>
+
+What happens when **players with different preferences** meet in the same game?
+
+---
+
+</CoreStep>
+
+<CoreStep id="other-player" chapter={chapter}>
+
+## 07. To choose your action, understand the other player
+
+Consider a pair in which one player **cares only about their own grade**, while the other **cares about fairness**. Both know each other’s preferences.
+
+First, imagine that **you care only about your own grade**. The answer is straightforward: α remains a strictly dominant strategy for you. Your partner’s preferences do not matter for this comparison. Against either action they could take, α is better for you.
+
+Now reverse the roles: **you care about fairness, while your partner cares only about their own grade**. You have no single strategy that is always better: against α you prefer α; against β you prefer β. But your partner has a strictly dominant strategy, **α**.
+
+If your partner acts rationally given their preferences, you can predict their choice: **they will choose α**. Your best response is therefore **α** too, since **0 is greater than −3**.
+
+<Activity kind="roles" config={config} models={models} copy={activityContent["roles"]} client:load />
+
+Notice the difference between the two routes to the same decision:
+
+- In the first case, you choose α **without knowing what your partner will do**: it is always better for you.
+- In the second, you choose α **because you have predicted your partner’s action**. Your own α does not strictly dominate β.
+
+This is a central difference between simply comparing your own options and **thinking strategically**: you need to consider other people’s objectives and how those objectives affect their actions.
+
+> **PRINCIPLE 04. Put yourself in the other player’s shoes and try to predict their choice.**
+>
+> Your best response depends on your own objectives and, sometimes, on which actions it is reasonable to expect from others.
+
+In real life, other people’s preferences are rarely known this precisely. The next level of analysis is therefore not just predicting one particular player’s action, but assessing **which types of players you might meet and how likely each type is**.
+
+<details className="extra">
+
+<summary>What did participants in the original experiment choose?</summary>
+
+<p>In the lecture’s Grade Game, **238 people** chose α and **36** chose β — approximately 87% and 13%. These choices cannot be treated as measures of “selfishness” or “intelligence”: the same action can have different motivations. This historical classroom experiment illustrates variation in behavior; it is not a universal estimate of how people play.</p>
+
+</details>
+
+We have learned to analyze a small game with two actions. What if there are many players, and your result depends not just on someone else’s choice, but on **how everyone reasons about everyone else**?
+
+---
+
+</CoreStep>
+
+<CoreStep id="number-game" chapter={chapter}>
+
+## 08. A new game: guess two thirds of the average
+
+Imagine that each person in a large group independently chooses **an integer from 1 to 100**. Take the average of all the numbers and multiply it by **⅔**. The person whose number is closest to the resulting value wins.
+
+For example, three people choose **25, 5 and 60**. Their average is **30**, and two thirds of it is **20**. The closest chosen number is **25**, so it wins.
+
+But what should you choose if you do not know the other players’ numbers?
+
+It is not enough simply to guess the average. You need to consider what others will choose, how they will reason, whether they expect strategic thinking from one another — and whether those expectations will change their choices.
+
+<Activity kind="number-game" config={config} models={models} copy={activityContent["number-game"]} client:load />
+
+**We will leave the answer open for now.** This is a useful starting point for the next chapter, where we will examine best responses to other players’ expected behavior more systematically.
+
+### What to take away
+
+We began with a simple choice between α and β, but separated four questions: **which decisions are available to the players; how they value the outcomes; whether one strategy is always better; and what we can predict about another player’s actions**.
+
+These questions gave us four principles:
+
+1. **Do not play a strictly dominated strategy.**
+2. **Rational individual choices can produce an inefficient outcome for everyone.**
+3. **Understand which outcomes the players value.**
+4. **Predict others’ behavior using their preferences, not your own.**
+
+Now return to your very first choice in the Grade Game. **Would you make it again?** More importantly, **under which preferences** would that choice be reasonable for you?
+
+<Activity kind="reflection" config={config} models={models} copy={activityContent["reflection"]} client:load />
+
+---
+
+</CoreStep>

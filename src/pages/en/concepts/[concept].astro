@@ -1,0 +1,6 @@
+---
+import Page from '../../../components/pages/ConceptPage.astro';
+import { conceptPaths } from '../../../lib/content/queries';
+export async function getStaticPaths() { return conceptPaths('en'); }
+---
+<Page {...Astro.props} />

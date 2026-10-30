@@ -1,0 +1,313 @@
+{
+  "chapterId": "yale-econ-159/lecture-01",
+  "locale": "en",
+  "basedOnContentVersion": "core-3.0",
+  "terminologyVersion": 1,
+  "chapter": {
+    "title": "Why can rational decisions leave everyone worse off?",
+    "titleLead": "Why can rational decisions",
+    "titleMuted": "leave everyone worse off?",
+    "description": "Strategic thinking, payoffs and dominant strategies.",
+    "durations": {
+      "quick": "3–5 minutes",
+      "core": "25–35 minutes",
+      "mastery": "10–30 minutes"
+    },
+    "steps": {
+      "strategic-situations": "When your decision depends on someone else’s",
+      "outcomes": "Four outcomes — one matrix",
+      "payoffs": "Why a grade and a payoff are different",
+      "dominance": "Finding a strategy that is always better",
+      "prisoners-dilemma": "When rational choices lead to a bad outcome",
+      "preferences": "The same rules, a different game",
+      "other-player": "To choose your action, understand the other player",
+      "number-game": "A new game: guess two thirds of the average"
+    },
+    "sourceLinkTitles": [
+      "Video lecture and transcript",
+      "Summary & Lessons of the First Class",
+      "Blackboard Notes — Lecture 1",
+      "Full course syllabus"
+    ]
+  },
+  "modelCaptions": {
+    "grade-game": "Grade Game · each player cares only about their own grade",
+    "fairness": "Grade Game · players care about fairness",
+    "mastery-one": "A new game · compare your payoffs",
+    "mastery-two": "A new game · find the strictly dominated strategy",
+    "fair-selfish": "You care about fairness; your partner cares only about their own grade"
+  },
+  "exercises": [
+    {
+      "id": "m1",
+      "title": "A new matrix: find dominance",
+      "prompt": "This is a different game, not the Grade Game. Which statement is true for the row player?",
+      "objectiveIds": [
+        "identify-dominance"
+      ],
+      "options": [
+        {
+          "id": "a",
+          "text": "A strictly dominates B."
+        },
+        {
+          "id": "b",
+          "text": "B strictly dominates A."
+        },
+        {
+          "id": "n",
+          "text": "Neither strategy strictly dominates the other."
+        }
+      ],
+      "correct": "a",
+      "explanation": "If your partner chooses A: 2 > 0; if your partner chooses B: 4 > 3. So A strictly dominates B.",
+      "modelId": "mastery-one"
+    },
+    {
+      "id": "m2",
+      "title": "Dominance may be where you least expect it",
+      "prompt": "Compare your payoffs in this matrix. Which strategy should you eliminate?",
+      "objectiveIds": [
+        "identify-dominance"
+      ],
+      "options": [
+        {
+          "id": "a",
+          "text": "Eliminate A: it is strictly dominated by B."
+        },
+        {
+          "id": "b",
+          "text": "Eliminate B: it is strictly dominated by A."
+        },
+        {
+          "id": "n",
+          "text": "Neither: there is no strict dominance."
+        }
+      ],
+      "correct": "a",
+      "explanation": "Against your partner’s A, B gives you 4 instead of 2; against their B, it gives you 1 instead of 0. Your strategy A is therefore strictly dominated.",
+      "modelId": "mastery-two"
+    },
+    {
+      "id": "m3",
+      "title": "The indignant angels model",
+      "prompt": "Which of your strategies is strictly dominant in the indignant angels matrix?",
+      "objectiveIds": [
+        "distinguish-preferences"
+      ],
+      "options": [
+        {
+          "id": "a",
+          "text": "α."
+        },
+        {
+          "id": "b",
+          "text": "β."
+        },
+        {
+          "id": "n",
+          "text": "Neither."
+        }
+      ],
+      "correct": "n",
+      "explanation": "Against α, α is better (0 > −3); against β, β is better (1 > −1). Neither strategy outperforms the other in every case.",
+      "context": "In this model, both players care about their own grade and fairness. You choose the row; your partner chooses the column. The numbers are payoffs reflecting these preferences.",
+      "modelId": "fairness"
+    },
+    {
+      "id": "m4",
+      "title": "A better outcome is not enough",
+      "prompt": "Why can’t you conclude “both should choose β” merely from seeing that (1,1) is better than (0,0)?",
+      "objectiveIds": [
+        "explain-incentives"
+      ],
+      "options": [
+        {
+          "id": "a",
+          "text": "Because neither player controls the other’s choice, and if the partner chooses β, the incentive to deviate to α remains."
+        },
+        {
+          "id": "b",
+          "text": "Because total payoffs never matter in game theory."
+        },
+        {
+          "id": "c",
+          "text": "Because (0,0) is always the best outcome."
+        }
+      ],
+      "correct": "a",
+      "explanation": "An improvement requiring both players to act does not follow from one player’s decision. If your partner plays β, your payoff from α is 3, compared with 1 from β.",
+      "context": "You choose the row; your partner chooses the column. Both players care only about their own grade; the matrix shows their payoffs.",
+      "modelId": "grade-game"
+    },
+    {
+      "id": "m5",
+      "title": "The other player’s preferences",
+      "prompt": "First predict your partner’s choice, then find your best response. Both players are rational and know each other’s preferences.",
+      "objectiveIds": [
+        "predict-other-player"
+      ],
+      "options": [
+        {
+          "id": "aa",
+          "text": "You choose α, your partner chooses α."
+        },
+        {
+          "id": "ab",
+          "text": "You choose α, your partner chooses β."
+        },
+        {
+          "id": "ba",
+          "text": "You choose β, your partner chooses α."
+        },
+        {
+          "id": "bb",
+          "text": "You choose β, your partner chooses β."
+        }
+      ],
+      "correct": "aa",
+      "explanation": "For your partner, α strictly dominates β: if you choose α, they get 0 instead of −1; if you choose β, they get 3 instead of 1. So you expect α. Your best response is α: 0 > −3. Your α does not strictly dominate β, however: against your partner’s β, your β is better (1 > −1).",
+      "context": "You are an indignant angel: you care about your own grade and fairness, and choose the row. Your partner cares only about their own grade and chooses the column. These are preference types in the model, not moral judgments.",
+      "modelId": "fair-selfish",
+      "strategySequence": {
+        "partnerPrompt": "1. Select your partner’s strictly dominant strategy",
+        "responsePrompt": "2. Choose your best response to that strategy",
+        "instruction": "Select a column in the matrix header. The second number in each pair is your partner’s payoff.",
+        "pendingInstruction": "First select your partner’s strategy in the matrix header.",
+        "pairs": [
+          {
+            "optionId": "aa",
+            "row": 0,
+            "column": 0
+          },
+          {
+            "optionId": "ab",
+            "row": 0,
+            "column": 1
+          },
+          {
+            "optionId": "ba",
+            "row": 1,
+            "column": 0
+          },
+          {
+            "optionId": "bb",
+            "row": 1,
+            "column": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "m6",
+      "title": "Promises and commitments",
+      "prompt": "In this game, two people promise to choose β. There is no penalty for breaking the promise. Which statement is most accurate?",
+      "objectiveIds": [
+        "explain-incentives"
+      ],
+      "options": [
+        {
+          "id": "a",
+          "text": "A promise need not change incentives if breaking it has no consequences."
+        },
+        {
+          "id": "b",
+          "text": "Any spoken promise makes β a strictly dominant strategy."
+        },
+        {
+          "id": "c",
+          "text": "Repeated games and commitments can never affect cooperation."
+        }
+      ],
+      "correct": "a",
+      "explanation": "Communication alone does not change the original payoff matrix. Enforceable commitments and repeated interaction can create additional incentives.",
+      "context": "You choose the row; your partner chooses the column. Both players care only about their own grade; the matrix shows their payoffs.",
+      "modelId": "grade-game"
+    }
+  ],
+  "interactions": {
+    "activities": {
+      "first-choice": {
+        "title": "Grade Game",
+        "label": "Make your first choice",
+        "lead": "Before seeing the explanation. Your choice depends on your preferences.",
+        "text": {
+          "chosen": "You chose {choice}. We are not grading it: the answer depends on your preferences.",
+          "empty": "This is not a test question. Choose what seems reasonable to you.",
+          "source": "Yale · 11:23–15:41"
+        }
+      },
+      "outcome-explorer": {
+        "title": "Choose two actions",
+        "label": "Explore the matrix",
+        "text": {}
+      },
+      "matrix-layers": {
+        "title": "Compare outcomes and payoffs",
+        "label": "One game — two representations",
+        "text": {
+          "note": "The notation changes; the rules do not."
+        }
+      },
+      "dominance": {
+        "title": "Your partner chooses…",
+        "label": "Compare both cases",
+        "text": {}
+      },
+      "paradox": {
+        "title": "Compare three possible situations",
+        "label": "Where is the paradox?",
+        "text": {
+          "00": "Each player prefers α regardless of the other’s choice; both end up with 0.",
+          "11": "Both would receive 1 — better for each than mutual α.",
+          "31": "If your partner has chosen β, switching to α raises your own payoff from 1 to 3."
+        }
+      },
+      "motivation": {
+        "title": "The same grades. Different payoffs.",
+        "label": "Change the preferences",
+        "text": {
+          "fair": "If your partner chooses β, β is better for you too: 1 > −1.",
+          "selfish": "If your partner chooses β, α is better for you: 3 > 1."
+        }
+      },
+      "roles": {
+        "title": "Put yourself in the other player’s shoes",
+        "label": "Switch roles",
+        "text": {
+          "fair": "For your partner, α strictly dominates β. So you expect α and respond with α: 0 > −3. Your own α is not strictly dominant.",
+          "selfish": "Your α strictly dominates β. You choose α regardless of your partner’s preferences.",
+          "fairCaption": "You care about fairness; your partner cares only about their own grade",
+          "selfishCaption": "You care only about your own grade; your partner cares about fairness"
+        }
+      },
+      "number-game": {
+        "title": "Which number will you choose?",
+        "label": "A new game · no answer supplied yet",
+        "text": {
+          "empty": "Your prediction is a starting point for the next chapter."
+        }
+      },
+      "reflection": {
+        "title": "Return to your first decision",
+        "label": "Personal reflection",
+        "text": {
+          "chosen": "At the start you chose {choice}. What do you think of that choice now?",
+          "empty": "No first choice has been saved. Return to the start, or simply write down your conclusion."
+        }
+      }
+    },
+    "written": {
+      "id": "self-explanation",
+      "title": "Explain it in your own words",
+      "prompt": "Why can’t you simply choose β, even if both players understand that (1,1) is better than (0,0)? Explain without quoting a definition.",
+      "context": "You choose the row; your partner chooses the column. Both players care only about their own grade; the matrix shows their payoffs.",
+      "modelId": "grade-game",
+      "rubric": "A good explanation includes two ideas: choosing β does not make the other player choose β; if your partner chooses β, you personally have an incentive to deviate to α and get 3 instead of 1."
+    },
+    "quickAnswer": {
+      "lead": "No.",
+      "body": "Strict dominance requires a strictly higher payoff for every possible choice of the other player."
+    }
+  }
+}

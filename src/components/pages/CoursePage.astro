@@ -1,0 +1,23 @@
+---
+import { sitePath } from '../../lib/navigation/paths';
+import AtlasLayout from '../../layouts/AtlasLayout.astro';
+import { getUI } from '../../i18n/ui';
+import { localizedChapters } from '../../lib/content/queries';
+import type { CollectionEntry } from 'astro:content';
+import type { Locale } from '../../lib/content/schema';
+interface Props { course: CollectionEntry<'courses'>['data']; locale: Locale }
+const { course, locale } = Astro.props;
+const t = getUI(locale);
+const chapters = (await localizedChapters(locale)).filter((data) => data.courseId === course.id);
+---
+<AtlasLayout title={t.courseTitle} locale={locale}>
+  <main id="main" tabindex="-1">
+    <section class="hero"><div class="hero-meta eyebrow"><span>Yale ECON 159 / Ben Polak</span><span>{t.allLectures}</span></div><div class="hero-grid"><h1>{t.courseLead}<span class="muted-title">{t.courseMuted}</span></h1><aside class="hero-detail"><strong>{t.fall}</strong><p>{t.courseDetail}</p><a href={course.sourceUrl} target="_blank" rel="noopener noreferrer">{t.yaleProgram}</a></aside></div></section>
+    <p class="course-intro">{t.availabilityIntro}</p>
+    <ol class="course-list">{course.lectures.map((lecture) => {
+      const chapter = chapters.find((data) => data.slug === lecture.slug);
+      return <li><span class="number">{String(lecture.number).padStart(2, '0')}</span><div><h2>{chapter ? <a href={sitePath(`/courses/${course.id}/${chapter.slug}/core/`, locale)}>{chapter.title}</a> : lecture.title}</h2>{chapter && <p>{lecture.title}</p>}</div><span class="availability">{chapter ? 'Quick / Core / Mastery' : t.planned}</span></li>;
+    })}</ol>
+    <a class="text-button" href={course.sourceUrl} target="_blank" rel="noopener noreferrer">{t.yaleNames}</a>
+  </main>
+</AtlasLayout>

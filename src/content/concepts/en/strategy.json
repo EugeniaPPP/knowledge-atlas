@@ -1,0 +1,11 @@
+{
+  "id": "strategy",
+  "title": "Strategy",
+  "definition": "A strategy is a choice available to a player. In more complex games, it can be a complete plan of action.",
+  "stepId": "strategic-situations",
+  "prerequisites": [],
+  "related": [
+    "outcome"
+  ],
+  "locale": "en"
+}

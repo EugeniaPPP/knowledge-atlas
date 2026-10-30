@@ -1,3 +1,4 @@
+import { getUI } from '../../i18n/ui';
 import { z } from 'zod';
 import { modeSchema, type LearningConfig } from '../content/schema';
 
@@ -27,7 +28,7 @@ export function initialState(config: LearningConfig): ChapterState {
 
 export function normalizeState(value: unknown, config: LearningConfig): ChapterState {
   const state = stateSchema.parse(value);
-  if (state.chapterId !== config.chapterId) throw new Error('Этот файл относится к другой главе.');
+  if (state.chapterId !== config.chapterId) throw new Error(getUI(config.locale).wrongChapter);
   const valid = (id: string) => config.stepIds.includes(id);
   const completedStepIds = [...new Set(state.completedStepIds.filter(valid))];
   const unlockedStepIds = [...new Set([
@@ -65,13 +66,13 @@ export function migrateLegacy(value: unknown, config: LearningConfig): ChapterSt
 }
 
 export function parseImport(text: string, config: LearningConfig): ChapterState {
-  if (text.length > 2_000_000) throw new Error('Файл слишком большой. Максимум — 2 МБ.');
+  if (text.length > 2_000_000) throw new Error(getUI(config.locale).tooLarge);
   const data: unknown = JSON.parse(text);
   if (data && typeof data === 'object' && 'app' in data && data.app === 'Knowledge Atlas 1') return migrateLegacy(data, config);
   const envelope = z.object({ app: z.literal('knowledge-atlas'), schemaVersion: z.literal(1),
     exportedAt: z.string(), chapters: z.array(stateSchema).min(1).max(100) }).parse(data);
   const chapter = envelope.chapters.find((s) => s.chapterId === config.chapterId);
-  if (!chapter) throw new Error('В файле нет данных этой главы.');
+  if (!chapter) throw new Error(getUI(config.locale).missingChapter);
   return normalizeState(chapter, config);
 }
 

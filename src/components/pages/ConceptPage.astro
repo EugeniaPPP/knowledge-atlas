@@ -1,0 +1,19 @@
+---
+import { sitePath } from '../../lib/navigation/paths';
+import { getCollection } from 'astro:content';
+import AtlasLayout from '../../layouts/AtlasLayout.astro';
+import type { CollectionEntry } from 'astro:content';
+import type { Locale } from '../../lib/content/schema';
+import { getUI } from '../../i18n/ui';
+import { localizedChapters } from '../../lib/content/queries';
+interface Props { entry: CollectionEntry<'concepts'>; locale: Locale }
+const { entry, locale } = Astro.props, t = getUI(locale);
+const { data } = entry;
+const all = await getCollection('concepts', ({ data }) => data.locale === locale);
+const related = all.filter((entry) => data.related.includes(entry.data.id));
+const prerequisites = all.filter((entry) => data.prerequisites.includes(entry.data.id));
+const occurrences = (await localizedChapters(locale)).flatMap((chapter) => chapter.steps.filter((step) => step.conceptIds.includes(data.id)).map((step) => ({ chapter, step })));
+const first = occurrences.find(({ step }) => step.id === data.stepId) || occurrences[0];
+const contextUrl = sitePath(first ? `/courses/${first.chapter.courseId}/${first.chapter.slug}/core/#${first.step.id}` : '/concepts/', locale);
+---
+<AtlasLayout title={data.title} locale={locale}><main id="main" tabindex="-1"><section class="hero"><div class="eyebrow">{t.gameTheory} / {t.concept}</div><div class="hero-grid"><h1>{data.title}</h1></div></section><div class="narrative"><p class="course-intro">{data.definition}</p><p class="note">{t.conceptNote}</p><div class="actions"><a class="primary" href={contextUrl}>{t.contextLink}</a></div>{occurrences.length > 1 && <section class="quick-section"><h2>{t.occurrences}</h2><ul>{occurrences.map(({ chapter, step }) => <li><a href={sitePath(`/courses/${chapter.courseId}/${chapter.slug}/core/#${step.id}`, locale)}>{t.chapter} {chapter.number} · {step.title}</a></li>)}</ul></section>}{prerequisites.length > 0 && <section class="quick-section"><h2>{t.prerequisites}</h2><div class="concept-links">{prerequisites.map(({ data }) => <a href={sitePath(`/concepts/${data.id}/`, locale)}>{data.title}</a>)}</div></section>}{related.length > 0 && <section class="quick-section"><h2>{t.relatedConcepts}</h2><div class="concept-links">{related.map(({ data }) => <a href={sitePath(`/concepts/${data.id}/`, locale)}>{data.title}</a>)}</div></section>}</div><div class="actions"><a class="secondary" href={sitePath('/concepts/', locale)}>{t.allConcepts}</a></div></main></AtlasLayout>

@@ -1,4 +1,6 @@
 import { z } from 'zod';
+export const localeSchema = z.enum(['ru', 'en']);
+export type Locale = z.infer<typeof localeSchema>;
 
 export const identifier = z.string().regex(/^[a-z0-9]+(?:[-/][a-z0-9]+)*$/);
 export const modeSchema = z.enum(['quick', 'core', 'mastery']);
@@ -11,6 +13,7 @@ export const stepSchema = z.object({
 }).refine((s) => s.sourceEnd > s.sourceStart, 'Source range must be increasing');
 
 export const chapterSchema = z.object({
+  locale: localeSchema.default('ru'),
   schemaVersion: z.literal(1),
   id: identifier,
   courseId: identifier,
@@ -39,6 +42,7 @@ export const chapterSchema = z.object({
 const pair = z.tuple([z.number(), z.number()]);
 const outcome = z.tuple([z.string(), z.string()]);
 export const modelSchema = z.object({
+  locale: localeSchema.default('ru'),
   id: identifier,
   caption: z.string(),
   rows: z.array(z.string()).min(1),
@@ -90,8 +94,8 @@ export type Chapter = z.infer<typeof chapterSchema>;
 export type Model = z.infer<typeof modelSchema>;
 export type Exercise = z.infer<typeof exerciseSchema>;
 export type Mode = z.infer<typeof modeSchema>;
-export type LearningConfig = { chapterId: string; contentVersion: string; stepIds: string[] };
+export type LearningConfig = { chapterId: string; contentVersion: string; stepIds: string[]; locale?: Locale };
 export const courseSchema = z.object({
-  id: identifier, title: z.string(), author: z.string(), sourceUrl: z.url(),
+  id: identifier, title: z.string(), titleEn: z.string(), author: z.string(), sourceUrl: z.url(),
   lectures: z.array(z.object({ number: z.number().int().positive(), title: z.string(), slug: identifier, status: z.enum(['preview', 'planned', 'published']) })),
 });

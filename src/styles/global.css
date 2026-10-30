@@ -2,7 +2,7 @@
 @import './tokens.css';
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 204px; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--reader-offset); }
 html:has(dialog[open]) { overflow: hidden; }
 body { margin: 0; font-family: 'Inter Variable', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--ink); background: var(--paper); font-size: 17px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
 button, input, textarea { font: inherit; }
@@ -34,8 +34,17 @@ fieldset { min-width: 0; }
 .rail-end { writing-mode: vertical-rl; transform: rotate(180deg); margin-top: auto; font-size: 10px; letter-spacing: .15em; color: var(--muted); }
 .page { max-width: 1530px; width: 100%; margin: 0 auto; padding: 0 clamp(24px, 4.5vw, 65px); min-width: 0; }
 .top { position: sticky; top: 0; z-index: 20; background: var(--paper); min-height: var(--header-height); border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+/* Header links already occupy the sticky area; cancel the reading offset when they receive focus. */
+.top a, .top button { scroll-margin-block: calc(-1 * var(--reader-offset)); }
 .brand { font-size: 11px; letter-spacing: .15em; font-weight: 750; text-decoration: none; white-space: nowrap; }
-.brand span { color: var(--muted); font-weight: 500; margin-left: 16px; letter-spacing: .07em; }
+.brand-course { color: var(--muted); font-weight: 500; margin-left: 16px; letter-spacing: .07em; }
+.brand-short { display: none; }
+.top-controls { display: flex; align-items: center; gap: 28px; }
+.language-switcher { display: flex; align-items: center; gap: 16px; }
+.language-switcher a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; font-size: 12px; text-decoration: none; color: var(--muted); border-bottom: 2px solid transparent; }
+.language-switcher a[aria-current] { color: var(--accent-ink); border-bottom-color: var(--accent); }
+.language-switcher a:hover { color: var(--accent-ink); }
+.language-code { display: none; }
 .mobile-navigation { gap: 20px; }
 .chapter-toolbar { position: sticky; top: var(--header-height); z-index: 19; background: var(--paper); border-bottom: 1px solid var(--line); display: grid; grid-template-columns: minmax(0, 1fr) auto; padding-top: 16px; }
 .chapter-scope { display: flex; align-items: baseline; gap: 16px; font-size: 11px; line-height: 1.5; color: var(--muted); }
@@ -132,15 +141,21 @@ html[data-enhanced] .js-only { display: initial; }
 html[data-enhanced] .rail-link, html[data-enhanced] .chapter-annotation { display: flex; }
 html[data-enhanced] .mobile-navigation { display: none; }
 html[data-enhanced] [data-reader]:not([data-ready]) [data-core-step]:not([data-initial]) { display: none; }
-@media (max-width: 1100px) { .brand span { display: none; } .hero-grid { grid-template-columns: minmax(0, 1fr) 180px; gap: 24px; } .mode-nav { gap: 24px; } .mode-nav small { display: none; } .chapter-tools-actions { gap: 16px; } }
+@media (max-width: 1100px) { .brand-course { display: none; } .hero-grid { grid-template-columns: minmax(0, 1fr) 180px; gap: 24px; } .mode-nav { gap: 24px; } .mode-nav small { display: none; } .chapter-tools-actions { gap: 16px; } }
 @media (max-width: 850px) { .app { grid-template-columns: minmax(0, 1fr); } .atlas-rail { display: none; } html[data-enhanced] .mobile-navigation { display: flex; } .hero-grid { grid-template-columns: 1fr; } .hero-detail { display: none; } .hero { padding: 36px 0; } .hero-meta { gap: 16px; } .hero-meta .lecture-count { display: none; } h1 { font-size: clamp(42px, 8.5vw, 65px); } .atlas-drawer { left: 0; width: min(440px, 100%); } }
 @media (max-width: 550px) {
-  :root { --header-height: 64px; }
+  :root { --header-height: 64px; --reader-offset: 194px; }
   body { font-size: 16px; }
   .page { padding: 0 20px; }
-  html { scroll-padding-top: 194px; }
   .top { gap: 12px; }
-  .brand { font-size: 10px; }
+  .brand { font-size: 20px; letter-spacing: -.08em; }
+  .brand-name, .brand-course { display: none; }
+  .brand-short { display: inline; }
+  .top-controls { gap: 16px; }
+  .language-switcher { gap: 8px; }
+  .language-switcher a { min-width: 44px; }
+  .language-name { display: none; }
+  .language-code { display: inline; }
   .mobile-navigation { gap: 12px; }
   .mobile-navigation .text-button { font-size: 12px; text-decoration: none; max-width: 60px; line-height: 1.4; }
   .chapter-toolbar { padding-top: 4px; column-gap: 12px; }

@@ -1,0 +1,14 @@
+{
+  "id": "pareto-efficiency",
+  "title": "Pareto inefficiency",
+  "definition": "An outcome is Pareto inefficient if another feasible outcome would make at least one player better off without making anyone worse off.",
+  "stepId": "prisoners-dilemma",
+  "prerequisites": [
+    "outcome",
+    "payoff"
+  ],
+  "related": [
+    "prisoners-dilemma"
+  ],
+  "locale": "en"
+}

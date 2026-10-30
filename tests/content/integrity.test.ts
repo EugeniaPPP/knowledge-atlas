@@ -28,7 +28,7 @@ test('Core migration preserves the complete approved source, excluding technical
   assert.deepEqual([...mdx.matchAll(/<Activity kind="([a-z-]+)"/g)].map((m) => m[1]), [...activityKinds]);
 });
 test('models and exercises have valid references and all concept links resolve', () => {
-  const names = readdirSync(new URL('../../src/content/concepts/', import.meta.url)).map((f) => f.replace(/\.json$/, ''));
+  const names = readdirSync(new URL('../../src/content/concepts/', import.meta.url)).filter((f) => f.endsWith('.json')).map((f) => f.replace(/\.json$/, ''));
   for (const id of chapter.conceptIds) assert.ok(names.includes(id), id);
   for (const exercise of exercises) if (exercise.modelId) assert.ok(models[exercise.modelId]);
   assert.equal(new Set(exercises.map((e) => e.id)).size, exercises.length);

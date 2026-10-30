@@ -1,0 +1,17 @@
+---
+chapterId: yale-econ-159/lecture-01
+mode: mastery
+locale: en
+---
+
+import Mastery from '../../../../../components/activities/Mastery';
+import WrittenResponse from '../../../../../components/activities/WrittenResponse';
+import { config, exercises, models, writtenExercise } from './data';
+
+<p>Apply the principles to new situations, with explanations shown after you check your answers.</p>
+
+<Mastery config={config} exercises={exercises} models={models} client:load />
+
+<WrittenResponse exercise={writtenExercise} models={models} number={exercises.length + 1} config={config} client:load />
+
+<div className="actions"><a className="primary" href="../quick/">Review the key ideas →</a></div>

@@ -16,7 +16,7 @@ Runtime schemas live in `src/lib/content/schema.ts`; future editorial data contr
 - Exercise: ID, objective references, prompt, optional matrix/model reference, options, correct option and feedback. Written responses have a separate rubric.
 - `context` supplies any necessary local assumptions and player roles; `modelId` renders the matrix inside an exercise or written response. Exercise review checks self-containment, including all inputs needed without opening Core.
 - Optional `strategySequence` supplies two stage labels, instructions and a mapping from each answer option ID to a row/column pair. The partner is selected in the matrix's column headers, then the learner chooses a row. Store the predicted column in `responses` under `mastery-<exercise-id>-partner`; preserve final pair IDs in `answers` so existing exports remain compatible. Changing the first choice clears the dependent answer. Feedback appears only after explicit checking; selection alone implies no correctness.
-- Concept: stable global ID, Russian title, definition from approved text, prerequisites, related concepts and occurrences in chapters.
+- Concept: stable global ID, localized title, definition from approved text, prerequisites, related concepts and occurrences in chapters.
 
 MDX owns the narrative and component placement. JSON owns data and references. Component implementations own behavior. Learner state is a separate versioned local document keyed by course and chapter.
 
@@ -51,3 +51,27 @@ Source registry: `authoring/sources/<course>/<lecture>/manifest.json`, original 
 Runs: `authoring/lessons/<course>/<lesson>/runs/<run-id>/` with analysis, evidence, three MDX drafts, models, exercises, interaction specs, validation and a human-readable review package. A rerun creates a revision instead of replacing approved work.
 
 `author-lesson` will read these contracts, repository guidelines and the component catalog. Supported tasks: analyze, draft, validate, revise. One lesson plus relevant course context per run. Output stops at review readiness; missing sources, unknown components and unresolved factual claims remain explicit. Shared deterministic validators belong in the project, not duplicated inside skill prompts. No custom skill or generation pipeline is built in the current migration.
+
+## Локализация RU / EN
+
+- `chapter.json`, `models.json`, `exercises.json`, `interaction-content.json`, три MDX и `source-notes.mdx` в корне главы — существующая русская редакция. Поле `locale` по умолчанию `ru` сохраняет совместимость.
+- `en/{quick,core,mastery,source-notes}.mdx`: соответствующая английская редакция, frontmatter `chapterId`, `locale: en`, и `mode` только для учебных режимов.
+- `en/content.json`: `chapterId`, `locale`, `basedOnContentVersion`, `terminologyVersion`, локализованные заголовки/описание/длительности/названия шагов и источников, `modelCaptions`, упражнения и `interactions` (включая письменный ответ, rubric и Quick feedback). `en/data.ts` применяет копию к общим данным и проверяет ID/ключи/placeholder-контракты.
+- Модели и ссылки на источники берутся из общего пакета, численные данные не копируются в перевод. Упражнения пока представлены двумя JSON-наборами ради простого редактирования; `validateTranslation` запрещает расхождение ID, целей, вариантов, правильных ответов и mappings. MDX содержит локализованные объяснения тех же общих моделей.
+- Понятия: `concepts/<id>.json` и `concepts/en/<id>.json`, общие ID/связи/stepId. У курса есть `title` и `titleEn`; названия оригинальных лекций Yale остаются английскими в обеих версиях.
+- `src/i18n/ui.ts` — парные строки интерфейса. `src/lib/content/queries.ts` выбирает локаль явно и требует полный набор режимов; отсутствующая глава EN не заменяется русской.
+- RU URL: `/knowledge-atlas/...`; EN URL: `/knowledge-atlas/en/...`. Шаблоны страниц общие, route-файлы тонкие. Языковые ссылки содержат `lang`/`hreflang`, страницы — `html.lang` и альтернативные адреса.
+- `LearningConfig.locale` отвечает только за сообщения. Сохранённое состояние по-прежнему schemaVersion 1, общий chapterId и storage key: ответы, открытые шаги и заметки не дублируются по языкам. Заметки никогда автоматически не переводятся.
+
+## Будущий контракт author-lesson: два языка
+
+Это дополнение к контракту, не реализация pipeline. Новая лекция создаётся как общий анализ и две редакции, а не как независимые генерации без сверки.
+
+1. Источники сохраняют исходный язык, SHA-256 и locators; единый `SourceSpan` повторно используется в обоих языках.
+2. `ConceptAnalysis` фиксирует определения/границы на исходном языке, парные термины RU/EN и версию словаря. Численные модели, objectives и InteractionSpec общие.
+3. Каждый целевой блок `Claim.target` будущего формата получает `locale` и `blockSha256`; `parallelBlockId` связывает версии. Отдельные формулировки одного утверждения ссылаются на одни evidence spans. Для авторского примера общие assumptions и derivation; не выдавать его за цитату Yale.
+4. `AuthoringRun` будущего формата фиксирует `requiredLocales: [ru,en]`, `terminologyVersion`, source/input hashes и локализованные outputFiles. Review package включает RU/EN рядом, alignment manifest (общий blockId → обе версии и хеши) и unresolved questions. Текущие Zod editorial schemas остаются проектом контракта; исполнителя пока нет.
+5. Валидаторы проверяют режимы/шаги/опциональные блоки/интерактивы, связи понятий, ID/ключи/формулы/матрицы/таймкоды, отсутствие пропусков/чужого языка, клавиатуру и адаптивность. Семантическое ревью отдельно проверяет полноту и естественную терминологию. Совпадение ID не доказывает смысловую эквивалентность.
+6. `EditorialDecision` связывается с общим package digest обеих редакций, моделей, словаря и evidence. Одобрение только RU не разрешает публикацию EN; изменение любой редакции делает совместное одобрение устаревшим. AI не создаёт человеческое одобрение.
+
+При изменении русского Core английский перевод помечается устаревшим через `basedOnContentVersion` и рассматривается в той же редакционной задаче. При изменении только перевода обновляется его digest/редакция, стабильный chapterId сохраняется. Расширять типы будущего pipeline следует при его реализации, после отдельного согласования.

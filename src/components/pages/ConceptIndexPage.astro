@@ -1,0 +1,11 @@
+---
+import { sitePath } from '../../lib/navigation/paths';
+import { getCollection } from 'astro:content';
+import AtlasLayout from '../../layouts/AtlasLayout.astro';
+import { getUI } from '../../i18n/ui';
+import type { Locale } from '../../lib/content/schema';
+interface Props { locale: Locale }
+const { locale } = Astro.props, t = getUI(locale);
+const concepts = await getCollection('concepts', ({ data }) => data.locale === locale);
+---
+<AtlasLayout title={t.conceptsLinks} locale={locale}><main id="main" tabindex="-1"><section class="hero"><div class="eyebrow">{t.gameTheory} / {t.index}</div><div class="hero-grid"><h1>{t.conceptsLead}<span class="muted-title">{t.conceptsMuted}</span></h1></div></section><p class="course-intro">{t.conceptsIntro}</p><ul class="concept-list">{concepts.map(({ data }) => <li><h2><a href={sitePath(`/concepts/${data.id}/`, locale)}>{data.title}</a></h2><p>{data.definition}</p></li>)}</ul></main></AtlasLayout>

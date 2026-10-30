@@ -1,0 +1,6 @@
+---
+import Page from '../../../../components/pages/CoursePage.astro';
+import { coursePaths } from '../../../../lib/content/queries';
+export async function getStaticPaths() { return coursePaths('en'); }
+---
+<Page {...Astro.props} />

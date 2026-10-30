@@ -1,6 +1,6 @@
 # Knowledge Atlas
 
-Interactive Russian textbook based on Yale ECON 159. Prioritize a coherent educational narrative, readable scientific models and the approved Modern Editorial aesthetic.
+Interactive Russian/English textbook based on Yale ECON 159. Prioritize a coherent educational narrative, readable scientific models and the approved Modern Editorial aesthetic.
 
 ## Sources of truth
 
@@ -14,7 +14,11 @@ Keep `references/` unchanged. Never embed the entire prototype in a production p
 ## Implementation boundaries
 
 - Astro statically renders the narrative and navigation; MDX contains content, not application logic. React owns the DOM inside its own interactive islands. A small TypeScript controller owns step disclosure and navigation outside them.
-- English stable identifiers; Russian educational text. Derive step counts from metadata.
+- Every new lesson ships in Russian and English together: Quick, Core, Mastery, optional sections, exercise feedback/rubrics, sources, metadata and concepts. Use English stable identifiers shared across languages. Derive step counts from metadata.
+- Existing unprefixed URLs remain Russian; English uses `/en/`. Use `sitePath(path, locale)` for internal navigation and `languagePath` for equivalent pages. URL determines language; do not redirect by guessed language. Keep the current mode/anchor when switching.
+- Consult `docs/TERMINOLOGY.md` and `src/content/terminology/game-theory.json`. Recover English terminology from original sources before writing either version; never round-trip Russian prose into English terminology. Validate equivalence of claims, assumptions and numerical examples, not literal sentence matching.
+- Share model matrices, stable step/concept/exercise/option IDs, source locators and answer keys. Localized copy lives in MDX/JSON and `src/i18n/ui.ts`, never in behavior code. Missing translations are build errors; do not silently fall back to Russian on English pages.
+- Learner progress is shared across locales under the existing chapter key/schema. Keep notes verbatim; never translate or duplicate learner data. Language switching does not reset, complete or grade anything.
 - The app is hosted at `/knowledge-atlas/`. Build internal absolute links with `sitePath` from `src/lib/navigation/paths.ts`, which reads Astro's `BASE_URL`. Keep external URLs and valid chapter-relative MDX links intact. Do not hardcode domain-root links or asset paths. Keep browser tests under the deployment base.
 - Reuse semantic CSS tokens and existing learning components. Follow `DESIGN.md` and `CONTENT_GUIDELINES.md`.
 - Prefer native links, buttons, radio groups, tables, details and dialogs. Keep keyboard operation, visible focus and meaningful feedback.
@@ -33,5 +37,7 @@ Run the relevant checks after implementation:
 - `npm run build`: static production output.
 - `npm run test:dist`: after building, verify deployed links, island scripts, fonts and resources under the GitHub Pages base.
 - `npm run test:e2e`: Playwright against a local production preview, including keyboard, persistence, responsive and accessibility scenarios.
+
+Verify both languages: eight matching chapter-1 steps, all three modes, nine activities, seven self-contained exercises, translated dialogs/storage messages, equivalent anchors and shared progress. Run bilingual content parity checks and locale browser scenarios.
 
 Use browser screenshots at desktop and mobile widths for significant UI changes. Review screenshots before accepting visual baselines. Do not refresh baselines merely to hide a regression. Source PDFs and authoring artifacts must be absent from `dist/`.

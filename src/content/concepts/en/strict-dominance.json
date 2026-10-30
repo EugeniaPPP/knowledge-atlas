@@ -1,0 +1,14 @@
+{
+  "id": "strict-dominance",
+  "title": "Strict dominance",
+  "definition": "A strategy strictly dominates another if it gives the player a strictly higher payoff for every possible choice of the other players.",
+  "stepId": "dominance",
+  "prerequisites": [
+    "strategy",
+    "payoff"
+  ],
+  "related": [
+    "best-response"
+  ],
+  "locale": "en"
+}

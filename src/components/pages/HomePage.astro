@@ -1,0 +1,16 @@
+---
+import { sitePath } from '../../lib/navigation/paths';
+import AtlasLayout from '../../layouts/AtlasLayout.astro';
+import { getUI } from '../../i18n/ui';
+import type { Locale } from '../../lib/content/schema';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = getUI(locale);
+---
+<AtlasLayout title={t.textbook} locale={locale}>
+  <main id="main" tabindex="-1">
+    <section class="hero"><div class="eyebrow">{t.homeEyebrow}</div><div class="hero-grid"><h1>{t.homeLead}<span class="muted-title">{t.homeMuted}</span></h1><aside class="hero-detail"><strong>Knowledge Atlas</strong><p>{t.homeDetail}</p></aside></div></section>
+    <section class="quick-section"><div class="eyebrow">{t.firstCourse}</div><h2>{t.gameTheory}</h2><p class="course-intro">{t.courseIntro}</p><div class="actions"><a class="primary" href={sitePath('/courses/yale-econ-159/lecture-01/core/', locale)}>{t.start}</a><a class="secondary" href={sitePath('/courses/yale-econ-159/', locale)}>{t.allLectures}</a></div></section>
+    <section class="quick-section"><h2>{t.threeModes}</h2><p><strong>Quick</strong> — {t.quickDescription}<br /><strong>Core</strong> — {t.coreDescription}<br /><strong>Mastery</strong> — {t.masteryDescription}</p><a href={sitePath('/concepts/', locale)}>{t.conceptsLinks}</a></section>
+  </main>
+</AtlasLayout>

@@ -1,3 +1,4 @@
+import { getUI } from '../../i18n/ui';
 import { completeStep, initialState, normalizeState, type ChapterState } from './state';
 import type { LearningConfig } from '../content/schema';
 
@@ -5,6 +6,7 @@ export type Snapshot = { state: ChapterState; persistence: 'pending' | 'local' |
 export const storageKey = (id: string) => `knowledge-atlas:chapter:${id}`;
 
 export function createStore(config: LearningConfig) {
+  const t = getUI(config.locale);
   const baseline: Snapshot = { state: initialState(config), persistence: 'pending', message: '' };
   let snapshot = baseline, loaded = false;
   const listeners = new Set<() => void>();
@@ -22,10 +24,10 @@ export function createStore(config: LearningConfig) {
         let state = baseline.state;
         if (raw) {
           try { state = normalizeState(JSON.parse(raw), config); }
-          catch { snapshot = { state, persistence: 'memory', message: 'Сохранённые данные не удалось прочитать. Они оставлены без изменений. Можно импортировать резервную копию или сбросить эту главу.' }; notify(); return; }
+          catch { snapshot = { state, persistence: 'memory', message: t.corruptStorage }; notify(); return; }
         }
         snapshot = { state, persistence: 'local', message: '' };
-      } catch { snapshot = { ...baseline, persistence: 'memory', message: 'Хранилище браузера недоступно. Изменения сохраняются только до закрытия страницы; экспортируй их в JSON.' }; }
+      } catch { snapshot = { ...baseline, persistence: 'memory', message: t.unavailableStorage }; }
       notify();
     },
     update(change: (state: ChapterState) => ChapterState) {
@@ -34,7 +36,7 @@ export function createStore(config: LearningConfig) {
       let persistence = snapshot.persistence, message = snapshot.message;
       if (persistence === 'local') {
         try { window.localStorage.setItem(storageKey(config.chapterId), JSON.stringify(next)); }
-        catch { persistence = 'memory'; message = 'Не удалось сохранить изменения в браузере. Экспортируй прогресс в JSON.'; }
+        catch { persistence = 'memory'; message = t.failedStorage; }
       }
       snapshot = { state: next, persistence, message }; notify();
     },
@@ -44,7 +46,7 @@ export function createStore(config: LearningConfig) {
       try {
         window.localStorage.removeItem(storageKey(config.chapterId));
         snapshot = { state: initialState(config), persistence: 'local', message: '' };
-      } catch { snapshot = { state: initialState(config), persistence: 'memory', message: 'Хранилище недоступно; локальный сброс применён к текущей странице.' }; }
+      } catch { snapshot = { state: initialState(config), persistence: 'memory', message: t.resetMemory }; }
       notify();
     },
     replace(state: ChapterState) {
@@ -52,7 +54,7 @@ export function createStore(config: LearningConfig) {
       try {
         window.localStorage.setItem(storageKey(config.chapterId), JSON.stringify(next));
         snapshot = { state: next, persistence: 'local', message: '' };
-      } catch { snapshot = { state: next, persistence: 'memory', message: 'Импорт выполнен в память страницы. Сохранение в браузере недоступно.' }; }
+      } catch { snapshot = { state: next, persistence: 'memory', message: t.importMemory }; }
       notify();
     },
   };

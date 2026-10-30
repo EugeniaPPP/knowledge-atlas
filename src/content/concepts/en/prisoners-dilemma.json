@@ -1,0 +1,13 @@
+{
+  "id": "prisoners-dilemma",
+  "title": "Prisoner’s dilemma",
+  "definition": "Each player has a strictly dominant strategy, but the resulting outcome is worse for both than another feasible outcome.",
+  "stepId": "prisoners-dilemma",
+  "prerequisites": [
+    "strict-dominance"
+  ],
+  "related": [
+    "pareto-efficiency"
+  ],
+  "locale": "en"
+}

@@ -1,0 +1,12 @@
+import { chapter as originalChapter, models as originalModels, config as originalConfig, exercises as originalExercises, activityContent as originalActivities, writtenExercise as originalWritten, quickAnswer as originalQuick } from '../data';
+import raw from './content.json';
+import { translationSchema, translateChapter, translateModels, validateTranslation } from '../../../../../lib/content/translations';
+export const translation = translationSchema.parse(raw);
+validateTranslation(originalExercises, { activities: originalActivities, written: originalWritten, quickAnswer: originalQuick }, translation);
+export const chapter = translateChapter(originalChapter, translation);
+export const models = translateModels(originalModels, translation);
+export const exercises = translation.exercises;
+export const activityContent = translation.interactions.activities;
+export const writtenExercise = translation.interactions.written;
+export const quickAnswer = translation.interactions.quickAnswer;
+export const config = { ...originalConfig, locale: 'en' as const };

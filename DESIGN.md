@@ -58,3 +58,9 @@ Desktop, tablet and mobile layouts share typography and component language. At c
 ## Visual acceptance
 
 Compare initial implementation with the approved HTML/PNG. Review hero, reading measure, model proportions, spacing, selected states and navigation at 1440, 768, 390 and 320px. Use stable local fonts and deterministic local state. New screenshot baselines require visual inspection, not automatic acceptance.
+
+## Language navigation
+
+A quiet native-link language control lives in the persistent header: “Русский / English”, compact “RU / EN” below 550px. Use native language names and `lang`, `hreflang`, a visible underline plus `aria-current` for the selected language. No flags, modal, automatic locale redirect or new accent palette. Keep touch targets at least 44px high, and compact the brand to K/ before hiding course/chapter navigation. The switch preserves the corresponding mode and section/exercise anchor. Shared progress stays unchanged.
+
+Both locales use the same grid, Inter, tokens and components; allow headings/captions to wrap naturally. Review English at 320/390/768/1440px, expanded Core, matrix headers, two-stage Mastery and dialogs. Do not shrink meaningful text to force Russian line lengths onto English.

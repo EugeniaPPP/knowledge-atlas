@@ -1,0 +1,13 @@
+{
+  "id": "payoff",
+  "title": "Payoff",
+  "definition": "A payoff is a number representing how desirable an outcome is to a player.",
+  "stepId": "payoffs",
+  "prerequisites": [
+    "outcome"
+  ],
+  "related": [
+    "coordination"
+  ],
+  "locale": "en"
+}

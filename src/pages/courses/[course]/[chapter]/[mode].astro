@@ -1,18 +1,6 @@
 ---
-import { getCollection, render } from 'astro:content';
-import ChapterLayout from '../../../../layouts/ChapterLayout.astro';
-import type { Chapter, Mode } from '../../../../lib/content/schema';
-export async function getStaticPaths() {
-  const chapters = await getCollection('chapters');
-  const lessons = await getCollection('lessons');
-  return chapters.flatMap(({ data: chapter }) => lessons.filter((lesson) => lesson.data.chapterId === chapter.id).map((entry) => ({
-    params: { course: chapter.courseId, chapter: chapter.slug, mode: entry.data.mode },
-    props: { chapter, mode: entry.data.mode, entry },
-  })));
-}
-const { chapter, mode, entry } = Astro.props as { chapter: Chapter; mode: Mode; entry: Awaited<ReturnType<typeof getCollection<'lessons'>>>[number] };
-const { Content } = await render(entry);
-const notesEntry = (await getCollection('sourceNotes')).find(({ data }) => data.chapterId === chapter.id);
-const Notes = notesEntry ? (await render(notesEntry)).Content : undefined;
+import Page from '../../../../components/pages/LessonPage.astro';
+import { lessonPaths } from '../../../../lib/content/queries';
+export async function getStaticPaths() { return lessonPaths('ru'); }
 ---
-<ChapterLayout chapter={chapter} mode={mode}><Content /><Fragment slot="source-notes">{Notes && <Notes />}</Fragment></ChapterLayout>
+<Page {...Astro.props} />

@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "version": 1,
+  "courseId": "yale-econ-159",
+  "sources": {
+    "transcript": {
+      "path": "references/sources/lecture_01_transcript.txt",
+      "sha256": "f2dea4dbc590fdc61cc3e0f3edba0a87621411381cd3d6b1fc98b9d258e1b469"
+    },
+    "summary": {
+      "path": "references/sources/lecture_01_summary.pdf",
+      "sha256": "7dfc4eda90cbe68ab7210a482b7c665b2ec071cea85a74883934e50181f1dff8"
+    },
+    "blackboard": {
+      "path": "references/sources/lecture_01_blackboard.pdf",
+      "sha256": "8633b1de596b613950853b7f24aa1d6be3572e6b62d36254290655121e8fa79c"
+    }
+  },
+  "terms": [
+    {
+      "id": "strategy",
+      "ru": "стратегия",
+      "en": "strategy",
+      "usage": "In the simultaneous Grade Game, an available action; more generally, a complete contingent plan.",
+      "evidence": [
+        {
+          "sourceId": "transcript",
+          "locator": {
+            "start": "11:23",
+            "end": "15:41"
+          }
+        }
+      ]
+    },
+    {
+      "id": "outcome",
+      "ru": "исход",
+      "en": "outcome",
+      "usage": "What happens for a strategy profile; distinguish the grade pair from its value to a player.",
+      "evidence": [
+        {
+          "sourceId": "transcript",
+          "locator": {
+            "start": "15:08",
+            "end": "20:02"
+          }
+        }
+      ]
+    },
+    {
+      "id": "payoff",
+      "ru": "выигрыш",
+      "en": "payoff",
+      "usage": "A numerical representation of a player’s preference over outcomes; not necessarily money or a grade.",
+      "evidence": [
+        {
+          "sourceId": "transcript",
+          "locator": {
+            "start": "20:02",
+            "end": "23:44"
+          }
+        }
+      ]
+    },
+    {
+      "id": "strict-dominance",
+      "ru": "строгое доминирование",
+      "en": "strict dominance",
+      "usage": "A strictly dominates B when A gives a strictly higher payoff for every possible action of the other player.",
+      "evidence": [
+        {
+          "sourceId": "transcript",
+          "locator": {
+            "start": "25:35",
+            "end": "26:48"
+          }
+        }
+      ]
+    },
+    {
+      "id": "strictly-dominant-strategy",
+      "ru": "строго доминирующая стратегия",
+      "en": "strictly dominant strategy",
+      "usage": "A strategy that strictly dominates every other strategy of that player. Do not confuse dominant with dominated.",
+      "evidence": [
+        {
+          "sourceId": "summary",
+          "locator": {
+            "page": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "strictly-dominated-strategy",
+      "ru": "строго доминируемая стратегия",
+      "en": "strictly dominated strategy",
+      "usage": "A strategy for which another strategy gives a strictly higher payoff in every case. Lesson 1: do not play one.",
+      "evidence": [
+        {
+          "sourceId": "transcript",
+          "locator": {
+            "start": "27:35",
+            "end": "28:40"
+          }
+        }
+      ]
+    },
+    {
+      "id": "best-response",
+      "ru": "лучший ответ",
+      "en": "best response",
+      "usage": "Maximizes own payoff conditional on the other player’s action; ties are possible. Need not be dominant.",
+      "evidence": [
+        {
+          "sourceId": "transcript",
+          "locator": {
+            "start": "54:56",
+            "end": "57:03"
+          }
+        }
+      ]
+    },
+    {
+      "id": "prisoners-dilemma",
+      "ru": "дилемма заключённого",
+      "en": "prisoner’s dilemma",
+      "usage": "Individually dominant choices can yield a Pareto-inefficient outcome. Use the standard singular possessive consistently.",
+      "evidence": [
+        {
+          "sourceId": "summary",
+          "locator": {
+            "page": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "pareto-inefficiency",
+      "ru": "Парето-неэффективность",
+      "en": "Pareto inefficiency",
+      "usage": "Another feasible outcome makes someone better off without making anyone worse off. The historical concept route/ID pareto-efficiency is retained for compatibility.",
+      "evidence": [
+        {
+          "sourceId": "transcript",
+          "locator": {
+            "start": "33:11",
+            "end": "33:35"
+          }
+        }
+      ]
+    },
+    {
+      "id": "coordination",
+      "ru": "координация",
+      "en": "coordination",
+      "usage": "The preferred action depends on the other player’s action; in the fairness matrix neither strategy dominates.",
+      "evidence": [
+        {
+          "sourceId": "summary",
+          "locator": {
+            "page": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "indignant-angel",
+      "ru": "indignant angel — игрок, учитывающий справедливость",
+      "en": "indignant angel",
+      "usage": "Polak’s original name. Fairness-minded is a descriptive preference label, not a moral judgment. Preserve the original name in the relevant questions.",
+      "evidence": [
+        {
+          "sourceId": "transcript",
+          "locator": {
+            "start": "42:19",
+            "end": "42:43"
+          }
+        }
+      ]
+    },
+    {
+      "id": "self-interested",
+      "ru": "игрок, которому важна только своя оценка",
+      "en": "self-interested player",
+      "usage": "Instructional label for own-grade-only preferences. Original lecture nickname evil git is historical context, not a normative label.",
+      "evidence": [
+        {
+          "sourceId": "summary",
+          "locator": {
+            "page": 3
+          }
+        }
+      ]
+    }
+  ]
+}

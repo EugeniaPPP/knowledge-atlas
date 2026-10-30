@@ -1,0 +1,13 @@
+{
+  "id": "coordination",
+  "title": "Coordination",
+  "definition": "In coordination games, players need to align their actions and expectations.",
+  "stepId": "preferences",
+  "prerequisites": [
+    "payoff"
+  ],
+  "related": [
+    "best-response"
+  ],
+  "locale": "en"
+}

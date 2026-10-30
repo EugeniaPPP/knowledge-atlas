@@ -1,0 +1,14 @@
+{
+  "id": "best-response",
+  "title": "Best response",
+  "definition": "A best response maximizes a player’s payoff given the other players’ strategies. It can change when those strategies change.",
+  "stepId": "dominance",
+  "prerequisites": [
+    "strategy",
+    "payoff"
+  ],
+  "related": [
+    "strict-dominance"
+  ],
+  "locale": "en"
+}

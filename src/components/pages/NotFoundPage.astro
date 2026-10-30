@@ -1,0 +1,9 @@
+---
+import AtlasLayout from '../../layouts/AtlasLayout.astro';
+import { sitePath } from '../../lib/navigation/paths';
+import { getUI } from '../../i18n/ui';
+import type { Locale } from '../../lib/content/schema';
+interface Props { locale: Locale }
+const { locale } = Astro.props, t = getUI(locale);
+---
+<AtlasLayout title={t.notFound} locale={locale} is404><main id="main" tabindex="-1"><section class="hero"><div class="eyebrow">404</div><h1>{t.notFoundLead}</h1></section><p class="course-intro">{t.notFoundText}</p><a class="primary" href={sitePath('/courses/yale-econ-159/', locale)}>{t.backCourse}</a></main></AtlasLayout>

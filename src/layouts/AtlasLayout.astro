@@ -2,44 +2,53 @@
 import '../styles/global.css';
 import '../styles/chapter.css';
 import AtlasDrawers from '../components/navigation/AtlasDrawers.astro';
-import { sitePath } from '../lib/navigation/paths';
-interface Props { title: string; description?: string; courseId?: string }
-const { title, description = 'Knowledge Atlas — интерактивный учебник по теории игр на основе Yale ECON 159.', courseId = 'yale-econ-159' } = Astro.props;
+import LanguageSwitcher from '../components/navigation/LanguageSwitcher.astro';
+import { sitePath, languagePath } from '../lib/navigation/paths';
+import { getUI } from '../i18n/ui';
+import type { Locale } from '../lib/content/schema';
+interface Props { title: string; description?: string; courseId?: string; locale?: Locale; is404?: boolean }
+const { title, description, courseId = 'yale-econ-159', locale = 'ru', is404 = false } = Astro.props;
+const t = getUI(locale);
 ---
 <!doctype html>
-<html lang="ru">
+<html lang={locale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#ffffff" />
-    <meta name="description" content={description} />
+    <meta name="description" content={description || t.description} />
     <meta name="robots" content="noindex, nofollow" />
     <link rel="icon" href={sitePath('/favicon.svg')} type="image/svg+xml" />
+    {!is404 && <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />}
+    {!is404 && (['ru', 'en'] as const).map((language) => <link rel="alternate" hreflang={language} href={new URL(languagePath(Astro.url.pathname, language), Astro.site)} />)}
     <title>{title} · Knowledge Atlas</title>
     <script is:inline>document.documentElement.dataset.enhanced = 'true';</script>
   </head>
   <body>
-    <a class="skip-link" href="#main">К содержанию</a>
+    <a class="skip-link" href="#main">{t.skip}</a>
     <div class="app">
-      <aside class="atlas-rail" aria-label="Атлас">
-        <a class="atlas-logo" href={sitePath('/')} aria-label="K/ — Knowledge Atlas, главная">K<span>/</span></a>
-        <nav aria-label="Разделы атласа">
-          <button class="rail-link js-only" data-open-dialog="course-dialog" aria-controls="course-dialog" aria-haspopup="dialog" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 3h14v14H3zM5 6h10M5 9h10M5 12h10" /></svg><span>Главы<br />курса</span></button>
-          <button class="rail-link js-only" data-open-dialog="concepts-dialog" aria-controls="concepts-dialog" aria-haspopup="dialog" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" aria-hidden="true"><path d="m11 2 9 9-9 9-9-9z" /></svg><span>Понятия<br />курса</span></button>
+      <aside class="atlas-rail" aria-label={t.atlas}>
+        <a class="atlas-logo" href={sitePath('/', locale)} aria-label={t.home}>K<span>/</span></a>
+        <nav aria-label={t.atlasNav}>
+          <button class="rail-link js-only" data-open-dialog="course-dialog" aria-controls="course-dialog" aria-haspopup="dialog" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 3h14v14H3zM5 6h10M5 9h10M5 12h10" /></svg><span>{t.courseChapters.split(' ')[0]}<br />{t.courseChapters.split(' ').slice(1).join(' ')}</span></button>
+          <button class="rail-link js-only" data-open-dialog="concepts-dialog" aria-controls="concepts-dialog" aria-haspopup="dialog" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" aria-hidden="true"><path d="m11 2 9 9-9 9-9-9z" /></svg><span>{t.courseConcepts.split(' ')[0]}<br />{t.courseConcepts.split(' ').slice(1).join(' ')}</span></button>
         </nav>
         <span class="rail-end">ECON 159 · GAME THEORY</span>
       </aside>
       <div class="page">
         <header class="top">
-          <a class="brand" href={sitePath('/')}>KNOWLEDGE ATLAS <span>/ GAME THEORY</span></a>
-          <nav class="mobile-navigation js-only" aria-label="Навигация по курсу"><button class="text-button" data-open-dialog="course-dialog" aria-controls="course-dialog" aria-haspopup="dialog" aria-expanded="false">Главы курса</button><button class="text-button" data-open-dialog="concepts-dialog" aria-controls="concepts-dialog" aria-haspopup="dialog" aria-expanded="false">Понятия курса</button></nav>
-          <noscript><nav><a href={sitePath(`/courses/${courseId}/`)}>Главы курса</a> · <a href={sitePath('/concepts/')}>Понятия курса</a></nav></noscript>
+          <a class="brand" href={sitePath('/', locale)} aria-label="K/ — Knowledge Atlas / Game Theory" translate="no"><span class="brand-name">KNOWLEDGE ATLAS</span><span class="brand-short" aria-hidden="true">K/</span><span class="brand-course">/ GAME THEORY</span></a>
+          <div class="top-controls">
+            <nav class="mobile-navigation js-only" aria-label={t.courseNav}><button class="text-button" data-open-dialog="course-dialog" aria-controls="course-dialog" aria-haspopup="dialog" aria-expanded="false">{t.courseChapters}</button><button class="text-button" data-open-dialog="concepts-dialog" aria-controls="concepts-dialog" aria-haspopup="dialog" aria-expanded="false">{t.courseConcepts}</button></nav>
+            <noscript><nav><a href={sitePath(`/courses/${courseId}/`, locale)}>{t.courseChapters}</a> · <a href={sitePath('/concepts/', locale)}>{t.courseConcepts}</a></nav></noscript>
+            <LanguageSwitcher locale={locale} />
+          </div>
         </header>
         <slot />
-        <footer class="site-footer"><span>Неофициальная учебная адаптация · Ben Polak / Yale Open Courses</span><span>Локальная preview-версия · Core 3.0</span></footer>
+        <footer class="site-footer"><span>{t.adaptation}</span><span>{t.preview}</span></footer>
       </div>
     </div>
-    <AtlasDrawers courseId={courseId} />
+    <AtlasDrawers courseId={courseId} locale={locale} />
     <script>import '../scripts/dialogs';</script>
   </body>
 </html>

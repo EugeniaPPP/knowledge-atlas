@@ -1,0 +1,61 @@
+---
+chapterId: yale-econ-159/lecture-01
+mode: quick
+locale: en
+---
+
+import PayoffMatrix from '../../../../../components/activities/PayoffMatrix';
+import QuickAnswer from '../../../../../components/activities/QuickAnswer';
+import { config, models, quickAnswer } from './data';
+
+<section className="quick-section">
+<p className="quick-summary">In a strategic situation, my result depends not only on my decision, but also on other players’ choices.</p>
+
+Analysis requires the players’ actions, the possible outcomes, and an understanding of how each player values those outcomes — their payoffs.
+</section>
+
+<section className="quick-section">
+## The central model
+
+<div className="quick-matrix"><PayoffMatrix model={models['grade-game']} /></div>
+
+**α strictly dominates β:** against the partner’s α, 0 &gt; −1; against their β, 3 &gt; 1. Each chooses α → (0,0), although mutual β would give (1,1).
+
+This is a prisoner’s dilemma; (0,0) is Pareto inefficient.
+</section>
+
+<section className="quick-section">
+## Four principles
+
+> **01. Do not play a strictly dominated strategy.**
+>
+> Another strategy gives you a higher payoff whatever your partner chooses.
+
+> **02. Rational individual choices can lead to a bad collective outcome.**
+>
+> Each pursues their own interests, yet both could be better off.
+
+> **03. First establish what “winning” means to each player.**
+>
+> Players can value the same outcomes differently.
+
+> **04. Put yourself in the other player’s shoes.**
+>
+> Analyze their payoffs and predict their choice.
+</section>
+
+<section className="quick-section">
+## A 20-second check
+
+Can one strategy strictly dominate another if it is better against only one of the partner’s possible choices?
+
+<QuickAnswer answer={quickAnswer} config={config} client:load />
+</section>
+
+<section className="quick-section">
+## What comes next?
+
+Lectures 4–5: best responses and Nash equilibrium. Lectures 21–22: repeated interaction and cooperation.
+
+<div className="actions"><a className="primary" href="../core/">Go to Core →</a><a className="secondary" href="../mastery/">Mastery ↗</a></div>
+</section>

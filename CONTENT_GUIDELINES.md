@@ -2,7 +2,7 @@
 
 ## Product
 
-Knowledge Atlas is a self-contained interactive textbook, not lecture minutes or an LMS. Write in Russian; use English identifiers in metadata and code. Explain ideas independently, with natural transitions, explicit assumptions and meaningful examples.
+Knowledge Atlas is a self-contained interactive textbook, not lecture minutes or an LMS. Write every new chapter in Russian and English together; use shared English identifiers in metadata and code. Explain ideas independently, with natural transitions, explicit assumptions and meaningful examples.
 
 ## Modes
 
@@ -39,3 +39,15 @@ Sources retain original paths/URLs, content hashes and locators. Verify handwrit
 Keep authoring artifacts outside public collections. A future `author-lesson` prepares drafts, analysis, interaction specifications and validation reports. It cannot approve its own work or publish a revision. Human approval applies to a concrete package digest; changed content requires review again.
 
 Do not ingest learner progress, answers or personal notes into authoring. Do not publish local source PDFs by default. Prefer accessible external original-source links and video timestamps.
+
+## Двуязычная подготовка — обязательный стандарт
+
+Одна лекция — единый пакет RU + EN. Обе версии включают Quick/Core/Mastery, все восемь шагов первой главы, дополнительные раскрывающиеся объяснения, семь упражнений с локальными матрицами и контекстом, пояснения к ответам, rubric, интерактивные подписи, понятия, источники и редакционные примечания. Для следующих лекций число шагов и заданий определяется материалом, но совпадает между языками.
+
+Сначала анализируй исходные англоязычные источники и формируй концепты, определения, условия и словарь. Затем создавай две самостоятельные языковые реализации одного учебного замысла. Не использовать цепочку EN → RU → EN как способ получить терминологию. При естественной адаптации фраз сохраняй полноту доводов, примеры, ограничения, порядок раскрытия и учебные цели. Сверяй с `docs/TERMINOLOGY.md`; новые термины добавляй в машинный словарь с привязкой к первоисточнику.
+
+Матрицы, числа, роли, правильные варианты, устойчивые ID и исходные таймкоды общие. Отличаются только представления текста. `outcome` ≠ `payoff`, `strictly dominant` ≠ `strictly dominated`, `best response` не означает доминирование. Предпочтения игроков не являются моральными характеристиками.
+
+Русский Core 3.0 защищён отдельно. Добавление английского перевода не разрешает редактировать русский текст. Противоречие записывай как редакционный вопрос. Каждая версия требует человеческого просмотра; проверка источников агентом не заменяет одобрение.
+
+Будущий `author-lesson`: вход включает исходные материалы, редакционные правила, словарь версии и текущий двуязычный пакет; выход включает анализ понятий, единые source spans/модели/спецификации взаимодействий, по три черновика и примечания на каждом языке, двуязычные подписи/задания и отчёт о полноте и смысловом соответствии. Публикационная готовность возможна только для обеих языковых версий вместе. Pipeline и skill не реализуются в рамках локализации.

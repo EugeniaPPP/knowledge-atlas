@@ -1,7 +1,9 @@
 ---
+import { getUI } from '../../i18n/ui';
 import type { Chapter } from '../../lib/content/schema';
 interface Props { id: string; chapter: Chapter }
 const { id, chapter } = Astro.props;
+const t = getUI(chapter.locale);
 const index = chapter.steps.findIndex((s) => s.id === id);
 const step = chapter.steps[index];
 if (!step) throw new Error(`Unknown step: ${id}`);
@@ -13,7 +15,7 @@ if (chapter.videoUrl) video.searchParams.set('t', `${step.sourceStart}s`);
   <div class="eyebrow step-kicker"><strong>{String(index + 1).padStart(2, '0')}</strong> Core / {String(chapter.steps.length).padStart(2, '0')}</div>
   <slot />
   <footer class="step-footer">
-    <div class="source-ref">Первоисточник<br /><a href={video.href} target="_blank" rel="noopener noreferrer">{time(step.sourceStart)}–{time(step.sourceEnd)} ↗<span class="sr-only"> — фрагмент оригинального видео</span></a></div>
-    <button type="button" class="primary js-only" data-complete-step={id}>{index === chapter.steps.length - 1 ? 'Завершить Core и перейти к Mastery' : 'Продолжить'} <span aria-hidden="true">→</span></button>
+    <div class="source-ref">{t.originalSource}<br /><a href={video.href} target="_blank" rel="noopener noreferrer">{time(step.sourceStart)}–{time(step.sourceEnd)} ↗<span class="sr-only">{t.videoFragment}</span></a></div>
+    <button type="button" class="primary js-only" data-complete-step={id}>{index === chapter.steps.length - 1 ? t.finishCore.replace(' →', '') : t.continue.replace(' →', '')} <span aria-hidden="true">→</span></button>
   </footer>
 </section>
