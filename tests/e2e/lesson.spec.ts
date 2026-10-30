@@ -21,9 +21,12 @@ test('GitHub Pages base survives mode links, MDX links, assets and persisted lea
   await page.locator('[data-complete-step="strategic-situations"]').click();
   await modes.getByRole('link', { name: /Quick/ }).click();
   await expect(page).toHaveURL(`${base}/quick/`);
+  await expect(page.locator('[data-progress-label], [data-current-label], [data-progress]')).toHaveCount(0);
   await page.getByRole('button', { name: 'Показать ответ ↓' }).click();
   await modes.getByRole('link', { name: /Mastery/ }).click();
   await expect(page).toHaveURL(`${base}/mastery/`);
+  await expect(page.locator('[data-progress-label], [data-current-label], [data-progress]')).toHaveCount(0);
+  await expect(page.locator('.mastery-score')).toBeVisible();
   const question = page.locator('#m1');
   await question.getByRole('radio', { name: 'A строго доминирует B.' }).check();
   await question.getByRole('button', { name: 'Проверить ответ' }).click();
@@ -81,6 +84,8 @@ test('all steps can be read and completed without mandatory questions', async ({
   await expect(page.locator('[data-core-step]:visible')).toHaveCount(1);
   for (const id of stepIds) await page.locator(`[data-complete-step="${id}"]`).click();
   await expect(page).toHaveURL(`${base}/mastery/`);
+  await expect(page.locator('[data-progress]')).toHaveCount(0);
+  await page.locator('.mode-nav').getByRole('link', { name: 'Core', exact: true }).click();
   await expect(page.locator('[data-progress-label]')).toHaveText('8 из 8 шагов завершено');
 });
 
@@ -294,6 +299,7 @@ test('layouts fit mobile and tablet widths and source access stays available', a
   for (const width of [320, 390, 768, 1024]) {
     await page.setViewportSize({ width, height: 900 }); await ready(page);
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
+    await expect(page.locator('.mode-nav a')).toHaveText(['Quick', 'Core', 'Mastery']);
     await expect(page.getByRole('button', { name: 'Источники', exact: true })).toBeVisible();
     const toggle = page.locator('[data-toggle-all]');
     if (await toggle.getAttribute('aria-pressed') === 'false') await toggle.click();

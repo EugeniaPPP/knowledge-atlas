@@ -22,7 +22,7 @@ const headings = { quick: t.quickHeading, core: t.coreHeading, mastery: t.master
     </section>
     <div class="chapter-toolbar" role="region" aria-label={`${t.chapterNav} ${lectureNumber}`}>
       <div class="chapter-scope"><strong>{t.chapter} {lectureNumber}</strong><span>{t.chapterModes}</span></div>
-      <nav class="mode-nav" aria-label={`${t.modesNav} ${lectureNumber}`}>{(['quick', 'core', 'mastery'] as const).map((m) => <a href={`${base}/${m}/`} aria-current={m === mode ? 'page' : undefined}><span>{{ quick: 'Quick', core: 'Core', mastery: 'Mastery' }[m]}</span><small>{{ quick: t.review, core: t.understand, mastery: t.apply }[m]}</small></a>)}</nav>
+      <nav class="mode-nav" aria-label={`${t.modesNav} ${lectureNumber}`} translate="no">{(['quick', 'core', 'mastery'] as const).map((m) => <a href={`${base}/${m}/`} aria-current={m === mode ? 'page' : undefined}><span>{{ quick: 'Quick', core: 'Core', mastery: 'Mastery' }[m]}</span></a>)}</nav>
       <div class="chapter-tools-actions">
         <button class="text-button js-only" data-open-dialog="contents-dialog" aria-controls="contents-dialog" aria-haspopup="dialog" aria-expanded="false">{t.contents} <span aria-hidden="true">☰</span></button>
         <button class="text-button js-only" data-open-dialog="sources-dialog" aria-controls="sources-dialog" aria-haspopup="dialog" aria-expanded="false">{t.sources}</button>
@@ -31,8 +31,10 @@ const headings = { quick: t.quickHeading, core: t.coreHeading, mastery: t.master
     <div class="mode-intro"><div><div class="eyebrow">{mode.toUpperCase()} · {chapter.durations[mode]}</div><h2>{headings[mode]}</h2></div>
       {mode === 'core' && <button class="text-button js-only" data-toggle-all>{t.revealAll}</button>}
     </div>
-    <div class="progress-line"><span class="progress-summary" data-progress-label>{format(t.progress, { count: 0, total: chapter.steps.length })}</span><span data-current-label>{format(t.coreSteps, { total: chapter.steps.length })}</span></div>
-    <div class="progress-bars" role="progressbar" aria-label={t.progressName} aria-valuemin="0" aria-valuemax={chapter.steps.length} aria-valuenow="0" style={`--step-count:${chapter.steps.length}`} data-progress>{chapter.steps.map((step) => <span data-progress-step={step.id}></span>)}</div>
+    {mode === 'core' && <Fragment>
+      <div class="progress-line"><span class="progress-summary" data-progress-label>{format(t.progress, { count: 0, total: chapter.steps.length })}</span><span data-current-label>{format(t.coreSteps, { total: chapter.steps.length })}</span></div>
+      <div class="progress-bars" role="progressbar" aria-label={t.progressName} aria-valuemin="0" aria-valuemax={chapter.steps.length} aria-valuenow="0" style={`--step-count:${chapter.steps.length}`} data-progress>{chapter.steps.map((step) => <span data-progress-step={step.id}></span>)}</div>
+    </Fragment>}
     <p class="storage-message" data-storage-message role="status"></p>
     <noscript><p class="note">{t.noScript}</p></noscript>
     <div class="narrative"><slot /></div>

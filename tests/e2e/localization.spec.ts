@@ -27,6 +27,7 @@ test('language switching preserves mode, section, answers, notes and shared prog
   await expect(page.locator('[data-core-step]:visible')).toHaveCount(2);
   await expect(page.locator('[data-activity="first-choice"]').getByRole('radio', { name: 'β', exact: true })).toBeChecked();
   await page.locator('.mode-nav').getByRole('link', { name: /Mastery/ }).click();
+  await expect(page.locator('[data-progress-label], [data-current-label], [data-progress]')).toHaveCount(0);
   const q = page.locator('#m5');
   await q.getByRole('radio', { name: 'Partner: α' }).check();
   await q.getByRole('group', { name: '2. Choose your best response to that strategy' }).getByRole('radio', { name: 'α', exact: true }).check();
@@ -50,6 +51,7 @@ test('language switching preserves mode, section, answers, notes and shared prog
   await page.getByRole('button', { name: 'Show answer ↓' }).click();
   await switchTo(page, 'ru');
   await expect(page).toHaveURL(`${ru}/quick/`);
+  await expect(page.locator('[data-progress-label], [data-current-label], [data-progress]')).toHaveCount(0);
   await expect(page.locator('#quick-answer')).toContainText('Нет.');
 });
 
@@ -90,6 +92,8 @@ test('English Core has complete narrative, nine working activities and ungated c
   const ids = await page.locator('[data-complete-step]').evaluateAll((els) => els.map((el) => (el as HTMLElement).dataset.completeStep!));
   for (const id of ids) await page.locator(`[data-complete-step="${id}"]`).click();
   await expect(page).toHaveURL(`${en}/mastery/`);
+  await expect(page.locator('[data-progress]')).toHaveCount(0);
+  await page.locator('.mode-nav').getByRole('link', { name: 'Core', exact: true }).click();
   await expect(page.locator('[data-progress-label]')).toHaveText('8 of 8 steps completed');
   expect(errors).toEqual([]);
 });
@@ -185,6 +189,9 @@ test('English layouts fit all supported widths and pass accessibility checks', a
     for (const width of [320, 390, 768, 1440]) {
       await page.setViewportSize({ width, height: 900 });
       expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
+      await expect(page.locator('.mode-nav a')).toHaveText(['Quick', 'Core', 'Mastery']);
+      await expect(page.locator('[data-progress-label]')).toHaveCount(mode === 'core' ? 1 : 0);
+      await expect(page.locator('[data-progress]')).toHaveCount(mode === 'core' ? 1 : 0);
       await expect(page.locator('.language-switcher').getByRole('link', { name: 'Русский', exact: true })).toBeVisible();
       await expect(page.getByRole('button', { name: 'Sources', exact: true })).toBeVisible();
     }

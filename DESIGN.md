@@ -37,14 +37,14 @@ Depth uses fine borders and subtle surface changes. Mostly square geometry; smal
 ## Patterns
 
 - The global rail has visible labels “Главы курса” and “Понятия курса”. Buttons open native side dialogs with a concise overview and links to full pages. Compact screens expose the same labelled buttons in the header.
-- Place Quick / Core / Mastery below the chapter title in a sticky chapter toolbar labelled “Глава NN · Режимы этой главы”. These are chapter-local route links, with short learning-purpose hints when space allows.
+- Place Quick / Core / Mastery below the chapter title in a sticky chapter toolbar labelled “Глава NN · Режимы этой главы”. These are chapter-local route links. Their visible labels are exactly Quick, Core and Mastery in both locales at every width; do not append translated purpose hints.
 - “Разделы главы” opens only the current chapter's Core steps. “Главы курса” opens the course overview. Do not use the ambiguous standalone label “Содержание”.
 - Sources and editorial notes live in a separate dialog. A quiet ancillary link at the end of the chapter opens it; the approved appendix text stays intact. Progress import/export is a separate disclosure within that dialog.
 - Principles: lilac rule, small numbered label, strong statement, concise explanation; not a colored card grid.
 - Models: visible axes, semantic table, explicit ordering of both players' outcomes, numerical comparisons and keyboard-operable selectors.
 - A Mastery strategy sequence uses native radios inside the partner's column headers. Highlight the selected column; after the learner chooses their own row, highlight the resulting cell. Label the two decisions, keep the dependent answer disabled until a column is selected, and distinguish selection from checked correctness. The matrix remains present beside the question at every stage.
 - Optional explanations: native `details`, clear summary, essential reasoning outside the disclosure.
-- Core remains one accumulated narrative. A completed step is accessible again. Distinguish current location, unlocked content and completion.
+- Core remains one accumulated narrative. A completed step is accessible again. Distinguish current location, unlocked content and completion. Show its completed-step count, current-step label and segmented progress bar only in Core. Quick and Mastery retain the shared saved state without displaying Core's progress; Mastery keeps its own exercise score.
 - Related concepts are actual links. Do not display active placeholder controls for unbuilt search, maps or note dashboards.
 
 ## States and responsive behavior
