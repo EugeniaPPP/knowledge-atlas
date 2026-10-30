@@ -1,0 +1,7 @@
+---
+import { sitePath } from '../../lib/navigation/paths';
+import { getCollection } from 'astro:content';
+import AtlasLayout from '../../layouts/AtlasLayout.astro';
+const concepts = await getCollection('concepts');
+---
+<AtlasLayout title="Понятия и связи"><main id="main" tabindex="-1"><section class="hero"><div class="eyebrow">Теория игр / Указатель</div><div class="hero-grid"><h1>Понятия.<span class="muted-title">За пределами одной главы.</span></h1></div></section><p class="course-intro">Начни с идеи и вернись к месту, где она объясняется. По мере роста учебника здесь появятся связи между курсами.</p><ul class="concept-list">{concepts.map(({ data }) => <li><h2><a href={sitePath(`/concepts/${data.id}/`)}>{data.title}</a></h2><p>{data.definition}</p></li>)}</ul></main></AtlasLayout>

@@ -1,0 +1,35 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import { sitePath } from '../../lib/navigation/paths';
+interface Props { courseId: string }
+const { courseId } = Astro.props;
+const course = (await getEntry('courses', courseId))!.data;
+const chapters = (await getCollection('chapters')).filter(({ data }) => data.courseId === courseId);
+const availableSlugs = new Set(chapters.map(({ data }) => data.slug));
+const upcoming = course.lectures.filter((lecture) => !availableSlugs.has(lecture.slug)).slice(0, 3);
+const shownLectures = course.lectures.filter((lecture) => availableSlugs.has(lecture.slug) || upcoming.includes(lecture));
+const conceptIds = new Set(chapters.flatMap(({ data }) => data.conceptIds));
+const concepts = (await getCollection('concepts')).filter(({ data }) => conceptIds.has(data.id));
+const currentPath = Astro.url.pathname;
+---
+<dialog class="atlas-drawer" id="course-dialog" aria-labelledby="course-drawer-heading">
+  <div class="dialog-body">
+    <div class="dialog-top"><div><div class="eyebrow">Весь курс · Yale ECON 159</div><h2 id="course-drawer-heading">Главы курса</h2></div><form method="dialog"><button class="dialog-close" aria-label="Закрыть главы курса">×</button></form></div>
+    <p class="drawer-intro">{course.title}<span>{chapters.length} из {course.lectures.length} глав доступно для изучения</span></p>
+    <ol class="drawer-chapters">{shownLectures.map((lecture) => {
+      const chapter = chapters.find(({ data }) => data.slug === lecture.slug)?.data;
+      const href = sitePath(`/courses/${courseId}/${lecture.slug}/core/`);
+      return <li>{chapter ? <a href={href} aria-current={currentPath.startsWith(sitePath(`/courses/${courseId}/${lecture.slug}/`)) ? 'location' : undefined}><span class="drawer-number">{String(lecture.number).padStart(2, '0')}</span><span>{chapter.title}<small>Открыть главу →</small></span></a> : <div class="drawer-planned"><span class="drawer-number">{String(lecture.number).padStart(2, '0')}</span><span>{lecture.title}<small>Планируется</small></span></div>}</li>;
+    })}</ol>
+    <p class="note">Полная программа из {course.lectures.length} лекций — в обзоре курса.</p>
+    <div class="drawer-footer"><a class="secondary" href={sitePath(`/courses/${courseId}/`)}>Обзор курса и все главы →</a></div>
+  </div>
+</dialog>
+<dialog class="atlas-drawer" id="concepts-dialog" aria-labelledby="concepts-drawer-heading">
+  <div class="dialog-body">
+    <div class="dialog-top"><div><div class="eyebrow">Весь курс · Словарь и связи</div><h2 id="concepts-drawer-heading">Понятия курса</h2></div><form method="dialog"><button class="dialog-close" aria-label="Закрыть понятия курса">×</button></form></div>
+    <p class="note">Ключевые идеи из доступных глав. Открой понятие, чтобы увидеть объяснение и связи с другими идеями.</p>
+    <ul class="drawer-concepts">{concepts.map(({ data }) => <li><a href={sitePath(`/concepts/${data.id}/`)} aria-current={currentPath === sitePath(`/concepts/${data.id}/`) ? 'page' : undefined}><strong>{data.title}<span aria-hidden="true">→</span></strong><span>{data.definition}</span></a></li>)}</ul>
+    <div class="drawer-footer"><a class="secondary" href={sitePath('/concepts/')}>Все понятия и связи →</a></div>
+  </div>
+</dialog>

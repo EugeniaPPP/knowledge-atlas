@@ -1,0 +1,35 @@
+---
+import type { Chapter } from '../../lib/content/schema';
+import { getCollection } from 'astro:content';
+import { sitePath } from '../../lib/navigation/paths';
+interface Props { chapter: Chapter }
+const { chapter } = Astro.props;
+const base = sitePath(`/courses/${chapter.courseId}/${chapter.slug}`);
+const concepts = (await getCollection('concepts')).filter((c) => chapter.conceptIds.includes(c.data.id));
+---
+<dialog id="contents-dialog" aria-labelledby="contents-heading">
+  <div class="dialog-body">
+    <div class="dialog-top"><div><div class="eyebrow">Текущая глава · {String(chapter.number).padStart(2, '0')}</div><h2 id="contents-heading">Разделы главы</h2></div><form method="dialog"><button class="dialog-close" aria-label="Закрыть разделы главы">×</button></form></div>
+    <p class="note">{chapter.title}</p><p class="note">Шаги Core. Открытые разделы доступны для повторного чтения.</p>
+    <ol class="toc">{chapter.steps.map((s) => <li><a href={`${base}/core/#${s.id}`} data-step-link={s.id}>{s.title}</a></li>)}</ol>
+    <div class="actions"><button class="secondary" data-reveal-from-toc>Показать всю главу</button></div>
+    <div class="dialog-section"><h3>Связанные понятия</h3><div class="concept-links">{concepts.map(({ data }) => <a href={sitePath(`/concepts/${data.id}/`)}>{data.title}</a>)}</div></div>
+  </div>
+</dialog>
+<dialog id="sources-dialog" aria-labelledby="sources-heading">
+  <div class="dialog-body">
+    <div class="dialog-top"><div><div class="eyebrow">Сопроводительные материалы · Глава {String(chapter.number).padStart(2, '0')}</div><h2 id="sources-heading">Источники и примечания</h2></div><form method="dialog"><button class="dialog-close" aria-label="Закрыть источники">×</button></form></div>
+    <ul class="source-list">
+      {chapter.sourceLinks.map((source) => <li><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title} ↗</a></li>)}
+    </ul>
+    <p class="note">Таймкоды рядом с разделами относятся к оригинальному видео. Внешние материалы открываются только по ссылке.</p>
+    <details class="dialog-disclosure"><summary>Редакционные примечания и таймкоды</summary><div class="editorial-notes"><slot /></div></details>
+    <details class="dialog-disclosure">
+      <summary>Сохранение и перенос прогресса</summary><p class="note">Прогресс, ответы и заметки хранятся только в этом браузере.</p>
+      <p class="storage-message" data-storage-message role="status"></p>
+      <div class="actions"><button class="secondary" data-export>Экспортировать JSON</button><button class="text-button" data-reset>Сбросить прогресс главы</button></div>
+      <label class="file-label" for="import-progress">Импортировать прогресс этой главы</label><input type="file" id="import-progress" accept=".json,application/json" />
+      <p class="note" id="import-status" role="status"></p>
+    </details>
+  </div>
+</dialog>

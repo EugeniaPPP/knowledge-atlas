@@ -1,0 +1,13 @@
+{
+  "id": "best-response",
+  "title": "Лучший ответ",
+  "definition": "Лучший ответ может меняться в зависимости от того, что делает другой игрок.",
+  "stepId": "dominance",
+  "prerequisites": [
+    "strategy",
+    "payoff"
+  ],
+  "related": [
+    "strict-dominance"
+  ]
+}

@@ -1,0 +1,60 @@
+---
+chapterId: yale-econ-159/lecture-01
+mode: quick
+---
+
+import PayoffMatrix from '../../../../components/activities/PayoffMatrix';
+import QuickAnswer from '../../../../components/activities/QuickAnswer';
+import { config, models, quickAnswer } from './data';
+
+<section className="quick-section">
+<p className="quick-summary">В стратегической ситуации результат зависит не только от моего решения, но и от выбора других участников.</p>
+
+Для анализа нужны действия игроков, возможные исходы и понимание того, как каждый оценивает эти исходы — его выигрыши.
+</section>
+
+<section className="quick-section">
+## Центральная модель
+
+<div className="quick-matrix"><PayoffMatrix model={models['grade-game']} /></div>
+
+**α строго доминирует β:** при α партнёра 0 &gt; −1; при β партнёра 3 &gt; 1. Каждый выбирает α → (0,0), хотя взаимная β дала бы (1,1).
+
+Это дилемма заключённого; (0,0) Парето-неэффективен.
+</section>
+
+<section className="quick-section">
+## Четыре принципа
+
+> **01. Не выбирай строго доминируемую стратегию.**
+>
+> Другая стратегия даёт тебе больший выигрыш при любом выборе партнёра.
+
+> **02. Рациональные личные решения могут приводить к плохому общему результату.**
+>
+> Каждый действует в своих интересах, но обоим могло бы быть лучше.
+
+> **03. Сначала выясни, что для каждого означает «выиграть».**
+>
+> Одна и та же пара исходов может цениться игроками по-разному.
+
+> **04. Поставь себя на место другого игрока.**
+>
+> Проанализируй его выигрыши и предскажи его выбор.
+</section>
+
+<section className="quick-section">
+## Самопроверка за 20 секунд
+
+Может ли стратегия строго доминировать другую, если лучше только при одном варианте выбора партнёра?
+
+<QuickAnswer answer={quickAnswer} config={config} client:load />
+</section>
+
+<section className="quick-section">
+## Что дальше?
+
+Лекции 4–5: лучшие ответы и равновесие Нэша. Лекции 21–22: повторяющиеся взаимодействия и сотрудничество.
+
+<div className="actions"><a className="primary" href="../core/">Перейти к Core →</a><a className="secondary" href="../mastery/">Mastery ↗</a></div>
+</section>

@@ -1,0 +1,13 @@
+{
+  "id": "pareto-efficiency",
+  "title": "Парето-неэффективность",
+  "definition": "Существует другой достижимый исход, который улучшил бы положение хотя бы одного участника, не ухудшив положение остальных.",
+  "stepId": "prisoners-dilemma",
+  "prerequisites": [
+    "outcome",
+    "payoff"
+  ],
+  "related": [
+    "prisoners-dilemma"
+  ]
+}

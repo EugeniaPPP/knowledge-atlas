@@ -1,0 +1,12 @@
+{
+  "id": "payoff",
+  "title": "Выигрыш",
+  "definition": "Число, отражающее ценность исхода для игрока, называется выигрышем (payoff).",
+  "stepId": "payoffs",
+  "prerequisites": [
+    "outcome"
+  ],
+  "related": [
+    "coordination"
+  ]
+}

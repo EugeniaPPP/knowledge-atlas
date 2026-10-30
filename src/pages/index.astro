@@ -1,0 +1,11 @@
+---
+import { sitePath } from '../lib/navigation/paths';
+import AtlasLayout from '../layouts/AtlasLayout.astro';
+---
+<AtlasLayout title="Интерактивный учебник">
+  <main id="main" tabindex="-1">
+    <section class="hero"><div class="eyebrow">Знания / модели / связи</div><div class="hero-grid"><h1>Понимать идеи.<span class="muted-title">Исследовать связи.</span></h1><aside class="hero-detail"><strong>Knowledge Atlas</strong><p>Интерактивный учебник, к которому хочется возвращаться.</p></aside></div></section>
+    <section class="quick-section"><div class="eyebrow">Первый курс · Yale ECON 159</div><h2>Теория игр</h2><p class="course-intro">Как принимать решения, когда результат зависит от других? Исследуй стратегии, сравнивай выигрыши и проверяй свои рассуждения.</p><div class="actions"><a class="primary" href={sitePath('/courses/yale-econ-159/lecture-01/core/')}>Начать первую главу →</a><a class="secondary" href={sitePath('/courses/yale-econ-159/')}>Все 24 лекции</a></div></section>
+    <section class="quick-section"><h2>Три способа работать с идеей</h2><p><strong>Quick</strong> — вспомнить главное за 3–5 минут.<br /><strong>Core</strong> — разобраться через объяснения и модели.<br /><strong>Mastery</strong> — применить принципы и объяснить их своими словами.</p><a href={sitePath('/concepts/')}>Понятия и связи ↗</a></section>
+  </main>
+</AtlasLayout>

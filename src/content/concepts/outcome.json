@@ -1,0 +1,12 @@
+{
+  "id": "outcome",
+  "title": "Исход",
+  "definition": "Исход (outcome) — то, что получается при определённом сочетании стратегий всех игроков.",
+  "stepId": "outcomes",
+  "prerequisites": [
+    "strategy"
+  ],
+  "related": [
+    "payoff"
+  ]
+}

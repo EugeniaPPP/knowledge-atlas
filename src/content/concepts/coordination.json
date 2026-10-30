@@ -1,0 +1,12 @@
+{
+  "id": "coordination",
+  "title": "Координация",
+  "definition": "В подобных играх людям важно согласовать действия и ожидания.",
+  "stepId": "preferences",
+  "prerequisites": [
+    "payoff"
+  ],
+  "related": [
+    "best-response"
+  ]
+}

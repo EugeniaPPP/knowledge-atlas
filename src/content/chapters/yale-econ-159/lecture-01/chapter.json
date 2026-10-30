@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "id": "yale-econ-159/lecture-01",
+  "courseId": "yale-econ-159",
+  "slug": "lecture-01",
+  "title": "Почему разумные решения могут навредить всем?",
+  "titleLead": "Почему разумные решения",
+  "titleMuted": "могут навредить всем?",
+  "description": "Стратегическое мышление, выигрыши и доминирующие стратегии.",
+  "contentVersion": "core-3.0",
+  "status": "preview",
+  "sourceHeader": "# Почему разумные решения могут навредить всем?\n\n*Теория игр · Глава 1 · Core · ориентировочно 25–35 минут с интерактивными элементами*\n\n",
+  "sourceSha256": "e14934a6ae2d535171ccb87f8414caa52bdfcebf359a58a09a4d14e4edb4caa9",
+  "durations": {
+    "quick": "3–5 минут",
+    "core": "25–35 минут",
+    "mastery": "10–30 минут"
+  },
+  "steps": [
+    {
+      "id": "strategic-situations",
+      "title": "Когда твоё решение зависит от чужого",
+      "sourceStart": 49,
+      "sourceEnd": 134,
+      "conceptIds": [
+        "strategy"
+      ]
+    },
+    {
+      "id": "outcomes",
+      "title": "Четыре исхода — одна матрица",
+      "sourceStart": 683,
+      "sourceEnd": 941,
+      "conceptIds": [
+        "strategy",
+        "outcome"
+      ]
+    },
+    {
+      "id": "payoffs",
+      "title": "Почему оценка и выигрыш — не одно и то же",
+      "sourceStart": 1202,
+      "sourceEnd": 1764,
+      "conceptIds": [
+        "outcome",
+        "payoff"
+      ]
+    },
+    {
+      "id": "dominance",
+      "title": "Как найти стратегию, которая всегда лучше",
+      "sourceStart": 1424,
+      "sourceEnd": 1764,
+      "conceptIds": [
+        "strict-dominance"
+      ]
+    },
+    {
+      "id": "prisoners-dilemma",
+      "title": "Когда рациональный выбор приводит к плохому результату",
+      "sourceStart": 1773,
+      "sourceEnd": 2501,
+      "conceptIds": [
+        "prisoners-dilemma",
+        "pareto-efficiency"
+      ]
+    },
+    {
+      "id": "preferences",
+      "title": "Те же правила, но совершенно другая игра",
+      "sourceStart": 2502,
+      "sourceEnd": 2894,
+      "conceptIds": [
+        "payoff",
+        "coordination"
+      ]
+    },
+    {
+      "id": "other-player",
+      "title": "Чтобы выбрать своё действие, сначала разберись в другом игроке",
+      "sourceStart": 2927,
+      "sourceEnd": 3559,
+      "conceptIds": [
+        "best-response",
+        "strict-dominance"
+      ]
+    },
+    {
+      "id": "number-game",
+      "title": "Новая задача: угадать две трети среднего",
+      "sourceStart": 3800,
+      "sourceEnd": 4112,
+      "conceptIds": [
+        "best-response"
+      ]
+    }
+  ],
+  "conceptIds": [
+    "strategy",
+    "outcome",
+    "payoff",
+    "strict-dominance",
+    "prisoners-dilemma",
+    "pareto-efficiency",
+    "coordination",
+    "best-response"
+  ],
+  "sourceIds": [
+    "yale-l01-transcript",
+    "yale-l01-summary",
+    "yale-l01-blackboard"
+  ],
+  "number": 1,
+  "sourceUrl": "https://oyc.yale.edu/economics/econ-159/lecture-1",
+  "videoUrl": "https://www.youtube.com/watch?v=nM3rTU927io",
+  "sourceLinks": [
+    {
+      "title": "Видеолекция и транскрипт",
+      "url": "https://oyc.yale.edu/economics/econ-159/lecture-1"
+    },
+    {
+      "title": "Summary & Lessons of the First Class",
+      "url": "https://oyc.yale.edu/sites/default/files/summary%20of%20first%20class.pdf"
+    },
+    {
+      "title": "Blackboard Notes — Lecture 1",
+      "url": "https://oyc.yale.edu/sites/default/files/blackboard01_0_0.pdf"
+    },
+    {
+      "title": "Полная программа курса",
+      "url": "https://oyc.yale.edu/economics/econ-159"
+    }
+  ]
+}

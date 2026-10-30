@@ -1,0 +1,19 @@
+---
+import { sitePath } from '../../../lib/navigation/paths';
+import AtlasLayout from '../../../layouts/AtlasLayout.astro';
+import { getCollection } from 'astro:content';
+export async function getStaticPaths() { return (await getCollection('courses')).map(({ data: course }) => ({ params: { course: course.id }, props: { course } })); }
+const { course } = Astro.props;
+const chapters = (await getCollection('chapters')).filter(({ data }) => data.courseId === course.id);
+---
+<AtlasLayout title="Теория игр — курс">
+  <main id="main" tabindex="-1">
+    <section class="hero"><div class="hero-meta eyebrow"><span>Yale ECON 159 / Ben Polak</span><span>24 лекции</span></div><div class="hero-grid"><h1>Теория игр.<span class="muted-title">От решения к стратегии.</span></h1><aside class="hero-detail"><strong>Осень 2007</strong><p>Самостоятельный учебник по материалам открытого курса.</p><a href={course.sourceUrl} target="_blank" rel="noopener noreferrer">Программа Yale ↗</a></aside></div></section>
+    <p class="course-intro">Первая глава доступна в трёх режимах. Остальные лекции будут появляться по мере подготовки и редакционной проверки.</p>
+    <ol class="course-list">{course.lectures.map((lecture) => {
+      const chapter = chapters.find(({ data }) => data.slug === lecture.slug)?.data;
+      return <li><span class="number">{String(lecture.number).padStart(2, '0')}</span><div><h2>{chapter ? <a href={sitePath(`/courses/${course.id}/${chapter.slug}/core/`)}>{chapter.title}</a> : lecture.title}</h2>{chapter && <p>{lecture.title}</p>}</div><span class="availability">{chapter ? 'Quick / Core / Mastery' : 'Планируется'}</span></li>;
+    })}</ol>
+    <a class="text-button" href={course.sourceUrl} target="_blank" rel="noopener noreferrer">Оригинальные названия и материалы — Yale Open Courses ↗</a>
+  </main>
+</AtlasLayout>

@@ -1,0 +1,47 @@
+---
+import AtlasLayout from './AtlasLayout.astro';
+import ChapterDialogs from '../components/navigation/ChapterDialogs.astro';
+import type { Chapter, Mode, LearningConfig } from '../lib/content/schema';
+import { getEntry } from 'astro:content';
+import { sitePath } from '../lib/navigation/paths';
+interface Props { chapter: Chapter; mode: Mode }
+const { chapter, mode } = Astro.props;
+const base = sitePath(`/courses/${chapter.courseId}/${chapter.slug}`);
+const course = (await getEntry('courses', chapter.courseId))!.data;
+const lectureNumber = String(chapter.number).padStart(2, '0');
+const config: LearningConfig = { chapterId: chapter.id, contentVersion: chapter.contentVersion, stepIds: chapter.steps.map((s) => s.id) };
+const headings = { quick: 'Самое важное', core: 'Разбираемся по шагам', mastery: 'Проверка понимания' };
+---
+<AtlasLayout title={chapter.title} description={chapter.description} courseId={chapter.courseId}>
+  <main id="main" data-reader data-mode={mode} data-base={base} tabindex="-1">
+    <section class="hero" aria-labelledby="chapter-title">
+      <div class="hero-meta eyebrow"><span>Yale Open Courses / {course.author} / Лекция {lectureNumber}</span><span class="lecture-count">{lectureNumber} / {course.lectures.length} лекции</span></div>
+      <div class="hero-grid"><h1 id="chapter-title">{chapter.titleLead} <span class="muted-title">{chapter.titleMuted}</span></h1><aside class="hero-detail"><strong>{lectureNumber} <span>/ {course.lectures.length}</span></strong><p>{chapter.description}</p><a href={chapter.sourceUrl} target="_blank" rel="noopener noreferrer">Перейти к лекции ↗</a></aside></div>
+    </section>
+    <div class="chapter-toolbar" role="region" aria-label={`Навигация по главе ${lectureNumber}`}>
+      <div class="chapter-scope"><strong>Глава {lectureNumber}</strong><span>Режимы этой главы</span></div>
+      <nav class="mode-nav" aria-label={`Режимы главы ${lectureNumber}`}>{(['quick', 'core', 'mastery'] as const).map((m) => <a href={`${base}/${m}/`} aria-current={m === mode ? 'page' : undefined}><span>{{ quick: 'Quick', core: 'Core', mastery: 'Mastery' }[m]}</span><small>{{ quick: 'Повторить', core: 'Разобраться', mastery: 'Применить' }[m]}</small></a>)}</nav>
+      <div class="chapter-tools-actions">
+        <button class="text-button js-only" data-open-dialog="contents-dialog" aria-controls="contents-dialog" aria-haspopup="dialog" aria-expanded="false">Разделы главы <span aria-hidden="true">☰</span></button>
+        <button class="text-button js-only" data-open-dialog="sources-dialog" aria-controls="sources-dialog" aria-haspopup="dialog" aria-expanded="false">Источники</button>
+      </div>
+    </div>
+    <div class="mode-intro"><div><div class="eyebrow">{mode.toUpperCase()} · {chapter.durations[mode]}</div><h2>{headings[mode]}</h2></div>
+      {mode === 'core' && <button class="text-button js-only" data-toggle-all>Показать всю главу</button>}
+    </div>
+    <div class="progress-line"><span class="progress-summary" data-progress-label>0 из {chapter.steps.length} шагов завершено</span><span data-current-label>Core · {chapter.steps.length} шагов</span></div>
+    <div class="progress-bars" role="progressbar" aria-label="Прогресс Core" aria-valuemin="0" aria-valuemax={chapter.steps.length} aria-valuenow="0" style={`--step-count:${chapter.steps.length}`} data-progress>{chapter.steps.map((step) => <span data-progress-step={step.id}></span>)}</div>
+    <p class="storage-message" data-storage-message role="status"></p>
+    <noscript><p class="note">Текст главы доступен целиком. Для взаимодействий и сохранения прогресса включи JavaScript.</p></noscript>
+    <div class="narrative"><slot /></div>
+    {mode === 'core' && <section class="chapter-complete" data-core-complete hidden><h2>Core пройден</h2><p>Теперь можно попробовать новые задачи или вернуться к нужным разделам.</p><a class="primary" href={`${base}/mastery/`}>Перейти к Mastery →</a></section>}
+    <aside class="chapter-annotation js-only" aria-label="Сопроводительные материалы"><span>К этой главе</span><button class="text-button" data-open-dialog="sources-dialog" aria-controls="sources-dialog" aria-haspopup="dialog" aria-expanded="false">Источники и редакционные примечания</button></aside>
+    <noscript><aside class="editorial-notes"><slot name="source-notes" /></aside></noscript>
+    <nav class="actions" aria-label="Материалы главы"><a class="secondary" href={sitePath(`/courses/${chapter.courseId}/`)}>Все главы курса</a><a class="secondary" href={sitePath('/concepts/')}>Понятия и связи</a><a class="text-button" href={chapter.sourceUrl} target="_blank" rel="noopener noreferrer">Первоисточник ↗</a></nav>
+    <script type="application/json" data-learning-config set:html={JSON.stringify(config).replace(/</g, '\\u003c')} />
+  </main>
+  <ChapterDialogs chapter={chapter}><slot name="source-notes" /></ChapterDialogs>
+</AtlasLayout>
+<script>
+  import '../scripts/chapter-controller';
+</script>

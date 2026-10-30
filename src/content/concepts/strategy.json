@@ -1,0 +1,10 @@
+{
+  "id": "strategy",
+  "title": "Стратегия",
+  "definition": "Стратегия — то, что игрок может выбрать.",
+  "stepId": "strategic-situations",
+  "prerequisites": [],
+  "related": [
+    "outcome"
+  ]
+}

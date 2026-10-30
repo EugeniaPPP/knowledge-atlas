@@ -1,0 +1,13 @@
+{
+  "id": "strict-dominance",
+  "title": "Строгое доминирование",
+  "definition": "Стратегия строго доминирует другую, если даёт игроку строго больший выигрыш при каждом возможном выборе остальных участников.",
+  "stepId": "dominance",
+  "prerequisites": [
+    "strategy",
+    "payoff"
+  ],
+  "related": [
+    "best-response"
+  ]
+}

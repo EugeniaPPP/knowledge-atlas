@@ -1,0 +1,152 @@
+{
+  "id": "yale-econ-159",
+  "title": "Теория игр",
+  "author": "Ben Polak",
+  "sourceUrl": "https://oyc.yale.edu/economics/econ-159",
+  "lectures": [
+    {
+      "number": 1,
+      "title": "Introduction: Five First Lessons",
+      "slug": "lecture-01",
+      "status": "preview"
+    },
+    {
+      "number": 2,
+      "title": "Putting Yourselves into Other People's Shoes",
+      "slug": "lecture-02",
+      "status": "planned"
+    },
+    {
+      "number": 3,
+      "title": "Iterative Deletion and the Median-Voter Theorem",
+      "slug": "lecture-03",
+      "status": "planned"
+    },
+    {
+      "number": 4,
+      "title": "Best Responses in Soccer and Business Partnerships",
+      "slug": "lecture-04",
+      "status": "planned"
+    },
+    {
+      "number": 5,
+      "title": "Nash Equilibrium: Bad Fashion and Bank Runs",
+      "slug": "lecture-05",
+      "status": "planned"
+    },
+    {
+      "number": 6,
+      "title": "Nash Equilibrium: Dating and Cournot",
+      "slug": "lecture-06",
+      "status": "planned"
+    },
+    {
+      "number": 7,
+      "title": "Nash Equilibrium: Shopping, Standing and Voting on a Line",
+      "slug": "lecture-07",
+      "status": "planned"
+    },
+    {
+      "number": 8,
+      "title": "Nash Equilibrium: Location, Segregation and Randomization",
+      "slug": "lecture-08",
+      "status": "planned"
+    },
+    {
+      "number": 9,
+      "title": "Mixed Strategies in Theory and Tennis",
+      "slug": "lecture-09",
+      "status": "planned"
+    },
+    {
+      "number": 10,
+      "title": "Mixed Strategies in Baseball, Dating and Paying Your Taxes",
+      "slug": "lecture-10",
+      "status": "planned"
+    },
+    {
+      "number": 11,
+      "title": "Evolutionary Stability: Cooperation, Mutation, and Equilibrium",
+      "slug": "lecture-11",
+      "status": "planned"
+    },
+    {
+      "number": 12,
+      "title": "Evolutionary Stability: Social Convention, Aggression, and Cycles",
+      "slug": "lecture-12",
+      "status": "planned"
+    },
+    {
+      "number": 13,
+      "title": "Sequential Games: Moral Hazard, Incentives, and Hungry Lions",
+      "slug": "lecture-13",
+      "status": "planned"
+    },
+    {
+      "number": 14,
+      "title": "Backward Induction: Commitment, Spies, and First-Mover Advantages",
+      "slug": "lecture-14",
+      "status": "planned"
+    },
+    {
+      "number": 15,
+      "title": "Backward Induction: Chess, Strategies, and Credible Threats",
+      "slug": "lecture-15",
+      "status": "planned"
+    },
+    {
+      "number": 16,
+      "title": "Backward Induction: Reputation and Duels",
+      "slug": "lecture-16",
+      "status": "planned"
+    },
+    {
+      "number": 17,
+      "title": "Backward Induction: Ultimatums and Bargaining",
+      "slug": "lecture-17",
+      "status": "planned"
+    },
+    {
+      "number": 18,
+      "title": "Imperfect Information: Information Sets and Sub-Game Perfection",
+      "slug": "lecture-18",
+      "status": "planned"
+    },
+    {
+      "number": 19,
+      "title": "Subgame Perfect Equilibrium: Matchmaking and Strategic Investments",
+      "slug": "lecture-19",
+      "status": "planned"
+    },
+    {
+      "number": 20,
+      "title": "Subgame Perfect Equilibrium: Wars of Attrition",
+      "slug": "lecture-20",
+      "status": "planned"
+    },
+    {
+      "number": 21,
+      "title": "Repeated Games: Cooperation vs. the End Game",
+      "slug": "lecture-21",
+      "status": "planned"
+    },
+    {
+      "number": 22,
+      "title": "Repeated Games: Cheating, Punishment, and Outsourcing",
+      "slug": "lecture-22",
+      "status": "planned"
+    },
+    {
+      "number": 23,
+      "title": "Asymmetric Information: Silence, Signaling and Suffering Education",
+      "slug": "lecture-23",
+      "status": "planned"
+    },
+    {
+      "number": 24,
+      "title": "Asymmetric Information: Auctions and the Winner's Curse",
+      "slug": "lecture-24",
+      "status": "planned"
+    }
+  ]
+}
