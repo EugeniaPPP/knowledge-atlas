@@ -1,4 +1,5 @@
 :root {
+  color-scheme: light;
   --paper: #fff;
   --ink: #15171b;
   --body: #434952;
@@ -12,6 +13,9 @@
   --accent-border: #a18abc;
   --focus: #71529d;
   --control-bg: #fafafb;
+  --heading-muted: #737781;
+  --primary-hover: #383941;
+  --backdrop: rgb(21 23 27 / .3);
   --radius: 3px;
   --space-1: 4px;
   --space-2: 8px;
@@ -24,4 +28,48 @@
   --reading-width: 740px;
   --reader-offset: 204px;
   --header-height: 72px;
+}
+
+/* Graphite: the same editorial hierarchy, with neutral surfaces and lilac accents. */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --paper: #1b1d22;
+  --ink: #eceef2;
+  --body: #c9ccd5;
+  --muted: #a0a5b2;
+  --faint: #9299a8;
+  --line: #363b46;
+  --subtle: #252931;
+  --accent: #b49bdc;
+  --accent-ink: #b49bdc;
+  --accent-pale: #302f3c;
+  --accent-border: #a18abc;
+  --focus: #b49bdc;
+  --control-bg: #1f2229;
+  --heading-muted: #a0a5b2;
+  --primary-hover: #d2d6e1;
+  --backdrop: rgb(0 0 0 / .6);
+}
+
+/* No JavaScript: use system appearance without hiding the textbook. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --paper: #1b1d22;
+    --ink: #eceef2;
+    --body: #c9ccd5;
+    --muted: #a0a5b2;
+    --faint: #9299a8;
+    --line: #363b46;
+    --subtle: #252931;
+    --accent: #b49bdc;
+    --accent-ink: #b49bdc;
+    --accent-pale: #302f3c;
+    --accent-border: #a18abc;
+    --focus: #b49bdc;
+    --control-bg: #1f2229;
+    --heading-muted: #a0a5b2;
+    --primary-hover: #d2d6e1;
+    --backdrop: rgb(0 0 0 / .6);
+  }
 }

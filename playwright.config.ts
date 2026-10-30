@@ -12,7 +12,7 @@ export default defineConfig({
   timeout: 30000,
   expect: { timeout: 7000, toHaveScreenshot: { animations: 'disabled', maxDiffPixelRatio: .003 } },
   reporter: [['list'], ['html', { open: 'never' }]],
-  use: { baseURL: previewUrl, trace: 'retain-on-failure', screenshot: 'only-on-failure' },
+  use: { baseURL: previewUrl, colorScheme: 'light', trace: 'retain-on-failure', screenshot: 'only-on-failure' },
   projects: [
     { name: 'chromium', use: { ...devices['Desktop Chrome'], launchOptions: useInstalled ? { executablePath: macChrome } : {} } },
     { name: 'firefox', grepInvert: /visual reference/, use: { ...devices['Desktop Firefox'] } },

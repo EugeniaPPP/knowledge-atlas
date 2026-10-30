@@ -61,6 +61,28 @@ Compare initial implementation with the approved HTML/PNG. Review hero, reading 
 
 ## Language navigation
 
-A quiet native-link language control lives in the persistent header: “Русский / English”, compact “RU / EN” below 550px. Use native language names and `lang`, `hreflang`, a visible underline plus `aria-current` for the selected language. No flags, modal, automatic locale redirect or new accent palette. Keep touch targets at least 44px high, and compact the brand to K/ before hiding course/chapter navigation. The switch preserves the corresponding mode and section/exercise anchor. Shared progress stays unchanged.
+A quiet native-link language control lives in the persistent header: “Русский / English”, compact “RU / EN” on mobile and narrow tablet layouts. Use native language names and `lang`, `hreflang`, a visible underline plus `aria-current` for the selected language. No flags, modal, automatic locale redirect or new accent palette. Keep touch targets at least 44px high, and compact the brand to K/ before hiding course/chapter navigation. The switch preserves the corresponding mode and section/exercise anchor. Shared progress stays unchanged.
 
 Both locales use the same grid, Inter, tokens and components; allow headings/captions to wrap naturally. Review English at 320/390/768/1440px, expanded Core, matrix headers, two-stage Mastery and dialogs. Do not shrink meaningful text to force Russian line lengths onto English.
+
+## Appearance: Light and Graphite
+
+Graphite is the approved dark variant of Modern Editorial. Preserve typography, spacing, content hierarchy and interaction semantics across themes. Do not invert screenshots or introduce a separate dark layout.
+
+| Role | Graphite |
+| --- | --- |
+| Paper | `#1b1d22` |
+| Ink | `#eceef2` |
+| Body | `#c9ccd5` |
+| Secondary text | `#a0a5b2` |
+| Divider | `#363b46` |
+| Model / raised surface | `#252931` |
+| Input surface | `#1f2229` |
+| Accent / focus | `#b49bdc` |
+| Selected tint | `#302f3c` |
+
+All component colors must use semantic tokens from `src/styles/tokens.css`, including dialogs, controls, hover and focus. Primary actions stay neutral. Selection uses a native checked state or text/border as well as color. Set native `color-scheme` and browser `theme-color` consistently.
+
+The header has a native button that switches directly between light and dark, with no menu. Thin outline icons describe the next action: moon in light mode, sun in dark mode. Keep the localized action label and tooltip in sync, preserve keyboard focus, and use a 44px hit area. At widths up to 340px, put course navigation on a second header row; update the sticky-header and reading offsets together.
+
+Default to system appearance; an explicit choice wins and persists under the separate `knowledge-atlas:theme` key. A synchronous head script resolves it before first paint. CSS follows the system when JavaScript is disabled. Unavailable storage must not prevent switching or reading. Verify both themes, locales, modes, expanded models and dialogs; review screenshots before accepting baselines.

@@ -3,6 +3,8 @@ import '../styles/global.css';
 import '../styles/chapter.css';
 import AtlasDrawers from '../components/navigation/AtlasDrawers.astro';
 import LanguageSwitcher from '../components/navigation/LanguageSwitcher.astro';
+import ThemeSwitcher from '../components/navigation/ThemeSwitcher.astro';
+import themeInit from '../scripts/theme-init.js?raw';
 import { sitePath, languagePath } from '../lib/navigation/paths';
 import { getUI } from '../i18n/ui';
 import type { Locale } from '../lib/content/schema';
@@ -15,7 +17,9 @@ const t = getUI(locale);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1b1d22" media="(prefers-color-scheme: dark)" />
+    <script is:inline set:html={themeInit} />
     <meta name="description" content={description || t.description} />
     <meta name="robots" content="noindex, nofollow" />
     <link rel="icon" href={sitePath('/favicon.svg')} type="image/svg+xml" />
@@ -42,6 +46,7 @@ const t = getUI(locale);
             <nav class="mobile-navigation js-only" aria-label={t.courseNav}><button class="text-button" data-open-dialog="course-dialog" aria-controls="course-dialog" aria-haspopup="dialog" aria-expanded="false">{t.courseChapters}</button><button class="text-button" data-open-dialog="concepts-dialog" aria-controls="concepts-dialog" aria-haspopup="dialog" aria-expanded="false">{t.courseConcepts}</button></nav>
             <noscript><nav><a href={sitePath(`/courses/${courseId}/`, locale)}>{t.courseChapters}</a> · <a href={sitePath('/concepts/', locale)}>{t.courseConcepts}</a></nav></noscript>
             <LanguageSwitcher locale={locale} />
+            <ThemeSwitcher locale={locale} />
           </div>
         </header>
         <slot />

@@ -1,6 +1,7 @@
 import type { Locale } from '../lib/content/schema';
 
 const text = {
+  useLightTheme: ['Включить светлую тему', 'Switch to light theme'], useDarkTheme: ['Включить тёмную тему', 'Switch to dark theme'], themeTemporary: ['Выбор действует до закрытия страницы: хранилище браузера недоступно.', 'This choice lasts until you close the page: browser storage is unavailable.'],
   skip: ['К содержанию', 'Skip to content'], atlas: ['Атлас', 'Atlas'], home: ['K/ — Knowledge Atlas, главная', 'K/ — Knowledge Atlas, home'],
   atlasNav: ['Разделы атласа', 'Atlas navigation'], courseNav: ['Навигация по курсу', 'Course navigation'], courseChapters: ['Главы курса', 'Course chapters'], courseConcepts: ['Понятия курса', 'Course concepts'],
   language: ['Язык', 'Language'], adaptation: ['Неофициальная учебная адаптация · Ben Polak / Yale Open Courses', 'Independent learning adaptation · Ben Polak / Yale Open Courses'],
