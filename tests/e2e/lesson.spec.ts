@@ -49,9 +49,9 @@ test('catalog and concept links lead to actual content without completing it', a
   await page.goto(`${siteRoot}/`);
   await page.getByRole('link', { name: 'Все 24 лекции' }).click();
   await expect(page.locator('.course-list > li')).toHaveCount(24);
-  await expect(page.locator('.availability').filter({ hasText: 'Планируется' })).toHaveCount(23);
+  await expect(page.locator('.availability').filter({ hasText: 'Планируется' })).toHaveCount(22);
   await page.goto(`${siteRoot}/concepts/`);
-  await expect(page.locator('.concept-list > li')).toHaveCount(8);
+  await expect(page.locator('.concept-list > li')).toHaveCount(16);
   await page.getByRole('link', { name: 'Строгое доминирование', exact: true }).click();
   await page.getByRole('link', { name: 'Разобраться в контексте →' }).click();
   await expect(page).toHaveURL(`${base}/core/#dominance`);
@@ -248,7 +248,7 @@ test('course drawers preserve the reading context and distinguish course from ch
     await expect(course).toHaveAttribute('aria-expanded', 'false');
     await page.getByRole('button', { name: 'Понятия курса', exact: true }).click();
     const concepts = page.getByRole('dialog', { name: 'Понятия курса', exact: true });
-    await expect(concepts.locator('.drawer-concepts > li')).toHaveCount(8);
+    await expect(concepts.locator('.drawer-concepts > li')).toHaveCount(16);
     const footer = concepts.getByRole('link', { name: 'Все понятия и связи →' });
     const footerBox = await footer.boundingBox();
     expect(footerBox!.y + footerBox!.height).toBeLessThanOrEqual(900);

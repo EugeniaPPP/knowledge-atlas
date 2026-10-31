@@ -4,6 +4,8 @@
 
 Knowledge Atlas is a self-contained interactive textbook, not lecture minutes or an LMS. Write every new chapter in Russian and English together; use shared English identifiers in metadata and code. Explain ideas independently, with natural transitions, explicit assumptions and meaningful examples.
 
+User-approved exception (31 October 2026): Lecture 2 is implemented and reviewed in Russian first; English is the next separate stage. Until accepted, `availableLocales: ["ru"]` excludes EN routes and active translation links. This does not waive bilingual review for future lessons or change Lecture 1.
+
 ## Modes
 
 - Quick (3–5 minutes): key argument, essential model/formulas, major principles and links to related concepts. It must agree with Core.
@@ -18,11 +20,15 @@ Chapter 1 has eight steps. Future chapters may use another count. Keep all neces
 
 Potential factual or editorial problems become review notes. Original sources are evidence, not permission to silently rewrite approved prose. Preserve source notes and distinguish technical editorial notes from educational passages without deleting either from the maintained source.
 
+Lecture 2 uses the three approved files from `references/handoff-lecture-02/content/lecture-02/`. Public-safe derivative baselines and a reversible technical-migration manifest are in `tests/fixtures/lecture-02-approved/`; the local handoff and raw Yale files remain gitignored. Headings move into the shared hero; historic review stamps remain in baselines, not the page title. Source appendix remains in the sources dialog. Implementation notes remain verbatim in the sources dialog, separate from learning material. Changes to educational wording, keys or numbers require a new editorial decision.
+
 ## Models and exercises
 
 State the players, available strategies, outcome ordering, payoffs and assumptions. Distinguish outcomes from utilities, best responses from dominance, and prediction from moral judgment. Reuse a model by ID across modes to prevent conflicting numerical values.
 
 Every interaction identifies its learning objective, component, states, actions, expected results and accessibility behavior. Persist meaningful responses and notes; transient exploratory toggles need not count as progress. A new visualization needs a specification and separate implementation when no existing component fits.
+
+Use `docs/COMPONENT_CATALOG.md` for new lessons. Compute best responses separately from pairwise and global dominance. A dominated strategy may exist without any globally dominant strategy. Weak dominance requires a strict improvement somewhere; identical vectors do not qualify. In Mastery, hide final classification and explanations until explicit checking; changing any part invalidates the entire task check. Count tasks, not input fields. Free explanations have no automatic score. Do not round the half-average exercise's 22.5 boundary to 23: the approved surviving maximum is 22.
 
 Exercises reference learning objectives and explain both the correct reasoning and common misconceptions. Self-explanation uses a rubric, not automatic claims of mastery. Maintain consistent terminology and cross-chapter concept IDs.
 

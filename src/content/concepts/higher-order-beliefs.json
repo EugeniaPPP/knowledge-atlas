@@ -1,0 +1,12 @@
+{
+  "id": "higher-order-beliefs",
+  "title": "Представления о чужих представлениях",
+  "definition": "Прогноз действий зависит от представлений о чужих представлениях. Важно учитывать, как глубоко другой игрок анализирует игру и какого анализа ожидает от тебя.",
+  "stepId": "higher-order-reasoning",
+  "prerequisites": [
+    "strategy"
+  ],
+  "related": [
+    "common-knowledge"
+  ]
+}

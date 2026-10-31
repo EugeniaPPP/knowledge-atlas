@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "locale": "ru",
+  "availableLocales": [
+    "ru"
+  ],
+  "id": "yale-econ-159/lecture-02",
+  "courseId": "yale-econ-159",
+  "slug": "lecture-02",
+  "number": 2,
+  "title": "Я знаю, что ты знаешь…",
+  "titleLead": "Я знаю,",
+  "titleMuted": "что ты знаешь…",
+  "description": "Слабое доминирование, стратегическое мышление и общее знание.",
+  "contentVersion": "lecture-02-approved-2026-10-31",
+  "status": "preview",
+  "sourceHeader": "# Я знаю, что ты знаешь…\n\n*Knowledge Atlas · Теория игр · Глава 02 · Core · сводная редакция на утверждение*\n\n",
+  "sourceSha256": "85680a6bd50b09946e0c1b9d27b00262e67f2010429d4c6f456bf4d8924993eb",
+  "durations": {
+    "quick": "3–5 минут",
+    "core": "25–35 минут",
+    "mastery": "15–20 минут"
+  },
+  "steps": [
+    {
+      "id": "number-prediction",
+      "title": "Твоё число — и числа остальных",
+      "sourceStart": 368,
+      "sourceEnd": 385,
+      "conceptIds": [
+        "strategy",
+        "best-response"
+      ]
+    },
+    {
+      "id": "normal-form",
+      "title": "Из чего состоит игра",
+      "sourceStart": 414,
+      "sourceEnd": 955,
+      "conceptIds": [
+        "normal-form",
+        "strategy-profile",
+        "payoff"
+      ]
+    },
+    {
+      "id": "dominated-strategies",
+      "title": "Стратегия, которая хуже другой",
+      "sourceStart": 961,
+      "sourceEnd": 1457,
+      "conceptIds": [
+        "strict-dominance",
+        "dominated-strategy",
+        "best-response"
+      ]
+    },
+    {
+      "id": "weak-dominance",
+      "title": "Когда стратегия не хуже, но не всегда лучше",
+      "sourceStart": 1471,
+      "sourceEnd": 2127,
+      "conceptIds": [
+        "weak-dominance"
+      ]
+    },
+    {
+      "id": "higher-order-reasoning",
+      "title": "Почему число 33 — только начало",
+      "sourceStart": 2231,
+      "sourceEnd": 2584,
+      "conceptIds": [
+        "higher-order-beliefs"
+      ]
+    },
+    {
+      "id": "iterated-elimination",
+      "title": "Как 100 превращается в 1",
+      "sourceStart": 2584,
+      "sourceEnd": 3502,
+      "conceptIds": [
+        "iterated-elimination",
+        "weak-dominance"
+      ]
+    },
+    {
+      "id": "historical-outcomes",
+      "title": "Почему победило 9, а не 1",
+      "sourceStart": 3496,
+      "sourceEnd": 3930,
+      "conceptIds": [
+        "higher-order-beliefs"
+      ]
+    },
+    {
+      "id": "common-knowledge",
+      "title": "А они знают, что ты знаешь?..",
+      "sourceStart": 3937,
+      "sourceEnd": 4125,
+      "conceptIds": [
+        "common-knowledge",
+        "mutual-knowledge"
+      ]
+    }
+  ],
+  "conceptIds": [
+    "strategy",
+    "best-response",
+    "normal-form",
+    "strategy-profile",
+    "payoff",
+    "strict-dominance",
+    "dominated-strategy",
+    "weak-dominance",
+    "higher-order-beliefs",
+    "iterated-elimination",
+    "common-knowledge",
+    "mutual-knowledge"
+  ],
+  "sourceIds": [
+    "yale-l02-transcript",
+    "yale-l02-blackboard"
+  ],
+  "sourceUrl": "https://oyc.yale.edu/economics/econ-159/lecture-2",
+  "sourceLinks": [
+    {
+      "title": "Видеолекция и транскрипт",
+      "url": "https://oyc.yale.edu/economics/econ-159/lecture-2"
+    },
+    {
+      "title": "Полная программа курса",
+      "url": "https://oyc.yale.edu/economics/econ-159"
+    }
+  ]
+}

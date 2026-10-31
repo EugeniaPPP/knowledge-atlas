@@ -16,6 +16,12 @@
   --heading-muted: #737781;
   --primary-hover: #383941;
   --backdrop: rgb(21 23 27 / .3);
+  --dominant-bg: #edf5ef;
+  --dominant-ink: #28593c;
+  --dominant-border: #709c81;
+  --dominated-bg: #faedf2;
+  --dominated-ink: #8a3f5d;
+  --dominated-border: #bf839d;
   --radius: 3px;
   --space-1: 4px;
   --space-2: 8px;
@@ -49,6 +55,12 @@
   --heading-muted: #a0a5b2;
   --primary-hover: #d2d6e1;
   --backdrop: rgb(0 0 0 / .6);
+  --dominant-bg: #22392e;
+  --dominant-ink: #b4dbc2;
+  --dominant-border: #79aa8c;
+  --dominated-bg: #412c38;
+  --dominated-ink: #efbdcf;
+  --dominated-border: #bd819b;
 }
 
 /* No JavaScript: use system appearance without hiding the textbook. */
@@ -71,5 +83,11 @@
     --heading-muted: #a0a5b2;
     --primary-hover: #d2d6e1;
     --backdrop: rgb(0 0 0 / .6);
+    --dominant-bg: #22392e;
+    --dominant-ink: #b4dbc2;
+    --dominant-border: #79aa8c;
+    --dominated-bg: #412c38;
+    --dominated-ink: #efbdcf;
+    --dominated-border: #bd819b;
   }
 }

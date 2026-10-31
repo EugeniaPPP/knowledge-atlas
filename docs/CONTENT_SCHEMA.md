@@ -11,6 +11,7 @@ This contract separates runtime content from editorial production. It does not i
 Runtime schemas live in `src/lib/content/schema.ts`; future editorial data contracts live in `src/lib/content/editorial-schema.ts`. These validate data shape and explicit readiness constraints; a syntactically valid editorial decision does not authenticate human authorization. No generation, approval or publication workflow is implemented.
 
 - Chapter: `schemaVersion`, `id`, `courseId`, `slug`, `title`, `contentVersion`, `status`, `sourceHeader`, ordered `steps`, `conceptIds`, `sourceIds`, mode durations and content provenance.
+- `availableLocales` declares actually available editions (legacy default `ru,en`). Lecture 2 is explicitly `ru` during its user-approved Russian-first integration. Routes, catalog links, language control and hreflang derive from availability; no placeholder EN or silent fallback. English acceptance is a separate stage.
 - Step: `id`, `title`, source time range, concept references. Heading text remains in MDX; validation checks agreement with metadata.
 - Model: stable ID, row/column strategy labels, captions, outcomes and numerical payoff matrices. Pair ordering is always row player then column player.
 - Exercise: ID, objective references, prompt, optional matrix/model reference, options, correct option and feedback. Written responses have a separate rubric.
@@ -19,6 +20,16 @@ Runtime schemas live in `src/lib/content/schema.ts`; future editorial data contr
 - Concept: stable global ID, localized title, definition from approved text, prerequisites, related concepts and occurrences in chapters.
 
 MDX owns the narrative and component placement. JSON owns data and references. Component implementations own behavior. Learner state is a separate versioned local document keyed by course and chapter.
+
+### Lecture 2 runtime additions
+
+- `AssessmentTask`: stable `id`, `origin: lecture|editorial`, optional `modelId`, nonempty `parts`. A choice part has `id`, `label`, options with IDs and original inline copy, and a correct ID; an integer part has `id`, `label`, `min`, `max`, `correct`. IDs and keys are shared by future translations. Rich conditions and full explanations remain in MDX. One explicit check covers all parts. See `assessmentTaskSchema` and `docs/COMPONENT_CATALOG.md`.
+- Matrix role copy: optional `players: {row,column,meaning}`. Numeric order is unchanged by roles or locale. The approved procedure, hats perspectives and reasoning-chain labels are in `interaction-content.json`; behavior never embeds Russian chapter copy.
+- SchemaVersion 1 remains compatible: answer parts use `answers[partId]`; checked state is invalidated for all parts of an edited task. Optional writing uses `notes.essay`. There is no automatic grade for prose.
+- Lecture 2 predictions use `responses['number-original'|'number-current'|'number-revised'|'number-origin']`. On first available valid prior save, snapshot Lecture 1's `responses.number`; never write the prior chapter. Without a prior save, the first explicit new save establishes the original. A slider default is not a save. The existing Lecture 1 store contains its **latest** saved number; a lost earlier historical choice cannot be recovered. A Lecture 2 export includes its snapshot, so it works without Lecture 1 on another browser. Theme remains outside chapter data.
+- Approved derivative baselines and reversible markup mapping: `tests/fixtures/lecture-02-approved/`. Raw transcript/PDF and internal handoff are local/gitignored and absent from `dist`. Historical review headers move out of the rendered hero, the full source appendix moves to the existing dialog, implementation notes move to the sources dialog; wording is retained and reconstructed in tests. No new editorial approval is fabricated by this technical manifest.
+
+`preview` does not itself prevent static output; do not push/deploy the integration without the user's explicit authorization. No publication pipeline or automatic promotion gate is implemented here.
 
 ## Editorial entities
 

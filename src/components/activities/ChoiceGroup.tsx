@@ -1,5 +1,6 @@
+import type { ReactNode } from 'react';
 type Props = {
-  name: string; label: string; value: string; options: { value: string; label: string }[];
+  name: string; label: string; value: string; options: { value: string; label: ReactNode }[];
   onChange: (value: string) => void; large?: boolean; disabled?: boolean;
 };
 export default function ChoiceGroup({ name, label, value, options, onChange, large, disabled }: Props) {

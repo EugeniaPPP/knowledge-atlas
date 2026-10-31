@@ -1,0 +1,9 @@
+---
+import type { AssessmentTask } from '../../lib/content/schema';
+interface Props { task: AssessmentTask }
+const { task } = Astro.props;
+---
+<article class="question" id={task.id} data-assessment-task={task.id} data-assessment-parts={JSON.stringify(task)}><slot /></article>
+<script>
+  import '../../scripts/assessment-controller';
+</script>

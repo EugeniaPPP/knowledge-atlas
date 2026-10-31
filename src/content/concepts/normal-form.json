@@ -1,0 +1,13 @@
+{
+  "id": "normal-form",
+  "title": "Нормальная форма",
+  "definition": "«Нормальная форма» (normal form) — описание игры через игроков, множества стратегий и функции выигрыша.",
+  "stepId": "normal-form",
+  "prerequisites": [
+    "strategy",
+    "payoff"
+  ],
+  "related": [
+    "strategy-profile"
+  ]
+}

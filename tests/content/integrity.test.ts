@@ -5,6 +5,7 @@ import { createHash } from 'node:crypto';
 import hashes from './reference-hashes.json';
 import { chapter, models, exercises, writtenExercise } from '../../src/content/chapters/yale-econ-159/lecture-01/data';
 import { activityKinds } from '../../src/lib/content/component-catalog';
+import { chapter as chapterTwo } from '../../src/content/chapters/yale-econ-159/lecture-02/data';
 
 const read = (path: string) => readFileSync(new URL(`../../${path}`, import.meta.url), 'utf8');
 test('all approved reference files retain their original bytes', () => {
@@ -34,7 +35,8 @@ test('models and exercises have valid references and all concept links resolve',
   assert.equal(new Set(exercises.map((e) => e.id)).size, exercises.length);
   for (const name of names) {
     const concept = JSON.parse(read(`src/content/concepts/${name}.json`));
-    assert.ok(chapter.steps.some((step) => step.id === concept.stepId));
+    assert.ok([chapter, chapterTwo].some((c) => c.steps.some((step) => step.id === concept.stepId)), name);
+    assert.ok([chapter, chapterTwo].some((c) => c.steps.some((step) => step.conceptIds.includes(concept.id))), name);
     for (const link of [...concept.related, ...concept.prerequisites]) assert.ok(names.includes(link));
   }
 });

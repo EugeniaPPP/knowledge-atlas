@@ -1,0 +1,12 @@
+{
+  "id": "common-knowledge",
+  "title": "Общее знание",
+  "definition": "Каждый знает X, каждый знает, что все знают X, каждый знает, что все знают, что все знают X, и так далее.",
+  "stepId": "common-knowledge",
+  "prerequisites": [
+    "mutual-knowledge"
+  ],
+  "related": [
+    "higher-order-beliefs"
+  ]
+}

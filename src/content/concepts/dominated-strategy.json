@@ -1,0 +1,15 @@
+{
+  "id": "dominated-strategy",
+  "title": "Доминируемая стратегия",
+  "definition": "Строго доминируемая стратегия — существует хотя бы одна другая стратегия, которая превосходит её при любом действии соперника.",
+  "stepId": "dominated-strategies",
+  "prerequisites": [
+    "strategy",
+    "payoff"
+  ],
+  "related": [
+    "strict-dominance",
+    "weak-dominance",
+    "best-response"
+  ]
+}

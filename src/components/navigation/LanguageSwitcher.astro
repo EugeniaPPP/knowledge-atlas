@@ -2,11 +2,14 @@
 import type { Locale } from '../../lib/content/schema';
 import { languagePath } from '../../lib/navigation/paths';
 import { getUI } from '../../i18n/ui';
+import { availableLanguagesForPath } from '../../lib/content/queries';
 const { locale = 'ru' } = Astro.props as { locale: Locale };
 const names = { ru: 'Русский', en: 'English' };
+const available = await availableLanguagesForPath(Astro.url.pathname);
+const t = getUI(locale);
 ---
 <nav class="language-switcher" aria-label={getUI(locale).language}>
-  {(['ru', 'en'] as const).map((language) => <a href={languagePath(Astro.url.pathname.includes('/404') ? import.meta.env.BASE_URL : Astro.url.pathname, language)} hreflang={language} lang={language} aria-label={names[language]} aria-current={language === locale ? 'page' : undefined} data-language-link><span class="language-name">{names[language]}</span><span class="language-code" aria-hidden="true">{language.toUpperCase()}</span></a>)}
+  {(['ru', 'en'] as const).map((language) => available.includes(language) ? <a href={languagePath(Astro.url.pathname.includes('/404') ? import.meta.env.BASE_URL : Astro.url.pathname, language)} hreflang={language} lang={language} aria-label={names[language]} aria-current={language === locale ? 'page' : undefined} data-language-link><span class="language-name">{names[language]}</span><span class="language-code" aria-hidden="true">{language.toUpperCase()}</span></a> : <span class="language-unavailable" aria-disabled="true" title={t.translationPending} lang={language}><span class="language-name">{names[language]}</span><span class="language-code" aria-hidden="true">{language.toUpperCase()}</span><span class="sr-only">{names[language]} — {t.translationPending}</span></span>)}
 </nav>
 <script>
   document.querySelectorAll<HTMLAnchorElement>('[data-language-link]').forEach((link) => link.addEventListener('click', () => {

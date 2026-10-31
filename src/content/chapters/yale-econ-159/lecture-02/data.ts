@@ -1,0 +1,18 @@
+import rawChapter from './chapter.json';
+import previousChapter from '../lecture-01/chapter.json';
+import rawModels from './models.json';
+import rawTasks from './exercises.json';
+import rawInteractions from './interaction-content.json';
+import { chapterSchema, modelsSchema, assessmentTaskSchema, type LearningConfig } from '../../../../lib/content/schema';
+import type { EliminationContent } from '../../../../components/activities/StrategyElimination';
+import type { HatsContent } from '../../../../components/activities/CommonKnowledgeHats';
+export const chapter = chapterSchema.parse(rawChapter);
+export const models = modelsSchema.parse(rawModels);
+export const tasks = rawTasks.map((t) => assessmentTaskSchema.parse(t));
+export const taskById = Object.fromEntries(tasks.map((t) => [t.id, t]));
+const learningConfig = (c: typeof chapter): LearningConfig => ({ chapterId: c.id, contentVersion: c.contentVersion, stepIds: c.steps.map((s) => s.id), locale: c.locale });
+export const config = learningConfig(chapter);
+export const previousConfig = learningConfig(chapterSchema.parse(previousChapter));
+export const elimination: EliminationContent = rawInteractions.elimination;
+export const hats: HatsContent = { ...rawInteractions.hats, people: [rawInteractions.hats.people[0], rawInteractions.hats.people[1]] };
+export const chain = rawInteractions.chain;

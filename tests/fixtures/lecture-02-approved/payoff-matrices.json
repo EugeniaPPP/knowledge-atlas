@@ -1,0 +1,449 @@
+[
+  {
+    "id": "yale_abstract_2x3",
+    "origin": "Yale L2 blackboard p1",
+    "rowStrategies": [
+      "T",
+      "B"
+    ],
+    "columnStrategies": [
+      "L",
+      "C",
+      "R"
+    ],
+    "payoffs": [
+      [
+        [
+          5,
+          -1
+        ],
+        [
+          11,
+          3
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          6,
+          4
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          0
+        ]
+      ]
+    ],
+    "expected": {
+      "row": {
+        "bestRepliesByOpponent": [
+          [
+            "B"
+          ],
+          [
+            "T"
+          ],
+          [
+            "B"
+          ]
+        ],
+        "strictDominant": [],
+        "weakDominant": [],
+        "strictDominated": [],
+        "weakDominated": []
+      },
+      "column": {
+        "bestRepliesByOpponent": [
+          [
+            "C"
+          ],
+          [
+            "L"
+          ]
+        ],
+        "strictDominant": [],
+        "weakDominant": [],
+        "strictDominated": [
+          "R"
+        ],
+        "weakDominated": []
+      }
+    }
+  },
+  {
+    "id": "yale_hannibal_2x2",
+    "origin": "Yale L2 blackboard p2",
+    "rowStrategies": [
+      "E",
+      "H"
+    ],
+    "columnStrategies": [
+      "e",
+      "h"
+    ],
+    "payoffs": [
+      [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      [
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          0
+        ]
+      ]
+    ],
+    "expected": {
+      "row": {
+        "bestRepliesByOpponent": [
+          [
+            "E"
+          ],
+          [
+            "H"
+          ]
+        ],
+        "strictDominant": [],
+        "weakDominant": [],
+        "strictDominated": [],
+        "weakDominated": []
+      },
+      "column": {
+        "bestRepliesByOpponent": [
+          [
+            "e",
+            "h"
+          ],
+          [
+            "e"
+          ]
+        ],
+        "strictDominant": [],
+        "weakDominant": [
+          "e"
+        ],
+        "strictDominated": [],
+        "weakDominated": [
+          "h"
+        ]
+      }
+    }
+  },
+  {
+    "id": "yale_lecture1_egoists",
+    "origin": "Yale L1 grade game",
+    "rowStrategies": [
+      "α",
+      "β"
+    ],
+    "columnStrategies": [
+      "α",
+      "β"
+    ],
+    "payoffs": [
+      [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          -1
+        ]
+      ],
+      [
+        [
+          -1,
+          3
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    ],
+    "expected": {
+      "row": {
+        "bestRepliesByOpponent": [
+          [
+            "α"
+          ],
+          [
+            "α"
+          ]
+        ],
+        "strictDominant": [
+          "α"
+        ],
+        "weakDominant": [],
+        "strictDominated": [
+          "β"
+        ],
+        "weakDominated": []
+      },
+      "column": {
+        "bestRepliesByOpponent": [
+          [
+            "α"
+          ],
+          [
+            "α"
+          ]
+        ],
+        "strictDominant": [
+          "α"
+        ],
+        "weakDominant": [],
+        "strictDominated": [
+          "β"
+        ],
+        "weakDominated": []
+      }
+    }
+  },
+  {
+    "id": "author_mastery02",
+    "origin": "Author-created L2 Mastery 02",
+    "rowStrategies": [
+      "A",
+      "B",
+      "C"
+    ],
+    "columnStrategies": [
+      "X",
+      "Y"
+    ],
+    "payoffs": [
+      [
+        [
+          1,
+          1
+        ],
+        [
+          5,
+          2
+        ]
+      ],
+      [
+        [
+          4,
+          0
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      [
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    ],
+    "expected": {
+      "row": {
+        "bestRepliesByOpponent": [
+          [
+            "B"
+          ],
+          [
+            "A"
+          ]
+        ],
+        "strictDominant": [],
+        "weakDominant": [],
+        "strictDominated": [
+          "C"
+        ],
+        "weakDominated": []
+      },
+      "column": {
+        "bestRepliesByOpponent": [
+          [
+            "Y"
+          ],
+          [
+            "Y"
+          ],
+          [
+            "X"
+          ]
+        ],
+        "strictDominant": [],
+        "weakDominant": [],
+        "strictDominated": [],
+        "weakDominated": []
+      }
+    }
+  },
+  {
+    "id": "author_mastery03_weak_tie",
+    "origin": "Author-created L2 Mastery 03",
+    "rowStrategies": [
+      "A",
+      "B"
+    ],
+    "columnStrategies": [
+      "X",
+      "Y"
+    ],
+    "payoffs": [
+      [
+        [
+          4,
+          2
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      [
+        [
+          4,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ]
+    ],
+    "expected": {
+      "row": {
+        "bestRepliesByOpponent": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "A"
+          ]
+        ],
+        "strictDominant": [],
+        "weakDominant": [
+          "A"
+        ],
+        "strictDominated": [],
+        "weakDominated": [
+          "B"
+        ]
+      },
+      "column": {
+        "bestRepliesByOpponent": [
+          [
+            "X"
+          ],
+          [
+            "Y"
+          ]
+        ],
+        "strictDominant": [],
+        "weakDominant": [],
+        "strictDominated": [],
+        "weakDominated": []
+      }
+    }
+  },
+  {
+    "id": "author_mastery04_never_best_not_dominated",
+    "origin": "Author-created L2 Mastery 04",
+    "rowStrategies": [
+      "T",
+      "B"
+    ],
+    "columnStrategies": [
+      "L",
+      "C",
+      "R"
+    ],
+    "payoffs": [
+      [
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          2
+        ]
+      ]
+    ],
+    "expected": {
+      "row": {
+        "bestRepliesByOpponent": [
+          [
+            "T",
+            "B"
+          ],
+          [
+            "T",
+            "B"
+          ],
+          [
+            "T",
+            "B"
+          ]
+        ],
+        "strictDominant": [],
+        "weakDominant": [],
+        "strictDominated": [],
+        "weakDominated": []
+      },
+      "column": {
+        "bestRepliesByOpponent": [
+          [
+            "L"
+          ],
+          [
+            "C"
+          ]
+        ],
+        "strictDominant": [],
+        "weakDominant": [],
+        "strictDominated": [],
+        "weakDominated": []
+      }
+    }
+  }
+]

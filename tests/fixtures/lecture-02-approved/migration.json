@@ -1,0 +1,232 @@
+{
+  "sourceHeaders": {
+    "core": "# Я знаю, что ты знаешь…\n\n*Knowledge Atlas · Теория игр · Глава 02 · Core · сводная редакция на утверждение*\n\n",
+    "quick": "# Я знаю, что ты знаешь…\n\n*Knowledge Atlas · Теория игр · Глава 02 · Quick · сводная редакция на утверждение*\n\n",
+    "mastery": "# Я знаю, что ты знаешь… — Mastery\n\n*Knowledge Atlas · Теория игр · Глава 02 · Mastery · сводная редакция на утверждение*\n\n"
+  },
+  "replacements": {
+    "core": [
+      {
+        "source": "<!--WIDGET:NUMBER-->",
+        "mdx": "<NumberGuess config={config} previousConfig={previousConfig} client:load />"
+      },
+      {
+        "source": "<!--WIDGET:MATRIX_ABSTRACT-->",
+        "mdx": "<PayoffMatrix model={models.abstract} analysis={{ mode: \"explain\" }} client:load />"
+      },
+      {
+        "source": "<!--WIDGET:MATRIX_PASSES-->",
+        "mdx": "<PayoffMatrix model={models.hannibal} analysis={{ mode: \"explain\" }} client:load />"
+      },
+      {
+        "source": "<!--WIDGET:CHAIN-->",
+        "mdx": "<ConceptChain {...chain} />"
+      },
+      {
+        "source": "<!--WIDGET:LADDER-->",
+        "mdx": "<StrategyElimination content={elimination} client:load />"
+      },
+      {
+        "source": "<!--WIDGET:RETHINK-->",
+        "mdx": "<NumberGuess config={config} previousConfig={previousConfig} stage=\"revised\" client:load />"
+      },
+      {
+        "source": "<!--WIDGET:HATS-->",
+        "mdx": "<CommonKnowledgeHats content={hats} client:load />"
+      },
+      {
+        "source": "<details class=\"extra\">",
+        "mdx": "<details className=\"extra\">",
+        "all": true
+      },
+      {
+        "source": "{1, 2, …, 100}",
+        "mdx": "\\{1, 2, …, 100\\}",
+        "all": true
+      },
+      {
+        "source": "<details className=\"extra\"><summary>Зачем обозначения Sᵢ, sᵢ, s и s₋ᵢ?</summary>",
+        "mdx": "<details className=\"extra\">\n<summary>Зачем обозначения Sᵢ, sᵢ, s и s₋ᵢ?</summary>"
+      },
+      {
+        "source": "<details className=\"extra\"><summary>Точное математическое определение</summary>",
+        "mdx": "<details className=\"extra\">\n<summary>Точное математическое определение</summary>"
+      },
+      {
+        "source": "<details className=\"extra\"><summary>Почему пример связан с Ганнибалом?</summary>",
+        "mdx": "<details className=\"extra\">\n<summary>Почему пример связан с Ганнибалом?</summary>"
+      },
+      {
+        "source": "<details className=\"extra\"><summary>Почему это пока приблизительный расчёт?</summary>",
+        "mdx": "<details className=\"extra\">\n<summary>Почему это пока приблизительный расчёт?</summary>"
+      },
+      {
+        "source": "<details className=\"extra\"><summary>Почему нельзя просто сказать «рациональные игроки всегда выбирают 1»?</summary>",
+        "mdx": "<details className=\"extra\">\n<summary>Почему нельзя просто сказать «рациональные игроки всегда выбирают 1»?</summary>"
+      },
+      {
+        "source": "<details className=\"extra\"><summary>Что ещё известно об эксперименте Yale?</summary>",
+        "mdx": "<details className=\"extra\">\n<summary>Что ещё известно об эксперименте Yale?</summary>"
+      },
+      {
+        "source": "<details className=\"extra\"><summary>Как сделать факт общим знанием?</summary>",
+        "mdx": "<details className=\"extra\">\n<summary>Как сделать факт общим знанием?</summary>"
+      }
+    ],
+    "mastery": [
+      {
+        "source": "- A. Все разрешённые числа для второго игрока.\n- B. `(12, 62)` — действия игроков 1 и 3.\n- C. `40` — действие второго игрока.\n- D. `(12, 40, 62)` — профиль всех игроков.",
+        "mdx": "<AnswerPart task={taskById[\"m01\"]} partId=\"m01-answer\" config={config} client:load />"
+      },
+      {
+        "source": "<details><summary>Ответ и объяснение</summary>",
+        "mdx": "<CheckTask task={taskById[\"m01\"]} config={config} client:load />\n\n<details data-task-solution hidden><summary>Ответ и объяснение</summary>"
+      },
+      {
+        "source": "| Игрок I \\ Игрок II | X | Y |\n|:---|:---:|:---:|\n| **A** | (1, 1) | (5, 2) |\n| **B** | (4, 0) | (3, 1) |\n| **C** | (2, 4) | (1, 0) |",
+        "mdx": "<PayoffMatrix model={models[\"mastery-two\"]} analysis={{ mode: \"practice\" }} task={taskById[\"m02\"]} config={config} client:load />"
+      },
+      {
+        "source": "- A. B строго доминирует и A, и C.\n- B. B строго доминирует C, но у игрока I нет строго доминирующей стратегии.\n- C. C не доминируема, поскольку иногда приносит положительный выигрыш.\n- D. A строго доминирует B.",
+        "mdx": "<AnswerPart task={taskById[\"m02\"]} partId=\"m02-answer\" config={config} client:load />"
+      },
+      {
+        "source": "\n\n**Интерактивность:** повторно используемая матрица: клик по игроку I показывает розовую строку C, **не** окрашивает целиком B зелёным; лучшие ответы (B при X, A при Y) выделены отдельно.",
+        "mdx": "{/* EDITORIAL:m02 */}"
+      },
+      {
+        "source": "\n</details>",
+        "mdx": "\n{/* EDITORIAL-CHECKED:m02 */}\n</details>"
+      },
+      {
+        "source": "<details><summary>Ответ и объяснение</summary>",
+        "mdx": "<CheckTask task={taskById[\"m02\"]} config={config} client:load />\n\n<details data-task-solution hidden><summary>Ответ и объяснение</summary>"
+      },
+      {
+        "source": "| Игрок I \\ Игрок II | X | Y |\n|:---|:---:|:---:|\n| **A** | (4, 2) | (2, 0) |\n| **B** | (4, 1) | (1, 3) |",
+        "mdx": "<PayoffMatrix model={models[\"mastery-three\"]} analysis={{ mode: \"practice\" }} task={taskById[\"m03\"]} config={config} client:load />"
+      },
+      {
+        "source": "- A. A строго доминирует B.\n- B. A слабо доминирует B.\n- C. B слабо доминирует A.\n- D. Ни одна стратегия не доминирует другую.",
+        "mdx": "<AnswerPart task={taskById[\"m03\"]} partId=\"m03-part-1\" config={config} client:load />"
+      },
+      {
+        "source": "- A. Да, потому что A слабо доминирует B.\n- B. Нет: против X обе стратегии дают I выигрыш 4.",
+        "mdx": "<AnswerPart task={taskById[\"m03\"]} partId=\"m03-part-2\" config={config} client:load />"
+      },
+      {
+        "source": "<details><summary>Ответ и объяснение</summary>",
+        "mdx": "<CheckTask task={taskById[\"m03\"]} config={config} client:load />\n\n<details data-task-solution hidden><summary>Ответ и объяснение</summary>"
+      },
+      {
+        "source": "| Игрок I \\ Игрок II | L | C | R |\n|:---|:---:|:---:|:---:|\n| **T** | (1, 3) | (1, 0) | (1, 2) |\n| **B** | (1, 0) | (1, 3) | (1, 2) |",
+        "mdx": "<PayoffMatrix model={models[\"mastery-four\"]} analysis={{ mode: \"practice\" }} task={taskById[\"m04\"]} config={config} client:load />"
+      },
+      {
+        "source": "- A. Да. Если стратегия никогда не лучший ответ, она автоматически строго доминируема.\n- B. Нет. Ни L, ни C не превосходит R одновременно против T и B.\n- C. Да. L строго доминирует R.",
+        "mdx": "<AnswerPart task={taskById[\"m04\"]} partId=\"m04-answer\" config={config} client:load />"
+      },
+      {
+        "source": "<details><summary>Ответ и объяснение</summary>",
+        "mdx": "<CheckTask task={taskById[\"m04\"]} config={config} client:load />\n\n<details data-task-solution hidden><summary>Ответ и объяснение</summary>"
+      },
+      {
+        "source": "**[числовой ввод]**",
+        "mdx": "\n\n<AnswerPart task={taskById[\"m05\"]} partId=\"m05-first\" config={config} client:load />"
+      },
+      {
+        "source": "**[числовой ввод]**",
+        "mdx": "\n\n<AnswerPart task={taskById[\"m05\"]} partId=\"m05-second\" config={config} client:load />"
+      },
+      {
+        "source": "\n\n**Не спрашивать на память о последовательности `67→45`:** здесь числа и коэффициент намеренно новые.",
+        "mdx": "{/* EDITORIAL:m05 */}"
+      },
+      {
+        "source": "\n</details>",
+        "mdx": "\n{/* EDITORIAL-CHECKED:m05 */}\n</details>"
+      },
+      {
+        "source": "<details><summary>Ответ и объяснение</summary>",
+        "mdx": "<CheckTask task={taskById[\"m05\"]} config={config} client:load />\n\n<details data-task-solution hidden><summary>Ответ и объяснение</summary>"
+      },
+      {
+        "source": "- A. Все обязаны выбрать 1: это следует только из рациональности.\n- B. Предел 1 получается при дополнительной процедуре многократного исключения и соответствующих предположениях об остальных; из данных условий он не гарантирован.\n- C. Предел не может быть 1, потому что среднее всегда равно 50.",
+        "mdx": "<AnswerPart task={taskById[\"m06\"]} partId=\"m06-answer\" config={config} client:load />"
+      },
+      {
+        "source": "<details><summary>Ответ и объяснение</summary>",
+        "mdx": "<CheckTask task={taskById[\"m06\"]} config={config} client:load />\n\n<details data-task-solution hidden><summary>Ответ и объяснение</summary>"
+      },
+      {
+        "source": "- A. В обоих случаях информация является общим знанием.\n- B. В A факт известен обоим (взаимное знание), но не является общим; в B — общее знание.\n- C. В A даже взаимного знания нет, поскольку уведомления были личными.\n- D. В B информация не может стать общим знанием даже при публичном объявлении.",
+        "mdx": "<AnswerPart task={taskById[\"m07\"]} partId=\"m07-answer\" config={config} client:load />"
+      },
+      {
+        "source": "<details><summary>Ответ и объяснение</summary>",
+        "mdx": "<CheckTask task={taskById[\"m07\"]} config={config} client:load />\n\n<details data-task-solution hidden><summary>Ответ и объяснение</summary>"
+      },
+      {
+        "source": "**[свободный ответ, без автоматической оценки]**",
+        "mdx": "\n\n<SelfExplanation config={config} label=\"Твоё объяснение — 1–2 предложения\" client:load />"
+      },
+      {
+        "source": "<details data-task-solution hidden><summary>Ответ и объяснение</summary>",
+        "mdx": "<details data-task-solution hidden>\n<summary>Ответ и объяснение</summary>"
+      },
+      {
+        "source": "<details data-task-solution hidden><summary>Ответ и объяснение</summary>",
+        "mdx": "<details data-task-solution hidden>\n<summary>Ответ и объяснение</summary>"
+      },
+      {
+        "source": "<details data-task-solution hidden><summary>Ответ и объяснение</summary>",
+        "mdx": "<details data-task-solution hidden>\n<summary>Ответ и объяснение</summary>"
+      },
+      {
+        "source": "<details data-task-solution hidden><summary>Ответ и объяснение</summary>",
+        "mdx": "<details data-task-solution hidden>\n<summary>Ответ и объяснение</summary>"
+      },
+      {
+        "source": "<details data-task-solution hidden><summary>Ответ и объяснение</summary>",
+        "mdx": "<details data-task-solution hidden>\n<summary>Ответ и объяснение</summary>"
+      },
+      {
+        "source": "<details data-task-solution hidden><summary>Ответ и объяснение</summary>",
+        "mdx": "<details data-task-solution hidden>\n<summary>Ответ и объяснение</summary>"
+      },
+      {
+        "source": "<details data-task-solution hidden><summary>Ответ и объяснение</summary>",
+        "mdx": "<details data-task-solution hidden>\n<summary>Ответ и объяснение</summary>"
+      },
+      {
+        "source": "<details><summary>Один возможный разбор</summary>",
+        "mdx": "<details>\n<summary>Один возможный разбор</summary>"
+      },
+      {
+        "source": "*Примечание для редактора: смешанные стратегии в главе 2 не анализируются.*",
+        "mdx": "{/* EDITORIAL:m04 */}"
+      }
+    ],
+    "quick": []
+  },
+  "sourceSha256": {
+    "core": "85680a6bd50b09946e0c1b9d27b00262e67f2010429d4c6f456bf4d8924993eb",
+    "quick": "ece1dc4324fb0c6df39379630a3d23123e37a609bd57af93a682f3fe644586e3",
+    "mastery": "919dbd3ecc7cb41617acf6f69aebdc49d3e4b7bea404dddbc46c093e072759bb"
+  },
+  "coreSourceNotes": "<details class=\"extra\"><summary>Источники и редакционные пояснения</summary>\n\nОсновной источник: **Ben Polak, Yale ECON 159, Lecture 2 — Putting Yourselves into Other People's Shoes**, 10 сентября 2007 года. [Видео и транскрипт](https://oyc.yale.edu/economics/econ-159/lecture-2). Дополнительно сверены предоставленные **blackboard notes 02** (стр. 1–2). Таймкоды в разделах относятся к оригинальной лекции, не к длительности чтения.\n\nРедакторские уточнения к первоисточнику: различие между «доминирует другую стратегию» и «является доминирующей среди всех»; оговорка о слабом доминировании и невозможности автоматически вывести единственный реальный ответ из рациональности. Интерфейс сравнивает **чистые стратегии**; анализ доминирования смешанными стратегиями в эту главу не включён.\n\n</details>\n",
+  "editorialNotes": [
+    {
+      "task": "m02",
+      "text": "**Интерактивность:** повторно используемая матрица: клик по игроку I показывает розовую строку C, **не** окрашивает целиком B зелёным; лучшие ответы (B при X, A при Y) выделены отдельно."
+    },
+    {
+      "task": "m05",
+      "text": "**Не спрашивать на память о последовательности `67→45`:** здесь числа и коэффициент намеренно новые."
+    },
+    {
+      "task": "m04",
+      "text": "*Примечание для редактора: смешанные стратегии в главе 2 не анализируются.*"
+    }
+  ]
+}

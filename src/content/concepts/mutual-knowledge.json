@@ -1,0 +1,10 @@
+{
+  "id": "mutual-knowledge",
+  "title": "Взаимное знание",
+  "definition": "Взаимное знание: каждый знает факт X. Это ещё не означает, что каждый знает, что остальные знают X.",
+  "stepId": "common-knowledge",
+  "prerequisites": [],
+  "related": [
+    "common-knowledge"
+  ]
+}

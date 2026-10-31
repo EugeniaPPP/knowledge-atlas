@@ -3,7 +3,7 @@ import type { Locale } from './schema';
 import { translateChapter } from './translations';
 
 export async function localizedChapters(locale: Locale) {
-  const chapters = await getCollection('chapters');
+  const chapters = (await getCollection('chapters')).filter(({ data }) => data.availableLocales.includes(locale));
   if (locale === 'ru') return chapters.map(({ data }) => data);
   const translations = await getCollection('translations');
   return chapters.map(({ data }) => {
@@ -22,3 +22,11 @@ export async function lessonPaths(locale: Locale) {
 }
 export async function coursePaths(locale: Locale) { return (await getCollection('courses')).map(({ data: course }) => ({ params: { course: course.id }, props: { course, locale } })); }
 export async function conceptPaths(locale: Locale) { return (await getCollection('concepts')).filter(({ data }) => data.locale === locale).map((entry) => ({ params: { concept: entry.data.id }, props: { entry, locale } })); }
+
+export async function availableLanguagesForPath(path: string): Promise<Locale[]> {
+  const lesson = path.match(/\/courses\/([^/]+)\/([^/]+)\/(?:quick|core|mastery)\//);
+  if (lesson) return (await getCollection('chapters')).find(({ data }) => data.courseId === lesson[1] && data.slug === lesson[2])?.data.availableLocales || [];
+  const concept = path.match(/\/concepts\/([^/]+)\//);
+  if (concept) return (await getCollection('concepts')).filter(({ data }) => data.id === concept[1]).map(({ data }) => data.locale);
+  return ['ru', 'en'];
+}

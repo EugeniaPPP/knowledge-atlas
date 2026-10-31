@@ -1,0 +1,13 @@
+{
+  "id": "weak-dominance",
+  "title": "Слабое доминирование",
+  "definition": "Не хуже при всех действиях соперника и лучше хотя бы при одном. Слабое доминирование не означает обязательный выбор доминирующей стратегии.",
+  "stepId": "weak-dominance",
+  "prerequisites": [
+    "strict-dominance"
+  ],
+  "related": [
+    "dominated-strategy",
+    "iterated-elimination"
+  ]
+}

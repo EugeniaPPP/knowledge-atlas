@@ -1,0 +1,5 @@
+---
+interface Props { label: string; items: { label: string; value: string }[] }
+const { label, items } = Astro.props;
+---
+<figure class="concept-chain" aria-label={label}><figcaption>{label}</figcaption><ol>{items.map((item) => <li><span>{item.label}</span><strong>{item.value}</strong></li>)}</ol></figure>

@@ -8,9 +8,11 @@ import themeInit from '../scripts/theme-init.js?raw';
 import { sitePath, languagePath } from '../lib/navigation/paths';
 import { getUI } from '../i18n/ui';
 import type { Locale } from '../lib/content/schema';
+import { availableLanguagesForPath } from '../lib/content/queries';
 interface Props { title: string; description?: string; courseId?: string; locale?: Locale; is404?: boolean }
 const { title, description, courseId = 'yale-econ-159', locale = 'ru', is404 = false } = Astro.props;
 const t = getUI(locale);
+const availableLanguages = await availableLanguagesForPath(Astro.url.pathname);
 ---
 <!doctype html>
 <html lang={locale}>
@@ -24,7 +26,7 @@ const t = getUI(locale);
     <meta name="robots" content="noindex, nofollow" />
     <link rel="icon" href={sitePath('/favicon.svg')} type="image/svg+xml" />
     {!is404 && <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />}
-    {!is404 && (['ru', 'en'] as const).map((language) => <link rel="alternate" hreflang={language} href={new URL(languagePath(Astro.url.pathname, language), Astro.site)} />)}
+    {!is404 && availableLanguages.map((language) => <link rel="alternate" hreflang={language} href={new URL(languagePath(Astro.url.pathname, language), Astro.site)} />)}
     <title>{title} · Knowledge Atlas</title>
     <script is:inline>document.documentElement.dataset.enhanced = 'true';</script>
   </head>

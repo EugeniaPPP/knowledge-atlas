@@ -1,5 +1,6 @@
 {
   "schemaVersion": 1,
+  "availableLocales": ["ru", "en"],
   "id": "yale-econ-159/lecture-01",
   "courseId": "yale-econ-159",
   "slug": "lecture-01",

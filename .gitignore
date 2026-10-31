@@ -8,3 +8,8 @@ test-results/
 .env
 .env.*
 !.env.example
+.private/
+/references/handoff-lecture-02/
+/references/sources/Lecture_02_transcript.txt
+/references/sources/blackboard02_0_0.pdf
+/references/sources/README_LOCAL_ONLY.md

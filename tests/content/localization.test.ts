@@ -9,6 +9,7 @@ import { getUI } from '../../src/i18n/ui';
 import terminology from '../../src/content/terminology/game-theory.json';
 import { completeStep, initialState, exportState, parseImport } from '../../src/lib/learning/state';
 import { storageKey } from '../../src/lib/learning/store';
+import { chapter as chapterTwo } from '../../src/content/chapters/yale-econ-159/lecture-02/data';
 
 const path = 'src/content/chapters/yale-econ-159/lecture-01/';
 const read = (name: string) => readFileSync(new URL(`../../${name}`, import.meta.url), 'utf8');
@@ -52,8 +53,15 @@ test('stale translations and changed answer keys are rejected before publication
 
 test('concept graph and UI placeholders remain equivalent across languages', () => {
   const names = readdirSync(new URL('../../src/content/concepts/', import.meta.url)).filter((f) => f.endsWith('.json'));
-  assert.deepEqual(readdirSync(new URL('../../src/content/concepts/en/', import.meta.url)).sort(), names.sort());
+  const translatedNames = readdirSync(new URL('../../src/content/concepts/en/', import.meta.url));
+  assert.ok(translatedNames.every((name) => names.includes(name)));
   for (const file of names) {
+    if (!translatedNames.includes(file)) {
+      const id = file.replace(/\.json$/, '');
+      const occurrences = [ru.chapter, chapterTwo].filter((chapter) => chapter.conceptIds.includes(id));
+      assert.ok(occurrences.length && occurrences.every((chapter) => !chapter.availableLocales.includes('en')), file);
+      continue;
+    }
     const { title, definition, ...a } = JSON.parse(read(`src/content/concepts/${file}`));
     const { title: translated, definition: translatedDefinition, locale, ...b } = JSON.parse(read(`src/content/concepts/en/${file}`));
     assert.deepEqual(b, a); assert.equal(locale, 'en');

@@ -1,0 +1,12 @@
+{
+  "id": "iterated-elimination",
+  "title": "Последовательное исключение стратегий",
+  "definition": "Каждый новый этап зависит от того, что игроки ожидают друг от друга. Одна лишь рациональность не гарантирует всю цепочку исключения слабо доминируемых стратегий.",
+  "stepId": "iterated-elimination",
+  "prerequisites": [
+    "weak-dominance"
+  ],
+  "related": [
+    "higher-order-beliefs"
+  ]
+}

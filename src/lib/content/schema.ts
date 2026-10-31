@@ -14,6 +14,7 @@ export const stepSchema = z.object({
 
 export const chapterSchema = z.object({
   locale: localeSchema.default('ru'),
+  availableLocales: z.array(localeSchema).min(1).default(['ru', 'en']),
   schemaVersion: z.literal(1),
   id: identifier,
   courseId: identifier,
@@ -49,6 +50,7 @@ export const modelSchema = z.object({
   columns: z.array(z.string()).min(1),
   payoffs: z.array(z.array(pair)),
   outcomes: z.array(z.array(outcome)).optional(),
+  players: z.object({ row: z.string().min(1), column: z.string().min(1), meaning: z.string().min(1) }).optional(),
 }).superRefine((m, ctx) => {
   for (const matrix of [m.payoffs, m.outcomes].filter(Boolean)) {
     if (matrix!.length !== m.rows.length || matrix!.some((r) => r.length !== m.columns.length))
@@ -88,6 +90,22 @@ export const exercisesSchema = z.array(exerciseSchema);
 export const activityCopySchema = z.object({ title: z.string().min(1), label: z.string().min(1), lead: z.string().optional(), text: z.record(z.string(), z.string()) });
 export const writtenExerciseSchema = z.object({ id: identifier, title: z.string(), prompt: z.string(), context: z.string().optional(), modelId: identifier.optional(), rubric: z.string() });
 export const interactionContentSchema = z.object({ activities: z.record(z.string(), activityCopySchema), written: writtenExerciseSchema, quickAnswer: z.object({ lead: z.string(), body: z.string() }) });
+const answerPartSchema = z.discriminatedUnion('kind', [
+  z.object({ id: identifier, kind: z.literal('choice'), label: z.string(), options: z.array(z.object({ id: identifier, text: z.string() })).min(2), correct: identifier }),
+  z.object({ id: identifier, kind: z.literal('integer'), label: z.string(), min: z.number().int(), max: z.number().int(), correct: z.number().int() }),
+]);
+export const assessmentTaskSchema = z.object({
+  id: identifier, modelId: identifier.optional(), origin: z.enum(['lecture', 'editorial']),
+  parts: z.array(answerPartSchema).min(1),
+}).superRefine((task, ctx) => {
+  if (new Set(task.parts.map((p) => p.id)).size !== task.parts.length) ctx.addIssue({ code: 'custom', message: 'Part IDs must be unique' });
+  for (const part of task.parts) {
+    const valid = part.kind === 'choice' ? new Set(part.options.map((o) => o.id)).size === part.options.length && part.options.some((o) => o.id === part.correct) : part.min <= part.correct && part.correct <= part.max;
+    if (!valid) ctx.addIssue({ code: 'custom', message: `Invalid answer key: ${part.id}` });
+  }
+});
+export type AssessmentTask = z.infer<typeof assessmentTaskSchema>;
+export type AnswerPart = AssessmentTask['parts'][number];
 export type ActivityCopy = z.infer<typeof activityCopySchema>;
 export type WrittenExercise = z.infer<typeof writtenExerciseSchema>;
 export type Chapter = z.infer<typeof chapterSchema>;

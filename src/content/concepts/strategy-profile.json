@@ -1,0 +1,12 @@
+{
+  "id": "strategy-profile",
+  "title": "Профиль стратегий",
+  "definition": "Профиль стратегий — по одному выбранному действию каждого игрока.",
+  "stepId": "normal-form",
+  "prerequisites": [
+    "strategy"
+  ],
+  "related": [
+    "normal-form"
+  ]
+}
