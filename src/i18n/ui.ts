@@ -1,6 +1,9 @@
 import type { Locale } from '../lib/content/schema';
 
 const text = {
+  courseContents: ['Содержание курса', 'Course contents'], closeCourseContents: ['Закрыть содержание курса', 'Close course contents'], coreSections: ['Разделы Core', 'Core sections'],
+  contentsShort: ['Содержание', 'Contents'], conceptsShort: ['Понятия', 'Concepts'],
+  chapterSources: ['Источники главы {number}', 'Chapter {number} sources'], backToContents: ['← К содержанию курса', '← Back to course contents'], completedStep: ['Шаг завершён', 'Step completed'], lockedStep: ['Откроется после предыдущего шага', 'Available after the preceding step'],
   matrixScrollHint: ['Матрицу можно прокрутить по горизонтали; с клавиатуры — стрелками после перехода в таблицу.', 'Scroll the matrix horizontally; with a keyboard, focus the table region and use the arrow keys.'],
   translationPending: ['Английская версия этой страницы будет добавлена позже.', 'The English version of this page will be added later.'],
   matrixHint: ['Нажми на имя игрока, чтобы сравнить его выигрыши.', 'Select a player to compare their payoffs.'], compareColumns: ['Сравниваем по столбцам.', 'Compare within each column.'], compareRows: ['Сравниваем по строкам.', 'Compare within each row.'],

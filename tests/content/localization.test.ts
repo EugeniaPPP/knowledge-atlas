@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import * as ru from '../../src/content/chapters/yale-econ-159/lecture-01/data';
 import * as en from '../../src/content/chapters/yale-econ-159/lecture-01/en/data';
@@ -83,7 +83,11 @@ test('language-independent progress and notes remain compatible with existing ex
 
 test('English terminology retains source fingerprints and distinct dominance meanings', () => {
   assert.equal(terminology.version, en.translation.terminologyVersion);
-  for (const item of Object.values(terminology.sources)) assert.equal(createHash('sha256').update(readFileSync(new URL(`../../${item.path}`, import.meta.url))).digest('hex'), item.sha256);
+  for (const item of Object.values(terminology.sources)) {
+    const file = new URL(`../../${item.path}`, import.meta.url);
+    if (existsSync(file)) assert.equal(createHash('sha256').update(readFileSync(file)).digest('hex'), item.sha256);
+    else { assert.ok('localOnly' in item && item.localOnly && 'originalUrl' in item); assert.match(item.sha256, /^[a-f0-9]{64}$/); }
+  }
   for (const term of terminology.terms) {
     assert.ok(term.ru && term.en && term.evidence.length);
     for (const evidence of term.evidence) assert.ok(evidence.sourceId in terminology.sources);

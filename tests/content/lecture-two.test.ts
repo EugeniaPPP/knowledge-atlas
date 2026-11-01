@@ -30,7 +30,7 @@ test('all three Lecture 2 editions preserve the approved source through reversib
   for (const note of migration.editorialNotes) assert.ok(normalize(sourceNotes).includes(normalize(note.text)), note.task);
 });
 test('Lecture 2 metadata and structured assessments match reviewed blocks and answer lists', () => {
-  assert.deepEqual(chapter.availableLocales, ['ru']); assert.equal(chapter.steps.length, 8);
+  assert.deepEqual(chapter.availableLocales, ['ru', 'en']); assert.equal(chapter.steps.length, 8);
   assert.equal(tasks.length, 7); assert.equal(new Set(tasks.flatMap((t) => t.parts.map((p) => p.id))).size, 9);
   const source = read('tests/fixtures/lecture-02-approved/mastery.md');
   const groups = [...source.matchAll(/(?:^- [A-D]\. .*(?:\n|$))+/gm)].map((m) => [...m[0].matchAll(/^- ([A-D])\. (.*)$/gm)].map((o) => ({ id: o[1].toLowerCase(), text: o[2] })));

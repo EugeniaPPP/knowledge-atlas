@@ -1,0 +1,13 @@
+{
+  "id": "common-knowledge",
+  "title": "Common knowledge",
+  "definition": "Everyone knows X, everyone knows that everyone knows X, everyone knows that everyone knows that everyone knows X, and so on.",
+  "stepId": "common-knowledge",
+  "prerequisites": [
+    "mutual-knowledge"
+  ],
+  "related": [
+    "higher-order-beliefs"
+  ],
+  "locale": "en"
+}

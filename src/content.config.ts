@@ -2,7 +2,7 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'zod';
 import { chapterSchema, courseSchema, modeSchema, localeSchema } from './lib/content/schema';
-import { translationSchema } from './lib/content/translations';
+import { allTranslationsSchema } from './lib/content/translations';
 
 const chapters = defineCollection({
   loader: glob({ pattern: '**/chapter.json', base: './src/content/chapters' }),
@@ -23,5 +23,5 @@ const concepts = defineCollection({
     prerequisites: z.array(z.string()), related: z.array(z.string()), stepId: z.string() }),
 });
 const courses = defineCollection({ loader: glob({ pattern: '*.json', base: './src/content/courses' }), schema: courseSchema });
-const translations = defineCollection({ loader: glob({ pattern: '**/en/content.json', base: './src/content/chapters' }), schema: translationSchema });
+const translations = defineCollection({ loader: glob({ pattern: '**/en/content.json', base: './src/content/chapters' }), schema: allTranslationsSchema });
 export const collections = { chapters, lessons, sourceNotes, concepts, courses, translations };

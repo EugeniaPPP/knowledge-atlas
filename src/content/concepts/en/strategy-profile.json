@@ -1,0 +1,13 @@
+{
+  "id": "strategy-profile",
+  "title": "Strategy profile",
+  "definition": "A strategy profile specifies one chosen action for each player.",
+  "stepId": "normal-form",
+  "prerequisites": [
+    "strategy"
+  ],
+  "related": [
+    "normal-form"
+  ],
+  "locale": "en"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "dominated-strategy",
+  "title": "Dominated strategy",
+  "definition": "A strictly dominated strategy has at least one alternative that yields a higher payoff against every choice of the opponent.",
+  "stepId": "dominated-strategies",
+  "prerequisites": [
+    "strategy",
+    "payoff"
+  ],
+  "related": [
+    "strict-dominance",
+    "weak-dominance",
+    "best-response"
+  ],
+  "locale": "en"
+}

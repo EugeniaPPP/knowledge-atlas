@@ -16,14 +16,20 @@ if (reader) {
   function render() {
     const { state, message } = store.getSnapshot();
     const count = state.completedStepIds.length;
-    document.querySelectorAll('[data-progress-label]').forEach((el) => { el.textContent = format(t.progress, { count, total: config.stepIds.length }); });
+    const progressLabel = format(t.progress, { count, total: config.stepIds.length });
+    document.querySelectorAll('[data-progress-label]').forEach((el) => { if (el.textContent !== progressLabel) el.textContent = progressLabel; });
+    document.querySelector('[data-progress-count]')?.replaceChildren(String(count));
+    document.querySelector('[data-core-progress]')?.setAttribute('title', progressLabel);
     const progress = document.querySelector('[data-progress]');
     progress?.setAttribute('aria-valuenow', String(count));
+    progress?.setAttribute('aria-valuetext', progressLabel);
     document.querySelectorAll<HTMLElement>('[data-progress-step]').forEach((el) => { el.dataset.done = String(state.completedStepIds.includes(el.dataset.progressStep!)); });
-    steps.forEach((step) => { step.hidden = !(state.reading.revealAll || state.unlockedStepIds.includes(step.dataset.coreStep!)); });
+    steps.forEach((step) => {
+      step.hidden = !(state.reading.revealAll || state.unlockedStepIds.includes(step.dataset.coreStep!));
+      step.dataset.completed = String(state.completedStepIds.includes(step.dataset.coreStep!));
+    });
     document.querySelectorAll<HTMLButtonElement>('[data-complete-step]').forEach((button) => {
-      const id = button.dataset.completeStep!, isLast = id === config.stepIds.at(-1), done = state.completedStepIds.includes(id);
-      button.textContent = isLast ? done ? t.toMastery : t.finishCore : done ? t.stepDone : t.continue;
+      button.hidden = state.completedStepIds.includes(button.dataset.completeStep!);
     });
     const toggle = document.querySelector<HTMLButtonElement>('[data-toggle-all]');
     if (toggle) { toggle.textContent = state.reading.revealAll ? t.sequential : t.revealAll; toggle.setAttribute('aria-pressed', String(state.reading.revealAll)); }
@@ -31,6 +37,7 @@ if (reader) {
       const id = link.dataset.stepLink!, available = state.reading.revealAll || state.unlockedStepIds.includes(id);
       link.dataset.done = String(state.completedStepIds.includes(id));
       link.setAttribute('aria-disabled', String(!available));
+      link.setAttribute('aria-label', `${link.dataset.stepTitle}${!available ? ` — ${t.lockedStep}` : state.completedStepIds.includes(id) ? ` — ${t.completedStep}` : ''}`);
       if (state.reading.lastStepId === id && mode === 'core') link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current');
     });
     document.querySelectorAll('[data-storage-message]').forEach((el) => { el.textContent = message; });
@@ -45,35 +52,54 @@ if (reader) {
   document.querySelector('[data-toggle-all]')?.addEventListener('click', () => store.update((s) => ({ ...s, reading: { ...s.reading, revealAll: !s.reading.revealAll } })));
   document.querySelector('[data-reveal-from-toc]')?.addEventListener('click', () => {
     store.update((s) => ({ ...s, reading: { ...s.reading, revealAll: true } }));
-    if (mode !== 'core') window.location.assign(`${base}/core/`); else (document.getElementById('contents-dialog') as HTMLDialogElement).close();
+    if (mode !== 'core') window.location.assign(`${base}/core/`); else (document.getElementById('course-dialog') as HTMLDialogElement).close();
   });
   document.querySelectorAll<HTMLAnchorElement>('[data-step-link]').forEach((link) => link.addEventListener('click', (event) => {
     if (link.getAttribute('aria-disabled') === 'true') { event.preventDefault(); return; }
-    if (mode === 'core') (document.getElementById('contents-dialog') as HTMLDialogElement).close();
+    if (mode === 'core' && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
+      event.preventDefault();
+      const dialog = document.getElementById('course-dialog') as HTMLDialogElement;
+      dialog.dataset.skipReturnFocus = 'true'; dialog.close();
+      const target = document.getElementById(link.dataset.stepLink!);
+      store.update((s) => ({ ...s, reading: { ...s.reading, lastStepId: link.dataset.stepLink! } }));
+      target?.scrollIntoView({ block: 'start', behavior: reduced() ? 'instant' : 'smooth' });
+      const heading = target?.querySelector('h2');
+      if (heading) { heading.tabIndex = -1; heading.focus({ preventScroll: true }); }
+      history.pushState(null, '', link.href);
+    }
   }));
   document.querySelectorAll<HTMLButtonElement>('[data-complete-step]').forEach((button) => button.addEventListener('click', () => {
     const id = button.dataset.completeStep!; store.complete(id);
     const next = config.stepIds[config.stepIds.indexOf(id) + 1];
     if (!next) { window.location.assign(`${base}/mastery/`); return; }
     const target = document.getElementById(next);
+    store.update((s) => ({ ...s, reading: { ...s.reading, lastStepId: next } }));
     target?.scrollIntoView({ block: 'start', behavior: reduced() ? 'instant' : 'smooth' });
     const heading = target?.querySelector('h2');
     if (heading) { heading.tabIndex = -1; heading.focus({ preventScroll: true }); }
     history.replaceState(null, '', `#${next}`);
   }));
   if (mode === 'core') {
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
-      if (!visible) return;
-      const id = (visible.target as HTMLElement).dataset.coreStep!;
-      if (store.getSnapshot().state.reading.lastStepId !== id) store.update((s) => ({ ...s, reading: { ...s.reading, lastStepId: id } }));
-      const label = reader!.querySelector('[data-current-label]');
-      if (label) label.textContent = `${t.current} · ${String(config.stepIds.indexOf(id) + 1).padStart(2, '0')} / ${String(config.stepIds.length).padStart(2, '0')}`;
-    }, { rootMargin: '-5% 0px -70% 0px', threshold: 0 });
-    steps.forEach((step) => observer.observe(step));
+    let observer: IntersectionObserver;
+    function watchReadingPosition() {
+      observer?.disconnect();
+      // Observe a reading line below the sticky toolbar, rather than overlapping tall sections.
+      const line = Math.min(innerHeight - 1, parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--reader-offset')) + 48);
+      observer = new IntersectionObserver((entries) => {
+        if (document.querySelector('dialog[open]')) return;
+        const visible = entries.find((entry) => entry.isIntersecting);
+        if (!visible) return;
+        const id = (visible.target as HTMLElement).dataset.coreStep!;
+        if (store.getSnapshot().state.reading.lastStepId !== id) store.update((s) => ({ ...s, reading: { ...s.reading, lastStepId: id } }));
+      }, { rootMargin: `-${line}px 0px -${innerHeight - line - 1}px 0px`, threshold: 0 });
+      steps.forEach((step) => observer.observe(step));
+    }
+    watchReadingPosition();
+    window.addEventListener('resize', watchReadingPosition, { passive: true });
     const hash = decodeURIComponent(window.location.hash.slice(1));
     if (config.stepIds.includes(hash)) {
       if (!store.getSnapshot().state.unlockedStepIds.includes(hash)) store.update((s) => ({ ...s, reading: { ...s.reading, revealAll: true } }));
+      store.update((s) => ({ ...s, reading: { ...s.reading, lastStepId: hash } }));
       requestAnimationFrame(() => document.getElementById(hash)?.scrollIntoView({ behavior: 'instant' }));
     }
   }

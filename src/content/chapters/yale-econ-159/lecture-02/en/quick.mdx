@@ -1,0 +1,70 @@
+---
+chapterId: yale-econ-159/lecture-02
+locale: en
+mode: quick
+---
+
+**The main idea:** in a strategic situation, you need to calculate your own payoff and anticipate other people’s decisions—including **how they reason about you**.
+
+## The ingredients of a game
+
+- **Players** choose actions from their available **strategies**.
+- A player’s **payoff** depends on the strategies chosen by all participants.
+- A **strategy profile** specifies one chosen action for each player.
+
+| Notation | Meaning |
+|---|---|
+| `Sᵢ` | All strategies available to player *i* |
+| `sᵢ` | A particular strategy of player *i* |
+| `s` | The strategy profile of all players |
+| `s₋ᵢ` | The choices of all players except *i* |
+| `uᵢ(sᵢ, s₋ᵢ)` | Player *i*’s payoff given their own action and everyone else’s actions |
+
+## Three questions to ask of a matrix
+
+1. **What is the best response?** Which strategy maximizes the player’s payoff *when the opponent’s choice is already known*?
+2. **Is there a dominant strategy?** Does one strategy **dominate every other strategy** available to the player, whatever the opponent does, strictly or weakly?
+3. **Is there a dominated strategy?** Is there at least one alternative that beats a particular strategy across all of the opponent’s choices?
+
+**Strict dominance:** better against **every** action of the opponent. **Weak dominance:** no worse against any action and strictly better against at least one.
+
+Here are **only player II’s payoffs**; their choices are the columns:
+
+| Player I’s action | L | C | R |
+|:---|---:|---:|---:|
+| T | −1 | **3** | 0 |
+| B | **4** | 2 | 0 |
+
+Player II has **no dominant strategy**: C is best against T, while L is best against B. But **R is strictly dominated by C**: `3 > 0` and `2 > 0`. This does not make C dominant against L.
+
+> **Keep the distinction:** “C dominates R” and “C is a dominant strategy” are different claims.
+
+## Why 1 appears in the “⅔ of the mean” game
+
+Everyone chooses an integer from **1–100**, aiming to be closest to **⅔ of the mean of all choices**.
+
+The highest possible target is `66⅔`, so **68–100** can first be eliminated as weakly dominated. If *everyone* eliminates these numbers, the target is at most `44⅔`: in the reduced game, eliminate **46–67**. Continuing `100 → 67 → 45 → 30 → 20 → … → 1` yields a **conditional theoretical limit of 1**.
+
+**Important:** rationality alone is insufficient for the entire chain. We also need the assumption that players avoid weakly dominated strategies at every stage, together with the relevant knowledge about others doing so. In the actual Yale class in 2007, **9 won**: the observed mean was about `13⅓`.
+
+## Everyone knows ≠ common knowledge
+
+- **Mutual knowledge:** everyone knows a fact X.
+- **Common knowledge:** everyone knows X, everyone knows that everyone knows X, everyone knows that everyone knows that everyone knows X, and so on.
+
+In the two-pink-hats example, each person sees the other person’s pink hat, so **each knows** that at least one hat is pink. But neither sees their own hat, so **neither knows that the other knows this fact**. There is mutual knowledge, but no common knowledge.
+
+**Connection to chapter 1:** there we considered other players’ **goals and payoffs**; now we have added **assumptions about their reasoning and knowledge**.
+
+<details>
+<summary>The precise conditions for strict and weak dominance</summary>
+
+Compare two strategies `a` and `b` **of the same player** against every possible `s₋ᵢ`.
+
+- `a` strictly dominates `b` if `uᵢ(a, s₋ᵢ) > uᵢ(b, s₋ᵢ)` for every `s₋ᵢ`.
+- `a` weakly dominates `b` if `uᵢ(a, s₋ᵢ) ≥ uᵢ(b, s₋ᵢ)` for every `s₋ᵢ`, with a strict inequality for at least one `s₋ᵢ`.
+
+This chapter compares **pure strategies**.
+</details>
+
+*Based on Core Lecture 02 v2 and Yale ECON 159, Lecture 2, September 10, 2007. Quick is a standalone review; completing Core is not required.*

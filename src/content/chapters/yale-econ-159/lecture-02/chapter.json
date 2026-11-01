@@ -2,7 +2,8 @@
   "schemaVersion": 1,
   "locale": "ru",
   "availableLocales": [
-    "ru"
+    "ru",
+    "en"
   ],
   "id": "yale-econ-159/lecture-02",
   "courseId": "yale-econ-159",

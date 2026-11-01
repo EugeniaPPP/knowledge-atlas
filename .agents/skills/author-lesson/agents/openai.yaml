@@ -1,0 +1,4 @@
+interface:
+  display_name: "Author Lesson"
+  short_description: "Двуязычные главы с редакционными согласованиями"
+  default_prompt: "Используй $author-lesson для инвентаризации источников новой главы Knowledge Atlas и подготовки Blueprint; остановись для редакционного согласования."

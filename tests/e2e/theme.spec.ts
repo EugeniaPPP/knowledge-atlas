@@ -1,3 +1,4 @@
+import { openSources } from './helpers/navigation';
 import { test, expect, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
@@ -122,7 +123,8 @@ test('graphite remains accessible in both languages, all modes, dialogs and narr
       await expect(toggle(page)).toHaveCSS('height', '44px');
     }
     await audit();
-    for (const id of ['sources-dialog', 'course-dialog', 'concepts-dialog']) {
+    await openSources(page); await audit(); await page.keyboard.press('Escape');
+    for (const id of ['course-dialog', 'concepts-dialog']) {
       await page.locator(`[data-open-dialog="${id}"]:visible`).first().click();
       await audit(); await page.keyboard.press('Escape');
     }

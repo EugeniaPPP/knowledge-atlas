@@ -1,0 +1,207 @@
+---
+chapterId: yale-econ-159/lecture-02
+locale: en
+mode: mastery
+---
+
+import Exercise from "../../../../../components/editorial/Exercise.astro";
+import PayoffMatrix from "../../../../../components/activities/PayoffMatrix.tsx";
+import SelfExplanation from "../../../../../components/activities/SelfExplanation.tsx";
+import { AnswerPart, CheckTask, MasteryScore } from "../../../../../components/activities/Assessment.tsx";
+import { tasks, taskById, models, config } from "./data";
+
+**Goal:** compare strategies yourself, check assumptions, and analyze a new situation, rather than recall a number from Core. **7 exercises; allow 15–20 minutes**. The final self-explanation is optional.
+
+**General rules:** every question is self-contained; the matrices provide all the numbers you need. In a pair `(a, b)`, **the first number is player I’s payoff (rows)**, and **the second is player II’s payoff (columns)**. All dominance comparisons are between **pure strategies**. You can change and recheck your answers. Feedback explains *why*.
+
+---
+
+<MasteryScore tasks={tasks} config={config} client:load />
+
+<Exercise task={taskById["m01"]}>
+
+## Practice 01 / 07. Who chose what?
+
+Three players simultaneously choose **12, 40, and 62**. The strategy profile is `s = (12, 40, 62)`.
+
+**Question:** what does `s₋₂` mean in this game?
+
+<AnswerPart task={taskById["m01"]} partId="m01-answer" config={config} client:load />
+
+<CheckTask task={taskById["m01"]} config={config} client:load />
+
+<details data-task-solution hidden>
+<summary>Answer and explanation</summary>
+
+**B.** The subscript `−2` means “everyone except the second player.” Thus `s₂ = 40`, while `s₋₂ = (12, 62)`. The profile itself is `s`; the second player’s available strategies form `S₂`.
+</details>
+
+---
+
+</Exercise>
+
+<Exercise task={taskById["m02"]}>
+
+## Practice 02 / 07. Dominated ≠ dominant
+
+Player I chooses **A, B, or C** (rows); player II chooses **X or Y** (columns). Each cell contains `(I’s payoff, II’s payoff)`.
+
+<PayoffMatrix model={models["mastery-two"]} analysis={{ mode: "practice" }} task={taskById["m02"]} config={config} client:load />
+
+**Question:** which conclusion about player I is correct?
+
+<AnswerPart task={taskById["m02"]} partId="m02-answer" config={config} client:load />
+
+<CheckTask task={taskById["m02"]} config={config} client:load />
+
+<details data-task-solution hidden>
+<summary>Answer and explanation</summary>
+
+**B.** Compare B and C: `4 > 2` against X and `3 > 1` against Y, so **C is strictly dominated by B**. But B does not dominate A: against Y, `3 < 5`. A does not dominate B either: against X, `1 < 4`. There is therefore **no strictly dominant strategy**. I’s best responses are **B** against X and **A** against Y.
+</details>
+
+---
+
+</Exercise>
+
+<Exercise task={taskById["m03"]}>
+
+## Practice 03 / 07. A tie changes the definition
+
+Player I chooses **A or B**, and player II chooses **X or Y**.
+
+<PayoffMatrix model={models["mastery-three"]} analysis={{ mode: "practice" }} task={taskById["m03"]} config={config} client:load />
+
+**Question 1:** which statement about player I’s strategies is correct?
+
+<AnswerPart task={taskById["m03"]} partId="m03-part-1" config={config} client:load />
+
+**Question 2:** if player I *knows for certain* that II will choose X, must a rational player I choose A rather than B?
+
+<AnswerPart task={taskById["m03"]} partId="m03-part-2" config={config} client:load />
+
+<CheckTask task={taskById["m03"]} config={config} client:load />
+
+<details data-task-solution hidden>
+<summary>Answer and explanation</summary>
+
+**1: B; 2: B.** Both actions yield 4 against X; against Y, A yields 2 while B yields 1. A therefore **weakly**, but not strictly, dominates B. If II’s choice is certainly X, player I can choose B without sacrificing any payoff. **Weak dominance does not make choosing the dominant strategy compulsory.**
+</details>
+
+---
+
+</Exercise>
+
+<Exercise task={taskById["m04"]}>
+
+## Practice 04 / 07. Never best ≠ necessarily dominated
+
+Player I chooses **T or B**; player II chooses **L, C, or R**. Payoffs are again ordered `(I, II)`.
+
+<PayoffMatrix model={models["mastery-four"]} analysis={{ mode: "practice" }} task={taskById["m04"]} config={config} client:load />
+
+For player II, R **is not a best response** to either T or B. A student concludes: “R must therefore be strictly dominated.”
+
+**Question:** is that argument sufficient when comparing pure strategies?
+
+<AnswerPart task={taskById["m04"]} partId="m04-answer" config={config} client:load />
+
+<CheckTask task={taskById["m04"]} config={config} client:load />
+
+<details data-task-solution hidden>
+<summary>Answer and explanation</summary>
+
+**B.** Against T, `L = 3 > R = 2`, but against B, `L = 0 < R = 2`. For C, the comparisons reverse: `0 < 2` against T and `3 > 2` against B. **No single pure strategy outperforms R against every action of the opponent.** Checking best responses to fixed pure actions and checking dominance are different tasks.
+</details>
+
+---
+
+</Exercise>
+
+<Exercise task={taskById["m05"]}>
+
+## Practice 05 / 07. Eliminating numbers in a new game
+
+**New rules:** there are **100 players**. Each chooses an integer from **1 to 90**, aiming to be as close as possible to **half the mean** of all 100 chosen numbers. A smaller distance from the target is better.
+
+**Question 1.** What is the highest possible target in the original game?
+
+<AnswerPart task={taskById["m05"]} partId="m05-first" config={config} client:load />
+
+**Question 2.** After the first deletion of 46–90, everyone assumes that the others choose only from 1–45. What is the **largest number** remaining after the next round of deleting weakly dominated options?
+
+<AnswerPart task={taskById["m05"]} partId="m05-second" config={config} client:load />
+
+<CheckTask task={taskById["m05"]} config={config} client:load />
+
+<details data-task-solution hidden>
+<summary>Answer and explanation</summary>
+
+**1: 45; 2: 22.** First, `½ × 90 = 45`, so 46–90 cannot be closer to the target than 45. After the first reduction, the mean cannot exceed 45, making the target at most `22.5`. The number **22** is no farther than 23 from any target up to 22.5, and is closer for smaller targets. Thus **23–45** are weakly dominated, for example by 22, and the range shrinks to **1–22**. Moving to the second stage requires more than one player knowing the arithmetic: they must expect others to make the corresponding deletion too.
+</details>
+
+---
+
+</Exercise>
+
+<Exercise task={taskById["m06"]}>
+
+## Practice 06 / 07. Why can’t we simply predict 1?
+
+In the “⅔ of the mean” game, the permitted numbers are **1–100**. The players are rational and know the rules, but **there is no basis for assuming** that they repeatedly delete weakly dominated strategies or that everyone knows how the others reason.
+
+**Question:** which conclusion is justified?
+
+<AnswerPart task={taskById["m06"]} partId="m06-answer" config={config} client:load />
+
+<CheckTask task={taskById["m06"]} config={config} client:load />
+
+<details data-task-solution hidden>
+<summary>Answer and explanation</summary>
+
+**B.** Weak dominance allows equal payoffs in some cases. Repeating the deletion requires additional assumptions that players avoid such strategies and know, at the appropriate depth, that the others do too. The limit is a **conditional theoretical result**, rather than the necessary behavior of every rational group.
+</details>
+
+---
+
+</Exercise>
+
+<Exercise task={taskById["m07"]}>
+
+## Practice 07 / 07. Knowing the same fact is not enough
+
+**Situation A.** Two participants independently receive a private notification: “The meeting has moved to 14:00.” Both receive it and trust the message, but each **does not know** whether the other received it.
+
+**Situation B.** The same fact is announced publicly. Both are present, see and hear the announcement, and in this model **each knows that both observed the announcement, knows that this is known to both, and so on**.
+
+**Question:** which conclusion is correct?
+
+<AnswerPart task={taskById["m07"]} partId="m07-answer" config={config} client:load />
+
+<CheckTask task={taskById["m07"]} config={config} client:load />
+
+<details data-task-solution hidden>
+<summary>Answer and explanation</summary>
+
+**B.** In A, each knows the fact, but neither knows that the other knows it. In B, the public announcement and the **explicitly stated** conditions of shared observation establish the chain of knowledge. Merely hearing the same message does not always suffice for common knowledge without conditions on mutual awareness.
+</details>
+
+---
+
+</Exercise>
+
+<section className="question" id="self-explanation">
+
+## Optional exercise. Explain the mistake
+
+Someone says: **“In the ⅔ of the mean game, 1 is the only reasonable choice, so the Yale students who chose 9 made a mistake.”** Explain in 1–2 sentences why that conclusion is incorrect.
+
+<SelfExplanation config={config} label="Your explanation—1–2 sentences" client:load />
+
+<details>
+<summary>One possible explanation</summary>
+
+The choice of 1 follows from a particular chain of deletions and assumptions about the others’ knowledge and behavior. In the actual experiment, the target was approximately 9, so choosing 9 accurately predicted the participants’ **actual** choices. Choosing a different number does not automatically make someone irrational.
+</details>
+
+</section>

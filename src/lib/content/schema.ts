@@ -106,6 +106,12 @@ export const assessmentTaskSchema = z.object({
 });
 export type AssessmentTask = z.infer<typeof assessmentTaskSchema>;
 export type AnswerPart = AssessmentTask['parts'][number];
+export const lessonInteractionsSchema = z.object({
+  elimination: z.object({ title: z.string(), assumption: z.string(), levels: z.array(z.object({ max: z.number().int().positive(), target: z.string(), text: z.string() })).min(1) }),
+  chain: z.object({ label: z.string(), items: z.array(z.object({ label: z.string(), value: z.string() })).min(1) }),
+  hats: z.object({ title: z.string(), fact: z.string(), pink: z.string(), unknown: z.string(), people: z.tuple([z.string(), z.string()]), views: z.array(z.object({ id: identifier, label: z.string(), unknownPerson: z.union([z.literal(0), z.literal(1), z.null()]), explanation: z.string() })).min(1) }),
+});
+export type LessonInteractions = z.infer<typeof lessonInteractionsSchema>;
 export type ActivityCopy = z.infer<typeof activityCopySchema>;
 export type WrittenExercise = z.infer<typeof writtenExerciseSchema>;
 export type Chapter = z.infer<typeof chapterSchema>;

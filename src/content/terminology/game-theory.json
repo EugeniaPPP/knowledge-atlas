@@ -14,6 +14,18 @@
     "blackboard": {
       "path": "references/sources/lecture_01_blackboard.pdf",
       "sha256": "8633b1de596b613950853b7f24aa1d6be3572e6b62d36254290655121e8fa79c"
+    },
+    "lecture-02-transcript": {
+      "path": "references/sources/Lecture_02_transcript.txt",
+      "sha256": "ac1c606b61551674407e685542227965e2cda34ae3a5494c11821a7f970048f5",
+      "originalUrl": "https://oyc.yale.edu/economics/econ-159/lecture-2",
+      "localOnly": true
+    },
+    "lecture-02-blackboard": {
+      "path": "references/sources/blackboard02_0_0.pdf",
+      "sha256": "42b13d11d3c8215962462c117422650273f381550dabb2177ae6f1ab9ba9eadb",
+      "originalUrl": "https://oyc.yale.edu/economics/econ-159/lecture-2",
+      "localOnly": true
     }
   },
   "terms": [
@@ -192,6 +204,172 @@
           }
         }
       ]
+    },
+    {
+      "id": "normal-form-game",
+      "ru": "игра в нормальной форме",
+      "en": "normal-form game",
+      "usage": "Players, strategy sets, and payoff functions; a matrix of outcomes alone is insufficient.",
+      "evidence": [
+        {
+          "sourceId": "lecture-02-transcript",
+          "locator": {
+            "start": "06:54",
+            "end": "13:44"
+          }
+        }
+      ]
+    },
+    {
+      "id": "strategy-set",
+      "ru": "множество стратегий",
+      "en": "strategy set",
+      "usage": "Sᵢ denotes the set; sᵢ denotes one strategy from it.",
+      "evidence": [
+        {
+          "sourceId": "lecture-02-transcript",
+          "locator": {
+            "start": "08:20",
+            "end": "09:39"
+          }
+        }
+      ]
+    },
+    {
+      "id": "strategy-profile",
+      "ru": "профиль стратегий",
+      "en": "strategy profile",
+      "usage": "One chosen strategy for every player. The lecture also mentions strategy vector or list.",
+      "evidence": [
+        {
+          "sourceId": "lecture-02-transcript",
+          "locator": {
+            "start": "09:45",
+            "end": "11:07"
+          }
+        }
+      ]
+    },
+    {
+      "id": "other-players-strategies",
+      "ru": "стратегии остальных игроков",
+      "en": "other players’ strategies",
+      "usage": "s₋ᵢ excludes player i’s own action; payoff uᵢ(sᵢ,s₋ᵢ) depends on both.",
+      "evidence": [
+        {
+          "sourceId": "lecture-02-transcript",
+          "locator": {
+            "start": "13:54",
+            "end": "14:50"
+          }
+        }
+      ]
+    },
+    {
+      "id": "weak-dominance",
+      "ru": "слабое доминирование",
+      "en": "weak dominance",
+      "usage": "At least as good against every opposing choice, strictly better against at least one. Identical vectors do not qualify.",
+      "evidence": [
+        {
+          "sourceId": "lecture-02-transcript",
+          "locator": {
+            "start": "31:50",
+            "end": "34:14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "weakly-dominant-strategy",
+      "ru": "слабо доминирующая стратегия",
+      "en": "weakly dominant strategy",
+      "usage": "Weakly dominates every other strategy of the same player. Separate this global property from dominance of one named alternative.",
+      "evidence": [
+        {
+          "sourceId": "lecture-02-transcript",
+          "locator": {
+            "start": "31:50",
+            "end": "34:14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "weakly-dominated-strategy",
+      "ru": "слабо доминируемая стратегия",
+      "en": "weakly dominated strategy",
+      "usage": "At least one other strategy weakly dominates it. Ties need not force a rational player to avoid it.",
+      "evidence": [
+        {
+          "sourceId": "lecture-02-transcript",
+          "locator": {
+            "start": "32:34",
+            "end": "34:21"
+          }
+        }
+      ]
+    },
+    {
+      "id": "iterated-deletion",
+      "ru": "последовательное исключение стратегий",
+      "en": "iterated deletion of strategies",
+      "usage": "Also iterated elimination. Lecture 2 uses successive reductions; the weak-dominance qualification is retained as an explicit editorial clarification, not a literal theorem quoted from the lecture.",
+      "evidence": [
+        {
+          "sourceId": "lecture-02-transcript",
+          "locator": {
+            "start": "43:04",
+            "end": "58:22"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mutual-knowledge",
+      "ru": "взаимное знание",
+      "en": "mutual knowledge",
+      "usage": "Everyone knows X; this alone does not imply that everyone knows the others know X.",
+      "evidence": [
+        {
+          "sourceId": "lecture-02-transcript",
+          "locator": {
+            "start": "1:07:06",
+            "end": "1:08:21"
+          }
+        }
+      ]
+    },
+    {
+      "id": "common-knowledge",
+      "ru": "общее знание",
+      "en": "common knowledge",
+      "usage": "Everyone knows X, everyone knows everyone knows X, and so on at every finite depth.",
+      "evidence": [
+        {
+          "sourceId": "lecture-02-transcript",
+          "locator": {
+            "start": "57:39",
+            "end": "58:22"
+          }
+        }
+      ]
+    },
+    {
+      "id": "higher-order-beliefs",
+      "ru": "представления о чужих представлениях",
+      "en": "beliefs about others’ beliefs",
+      "usage": "An editorial label for reasoning about what others think and know; do not substitute this label for common knowledge.",
+      "evidence": [
+        {
+          "sourceId": "lecture-02-transcript",
+          "locator": {
+            "start": "56:59",
+            "end": "58:22"
+          }
+        }
+      ]
     }
-  ]
+  ],
+  "revision": "lecture-02-en-2026-10-31"
 }

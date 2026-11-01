@@ -1,0 +1,273 @@
+---
+chapterId: yale-econ-159/lecture-02
+locale: en
+mode: core
+---
+
+import CoreStep from "../../../../../components/editorial/CoreStep.astro";
+import ConceptChain from "../../../../../components/editorial/ConceptChain.astro";
+import PayoffMatrix from "../../../../../components/activities/PayoffMatrix.tsx";
+import NumberGuess from "../../../../../components/activities/NumberGuess.tsx";
+import StrategyElimination from "../../../../../components/activities/StrategyElimination.tsx";
+import CommonKnowledgeHats from "../../../../../components/activities/CommonKnowledgeHats.tsx";
+import { chapter, config, previousConfig, models, elimination, hats, chain } from "./data";
+
+**Weak dominance, strategic reasoning, and common knowledge**
+
+In the previous chapter, we learned to account for other players’ interests. But the other player is making predictions too—and may realize that **we are predicting their actions**. How far do we need to follow this chain of reasoning?
+
+We will start with your number from the first chapter, explore two kinds of dominance, and return to the number game. By the end, you will see why a mathematical argument leads to 1, while 9 won in the actual experiment.
+
+---
+
+<CoreStep id="number-prediction" chapter={chapter}>
+
+## 01. Your number—and everyone else’s
+
+At the end of the first chapter, you encountered this game: everyone independently chooses **an integer from 1 to 100**. The mean of all choices is then multiplied by **⅔**, and whoever chose the number closest to that target wins.
+
+If the mean is 60, the target is 40. But the mean is unknown until everyone has chosen. Moreover, **the other players are trying to predict the target too**, so their numbers are unlikely to be simply random.
+
+<NumberGuess config={config} previousConfig={previousConfig} client:load />
+
+Here you can revisit your earlier choice. If you saved a number in the first chapter, it appears automatically; you can change your current prediction. **We will keep the original number separately**, so you can return to it later. If you have not chosen a number before, choose one now.
+
+We will not look for the “right” answer yet. First, we need a language for describing games like this.
+
+*Source: Lecture 2, 06:08–06:25; 36:18–36:49.*
+
+---
+
+</CoreStep>
+
+<CoreStep id="normal-form" chapter={chapter}>
+
+## 02. The ingredients of a game
+
+Three ingredients are enough for our analysis: **players, their available strategies, and payoffs**.
+
+- **Players** are the participants who make decisions. We denote an individual player by *i*.
+- **Strategies** are the available actions. In the number game, every player has the same strategy set: **Sᵢ = \{1, 2, …, 100\}**. A particular choice is denoted by **sᵢ**; for example, sᵢ = 33.
+- A **payoff** describes what a player receives or how they evaluate the result. We write player *i*’s payoff as **uᵢ**. It depends on the choices of the other players as well as their own.
+
+Imagine four players choosing **(20, 35, 40, 65)**. This is a **strategy profile**: one chosen action for each player. We denote it by **s**. The mean is 40, so the target is 26⅔.
+
+If you are the second player, your action is **s₂ = 35**, and the other players’ actions are **s₋₂ = (20, 40, 65)**. The expression **uᵢ(sᵢ, s₋ᵢ)** therefore has a simple meaning: “my payoff depends on my choice and everyone else’s choices.”
+
+In this chapter, we assume that the rules, available strategies, and payoff functions are **known to all players**. Even with this simplification, a difficult question remains: what do we know *about one another’s reasoning*?
+
+<details className="extra">
+<summary>Why distinguish Sᵢ, sᵢ, s, and s₋ᵢ?</summary>
+
+**Sᵢ** is one player’s entire set of options; **sᵢ** is their particular action; **s** collects everyone’s actions; and **s₋ᵢ** collects the actions of everyone except i. The notation works for both a 2×2 game and a game with a hundred players. A game in **normal form** is described by its players, strategy sets, and payoff functions.
+
+</details>
+
+*Source: Lecture 2, 06:54–15:55; blackboard notes, p. 1.*
+
+---
+
+</CoreStep>
+
+<CoreStep id="dominated-strategies" chapter={chapter}>
+
+## 03. A strategy that is worse than another
+
+Recall **strict dominance**. Strategy A strictly dominates B if, for *the same player*, A yields a higher payoff than B **against every possible choice of the opponent**.
+
+It helps to distinguish two conclusions:
+
+- A **strictly dominant strategy** outperforms *every* other strategy available to the player, whatever the opponent does.
+- A **strictly dominated strategy** has *at least one* alternative that outperforms it, whatever the opponent does.
+
+The second conclusion **does not require** the first.
+
+Consider the following game. Player I chooses **T (top)** or **B (bottom)**; player II chooses **L (left)**, **C (center)**, or **R (right)**. These are simply labels. Player I’s actions are the rows, and player II’s actions are the columns. In the cell **(11, 3)**, the first payoff belongs to I and the second to II.
+
+<PayoffMatrix model={models.abstract} analysis={{ mode: "explain" }} client:load />
+
+**Select player I in the matrix.** Their best responses depend on II’s choice: B against L (6 > 5), T against C (11 > 0), and B against R (2 > 0). **Neither T nor B dominates the other**: the advantage switches.
+
+**Now select player II.** Against T, C gives their highest payoff (3); against B, L does (4). There is no dominant strategy: neither L nor C beats all the alternatives against both of I’s actions.
+
+But **R is strictly dominated**: one particular alternative, **C**, beats it in both cases—**3 > 0** against T and **2 > 0** against B. The matrix therefore highlights **R in pink**, rather than C in green. C beats R, but **does not beat L**.
+
+A **best response** maximizes a player’s payoff *against a particular action of the opponent*. **Dominance** compares strategies *across all of the opponent’s actions*. Keep these questions separate.
+
+<details className="extra">
+<summary>The precise mathematical definition</summary>
+
+Strategy sᵢ strictly dominates s′ᵢ if **uᵢ(sᵢ, s₋ᵢ) > uᵢ(s′ᵢ, s₋ᵢ)** for *every* possible s₋ᵢ. In this section, we compare individual strategies, rather than mixtures of strategies.
+
+</details>
+
+*Source: Lecture 2, 16:01–24:17; blackboard notes, p. 1.*
+
+---
+
+</CoreStep>
+
+<CoreStep id="weak-dominance" chapter={chapter}>
+
+## 04. When a strategy is no worse, but not always better
+
+Imagine two invasion routes: an **easy pass** and a **hard pass** through the mountains. The attacker starts with two battalions. Taking the hard pass costs one battalion; encountering the defender on either route costs another. The defender can guard only one route.
+
+In the matrix, **rows are the defender’s choices**, and **columns are the attacker’s choices**. The first payoff is the number of battalions the attacker loses, which benefits the defender; the second is the number that reach their destination, which benefits the attacker.
+
+<PayoffMatrix model={models.hannibal} analysis={{ mode: "explain" }} client:load />
+
+If the attacker takes the hard pass and the defender guards it, both battalions are lost: **(2, 0)**. If the hard pass is unguarded, the attacker loses only one: **(1, 1)**.
+
+**Select the defender.** Their best choice is to guard whichever route the attacker takes. They have no dominant strategy.
+
+**Select the attacker.** If the easy pass is defended, either route gets **1** battalion through. If the hard pass is defended, taking the easy pass gets **2** through instead of **0**.
+
+The easy route is therefore **no worse against any choice of the defender and strictly better against at least one**. It **weakly dominates** the hard route. The hard route is **weakly dominated**.
+
+**Strict dominance** means a higher payoff against *every* choice of the opponent. **Weak dominance** means no lower payoff against *any* choice and a higher payoff against *at least one*. A strategy is **weakly dominant** if it beats every alternative in this sense, or **weakly dominated** if at least one alternative beats it in this sense.
+
+> **Principle 01. Weak dominance calls for care.** If the attacker knows that the defender is guarding the easy pass, both routes give the same payoff. Rationality alone does not force a choice between them. Eliminating weakly dominated strategies requires an additional assumption about behavior.
+
+<details className="extra">
+<summary>Why is the example associated with Hannibal?</summary>
+
+The Yale lecture introduces the example through an analogy with Hannibal’s crossing of the Alps. The numbers form a simplified teaching model, rather than a reconstruction of the actual campaign. The point is that even when one route is easier for the attacker, the defender must predict the attacker’s choice, rather than simply guard the “more dangerous” location.
+
+</details>
+
+*Source: Lecture 2, 24:31–35:27; blackboard notes, p. 2.*
+
+---
+
+</CoreStep>
+
+<CoreStep id="higher-order-reasoning" chapter={chapter}>
+
+## 05. Why 33 is only a beginning
+
+Return to the “⅔ of the mean” game. If people choose numbers roughly uniformly, the mean will be about **50**. The target will then be **33⅓**, making **33** look reasonable.
+
+But what if everyone else makes the same calculation and many choose around 33? The mean will move toward **33**, and the target toward **22**. If they anticipate that too, some will choose an even smaller number.
+
+<ConceptChain {...chain} />
+
+With each additional step, we move from predicting *random numbers* to predicting *other people’s reasoning*. Assuming that others will choose 33 is one thing. Assuming that they know others will choose 33 is another.
+
+<details className="extra">
+<summary>Why is this still an approximation?</summary>
+
+The mean includes **your own number too**, so the exact target depends on the complete strategy profile. The chain 50 → 33 → 22 illustrates collective expectations; it is not an exact best-response calculation for an arbitrary number of players.
+
+</details>
+
+Can we rule out at least some numbers without guessing what most people will think? Yes: start by finding **the highest possible target**.
+
+*Source: Lecture 2, 37:11–43:04.*
+
+---
+
+</CoreStep>
+
+<CoreStep id="iterated-elimination" chapter={chapter}>
+
+## 06. How 100 becomes 1
+
+If everyone chooses a number from 1 to 100, the mean cannot exceed **100**. The target therefore cannot exceed **66⅔**. Any integer above **67** offers no advantage over choosing 67 and is worse for some choices of the other players. In this game, **68–100 are weakly dominated**: the first step leaves **1–67**.
+
+But to continue, it is not enough to avoid the high numbers yourself. You must expect that **everyone else has eliminated them too**. The mean is then at most 67, and the target at most **44⅔**. In this reduced game, we can eliminate **46–67**, leaving **1–45**.
+
+If everyone understands this step too, the highest possible target becomes **30**, then **20**, and the reasoning continues.
+
+<StrategyElimination content={elimination} locale="en" client:load />
+
+Notice that 60 **was not necessarily dominated in the original game**. It becomes dominated only **after 68–100 have been eliminated from the other players’ options**. Each new stage depends on what the players expect *of one another*.
+
+> **Principle 02. Eliminating strategies may require increasingly deep knowledge about others.** First, I eliminate unpromising numbers. Then I expect you to have eliminated them too. Next, I expect you to know that I have done so. And so on.
+
+Repeating the reduction eventually leaves **1**. But an essential qualification remains: this argument uses **iterated deletion of weakly dominated strategies**, assuming that players avoid them at every stage and correctly anticipate the corresponding reasoning of others. **Rationality alone does not guarantee the entire chain.**
+
+<details className="extra">
+<summary>Why not simply say “rational players always choose 1”?</summary>
+
+A weakly dominated strategy can sometimes yield the same payoff as an alternative that is better in other circumstances. A rational player may therefore have no strict incentive to avoid it. In some other games, the result of deleting weakly dominated strategies also depends on the order of deletion. Here we examine a particular step-by-step procedure. Its limit is a **conditional theoretical conclusion**, rather than a prediction for every real group.
+
+</details>
+
+*Source: Lecture 2, 43:04–58:22; blackboard notes, p. 2. The qualification about weak dominance is an editorial clarification of the theory.*
+
+---
+
+</CoreStep>
+
+<CoreStep id="historical-outcomes" chapter={chapter}>
+
+## 07. Why 9 won instead of 1
+
+In the Yale class in 2007, the mean choice was about **13⅓**, making two-thirds of the mean approximately **9**. The players who chose **9** won. Meanwhile, **1 was the most frequent individual answer**, but it was not closest to the actual target.
+
+These results do not refute the arithmetic of the previous section. They show the limits of its application: people may take **different numbers of reasoning steps**, assess others differently, and retain weakly dominated options.
+
+<NumberGuess config={config} previousConfig={previousConfig} stage="revised" client:load />
+
+If you now change your number, ask yourself **what changed**: your ability to calculate, or your assumption about how other people reason?
+
+After the classroom discussion at Yale, many participants chose lower numbers in the second round. Their own understanding of the problem had changed, and they also knew that **the other players had heard the explanation too**.
+
+> **Principle 03. Predictions depend on beliefs about other people’s beliefs.** Knowing another player’s goals is not enough. You also need to consider how deeply they analyze the game and what level of analysis they expect from you.
+
+<details className="extra">
+<summary>What else do we know about the Yale experiment?</summary>
+
+The lecturer also reported that **the median choice was 9**, and that many participants chose lower numbers after the discussion. The lecture does not give a calculated mean for the second round: the professor’s estimate of “about 3–4” was a guess based on raised hands, rather than a reported calculation. These are **historical results from a particular class**, rather than universal statistics about human behavior.
+
+</details>
+
+*Source: Lecture 2, 58:16–1:05:30; blackboard notes, p. 2.*
+
+---
+
+</CoreStep>
+
+<CoreStep id="common-knowledge" chapter={chapter}>
+
+## 08. Do they know that you know?
+
+Imagine Anya and Boris wearing hats. Each can see **the other person’s hat**, but **cannot see their own**. Both know that the hats can be pink or blue. In fact, **both hats are pink**.
+
+We are interested in the fact **X: “At least one hat is pink.”**
+
+Anya sees Boris’s pink hat and **knows X**. Boris sees Anya’s pink hat and **also knows X**. This is **mutual knowledge**: everyone knows the fact.
+
+But does Anya know that **Boris knows X**? No. Anya cannot see her own hat and considers it possible that it is blue. In that case, Boris would see Anya wearing a blue hat and would not know whether his own hat was pink. He might have no basis for asserting X.
+
+The same reasoning applies in reverse. Both know X, but **neither knows that the other knows X**.
+
+<CommonKnowledgeHats content={hats} client:load />
+
+**Common knowledge** is stronger: everyone knows X, everyone knows that everyone else knows X, everyone knows that everyone else knows that they know X, and so on without end.
+
+> **Principle 04. “Everyone knows” does not imply “it is common knowledge.”** Strategic reasoning sometimes depends not only on having information, but also on whether everyone knows that the others have it.
+
+<details className="extra">
+<summary>How can a fact become common knowledge?</summary>
+
+In an idealized model, a credible **public announcement** can help, provided everyone hears it simultaneously, knows that everyone else hears it, and knows that this method of communication is known to everyone. Its public nature can add the levels of “I know that you know.” No such announcement occurred in the hat example.
+
+</details>
+
+*Source: Lecture 2, 57:39–58:22; 1:05:37–1:08:45; blackboard notes, p. 2.*
+
+---
+
+## What to take away from this chapter
+
+A **dominant** strategy beats all alternatives. A **dominated** strategy loses to at least one alternative across all choices of the opponent. **Weak** dominance allows ties, so prediction requires care.
+
+In the “⅔ of the mean” game, we can progressively eliminate options if we assume increasingly aligned reasoning among the players. But a winning choice among real people also depends on **what they expect of one another**. Common knowledge is a much stronger condition than everyone simply knowing the same fact.
+
+*Next, we will examine situations where choices depend on players’ responses to one another, rather than a universally best strategy.*
+
+---
+
+</CoreStep>

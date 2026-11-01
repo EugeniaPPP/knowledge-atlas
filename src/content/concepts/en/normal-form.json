@@ -1,0 +1,14 @@
+{
+  "id": "normal-form",
+  "title": "Normal form",
+  "definition": "A game in normal form is described by its players, strategy sets, and payoff functions.",
+  "stepId": "normal-form",
+  "prerequisites": [
+    "strategy",
+    "payoff"
+  ],
+  "related": [
+    "strategy-profile"
+  ],
+  "locale": "en"
+}

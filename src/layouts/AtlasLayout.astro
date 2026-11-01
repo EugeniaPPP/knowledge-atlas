@@ -7,10 +7,10 @@ import ThemeSwitcher from '../components/navigation/ThemeSwitcher.astro';
 import themeInit from '../scripts/theme-init.js?raw';
 import { sitePath, languagePath } from '../lib/navigation/paths';
 import { getUI } from '../i18n/ui';
-import type { Locale } from '../lib/content/schema';
+import type { Chapter, Locale } from '../lib/content/schema';
 import { availableLanguagesForPath } from '../lib/content/queries';
-interface Props { title: string; description?: string; courseId?: string; locale?: Locale; is404?: boolean }
-const { title, description, courseId = 'yale-econ-159', locale = 'ru', is404 = false } = Astro.props;
+interface Props { title: string; description?: string; courseId?: string; locale?: Locale; is404?: boolean; chapter?: Chapter }
+const { title, description, courseId = 'yale-econ-159', locale = 'ru', is404 = false, chapter } = Astro.props;
 const t = getUI(locale);
 const availableLanguages = await availableLanguagesForPath(Astro.url.pathname);
 ---
@@ -36,7 +36,7 @@ const availableLanguages = await availableLanguagesForPath(Astro.url.pathname);
       <aside class="atlas-rail" aria-label={t.atlas}>
         <a class="atlas-logo" href={sitePath('/', locale)} aria-label={t.home}>K<span>/</span></a>
         <nav aria-label={t.atlasNav}>
-          <button class="rail-link js-only" data-open-dialog="course-dialog" aria-controls="course-dialog" aria-haspopup="dialog" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 3h14v14H3zM5 6h10M5 9h10M5 12h10" /></svg><span>{t.courseChapters.split(' ')[0]}<br />{t.courseChapters.split(' ').slice(1).join(' ')}</span></button>
+          <button class="rail-link js-only" data-open-dialog="course-dialog" aria-controls="course-dialog" aria-haspopup="dialog" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 3h14v14H3zM5 6h10M5 9h10M5 12h10" /></svg><span>{t.courseContents.split(' ')[0]}<br />{t.courseContents.split(' ').slice(1).join(' ')}</span></button>
           <button class="rail-link js-only" data-open-dialog="concepts-dialog" aria-controls="concepts-dialog" aria-haspopup="dialog" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" aria-hidden="true"><path d="m11 2 9 9-9 9-9-9z" /></svg><span>{t.courseConcepts.split(' ')[0]}<br />{t.courseConcepts.split(' ').slice(1).join(' ')}</span></button>
         </nav>
         <span class="rail-end">ECON 159 · GAME THEORY</span>
@@ -45,7 +45,7 @@ const availableLanguages = await availableLanguagesForPath(Astro.url.pathname);
         <header class="top">
           <a class="brand" href={sitePath('/', locale)} aria-label="K/ — Knowledge Atlas / Game Theory" translate="no"><span class="brand-name">KNOWLEDGE ATLAS</span><span class="brand-short" aria-hidden="true">K/</span><span class="brand-course">/ GAME THEORY</span></a>
           <div class="top-controls">
-            <nav class="mobile-navigation js-only" aria-label={t.courseNav}><button class="text-button" data-open-dialog="course-dialog" aria-controls="course-dialog" aria-haspopup="dialog" aria-expanded="false">{t.courseChapters}</button><button class="text-button" data-open-dialog="concepts-dialog" aria-controls="concepts-dialog" aria-haspopup="dialog" aria-expanded="false">{t.courseConcepts}</button></nav>
+            <nav class="mobile-navigation js-only" aria-label={t.courseNav}><button class="text-button" data-open-dialog="course-dialog" aria-label={t.courseContents} aria-controls="course-dialog" aria-haspopup="dialog" aria-expanded="false">{t.contentsShort}</button><button class="text-button" data-open-dialog="concepts-dialog" aria-label={t.courseConcepts} aria-controls="concepts-dialog" aria-haspopup="dialog" aria-expanded="false">{t.conceptsShort}</button></nav>
             <noscript><nav><a href={sitePath(`/courses/${courseId}/`, locale)}>{t.courseChapters}</a> · <a href={sitePath('/concepts/', locale)}>{t.courseConcepts}</a></nav></noscript>
             <LanguageSwitcher locale={locale} />
             <ThemeSwitcher locale={locale} />
@@ -55,7 +55,7 @@ const availableLanguages = await availableLanguagesForPath(Astro.url.pathname);
         <footer class="site-footer"><span>{t.adaptation}</span><span>{t.preview}</span></footer>
       </div>
     </div>
-    <AtlasDrawers courseId={courseId} locale={locale} />
+    <AtlasDrawers courseId={courseId} locale={locale} chapter={chapter}><slot name="chapter-notes" /></AtlasDrawers>
     <script>import '../scripts/dialogs';</script>
   </body>
 </html>

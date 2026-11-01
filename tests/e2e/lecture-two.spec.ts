@@ -1,3 +1,4 @@
+import { openSources } from './helpers/navigation';
 import { test, expect, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { readFileSync } from 'node:fs';
@@ -14,16 +15,16 @@ async function ready(page: Page, mode = 'core') {
 }
 async function reveal(page: Page) { const button = page.locator('[data-toggle-all]'); if (await button.getAttribute('aria-pressed') !== 'true') await button.click(); await expect(page.locator('[data-core-step]:visible')).toHaveCount(8); }
 
-test('Lecture 2 has three RU modes, real catalog/concept links and no invented English route', async ({ page }) => {
+test('Lecture 2 has three RU modes, real catalog/concept links and matching English routes', async ({ page }) => {
   const errors: string[] = []; page.on('pageerror', (e) => errors.push(e.message));
   for (const mode of ['quick', 'core', 'mastery']) {
     await ready(page, mode);
     await expect(page.locator('h1')).toHaveText('Я знаю, что ты знаешь…');
-    await expect(page.locator('.language-switcher a[lang=en]')).toHaveCount(0);
-    await expect(page.locator('.language-unavailable')).toHaveAttribute('aria-disabled', 'true');
-    await expect(page.locator('link[hreflang=en]')).toHaveCount(0);
+    await expect(page.locator('.language-switcher a[lang=en]')).toHaveAttribute('href', `${root}/en/courses/yale-econ-159/lecture-02/${mode}/`);
+    await expect(page.locator('.language-unavailable')).toHaveCount(0);
+    await expect(page.locator('link[hreflang=en]')).toHaveCount(1);
     await expect(page.locator('[data-progress]')).toHaveCount(mode === 'core' ? 1 : 0);
-    await page.getByRole('button', { name: 'Источники', exact: true }).click();
+    await openSources(page);
     const notes = page.getByRole('dialog', { name: 'Источники и примечания' });
     await notes.getByText('Редакционные примечания и таймкоды', { exact: true }).click(); await expect(notes).toContainText('10 сентября 2007'); await page.keyboard.press('Escape');
   }
@@ -41,6 +42,7 @@ test('Core opens sequentially and completes without answering questions; reveal-
   for (const step of chapter.steps) await page.locator(`[data-complete-step=${step.id}]`).click();
   await expect(page).toHaveURL(`${base}/mastery/`); await ready(page);
   await expect(page.locator('[data-progress]')).toHaveAttribute('aria-valuenow', '8');
+  await expect(page.locator('[data-complete-step]:visible')).toHaveCount(0);
 });
 test('matrix player focus groups comparisons correctly, with strict domination distinct from dominance', async ({ page }) => {
   await ready(page); await reveal(page);
@@ -114,14 +116,14 @@ test('direct entry never saves slider default; chapter export/import/reset does 
   await expect(first.getByRole('slider')).toBeEnabled(); await expect(first.locator('.prediction-original strong')).toHaveText('—');
   expect(await page.evaluate((k) => JSON.parse(localStorage.getItem(k)!).responses['number-original'], key)).toBeUndefined();
   await first.getByRole('slider').fill('27'); await first.getByRole('button', { name: 'Сохранить прогноз' }).click();
-  await page.getByRole('button', { name: 'Источники', exact: true }).click();
+  await openSources(page);
   await page.getByText('Сохранение и перенос прогресса', { exact: true }).click();
   const downloaded = page.waitForEvent('download'); await page.locator('[data-export]').click(); const download = await downloaded;
   const stream = await download.createReadStream(); const chunks: Buffer[] = []; for await (const chunk of stream!) chunks.push(chunk); const exported = Buffer.concat(chunks);
   await page.evaluate(({ previousKey }) => { localStorage.setItem('knowledge-atlas:theme', 'dark'); localStorage.setItem(previousKey, 'keep-previous'); }, { previousKey });
   page.on('dialog', (d) => d.accept()); await page.locator('[data-reset]').click(); await expect(page).toHaveURL(`${base}/core/`);
   await expect(page.locator('.prediction-original strong').first()).toHaveText('—');
-  await page.getByRole('button', { name: 'Источники', exact: true }).click(); await page.getByText('Сохранение и перенос прогресса', { exact: true }).click(); await page.locator('#import-progress').setInputFiles({ name: 'progress.json', mimeType: 'application/json', buffer: exported });
+  await openSources(page); await page.getByText('Сохранение и перенос прогресса', { exact: true }).click(); await page.locator('#import-progress').setInputFiles({ name: 'progress.json', mimeType: 'application/json', buffer: exported });
   await expect(page.locator('#import-status')).toContainText('Импорт завершён'); await page.keyboard.press('Escape');
   await expect(page.locator('.prediction-original strong').first()).toHaveText('27');
   expect(await page.evaluate((k) => localStorage.getItem(k), previousKey)).toBe('keep-previous');
@@ -154,7 +156,7 @@ test('Lecture 2 fits 320/390/768/1440 and passes accessibility checks in Light a
       if (mode === 'mastery') { const card = page.locator('#m02'); await card.getByRole('radio').nth(1).check(); await card.getByRole('button', { name: 'Проверить ответ', exact: true }).click(); await card.locator('[data-analysis-player=row]').click(); }
       expect((await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()).violations).toEqual([]);
     }
-    await page.getByRole('button', { name: 'Источники', exact: true }).click();
+    await openSources(page);
     expect((await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()).violations).toEqual([]);
   }
 });

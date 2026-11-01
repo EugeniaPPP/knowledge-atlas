@@ -1,0 +1,27 @@
+---
+import type { Chapter } from '../../lib/content/schema';
+import { format, getUI } from '../../i18n/ui';
+interface Props { chapter: Chapter }
+const { chapter } = Astro.props;
+const t = getUI(chapter.locale);
+const total = chapter.steps.length;
+const label = format(t.progress, { count: 0, total });
+const segment = (index: number) => {
+  const angle = 360 / total;
+  const gap = Math.min(10, angle / 4);
+  const point = (degrees: number) => {
+    const radians = degrees * Math.PI / 180;
+    return `${20 + 16 * Math.cos(radians)} ${20 + 16 * Math.sin(radians)}`;
+  };
+  return `M ${point(-90 + index * angle + gap / 2)} A 16 16 0 ${angle - gap > 180 ? 1 : 0} 1 ${point(-90 + (index + 1) * angle - gap / 2)}`;
+};
+---
+<div class="core-progress js-only" title={label} data-core-progress>
+  <div class="core-progress-meter" role="progressbar" aria-label={t.progressName} aria-valuemin="0" aria-valuemax={total} aria-valuenow="0" aria-valuetext={label} data-progress>
+    <svg class="core-progress-ring" viewBox="0 0 40 40" width="28" height="28" aria-hidden="true">
+      {chapter.steps.map((step, index) => <path d={segment(index)} data-progress-step={step.id} />)}
+    </svg>
+    <span class="core-progress-count" aria-hidden="true"><span data-progress-count>0</span><span class="core-progress-total">/{total}</span></span>
+  </div>
+  <span class="sr-only" role="status" data-progress-label>{label}</span>
+</div>

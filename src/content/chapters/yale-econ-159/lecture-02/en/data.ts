@@ -1,0 +1,12 @@
+import { chapter as originalChapter, models as originalModels, config as originalConfig, previousConfig as originalPreviousConfig, tasks as originalTasks, interactions as originalInteractions } from '../data';
+import raw from './content.json';
+import { assessmentTranslationSchema, translateChapter, translateModels, validateAssessmentTranslation } from '../../../../../lib/content/translations';
+export const translation = assessmentTranslationSchema.parse(raw);
+validateAssessmentTranslation(originalTasks, originalInteractions, translation);
+export const chapter = translateChapter(originalChapter, translation);
+export const models = translateModels(originalModels, translation);
+export const tasks = translation.exercises;
+export const taskById = Object.fromEntries(tasks.map((t) => [t.id, t]));
+export const { elimination, hats, chain } = translation.interactions;
+export const config = { ...originalConfig, locale: 'en' as const };
+export const previousConfig = { ...originalPreviousConfig, locale: 'en' as const };

@@ -1,3 +1,4 @@
+import { openSources } from './helpers/navigation';
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { readFile } from 'node:fs/promises';
@@ -87,6 +88,7 @@ test('all steps can be read and completed without mandatory questions', async ({
   await expect(page.locator('[data-progress]')).toHaveCount(0);
   await page.locator('.mode-nav').getByRole('link', { name: 'Core', exact: true }).click();
   await expect(page.locator('[data-progress-label]')).toHaveText('8 из 8 шагов завершено');
+  await expect(page.locator('[data-complete-step]:visible')).toHaveCount(0);
 });
 
 test('models compare outcomes, payoffs, preferences and roles correctly', async ({ page }) => {
@@ -192,7 +194,7 @@ test('export, reset and import restore the complete chapter without accepting ma
   await page.locator('[data-complete-step="strategic-situations"]').click();
   await page.getByRole('button', { name: 'Показать всю главу', exact: true }).first().click();
   await page.getByLabel('Что ты теперь думаешь об этом выборе?').fill('Моя заметка β');
-  await page.getByRole('button', { name: 'Источники', exact: true }).click();
+  await openSources(page);
   await page.getByText('Сохранение и перенос прогресса', { exact: true }).click();
   const downloadPromise = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Экспортировать JSON' }).click();
@@ -203,7 +205,7 @@ test('export, reset and import restore the complete chapter without accepting ma
   page.once('dialog', (d) => d.accept());
   await page.getByRole('button', { name: 'Сбросить прогресс главы' }).click();
   await expect(page.locator('[data-progress-label]')).toHaveText('0 из 8 шагов завершено');
-  await page.getByRole('button', { name: 'Источники', exact: true }).click();
+  await openSources(page);
   await page.getByText('Сохранение и перенос прогресса', { exact: true }).click();
   page.once('dialog', (d) => d.accept());
   await page.getByLabel('Импортировать прогресс этой главы').setInputFiles({ name: 'progress.json', mimeType: 'application/json', buffer: Buffer.from(content) });
@@ -217,15 +219,15 @@ test('export, reset and import restore the complete chapter without accepting ma
 
 test('dialogs contain focus, close on Escape and return to their trigger', async ({ page }) => {
   await ready(page);
-  const trigger = page.getByRole('button', { name: 'Источники', exact: true });
+  const trigger = page.locator('[data-drawer-view=sources]');
   await trigger.focus(); await page.keyboard.press('Enter');
   const dialog = page.getByRole('dialog', { name: 'Источники и примечания' });
   await expect(dialog).toBeVisible();
   for (let i = 0; i < 12; i++) { await page.keyboard.press('Tab'); expect(await page.evaluate(() => !!document.activeElement?.closest('dialog'))).toBe(true); }
   await page.keyboard.press('Escape');
   await expect(trigger).toBeFocused();
-  await page.getByRole('button', { name: 'Разделы главы', exact: true }).click();
-  await expect(page.getByRole('dialog', { name: 'Разделы главы' })).toBeVisible();
+  await page.getByRole('button', { name: 'Содержание курса', exact: true }).click();
+  await expect(page.getByRole('dialog', { name: 'Содержание курса' })).toBeVisible();
   await page.keyboard.press('Escape');
 });
 
@@ -236,9 +238,9 @@ test('course drawers preserve the reading context and distinguish course from ch
     const url = page.url();
     const modes = page.getByRole('navigation', { name: 'Режимы главы 01' });
     await expect(modes.getByRole('link', { name: /core/i })).toHaveAttribute('aria-current', 'page');
-    const course = page.getByRole('button', { name: 'Главы курса', exact: true });
+    const course = page.getByRole('button', { name: 'Содержание курса', exact: true });
     await course.click();
-    const drawer = page.getByRole('dialog', { name: 'Главы курса', exact: true });
+    const drawer = page.getByRole('dialog', { name: 'Содержание курса', exact: true });
     await expect(drawer).toBeVisible();
     await expect(course).toHaveAttribute('aria-expanded', 'true');
     await expect(drawer.getByRole('link', { name: 'Обзор курса и все главы →' })).toHaveAttribute('href', `${siteRoot}/courses/yale-econ-159/`);
@@ -256,8 +258,8 @@ test('course drawers preserve the reading context and distinguish course from ch
     await expect(concepts.getByRole('button', { name: 'Закрыть понятия курса' })).toBeInViewport();
     await footer.click();
     await expect(page).toHaveURL(`${siteRoot}/concepts/`);
-    await page.getByRole('button', { name: 'Главы курса', exact: true }).click();
-    await expect(page.getByRole('dialog', { name: 'Главы курса', exact: true })).toBeVisible();
+    await page.getByRole('button', { name: 'Содержание курса', exact: true }).click();
+    await expect(page.getByRole('dialog', { name: 'Содержание курса', exact: true })).toBeVisible();
     await page.keyboard.press('Escape');
   }
 });
@@ -266,7 +268,7 @@ test('editorial appendix is ancillary, intact and available from every chapter m
   for (const mode of ['core', 'quick', 'mastery']) {
     await ready(page, mode);
     await expect(page.locator('.narrative').getByRole('heading', { name: 'Источники и редакционные примечания' })).toHaveCount(0);
-    await page.getByRole('button', { name: 'Источники', exact: true }).click();
+    await openSources(page);
     const dialog = page.getByRole('dialog', { name: 'Источники и примечания', exact: true });
     await dialog.getByText('Редакционные примечания и таймкоды', { exact: true }).click();
     await expect(dialog.getByRole('heading', { name: 'Источники и редакционные примечания', exact: true })).toBeVisible();
@@ -300,7 +302,7 @@ test('layouts fit mobile and tablet widths and source access stays available', a
     await page.setViewportSize({ width, height: 900 }); await ready(page);
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
     await expect(page.locator('.mode-nav a')).toHaveText(['Quick', 'Core', 'Mastery']);
-    await expect(page.getByRole('button', { name: 'Источники', exact: true })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Содержание курса', exact: true })).toBeVisible();
     const toggle = page.locator('[data-toggle-all]');
     if (await toggle.getAttribute('aria-pressed') === 'false') await toggle.click();
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
@@ -314,12 +316,12 @@ test('automated accessibility covers all modes, expanded content and dialogs', a
     const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']).analyze();
     expect(results.violations).toEqual([]);
   }
-  await page.getByRole('button', { name: 'Источники', exact: true }).click();
+  await openSources(page);
   await page.getByText('Редакционные примечания и таймкоды', { exact: true }).click();
   await page.getByText('Сохранение и перенос прогресса', { exact: true }).click();
   expect((await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()).violations).toEqual([]);
   await page.keyboard.press('Escape');
-  for (const name of ['Главы курса', 'Понятия курса']) {
+  for (const name of ['Содержание курса', 'Понятия курса']) {
     await page.getByRole('button', { name, exact: true }).click();
     expect((await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()).violations).toEqual([]);
     await page.keyboard.press('Escape');
@@ -349,13 +351,13 @@ for (const [name, width, height] of [['desktop', 1440, 1080], ['mobile', 390, 84
     await page.setViewportSize({ width, height }); await ready(page);
     await page.evaluate(() => document.fonts.ready);
     await expect(page).toHaveScreenshot(`chapter-${name}.png`);
-    await page.getByRole('button', { name: 'Главы курса', exact: true }).click();
+    await page.getByRole('button', { name: 'Содержание курса', exact: true }).click();
     await expect(page).toHaveScreenshot(`course-drawer-${name}.png`);
     await page.keyboard.press('Escape');
     await page.getByRole('button', { name: 'Понятия курса', exact: true }).click();
     await expect(page).toHaveScreenshot(`concepts-drawer-${name}.png`);
     await page.keyboard.press('Escape');
-    await page.getByRole('button', { name: 'Источники', exact: true }).click();
+    await openSources(page);
     await expect(page).toHaveScreenshot(`sources-${name}.png`);
     await page.keyboard.press('Escape');
     await page.locator('[data-activity="first-choice"]').scrollIntoViewIfNeeded();

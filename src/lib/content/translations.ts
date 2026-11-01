@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { identifier, exercisesSchema, interactionContentSchema, chapterSchema, modelsSchema, type Chapter, type Model, type Exercise } from './schema';
+import { identifier, exercisesSchema, interactionContentSchema, chapterSchema, modelsSchema, assessmentTaskSchema, lessonInteractionsSchema, type Chapter, type Model, type Exercise, type AssessmentTask, type LessonInteractions } from './schema';
 
 export const translationSchema = z.object({
   chapterId: identifier,
@@ -13,16 +13,36 @@ export const translationSchema = z.object({
   interactions: interactionContentSchema,
 });
 export type LessonTranslation = z.infer<typeof translationSchema>;
+const metadataShape = translationSchema.pick({ chapterId: true, locale: true, basedOnContentVersion: true, terminologyVersion: true, chapter: true, modelCaptions: true });
+type TranslationMetadata = z.infer<typeof metadataShape>;
+export const assessmentTranslationSchema = metadataShape.extend({
+  format: z.literal('assessment'),
+  modelPlayers: z.record(identifier, z.object({ row: z.string().min(1), column: z.string().min(1), meaning: z.string().min(1) })),
+  exercises: z.array(assessmentTaskSchema),
+  interactions: lessonInteractionsSchema,
+});
+export const allTranslationsSchema = z.union([translationSchema, assessmentTranslationSchema]);
+export type AssessmentTranslation = z.infer<typeof assessmentTranslationSchema>;
 
-export function translateChapter(chapter: Chapter, copy: LessonTranslation): Chapter {
+export function translateChapter(chapter: Chapter, copy: TranslationMetadata): Chapter {
   if (copy.chapterId !== chapter.id || copy.basedOnContentVersion !== chapter.contentVersion) throw new Error(`Stale translation: ${chapter.id}`);
   if (chapter.steps.some((s) => !copy.chapter.steps[s.id]) || Object.keys(copy.chapter.steps).length !== chapter.steps.length || copy.chapter.sourceLinkTitles.length !== chapter.sourceLinks.length) throw new Error(`Incomplete chapter translation: ${chapter.id}`);
   return chapterSchema.parse({ ...chapter, ...copy.chapter, locale: 'en', steps: chapter.steps.map((s) => ({ ...s, title: copy.chapter.steps[s.id] })),
     sourceLinks: chapter.sourceLinks.map((s, i) => ({ ...s, title: copy.chapter.sourceLinkTitles[i] })) });
 }
-export function translateModels(models: Record<string, Model>, copy: LessonTranslation): Record<string, Model> {
+export function translateModels(models: Record<string, Model>, copy: TranslationMetadata & { modelPlayers?: AssessmentTranslation['modelPlayers'] }): Record<string, Model> {
   if (Object.keys(models).some((id) => !copy.modelCaptions[id]) || Object.keys(copy.modelCaptions).length !== Object.keys(models).length) throw new Error('Incomplete model captions');
-  return modelsSchema.parse(Object.fromEntries(Object.entries(models).map(([id, model]) => [id, { ...model, locale: 'en', caption: copy.modelCaptions[id] }])));
+  const roleIds = Object.keys(models).filter((id) => models[id].players);
+  if (roleIds.some((id) => !copy.modelPlayers?.[id]) || Object.keys(copy.modelPlayers || {}).some((id) => !roleIds.includes(id))) throw new Error('Incomplete model player labels');
+  return modelsSchema.parse(Object.fromEntries(Object.entries(models).map(([id, model]) => [id, { ...model, locale: 'en', caption: copy.modelCaptions[id], ...(model.players ? { players: copy.modelPlayers![id] } : {}) }])));
+}
+
+/** Words may vary; answer keys, numerical procedures and perspective visibility may not. */
+export function validateAssessmentTranslation(tasks: AssessmentTask[], interactions: LessonInteractions, copy: AssessmentTranslation): void {
+  const contract = (items: AssessmentTask[]) => items.map((t) => ({ id: t.id, origin: t.origin, modelId: t.modelId, parts: t.parts.map((p) => p.kind === 'choice' ? { id: p.id, kind: p.kind, options: p.options.map((o) => o.id), correct: p.correct } : { id: p.id, kind: p.kind, min: p.min, max: p.max, correct: p.correct }) }));
+  if (JSON.stringify(contract(tasks)) !== JSON.stringify(contract(copy.exercises))) throw new Error('Translated assessment contracts differ');
+  const numerical = (data: LessonInteractions) => ({ levels: data.elimination.levels.map(({ max, target }) => ({ max, target })), chain: data.chain.items.map(({ value }) => value), views: data.hats.views.map(({ id, unknownPerson }) => ({ id, unknownPerson })) });
+  if (JSON.stringify(numerical(interactions)) !== JSON.stringify(numerical(copy.interactions))) throw new Error('Translated interaction contracts differ');
 }
 
 /** Translated copy must preserve every language-independent exercise contract. */

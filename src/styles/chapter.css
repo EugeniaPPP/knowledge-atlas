@@ -2,7 +2,7 @@
 .narrative p, .core-step p { color: var(--body); margin-bottom: 20px; }
 .narrative strong, .core-step strong { color: var(--ink); font-weight: 650; }
 .narrative > hr, .core-step > hr { display: none; }
-.core-step { padding: 48px 0 0; border-top: 1px solid var(--line); margin-top: 40px; scroll-margin-top: 32px; min-width: 0; }
+.core-step { padding: 48px 0 0; border-top: 1px solid var(--line); margin-top: 40px; scroll-margin-top: calc(var(--reader-offset) + 32px); min-width: 0; }
 .step-kicker { margin-bottom: 20px; }
 .step-kicker strong { color: var(--ink); font-size: 21px; margin-right: 16px; letter-spacing: -.04em; }
 .core-step h2 { font-size: clamp(28px, 3vw, 42px); letter-spacing: -.045em; line-height: 1.18; font-weight: 620; max-width: 960px; margin-bottom: 28px; }
@@ -18,6 +18,8 @@ details p { font-size: 14px; line-height: 1.75; margin: 16px 0 8px !important; }
 .core-step > table th, .core-step > table td { padding: 12px 8px; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
 .core-step > table th { font-weight: 550; color: var(--muted); }
 .step-footer { margin-top: 32px; padding: 24px 0 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+.core-step[data-completed='true'] .step-footer { margin-top: 24px; padding: 0; }
+.core-step[data-completed='true'] + .core-step { border-top: 0; padding-top: 24px; }
 .source-ref { font-size: 11px; color: var(--muted); line-height: 1.7; }
 .source-ref a { color: var(--body); }
 .chapter-complete { border-top: 1px solid var(--line); margin-top: 32px; padding: 32px 0; }
@@ -73,7 +75,7 @@ textarea { display: block; width: 100%; max-width: 800px; min-height: 120px; bor
 .quick-section p { max-width: var(--reading-width); }
 .quick-summary { font-size: 25px; line-height: 1.5; letter-spacing: -.025em; color: var(--ink) !important; }
 .quick-matrix { max-width: 640px; }
-.question { border-top: 1px solid var(--line); padding: 32px 0; scroll-margin-top: 24px; }
+.question { border-top: 1px solid var(--line); padding: 32px 0; scroll-margin-top: calc(var(--reader-offset) + 24px); }
 .question > hr { display: none; }
 .question h3, .question h2 { font-size: 24px; letter-spacing: -.035em; line-height: 1.35; font-weight: 620; margin: 12px 0 20px; }
 .question p { max-width: var(--reading-width); color: var(--body); }

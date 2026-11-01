@@ -1,9 +1,9 @@
 ---
 import AtlasLayout from './AtlasLayout.astro';
-import ChapterDialogs from '../components/navigation/ChapterDialogs.astro';
+import CoreProgress from '../components/navigation/CoreProgress.astro';
 import type { Chapter, Mode, LearningConfig } from '../lib/content/schema';
 import { getEntry } from 'astro:content';
-import { getUI, format } from '../i18n/ui';
+import { getUI } from '../i18n/ui';
 import { sitePath } from '../lib/navigation/paths';
 interface Props { chapter: Chapter; mode: Mode }
 const { chapter, mode } = Astro.props;
@@ -14,7 +14,7 @@ const lectureNumber = String(chapter.number).padStart(2, '0');
 const config: LearningConfig = { chapterId: chapter.id, contentVersion: chapter.contentVersion, stepIds: chapter.steps.map((s) => s.id), locale };
 const headings = { quick: t.quickHeading, core: t.coreHeading, mastery: t.masteryHeading };
 ---
-<AtlasLayout title={chapter.title} description={chapter.description} courseId={chapter.courseId} locale={locale}>
+<AtlasLayout title={chapter.title} description={chapter.description} courseId={chapter.courseId} locale={locale} chapter={chapter}>
   <main id="main" data-reader data-mode={mode} data-base={base} tabindex="-1">
     <section class="hero" aria-labelledby="chapter-title">
       <div class="hero-meta eyebrow"><span>Yale Open Courses / {course.author} / {t.lecture} {lectureNumber}</span><span class="lecture-count">{lectureNumber} / {course.lectures.length} {t.lectures}</span></div>
@@ -22,29 +22,23 @@ const headings = { quick: t.quickHeading, core: t.coreHeading, mastery: t.master
     </section>
     <div class="chapter-toolbar" role="region" aria-label={`${t.chapterNav} ${lectureNumber}`}>
       <div class="chapter-scope"><strong>{t.chapter} {lectureNumber}</strong><span>{t.chapterModes}</span></div>
-      <nav class="mode-nav" aria-label={`${t.modesNav} ${lectureNumber}`} translate="no">{(['quick', 'core', 'mastery'] as const).map((m) => <a href={`${base}/${m}/`} aria-current={m === mode ? 'page' : undefined}><span>{{ quick: 'Quick', core: 'Core', mastery: 'Mastery' }[m]}</span></a>)}</nav>
-      <div class="chapter-tools-actions">
-        <button class="text-button js-only" data-open-dialog="contents-dialog" aria-controls="contents-dialog" aria-haspopup="dialog" aria-expanded="false">{t.contents} <span aria-hidden="true">☰</span></button>
-        <button class="text-button js-only" data-open-dialog="sources-dialog" aria-controls="sources-dialog" aria-haspopup="dialog" aria-expanded="false">{t.sources}</button>
+      <div class="chapter-mode-row">
+        <nav class="mode-nav" aria-label={`${t.modesNav} ${lectureNumber}`} translate="no">{(['quick', 'core', 'mastery'] as const).map((m) => <span class="mode-item" data-mode-item={m}><a href={`${base}/${m}/`} aria-current={m === mode ? 'page' : undefined}><span>{{ quick: 'Quick', core: 'Core', mastery: 'Mastery' }[m]}</span></a>{m === 'core' && mode === 'core' && <CoreProgress chapter={chapter} />}</span>)}</nav>
       </div>
     </div>
     <div class="mode-intro"><div><div class="eyebrow">{mode.toUpperCase()} · {chapter.durations[mode]}</div><h2>{headings[mode]}</h2></div>
       {mode === 'core' && <button class="text-button js-only" data-toggle-all>{t.revealAll}</button>}
     </div>
-    {mode === 'core' && <Fragment>
-      <div class="progress-line"><span class="progress-summary" data-progress-label>{format(t.progress, { count: 0, total: chapter.steps.length })}</span><span data-current-label>{format(t.coreSteps, { total: chapter.steps.length })}</span></div>
-      <div class="progress-bars" role="progressbar" aria-label={t.progressName} aria-valuemin="0" aria-valuemax={chapter.steps.length} aria-valuenow="0" style={`--step-count:${chapter.steps.length}`} data-progress>{chapter.steps.map((step) => <span data-progress-step={step.id}></span>)}</div>
-    </Fragment>}
     <p class="storage-message" data-storage-message role="status"></p>
     <noscript><p class="note">{t.noScript}</p></noscript>
     <div class="narrative"><slot /></div>
     {mode === 'core' && <section class="chapter-complete" data-core-complete hidden><h2>{t.coreComplete}</h2><p>{t.coreCompleteText}</p><a class="primary" href={`${base}/mastery/`}>{t.toMastery}</a></section>}
-    <aside class="chapter-annotation js-only" aria-label={t.ancillary}><span>{t.thisChapter}</span><button class="text-button" data-open-dialog="sources-dialog" aria-controls="sources-dialog" aria-haspopup="dialog" aria-expanded="false">{t.sourceNotes}</button></aside>
+    <aside class="chapter-annotation js-only" aria-label={t.ancillary}><span>{t.thisChapter}</span><button class="text-button" data-open-dialog="course-dialog" data-drawer-view="sources" aria-controls="course-dialog" aria-haspopup="dialog" aria-expanded="false">{t.sourceNotes}</button></aside>
     <noscript><aside class="editorial-notes"><slot name="source-notes" /></aside></noscript>
     <nav class="actions" aria-label={t.chapterMaterials}><a class="secondary" href={sitePath(`/courses/${chapter.courseId}/`, locale)}>{t.allChapters}</a><a class="secondary" href={sitePath('/concepts/', locale)}>{t.conceptsLinks}</a><a class="text-button" href={chapter.sourceUrl} target="_blank" rel="noopener noreferrer">{t.originalSource} ↗</a></nav>
     <script type="application/json" data-learning-config set:html={JSON.stringify(config).replace(/</g, '\\u003c')} />
   </main>
-  <ChapterDialogs chapter={chapter}><slot name="source-notes" /></ChapterDialogs>
+  <Fragment slot="chapter-notes"><slot name="source-notes" /></Fragment>
 </AtlasLayout>
 <script>
   import '../scripts/chapter-controller';

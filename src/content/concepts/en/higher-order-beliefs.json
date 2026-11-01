@@ -1,0 +1,13 @@
+{
+  "id": "higher-order-beliefs",
+  "title": "Beliefs about others’ beliefs",
+  "definition": "Predictions depend on beliefs about other people’s beliefs. Consider how deeply the other player analyzes the game and what level of analysis they expect from you.",
+  "stepId": "higher-order-reasoning",
+  "prerequisites": [
+    "strategy"
+  ],
+  "related": [
+    "common-knowledge"
+  ],
+  "locale": "en"
+}

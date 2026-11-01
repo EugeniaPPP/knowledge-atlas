@@ -1,0 +1,400 @@
+{
+  "format": "assessment",
+  "chapterId": "yale-econ-159/lecture-02",
+  "locale": "en",
+  "basedOnContentVersion": "lecture-02-approved-2026-10-31",
+  "terminologyVersion": 1,
+  "chapter": {
+    "title": "I know that you know…",
+    "titleLead": "I know",
+    "titleMuted": "that you know…",
+    "description": "Weak dominance, strategic reasoning, and common knowledge.",
+    "durations": {
+      "quick": "3–5 minutes",
+      "core": "25–35 minutes",
+      "mastery": "15–20 minutes"
+    },
+    "steps": {
+      "number-prediction": "Your number—and everyone else’s",
+      "normal-form": "The ingredients of a game",
+      "dominated-strategies": "A strategy that is worse than another",
+      "weak-dominance": "When a strategy is no worse, but not always better",
+      "higher-order-reasoning": "Why 33 is only a beginning",
+      "iterated-elimination": "How 100 becomes 1",
+      "historical-outcomes": "Why 9 won instead of 1",
+      "common-knowledge": "Do they know that you know?"
+    },
+    "sourceLinkTitles": [
+      "Video lecture and transcript",
+      "Full course syllabus"
+    ]
+  },
+  "modelCaptions": {
+    "abstract": "Player I: T or B; player II: L, C, or R. Yale, Lecture 2.",
+    "hannibal": "Easy pass: E / e; hard pass: H / h. A teaching model of Hannibal’s routes.",
+    "mastery-two": "Practice 02 / 07 · Author-created example, pure strategies.",
+    "mastery-three": "Practice 03 / 07 · Author-created example, pure strategies.",
+    "mastery-four": "Practice 04 / 07 · Author-created example, pure strategies."
+  },
+  "modelPlayers": {
+    "abstract": {
+      "row": "Player I",
+      "column": "Player II",
+      "meaning": "The first number is player I’s payoff (rows); the second is player II’s payoff (columns)."
+    },
+    "hannibal": {
+      "row": "Defender",
+      "column": "Attacker",
+      "meaning": "The first number is battalions lost (the defender’s payoff); the second is battalions arriving (the attacker’s payoff)."
+    },
+    "mastery-two": {
+      "row": "Player I",
+      "column": "Player II",
+      "meaning": "The first number is player I’s payoff (rows); the second is player II’s payoff (columns)."
+    },
+    "mastery-three": {
+      "row": "Player I",
+      "column": "Player II",
+      "meaning": "The first number is player I’s payoff (rows); the second is player II’s payoff (columns)."
+    },
+    "mastery-four": {
+      "row": "Player I",
+      "column": "Player II",
+      "meaning": "The first number is player I’s payoff (rows); the second is player II’s payoff (columns)."
+    }
+  },
+  "exercises": [
+    {
+      "id": "m01",
+      "origin": "editorial",
+      "parts": [
+        {
+          "id": "m01-answer",
+          "kind": "choice",
+          "label": "Choose an answer",
+          "options": [
+            {
+              "id": "a",
+              "text": "All numbers available to the second player."
+            },
+            {
+              "id": "b",
+              "text": "`(12, 62)`—the actions of players 1 and 3."
+            },
+            {
+              "id": "c",
+              "text": "`40`—the second player’s action."
+            },
+            {
+              "id": "d",
+              "text": "`(12, 40, 62)`—the strategy profile of all players."
+            }
+          ],
+          "correct": "b"
+        }
+      ]
+    },
+    {
+      "id": "m02",
+      "origin": "editorial",
+      "parts": [
+        {
+          "id": "m02-answer",
+          "kind": "choice",
+          "label": "Choose an answer",
+          "options": [
+            {
+              "id": "a",
+              "text": "B strictly dominates both A and C."
+            },
+            {
+              "id": "b",
+              "text": "B strictly dominates C, but player I has no strictly dominant strategy."
+            },
+            {
+              "id": "c",
+              "text": "C is not dominated because it sometimes gives a positive payoff."
+            },
+            {
+              "id": "d",
+              "text": "A strictly dominates B."
+            }
+          ],
+          "correct": "b"
+        }
+      ],
+      "modelId": "mastery-two"
+    },
+    {
+      "id": "m03",
+      "origin": "editorial",
+      "parts": [
+        {
+          "id": "m03-part-1",
+          "kind": "choice",
+          "label": "Answer to question 1",
+          "options": [
+            {
+              "id": "a",
+              "text": "A strictly dominates B."
+            },
+            {
+              "id": "b",
+              "text": "A weakly dominates B."
+            },
+            {
+              "id": "c",
+              "text": "B weakly dominates A."
+            },
+            {
+              "id": "d",
+              "text": "Neither strategy dominates the other."
+            }
+          ],
+          "correct": "b"
+        },
+        {
+          "id": "m03-part-2",
+          "kind": "choice",
+          "label": "Answer to question 2",
+          "options": [
+            {
+              "id": "a",
+              "text": "Yes, because A weakly dominates B."
+            },
+            {
+              "id": "b",
+              "text": "No: against X, both strategies give I a payoff of 4."
+            }
+          ],
+          "correct": "b"
+        }
+      ],
+      "modelId": "mastery-three"
+    },
+    {
+      "id": "m04",
+      "origin": "editorial",
+      "parts": [
+        {
+          "id": "m04-answer",
+          "kind": "choice",
+          "label": "Choose an answer",
+          "options": [
+            {
+              "id": "a",
+              "text": "Yes. A strategy that is never a best response is automatically strictly dominated."
+            },
+            {
+              "id": "b",
+              "text": "No. Neither L nor C outperforms R against both T and B."
+            },
+            {
+              "id": "c",
+              "text": "Yes. L strictly dominates R."
+            }
+          ],
+          "correct": "b"
+        }
+      ],
+      "modelId": "mastery-four"
+    },
+    {
+      "id": "m05",
+      "origin": "editorial",
+      "parts": [
+        {
+          "id": "m05-first",
+          "kind": "integer",
+          "label": "Highest possible target in the original game",
+          "min": 1,
+          "max": 90,
+          "correct": 45
+        },
+        {
+          "id": "m05-second",
+          "kind": "integer",
+          "label": "Largest remaining number after the second stage",
+          "min": 1,
+          "max": 90,
+          "correct": 22
+        }
+      ]
+    },
+    {
+      "id": "m06",
+      "origin": "editorial",
+      "parts": [
+        {
+          "id": "m06-answer",
+          "kind": "choice",
+          "label": "Choose an answer",
+          "options": [
+            {
+              "id": "a",
+              "text": "Everyone must choose 1: rationality alone implies it."
+            },
+            {
+              "id": "b",
+              "text": "The limit of 1 follows from an additional repeated-deletion procedure and corresponding assumptions about others; the stated conditions do not guarantee it."
+            },
+            {
+              "id": "c",
+              "text": "The limit cannot be 1 because the mean is always 50."
+            }
+          ],
+          "correct": "b"
+        }
+      ]
+    },
+    {
+      "id": "m07",
+      "origin": "editorial",
+      "parts": [
+        {
+          "id": "m07-answer",
+          "kind": "choice",
+          "label": "Choose an answer",
+          "options": [
+            {
+              "id": "a",
+              "text": "The information is common knowledge in both situations."
+            },
+            {
+              "id": "b",
+              "text": "In A, both know the fact (mutual knowledge), but it is not common knowledge; in B, it is common knowledge."
+            },
+            {
+              "id": "c",
+              "text": "There is not even mutual knowledge in A because the notifications were private."
+            },
+            {
+              "id": "d",
+              "text": "In B, the information cannot become common knowledge even with a public announcement."
+            }
+          ],
+          "correct": "b"
+        }
+      ]
+    }
+  ],
+  "interactions": {
+    "elimination": {
+      "title": "Reducing the options",
+      "assumption": "Conditional procedure: at every stage, players avoid weakly dominated strategies and expect the corresponding reasoning from others. Rationality alone does not guarantee the entire chain.",
+      "levels": [
+        {
+          "max": 100,
+          "target": "66⅔",
+          "text": "Initially, each player may choose any integer from 1 to 100."
+        },
+        {
+          "max": 67,
+          "target": "44⅔",
+          "text": "The first deletion leaves 1–67. To continue, assume that the others will not choose 68–100 either."
+        },
+        {
+          "max": 45,
+          "target": "30",
+          "text": "The second deletion leaves 1–45. This requires expecting the others to know about the first reduction."
+        },
+        {
+          "max": 30,
+          "target": "20",
+          "text": "The remaining numbers are 1–30. The argument requires another level of expectations."
+        },
+        {
+          "max": 20,
+          "target": "13⅓",
+          "text": "The remaining numbers are 1–20. Each stage continues the deletion in the reduced game."
+        },
+        {
+          "max": 13,
+          "target": "8⅔",
+          "text": "The remaining numbers are 1–13."
+        },
+        {
+          "max": 9,
+          "target": "6",
+          "text": "The remaining numbers are 1–9."
+        },
+        {
+          "max": 6,
+          "target": "4",
+          "text": "The remaining numbers are 1–6."
+        },
+        {
+          "max": 4,
+          "target": "2⅔",
+          "text": "The remaining numbers are 1–4."
+        },
+        {
+          "max": 3,
+          "target": "2",
+          "text": "The remaining numbers are 1–3."
+        },
+        {
+          "max": 2,
+          "target": "1⅓",
+          "text": "The remaining numbers are 1–2."
+        },
+        {
+          "max": 1,
+          "target": "⅔",
+          "text": "This procedure leaves 1. It is a conditional theoretical conclusion."
+        }
+      ]
+    },
+    "chain": {
+      "label": "An approximate chain of expectations",
+      "items": [
+        {
+          "label": "Initial expectations",
+          "value": "50"
+        },
+        {
+          "label": "⅔ of 50",
+          "value": "≈ 33"
+        },
+        {
+          "label": "⅔ of 33",
+          "value": "≈ 22"
+        },
+        {
+          "label": "⅔ of 22",
+          "value": "≈ 15"
+        }
+      ]
+    },
+    "hats": {
+      "title": "Who can see what?",
+      "fact": "Both hats are actually pink. There has been no public announcement.",
+      "pink": "Pink",
+      "unknown": "Own color unknown",
+      "people": [
+        "Anya",
+        "Boris"
+      ],
+      "views": [
+        {
+          "id": "observer",
+          "label": "As they are",
+          "unknownPerson": null,
+          "explanation": "An outside observer sees that both hats are pink; neither participant knows the color of their own hat."
+        },
+        {
+          "id": "anya",
+          "label": "Through Anya’s eyes",
+          "unknownPerson": 0,
+          "explanation": "Anya sees Boris’s pink hat but does not know her own hat’s color. She therefore cannot be sure that Boris knows there is a pink hat."
+        },
+        {
+          "id": "boris",
+          "label": "Through Boris’s eyes",
+          "unknownPerson": 1,
+          "explanation": "Boris sees Anya’s pink hat but does not know his own hat’s color. He therefore cannot be sure that Anya knows there is a pink hat."
+        }
+      ]
+    }
+  }
+}

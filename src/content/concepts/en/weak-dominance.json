@@ -1,0 +1,14 @@
+{
+  "id": "weak-dominance",
+  "title": "Weak dominance",
+  "definition": "A strategy is no worse against any choice of the opponent and strictly better against at least one. Weak dominance does not make choosing a dominant strategy compulsory.",
+  "stepId": "weak-dominance",
+  "prerequisites": [
+    "strict-dominance"
+  ],
+  "related": [
+    "dominated-strategy",
+    "iterated-elimination"
+  ],
+  "locale": "en"
+}

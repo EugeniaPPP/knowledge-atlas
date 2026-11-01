@@ -1,0 +1,11 @@
+{
+  "id": "mutual-knowledge",
+  "title": "Mutual knowledge",
+  "definition": "Everyone knows a fact X. This does not by itself mean that everyone knows that the others know X.",
+  "stepId": "common-knowledge",
+  "prerequisites": [],
+  "related": [
+    "common-knowledge"
+  ],
+  "locale": "en"
+}

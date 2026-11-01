@@ -1,3 +1,4 @@
+import { openSources } from './helpers/navigation';
 import { test, expect, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { readFile } from 'node:fs/promises';
@@ -128,9 +129,9 @@ test('English navigation, concepts and source appendix stay in the selected lang
   await page.goto(`${root}/en/`);
   await page.getByRole('link', { name: 'All 24 lectures', exact: true }).click();
   await expect(page.locator('.course-list > li')).toHaveCount(24);
-  await expect(page.locator('.availability').filter({ hasText: 'Planned' })).toHaveCount(23);
+  await expect(page.locator('.availability').filter({ hasText: 'Planned' })).toHaveCount(22);
   await page.goto(`${root}/en/concepts/`);
-  await expect(page.locator('.concept-list > li')).toHaveCount(8);
+  await expect(page.locator('.concept-list > li')).toHaveCount(16);
   await page.getByRole('link', { name: 'Strict dominance', exact: true }).click();
   await page.getByRole('link', { name: 'Understand in context →' }).click();
   await expect(page).toHaveURL(`${en}/core/#dominance`);
@@ -138,8 +139,8 @@ test('English navigation, concepts and source appendix stay in the selected lang
   await switchTo(page, 'ru'); await expect(page).toHaveURL(`${ru}/core/#dominance`);
   for (const mode of ['core', 'quick', 'mastery']) {
     await ready(page, mode);
-    for (const [trigger, heading] of [['Course chapters','Course chapters'],['Course concepts','Course concepts'],['Chapter sections','Chapter sections'],['Sources','Sources and notes']]) {
-      const button = page.getByRole('button', { name: trigger, exact: true });
+    for (const [trigger, heading] of [['Course contents','Course contents'],['Course concepts','Course concepts'],['Sources','Sources and notes']]) {
+      const button = trigger === 'Sources' ? page.locator('[data-drawer-view=sources]') : page.getByRole('button', { name: trigger, exact: true });
       await button.click();
       const dialog = page.getByRole('dialog', { name: heading, exact: true });
       expect(await dialog.innerText()).not.toMatch(/[А-Яа-яЁё]/u);
@@ -156,7 +157,7 @@ test('English navigation, concepts and source appendix stay in the selected lang
 test('English export/import and storage errors preserve existing data formats', async ({ page }, info) => {
   await ready(page);
   await page.locator('[data-complete-step="strategic-situations"]').click();
-  await page.getByRole('button', { name: 'Sources', exact: true }).click();
+  await openSources(page);
   await page.getByText('Save and transfer progress', { exact: true }).click();
   const downloadPromise = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Export JSON' }).click();
@@ -166,7 +167,7 @@ test('English export/import and storage errors preserve existing data formats', 
   page.once('dialog', (d) => { expect(d.message()).toContain('Reset this chapter'); return d.accept(); });
   await page.getByRole('button', { name: 'Reset chapter progress' }).click();
   await expect(page).toHaveURL(`${en}/core/`);
-  await page.getByRole('button', { name: 'Sources', exact: true }).click();
+  await openSources(page);
   await page.getByText('Save and transfer progress', { exact: true }).click();
   page.once('dialog', (d) => { expect(d.message()).toContain('Completed steps: 1'); return d.accept(); });
   await page.getByLabel('Import progress for this chapter').setInputFiles({ name: 'progress.json', mimeType: 'application/json', buffer: Buffer.from(content) });
@@ -193,12 +194,12 @@ test('English layouts fit all supported widths and pass accessibility checks', a
       await expect(page.locator('[data-progress-label]')).toHaveCount(mode === 'core' ? 1 : 0);
       await expect(page.locator('[data-progress]')).toHaveCount(mode === 'core' ? 1 : 0);
       await expect(page.locator('.language-switcher').getByRole('link', { name: 'Русский', exact: true })).toBeVisible();
-      await expect(page.getByRole('button', { name: 'Sources', exact: true })).toBeVisible();
+      await expect(page.getByRole('button', { name: 'Course contents', exact: true })).toBeVisible();
     }
     expect((await new AxeBuilder({ page }).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze()).violations).toEqual([]);
   }
-  for (const name of ['Sources', 'Course chapters', 'Course concepts', 'Chapter sections']) {
-    await page.getByRole('button', { name, exact: true }).click();
+  for (const name of ['Sources', 'Course contents', 'Course concepts']) {
+    if (name === 'Sources') await openSources(page); else await page.getByRole('button', { name, exact: true }).click();
     expect((await new AxeBuilder({ page }).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze()).violations).toEqual([]);
     await page.keyboard.press('Escape');
   }

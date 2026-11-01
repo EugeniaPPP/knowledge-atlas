@@ -1,0 +1,13 @@
+{
+  "id": "iterated-elimination",
+  "title": "Iterated deletion of strategies",
+  "definition": "Each new stage depends on what players expect of one another. Rationality alone does not guarantee the entire chain of deleting weakly dominated strategies.",
+  "stepId": "iterated-elimination",
+  "prerequisites": [
+    "weak-dominance"
+  ],
+  "related": [
+    "higher-order-beliefs"
+  ],
+  "locale": "en"
+}

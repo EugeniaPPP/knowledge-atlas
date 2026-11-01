@@ -205,6 +205,14 @@
       {
         "source": "*Примечание для редактора: смешанные стратегии в главе 2 не анализируются.*",
         "mdx": "{/* EDITORIAL:m04 */}"
+      },
+      {
+        "source": "",
+        "mdx": "<section className=\"question\" id=\"self-explanation\">"
+      },
+      {
+        "source": "",
+        "mdx": "</section>"
       }
     ],
     "quick": []

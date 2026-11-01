@@ -1,4 +1,7 @@
 // Native dialogs share keyboard, backdrop and focus-return behavior on every page.
+import { setupCourseDrawer } from './course-navigation';
+const courseDialog = document.getElementById('course-dialog');
+const openCourseView = courseDialog instanceof HTMLDialogElement ? setupCourseDrawer(courseDialog) : undefined;
 const triggers = new Map<HTMLDialogElement, HTMLElement>();
 document.querySelectorAll<HTMLElement>('[data-open-dialog]').forEach((button) => {
   button.addEventListener('click', () => {
@@ -7,7 +10,8 @@ document.querySelectorAll<HTMLElement>('[data-open-dialog]').forEach((button) =>
     triggers.set(dialog, button);
     button.setAttribute('aria-expanded', 'true');
     dialog.showModal();
-    dialog.querySelector<HTMLButtonElement>('.dialog-close')?.focus();
+    if (dialog === courseDialog) openCourseView?.(button.dataset.drawerView === 'sources' ? 'sources' : 'contents');
+    else dialog.querySelector<HTMLButtonElement>('.dialog-close')?.focus();
   });
 });
 document.querySelectorAll<HTMLDialogElement>('dialog').forEach((dialog) => {
@@ -29,6 +33,7 @@ document.querySelectorAll<HTMLDialogElement>('dialog').forEach((dialog) => {
   dialog.addEventListener('close', () => {
     const trigger = triggers.get(dialog);
     trigger?.setAttribute('aria-expanded', 'false');
-    trigger?.focus({ preventScroll: true });
+    if (dialog.dataset.skipReturnFocus !== 'true') trigger?.focus({ preventScroll: true });
+    delete dialog.dataset.skipReturnFocus;
   });
 });

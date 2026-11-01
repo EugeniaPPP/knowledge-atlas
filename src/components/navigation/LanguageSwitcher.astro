@@ -13,7 +13,7 @@ const t = getUI(locale);
 </nav>
 <script>
   document.querySelectorAll<HTMLAnchorElement>('[data-language-link]').forEach((link) => link.addEventListener('click', () => {
-    const threshold = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) + 64;
+    const threshold = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--reader-offset')) + 64;
     const section = [...document.querySelectorAll<HTMLElement>('[data-core-step], article.question, section.question[id]')].find((el) => {
       const rect = el.getBoundingClientRect(); return !el.hidden && rect.top <= threshold && rect.bottom > threshold;
     });
