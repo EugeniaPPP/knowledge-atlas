@@ -27,7 +27,7 @@ ID; objective IDs; место/parallel block ID; педагогическая т
 
 ## Известные ограничения адаптера
 
-- `lessonInteractionsSchema` и assessment translation сейчас требуют **вместе** elimination, chain, hats. Для иных глав нужна минимальная согласованная эволюция контракта; не генерировать чуждые теме placeholders.
+- Формат `assessment` Лекции 2 сохраняет обязательные elimination, chain, hats. Формат `spatial-assessment` Лекции 3 использует ElectionExplorer и `exerciseCopy` только для подписей; `translateAssessmentTasks` наследует общие ключи, диапазоны, ID и варианты из RU-модели, проверяя полноту. Не генерировать чуждые теме placeholders. Новые типы взаимодействий требуют соответствующего фактическому API контракта.
 - `CoreStep` требует временной диапазон, хотя авторский процесс допускает PDF/slides-only. До расширения renderer отсутствие достоверных времён — integration blocker, а не повод выдумать видео.
 - `translateModels` локализует caption/players, но сохраняет rows/columns. Новые словесные названия стратегий требуют display-label контракта с общими stable IDs.
 - Multiple selection, дробные/символические ответы и несколько независимо сохраняемых эссе пока не входят в эти API. Не обещать поддержку в спецификации существующего компонента.

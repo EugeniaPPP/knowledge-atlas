@@ -40,3 +40,12 @@ test('all generated page links, island scripts, styles and fonts resolve under t
   assert.ok(checked > pages.length, 'Expected page and asset references to be checked');
   assert.ok(!files.some((path) => /(?:^|\/)(?:references|authoring)\//.test(relative(dist, path)) || path.endsWith('.pdf')), 'Source materials must not be deployed');
 });
+
+test('Lecture 3 routes follow their publication metadata in both locales', () => {
+  const chapter = JSON.parse(readFileSync(new URL('../../src/content/chapters/yale-econ-159/lecture-03/chapter.json', import.meta.url), 'utf8'));
+  const visible = !chapter.reviewOnly || process.env.ATLAS_REVIEW === '1';
+  for (const locale of ['ru','en']) for (const mode of ['quick','core','mastery']) {
+    const path = join(dist,locale==='en'?'en':'','courses/yale-econ-159/lecture-03',mode,'index.html');
+    assert.equal(existsSync(path),visible && chapter.availableLocales.includes(locale),`${locale}/${mode}`);
+  }
+});

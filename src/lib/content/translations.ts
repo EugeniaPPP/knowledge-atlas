@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { identifier, exercisesSchema, interactionContentSchema, chapterSchema, modelsSchema, assessmentTaskSchema, lessonInteractionsSchema, type Chapter, type Model, type Exercise, type AssessmentTask, type LessonInteractions } from './schema';
+import { electionCopySchema } from './election';
 
 export const translationSchema = z.object({
   chapterId: identifier,
@@ -21,8 +22,36 @@ export const assessmentTranslationSchema = metadataShape.extend({
   exercises: z.array(assessmentTaskSchema),
   interactions: lessonInteractionsSchema,
 });
-export const allTranslationsSchema = z.union([translationSchema, assessmentTranslationSchema]);
+// Copy-only translations inherit keys, ranges, kinds and model IDs from the shared tasks.
+export const assessmentCopySchema = z.record(identifier, z.object({
+  parts: z.record(identifier, z.object({ label: z.string().min(1), options: z.record(identifier, z.string().min(1)).optional() }).strict()),
+}).strict());
+export const spatialAssessmentTranslationSchema = metadataShape.extend({
+  format: z.literal('spatial-assessment'),
+  modelPlayers: assessmentTranslationSchema.shape.modelPlayers,
+  exerciseCopy: assessmentCopySchema,
+  interactions: z.object({ election: electionCopySchema }).strict(),
+});
+export const allTranslationsSchema = z.union([translationSchema, assessmentTranslationSchema, spatialAssessmentTranslationSchema]);
 export type AssessmentTranslation = z.infer<typeof assessmentTranslationSchema>;
+
+export function translateAssessmentTasks(tasks: AssessmentTask[], copy: z.infer<typeof assessmentCopySchema>): AssessmentTask[] {
+  const sameKeys = (actual: string[], expected: string[]) => JSON.stringify([...actual].sort()) === JSON.stringify([...expected].sort());
+  if (!sameKeys(Object.keys(copy), tasks.map((t) => t.id))) throw new Error('Incomplete assessment task translation');
+  return tasks.map((task) => {
+    const parts = copy[task.id].parts;
+    if (!sameKeys(Object.keys(parts), task.parts.map((p) => p.id))) throw new Error(`Incomplete assessment parts: ${task.id}`);
+    return assessmentTaskSchema.parse({ ...task, parts: task.parts.map((part) => {
+      const translated = parts[part.id];
+      if (part.kind === 'integer') {
+        if (translated.options) throw new Error(`Unexpected translated options: ${part.id}`);
+        return { ...part, label: translated.label };
+      }
+      if (!translated.options || !sameKeys(Object.keys(translated.options), part.options.map((o) => o.id))) throw new Error(`Incomplete assessment options: ${part.id}`);
+      return { ...part, label: translated.label, options: part.options.map((option) => ({ ...option, text: translated.options![option.id] })) };
+    }) });
+  });
+}
 
 export function translateChapter(chapter: Chapter, copy: TranslationMetadata): Chapter {
   if (copy.chapterId !== chapter.id || copy.basedOnContentVersion !== chapter.contentVersion) throw new Error(`Stale translation: ${chapter.id}`);

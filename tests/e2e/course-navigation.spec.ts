@@ -46,7 +46,7 @@ for (const lecture of ['lecture-01', 'lecture-02']) for (const locale of ['ru', 
       await expect(locked).toHaveAttribute('aria-disabled', 'true');
       await locked.focus(); await page.keyboard.press('Enter'); await expect(page).toHaveURL(`${base}/core/#${current}`);
       await expect(drawer).toBeVisible();
-      const other = drawer.locator('.course-chapter:not([data-current-chapter])');
+      const other = drawer.locator('.course-chapter:not([data-current-chapter])').first();
       if (await other.getAttribute('open') !== null) await other.locator('summary').click();
       await other.locator('summary').click(); await expect(other).toHaveAttribute('open', '');
       await expect(page).toHaveURL(`${base}/core/#${current}`);

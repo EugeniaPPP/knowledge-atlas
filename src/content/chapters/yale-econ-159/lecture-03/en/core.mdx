@@ -1,0 +1,300 @@
+---
+chapterId: yale-econ-159/lecture-03
+locale: en
+mode: core
+revision: lecture-03-bilingual-r01
+editorialStatus: approved
+---
+
+import CoreStep from "../../../../../components/editorial/CoreStep.astro";
+import ElectionExplorer from "../../../../../components/activities/ElectionExplorer";
+import PayoffPlot from "../../../../../components/editorial/PayoffPlot.astro";
+import plotImages from "../../../../../assets/lecture-03/en/plot";
+import { chapter, election } from "./data";
+
+*Why rivals move toward the center — and how to choose when dominance offers no answer*
+
+Why do rivals move toward the center? And how should you choose when no strategy beats all the others? We will explore two games: an election, then a decision under uncertainty.
+
+<CoreStep id="election-rules" chapter={chapter}>
+
+## 01. Two candidates, ten positions
+
+Two candidates choose the policies they will campaign on: **an integer position from 1 to 10**. **1 is the far left** (even trees should have the vote); **10 is the far right** (people who would deny the poor a vote — and eat immigrants). *Ben Polak's caricature of the two extremes.*
+
+Each position is home to **10% of the voters**. Each group votes for the candidate closest to its views. If both are equally close, the group splits evenly. Each candidate wants **the largest possible share of the vote**.
+
+Change the candidates' positions and watch where each group's votes go.
+
+<ElectionExplorer model={election} content={election.content} client:load />
+
+**1 against 2.** The first candidate gets only the voters at position 1: **10%**. The second gets everyone else: **90%**.
+
+**1 against 3.** The group at position 2 is equally close to both candidates, so each receives **5%**. The first candidate therefore gets 10%+5%=**15%**, and the second gets **85%**.
+
+But one favorable matchup does not prove that a position is better against every possible choice by the opponent.
+
+<p className="lesson-source-note">*Source: transcript 02:10–06:14, including the caricature at 03:23–04:03; blackboard notes, p. 1; Problem Set 1, question 3.*</p>
+
+</CoreStep>
+
+<CoreStep id="compare-positions" chapter={chapter}>
+
+## 02. “2 is better than 1” — against whom?
+
+To check whether **strategy 2 strictly dominates strategy 1**, vary the opponent's position and compare our two choices each time. Within each comparison, the opponent's position stays fixed.
+
+| Opponent's position y | Our vote share at 1 | Our vote share at 2 |
+| --- | ---: | ---: |
+| 1 | 50% | 90% |
+| 2 | 10% | 50% |
+| 3 | 15% | 20% |
+| 4 | 20% | 25% |
+
+Where does the 15% against an opponent at 3 come from? At position 1, we get all of group 1 and half of group 2, which lies halfway between the candidates: 10%+5%=15%. At position 2, we get all of groups 1 and 2: 20%.
+
+Against every opponent position from 3 through 10, moving from 1 to 2 adds **5 percentage points**. We gain an extra half-group at the boundary between the candidates' voters. We have already checked the first two cases separately.
+
+So **2 wins more votes than 1 against every possible choice by the opponent**. That is strict dominance. By symmetry, 9 strictly dominates 10.
+
+> **Dominance compares your own alternatives while holding the opponent's choice fixed.** “2 dominates 1” is a stronger claim than “a candidate at 2 beats a candidate at 1.”
+
+It is tempting to continue: if 2 is better than 1, perhaps 3 is better than 2? After all, 3 is closer to the center.
+
+Check against an opponent at 1. Choosing 2 gives us **90%**. At 3, group 1 votes for the opponent and group 2 splits evenly. We get 80% from groups 3–10 and another 5% from group 2: **85%** in total.
+
+Thus 3 does **not** dominate 2 in the original game: one case in which it does worse is enough to disprove the claim. “Always move toward the center” is no substitute for comparing payoffs.
+
+But what if we already know that the opponent will not choose 1?
+
+<p className="lesson-source-note">*Source: transcript 06:21–16:25; blackboard notes, p. 1.*</p>
+
+</CoreStep>
+
+<CoreStep id="iterated-election" chapter={chapter}>
+
+## 03. What changes after the first deletion?
+
+Positions 1 and 10 are strictly dominated. An opponent who chooses rationally and understands the rules has no reason to prefer them to the respective alternatives that always pay more. The same applies to us.
+
+Eliminate these positions from consideration **for both candidates**. The actions we now consider are 2,3,…,9.
+
+**We do not remove any voters.** Positions 1 and 10 still contain 10% of the voters each, and those people still vote. Only the positions we expect the candidates to choose have changed.
+
+Compare 2 and 3 again:
+
+- Against position 2, choosing 2 gives us 50%, while choosing 3 gives us 80%: the opponent gets groups 1 and 2; we get everyone else.
+- Against position 3, choosing 2 gives us 20%, while choosing 3 gives us 50%.
+- Against positions 4–9, moving from 2 to 3 adds 5 percentage points.
+
+The counterexample with the opponent at 1 is gone. So **in the reduced game, 3 strictly dominates 2**. Likewise, 8 dominates 9.
+
+Repeating the argument gives:
+
+| Round | Positions eliminated for each candidate | Positions remaining |
+| --- | --- | --- |
+| Before any deletion | — | 1–10 |
+| 1 | 1 and 10 | 2–9 |
+| 2 | 2 and 9 | 3–8 |
+| 3 | 3 and 8 | 4–7 |
+| 4 | 4 and 7 | 5 and 6 |
+
+In every row of this table, the voters stay in the same places: **ten groups of 10%**.
+
+This is **iterated deletion of dominated strategies**. First, we consider our own incentives. Next, we take into account that the opponent also recognizes their inferior choices. Then we take into account that the opponent expects the same reasoning from us. Each further round requires the corresponding beliefs about the other player's reasoning.
+
+> **Reducing the game changes the actions under consideration, not the original rules or payoffs.** A strategy can therefore become dominated only after some of the opponent's actions have been eliminated.
+
+Every comparison here is strict. Keep this separate from the weak deletion used in the number game in the previous chapter.
+
+<details>
+<summary>Why does strict deletion matter here?</summary>
+
+A strictly dominated strategy does worse than some alternative against every opponent action under consideration. Weak dominance requires only “no worse everywhere, and better somewhere,” so ties are possible.
+
+Because of those ties, the outcome of iterated weak deletion in other games can depend on the order of deletion. Problem Set 1, question 2, asks you to investigate exactly this issue. Deleting strategies in simultaneous rounds gives us a clear procedure, but does not make weak deletion an unconditional prediction of behavior in every game.
+
+</details>
+
+We have reached the two central positions. What does that explain — and what does it leave open?
+
+<p className="lesson-source-note">*Source: transcript 16:33–23:08; blackboard notes, p. 1. Comparison with weak deletion: Problem Set 1, question 2, with an editorial clarification.*</p>
+
+</CoreStep>
+
+<CoreStep id="median-and-assumptions" chapter={chapter}>
+
+## 04. Why the center — and how realistic is the model?
+
+Each candidate is left with **5 and 6**. All four combinations — (5,5), (5,6), (6,5), (6,6) — give each candidate **50%**. The model therefore does not require one to choose 5 and the other 6.
+
+Repeated reasoning brought them to the center: an extreme position loses to its neighbor; once that extreme is eliminated, the comparison repeats. This result is connected to the **median voter theorem**.
+
+A median position has no more than half the voters strictly to its left, and no more than half strictly to its right. Here, the central groups are 5 and 6. The usual numerical median is 5.5, but our integer grid does not allow that strategy. What matters is **the median of the voter distribution**, rather than the geometric midpoint of any scale we draw.
+
+This is a result for **a simplified election game**. The model assumes:
+
+- **Two candidates and one political dimension.** Real elections can have more candidates, and political views need not fit on a single axis.
+- **Exactly 10% of voters at each position; everyone votes, based only on proximity.** Real groups differ in size, some voters abstain, and a candidate's personality can matter too.
+- **The announced position becomes policy; the objective is vote share.** Real promises may lack credibility, and a candidate may care more about winning than about maximizing the share of the vote.
+
+The rounds of deletion also require the corresponding beliefs about each other's rationality. An uneven voter distribution does not by itself refute convergence toward a median, but the payoffs must be recalculated. A third candidate changes the allocation of votes too: we cannot automatically carry over the same chain of deletions.
+
+We have shown why candidates converge in this game. To apply the conclusion to real elections, we need to check how well its assumptions fit.
+
+Yet even with clear rules, there may be nothing to eliminate. Then we need another way to choose an action.
+
+<p className="lesson-source-note">*Source: transcript 23:14–39:08; blackboard notes, p. 1; Problem Set 1, question 3. This is a particular discrete model, not a proof of every version of the theorem.*</p>
+
+</CoreStep>
+
+<CoreStep id="when-deletion-stops" chapter={chapter}>
+
+## 05. What if there is nothing to eliminate?
+
+Consider a different game. Player I has three actions: **U** (Up, the top row), **M** (Middle), and **D** (Down, the bottom row). Player II has two: **L** (Left) and **R** (Right).
+
+Each cell lists Player I's payoff first, then Player II's. We will choose for Player I.
+
+| Player I ↓ / Player II → | L | R |
+| --- | --- | --- |
+| U | (5,1) | (0,2) |
+| M | (1,3) | (4,1) |
+| D | (4,2) | (2,3) |
+
+Neither player has a strictly or weakly dominated pure strategy. For example, D does worse than U against L: 4&lt;5. Against R, however, it does better than U: 2>0. Comparing D with M reverses the pattern: D is better against L, but worse against R.
+
+Before continuing, choose a row in your head. What attracted you: a high possible payoff, or avoiding a particularly bad outcome?
+
+If we knew for sure that the opponent would choose **L**, we should choose **U**: 5 is greater than 1 and 4. If we knew they would choose **R**, we should choose **M**: 4 is greater than 0 and 2.
+
+U and M are **best responses to the respective opponent actions**: each maximizes our payoff given that particular choice by the opponent.
+
+Here is the puzzle: D is best in neither the left nor the right column. Does that mean it can never be a reasonable choice?
+
+No. So far, we have considered only two extreme beliefs: certainty about L, and certainty about R. Between them lies uncertainty.
+
+<p className="lesson-source-note">*Source: transcript 40:40–46:23; blackboard notes, p. 1.*</p>
+
+</CoreStep>
+
+<CoreStep id="beliefs-and-expectation" chapter={chapter}>
+
+## 06. What if L and R are equally likely?
+
+Suppose you believe the opponent will choose L with probability **1/2** and R with probability **1/2**. How should you compare the rows?
+
+Calculate the **expected payoff**: multiply the payoff in each possible case by its probability, then add the results.
+
+| Our choice | Calculation when L and R are equally likely | Expected payoff |
+| --- | --- | ---: |
+| U | 1/2 × 5 + 1/2 × 0 | 2.5 |
+| M | 1/2 × 1 + 1/2 × 4 | 2.5 |
+| D | 1/2 × 4 + 1/2 × 2 | **3** |
+
+Now **D is the best response**. It maximizes expected payoff given this belief, even though it was best against neither L nor R individually.
+
+“Expected” does not mean that you will receive exactly 3 in a single play. Choosing D gives an actual payoff of either 4 or 2. The number 3 evaluates that choice using the specified probabilities.
+
+Here we use **the given numerical payoffs as utilities** that can be weighted by probabilities. We cannot arbitrarily replace them with another scale that preserves only the ranking and expect the same result: the sizes of the differences now matter too.
+
+The belief does not require the opponent to toss a coin. They may make a definite choice that we do not yet know. The probabilities describe **our belief about their action**. Nor does a lack of information prove that L and R are equally likely: 1/2 is the belief chosen for this example.
+
+> **A best response depends on your belief about the opponent's action.** Strict dominance, by contrast, requires a higher payoff against every possible action by the opponent.
+
+As the probability of R changes, so do the expected payoffs. Let us map the best choice for every possible probability.
+
+<p className="lesson-source-note">*Source: transcript 46:23–49:43; blackboard notes, pp. 1–2. The distinction between the given utilities and an arbitrary ordinal scale is an editorial clarification of the calculation's assumptions.*</p>
+
+</CoreStep>
+
+<CoreStep id="best-response-map" chapter={chapter}>
+
+## 07. From a payoff matrix to a graph
+
+Return to our game. We are **Player I**, choosing row U, M, or D. The opponent is Player II, choosing column L or R.
+
+| Player I ↓ / Player II → | L | R |
+| --- | --- | --- |
+| U | (**5**,1) | (**0**,2) |
+| M | (**1**,3) | (**4**,1) |
+| D | (**4**,2) | (**2**,3) |
+
+For our graph, take **only the first numbers in the cells — Player I's payoffs**. We will draw one line for each of our rows.
+
+**The horizontal axis shows p, the probability that the opponent chooses R.** At p=0, they choose L for sure; at p=1, they choose R for sure. The probability of L is 1−p. **The vertical axis shows our expected payoff.**
+
+Start with **U**. If the opponent certainly chooses L, we receive 5: plot **(0; 5)**. If they certainly choose R, we receive 0: plot **(1; 0)**. At p=1/2, we receive an expected payoff of 2.5: plot **(1/2; 2.5)**.
+
+Between the endpoints, we take a weighted average of 5 and 0. Equal increases in p produce equal decreases in payoff, so the points lie on a **straight line**.
+
+Build the other lines in the same way: **M** connects **(0; 1)** to **(1; 4)**, and **D** connects **(0; 4)** to **(1; 2)**. All six endpoint values come straight from the matrix.
+
+Now express these same lines as formulas. Each uses **probability of L × payoff against L + probability of R × payoff against R**:
+
+- **U:** EU(U,p)=(1−p)×5+p×0=**5−5p**.
+- **M:** EU(M,p)=(1−p)×1+p×4=**1+3p**.
+- **D:** EU(D,p)=(1−p)×4+p×2=**4−2p**.
+
+EU denotes expected payoff. The formulas describe the same straight lines we just constructed from points.
+
+<PayoffPlot images={plotImages} alt="Player I's three expected-payoff lines: U is solid purple from (0; 5) to (1; 0); M is dashed slate blue from (0; 1) to (1; 4); D is dash-dot copper from (0; 4) to (1; 2). The horizontal axis is p=P(R); the vertical axis is our expected payoff. The highest line gives the best response, with boundaries at 1/3 and 3/5." />
+
+The letters U/M/D name **rows in the matrix**, not the lines' heights on the graph. Pick a value of p and find the highest line: **that is the best response**. At p=1/2, D gives 3, while U and M each give 2.5.
+
+The segments with the maximum payoff are drawn thicker. Together, they form the **upper envelope**: the best available payoff at each p.
+
+| Our belief p=P(R) | All best responses |
+| --- | --- |
+| 0 ≤ p &lt; 1/3 | U |
+| p = 1/3 | **U and D** |
+| 1/3 &lt; p &lt; 3/5 | D |
+| p = 3/5 | **D and M** |
+| 3/5 &lt; p ≤ 1 | M |
+
+Where does the best response change? At an intersection, two lines have the same height: **their expected payoffs are equal**. We can therefore equate their formulas and solve for p. Then we must check the third line: two equal payoffs need not be the highest.
+
+At **p=1/3**, U and D are both best responses; at **p=3/5**, D and M are. There is a third intersection: **U=M at p=1/2**, but D is above both. That intersection is not a boundary where the best response changes.
+
+<details>
+<summary>Finding all three intersections, step by step</summary>
+
+At an intersection, two functions have the same value. Equate them, solve for p, and then check the third function.
+
+### U and D
+
+5−5p=4−2p
+
+Move the constants to the left and the p terms to the right: **1=3p**, so **p=1/3**.
+
+Both strategies have an expected payoff of **10/3**. At this point M gives 1+3×1/3=2, which is lower. U and D are therefore both best responses.
+
+### D and M
+
+4−2p=1+3p
+
+This gives **3=5p**, hence **p=3/5**.
+
+Both functions equal **14/5=2.8**. U gives 5−5×3/5=2. D and M are above U, so the best response changes here too.
+
+### U and M
+
+5−5p=1+3p
+
+This gives **4=8p**, so **p=1/2**.
+
+Both functions equal **5/2=2.5**. But D gives 4−2×1/2=3. This is an intersection of U and M, **not a boundary between best-response regions**.
+
+There are three intersections but only two boundaries where the best response changes. To find the best response, look for the highest of all the lines.
+
+</details>
+
+We cannot discard D merely because it is best against neither L nor R individually. It is best for a whole range of probabilistic beliefs.
+
+> **A best response under uncertainty may differ from the best response to any single action.** Both the possible outcomes and the probabilities we assign to them matter.
+
+In the election, we narrowed down the opponent's possible actions. Here, we kept those actions and described our uncertainty with probabilities. We still have not determined what the opponent will actually do. We have found how best to act **given a particular belief**.
+
+<p className="lesson-source-note">*Source: transcript 49:50–1:00:22; blackboard notes, p. 2. The threshold 3/5, all boundary ties, and the comparison with the third line were derived independently from the original matrix.*</p>
+
+</CoreStep>

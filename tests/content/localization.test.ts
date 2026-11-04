@@ -9,7 +9,7 @@ import { getUI } from '../../src/i18n/ui';
 import terminology from '../../src/content/terminology/game-theory.json';
 import { completeStep, initialState, exportState, parseImport } from '../../src/lib/learning/state';
 import { storageKey } from '../../src/lib/learning/store';
-import { chapter as chapterTwo } from '../../src/content/chapters/yale-econ-159/lecture-02/data';
+import { allChapters } from './chapter-fixtures';
 
 const path = 'src/content/chapters/yale-econ-159/lecture-01/';
 const read = (name: string) => readFileSync(new URL(`../../${name}`, import.meta.url), 'utf8');
@@ -58,7 +58,7 @@ test('concept graph and UI placeholders remain equivalent across languages', () 
   for (const file of names) {
     if (!translatedNames.includes(file)) {
       const id = file.replace(/\.json$/, '');
-      const occurrences = [ru.chapter, chapterTwo].filter((chapter) => chapter.conceptIds.includes(id));
+      const occurrences = allChapters.filter((chapter) => chapter.conceptIds.includes(id));
       assert.ok(occurrences.length && occurrences.every((chapter) => !chapter.availableLocales.includes('en')), file);
       continue;
     }

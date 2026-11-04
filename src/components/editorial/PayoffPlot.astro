@@ -1,0 +1,8 @@
+---
+interface Props { alt: string; images: { light: string; dark: string; lightMobile: string; darkMobile: string } }
+const { alt, images: { light, dark, lightMobile, darkMobile } } = Astro.props;
+---
+<figure class="payoff-plot">
+  <picture class="plot-light"><source media="(max-width:550px)" srcset={lightMobile} /><img src={light} alt={alt} width="940" height="570" loading="lazy" /></picture>
+  <picture class="plot-dark"><source media="(max-width:550px)" srcset={darkMobile} /><img src={dark} alt={alt} width="940" height="570" loading="lazy" /></picture>
+</figure>

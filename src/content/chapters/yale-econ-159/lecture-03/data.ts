@@ -1,0 +1,12 @@
+import rawChapter from './chapter.json';
+import rawModels from './models.json';
+import rawTasks from './exercises.json';
+import rawElection from './election-content.json';
+import { chapterSchema, modelsSchema, assessmentTaskSchema, type LearningConfig } from '../../../../lib/content/schema';
+import { electionSchema } from '../../../../lib/content/election';
+export const chapter = chapterSchema.parse(rawChapter);
+export const models = modelsSchema.parse(rawModels);
+export const tasks = rawTasks.map((task) => assessmentTaskSchema.parse(task));
+export const taskById = Object.fromEntries(tasks.map((task) => [task.id, task]));
+export const config: LearningConfig = { chapterId: chapter.id, contentVersion: chapter.contentVersion, stepIds: chapter.steps.map((step) => step.id), locale: chapter.locale };
+export const election = electionSchema.parse(rawElection);

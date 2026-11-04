@@ -29,6 +29,7 @@ export const chapterSchema = z.object({
   description: z.string(),
   contentVersion: z.string(),
   status: z.enum(['preview', 'published']),
+  reviewOnly: z.boolean().default(false),
   sourceHeader: z.string(),
   sourceSha256: z.string().regex(/^[a-f0-9]{64}$/),
   durations: z.object({ quick: z.string(), core: z.string(), mastery: z.string() }),
@@ -38,6 +39,8 @@ export const chapterSchema = z.object({
 }).superRefine((c, ctx) => {
   if (new Set(c.steps.map((s) => s.id)).size !== c.steps.length)
     ctx.addIssue({ code: 'custom', message: 'Step IDs must be unique' });
+  if (!c.reviewOnly && (!c.availableLocales.includes('ru') || !c.availableLocales.includes('en')))
+    ctx.addIssue({ code: 'custom', message: 'Public chapters require both Russian and English editions' });
 });
 
 const pair = z.tuple([z.number(), z.number()]);

@@ -1,9 +1,12 @@
 import { getCollection } from 'astro:content';
 import type { Locale } from './schema';
 import { translateChapter } from './translations';
+import { chapterVisible } from './visibility';
+
+const reviewEnabled = import.meta.env.DEV || process.env.ATLAS_REVIEW === '1';
 
 export async function localizedChapters(locale: Locale) {
-  const chapters = (await getCollection('chapters')).filter(({ data }) => data.availableLocales.includes(locale));
+  const chapters = (await getCollection('chapters')).filter(({ data }) => data.availableLocales.includes(locale) && chapterVisible(data, reviewEnabled));
   if (locale === 'ru') return chapters.map(({ data }) => data);
   const translations = await getCollection('translations');
   return chapters.map(({ data }) => {
@@ -21,7 +24,11 @@ export async function lessonPaths(locale: Locale) {
   });
 }
 export async function coursePaths(locale: Locale) { return (await getCollection('courses')).map(({ data: course }) => ({ params: { course: course.id }, props: { course, locale } })); }
-export async function conceptPaths(locale: Locale) { return (await getCollection('concepts')).filter(({ data }) => data.locale === locale).map((entry) => ({ params: { concept: entry.data.id }, props: { entry, locale } })); }
+export async function localizedConcepts(locale: Locale) {
+  const visibleIds = new Set((await localizedChapters(locale)).flatMap((chapter) => chapter.conceptIds));
+  return (await getCollection('concepts')).filter(({ data }) => data.locale === locale && visibleIds.has(data.id));
+}
+export async function conceptPaths(locale: Locale) { return (await localizedConcepts(locale)).map((entry) => ({ params: { concept: entry.data.id }, props: { entry, locale } })); }
 
 export async function availableLanguagesForPath(path: string): Promise<Locale[]> {
   const lesson = path.match(/\/courses\/([^/]+)\/([^/]+)\/(?:quick|core|mastery)\//);

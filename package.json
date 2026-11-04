@@ -10,6 +10,7 @@
     "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev --host 127.0.0.1",
     "check": "ASTRO_TELEMETRY_DISABLED=1 astro check",
     "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "build:review": "ATLAS_REVIEW=1 npm run build",
     "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview --host 127.0.0.1",
     "test": "tsx --test tests/logic/*.test.ts tests/content/*.test.ts",
     "test:e2e": "playwright test",

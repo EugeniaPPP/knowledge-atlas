@@ -10,6 +10,8 @@ export const componentCatalog = {
   Exercise: { version: 1, purpose: 'Self-contained MDX task with choice/integer parts, explicit checking and delayed analysis' },
   SelfExplanation: { version: 1, purpose: 'Local optional writing without automatic grading' },
   ChoiceGroup: { version: 1, purpose: 'Keyboard-operable single strategy or scenario selection' },
+  ElectionExplorer: { version: 1, purpose: 'Explore two candidate positions and exact voter-group allocations; transient state and native controls' },
+  PayoffPlot: { version: 1, purpose: 'Static editorial payoff figure with responsive Light/Graphite sources and equivalent alt text' },
   Activity: { version: 1, kinds: activityKinds, purpose: 'Chapter 1 demonstrations; never gates reading' },
   Mastery: { version: 1, purpose: 'Single-choice questions with feedback after checking' },
   WrittenResponse: { version: 1, purpose: 'Local self-explanation and a self-check rubric' },

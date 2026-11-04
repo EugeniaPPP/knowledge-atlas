@@ -13,6 +13,8 @@
   --accent-border: #a18abc;
   --focus: #71529d;
   --control-bg: #fafafb;
+  --player-two-ink: #4d7398;
+  --player-two-pale: #eef3f7;
   --heading-muted: #737781;
   --primary-hover: #383941;
   --backdrop: rgb(21 23 27 / .3);
@@ -52,6 +54,8 @@
   --accent-border: #a18abc;
   --focus: #b49bdc;
   --control-bg: #1f2229;
+  --player-two-ink: #95bcd9;
+  --player-two-pale: #28333e;
   --heading-muted: #a0a5b2;
   --primary-hover: #d2d6e1;
   --backdrop: rgb(0 0 0 / .6);
@@ -80,6 +84,8 @@
     --accent-border: #a18abc;
     --focus: #b49bdc;
     --control-bg: #1f2229;
+    --player-two-ink: #95bcd9;
+    --player-two-pale: #28333e;
     --heading-muted: #a0a5b2;
     --primary-hover: #d2d6e1;
     --backdrop: rgb(0 0 0 / .6);

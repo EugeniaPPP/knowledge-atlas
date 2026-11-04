@@ -1,0 +1,14 @@
+{
+  "id": "strategic-belief",
+  "title": "Представление о действиях соперника",
+  "definition": "Вероятностный прогноз о том, какое действие выберет соперник. Он не требует, чтобы соперник фактически использовал случайный выбор.",
+  "stepId": "beliefs-and-expectation",
+  "prerequisites": [
+    "strategy",
+    "payoff"
+  ],
+  "related": [
+    "expected-payoff",
+    "best-response"
+  ]
+}

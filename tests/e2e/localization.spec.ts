@@ -1,4 +1,5 @@
 import { openSources } from './helpers/navigation';
+import { catalogCounts } from './helpers/catalog';
 import { test, expect, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { readFile } from 'node:fs/promises';
@@ -129,9 +130,9 @@ test('English navigation, concepts and source appendix stay in the selected lang
   await page.goto(`${root}/en/`);
   await page.getByRole('link', { name: 'All 24 lectures', exact: true }).click();
   await expect(page.locator('.course-list > li')).toHaveCount(24);
-  await expect(page.locator('.availability').filter({ hasText: 'Planned' })).toHaveCount(22);
+  await expect(page.locator('.availability').filter({ hasText: 'Planned' })).toHaveCount(24 - catalogCounts('en').available);
   await page.goto(`${root}/en/concepts/`);
-  await expect(page.locator('.concept-list > li')).toHaveCount(16);
+  await expect(page.locator('.concept-list > li')).toHaveCount(catalogCounts('en').concepts);
   await page.getByRole('link', { name: 'Strict dominance', exact: true }).click();
   await page.getByRole('link', { name: 'Understand in context →' }).click();
   await expect(page).toHaveURL(`${en}/core/#dominance`);

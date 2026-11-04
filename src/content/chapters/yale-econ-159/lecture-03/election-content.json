@@ -1,0 +1,66 @@
+{
+  "modelId": "l03-election",
+  "positions": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "groupPercent": 10,
+  "initialPositions": [
+    1,
+    3
+  ],
+  "examples": [
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      3
+    ]
+  ],
+  "sourceSpanIds": [
+    "tr-election-rules",
+    "bb-election",
+    "ps-q3-rules"
+  ],
+  "locale": "ru",
+  "content": {
+    "title": "Куда уходят голоса",
+    "instruction": "Выбери позиции двух кандидатов. Внизу — кому достаются 10% каждой группы.",
+    "candidate1": "Кандидат 1",
+    "candidate2": "Кандидат 2",
+    "short1": "К1",
+    "short2": "К2",
+    "position": "Позиция {position}",
+    "voters": "Избиратели: десять групп по 10%",
+    "left": "1 — самые левые",
+    "right": "10 — самые правые",
+    "scrollHint": "Шкала прокручивается по горизонтали →",
+    "region": "Позиции кандидатов и распределение голосов",
+    "exampleLabel": "Примеры",
+    "example": "{first} против {second}",
+    "details": "Расчёт для выбранных позиций",
+    "tableRegion": "Расчёт по десяти группам избирателей",
+    "group": "Позиция избирателей",
+    "distance1": "До К1",
+    "distance2": "До К2",
+    "share1": "Голоса К1",
+    "share2": "Голоса К2",
+    "total": "Всего",
+    "percent": "{value}%",
+    "allocation": "{candidate} {value}%",
+    "groupLabel": "Группа {position} — 10%",
+    "none": "—",
+    "fallback": "Сейчас показан пример: кандидат 1 в позиции 1, кандидат 2 в позиции 3. Для смены позиций нужен JavaScript.",
+    "sum": "Кандидат 1: {first}. Кандидат 2: {second}."
+  }
+}

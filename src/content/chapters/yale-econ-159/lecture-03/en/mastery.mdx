@@ -1,0 +1,269 @@
+---
+chapterId: yale-econ-159/lecture-03
+locale: en
+mode: mastery
+revision: lecture-03-bilingual-r01
+editorialStatus: approved
+---
+
+import Exercise from "../../../../../components/editorial/Exercise.astro";
+import { AnswerPart, CheckTask, MasteryScore } from "../../../../../components/activities/Assessment";
+import SelfExplanation from "../../../../../components/activities/SelfExplanation";
+import { tasks, taskById, config } from "./data";
+
+Six exercises in calculation, transfer, and reasoning. Each includes its own setup and all the data you need. Solve it first and select “Check,” then open the solution. The written explanation at the end is optional.
+
+<MasteryScore tasks={tasks} config={config} client:load />
+
+<Exercise task={taskById["m01"]}>
+
+## 01. Same logic, different scale
+
+Two candidates simultaneously choose an integer position **1–6**. Each position contains **10 voters**, for a total of **60**. Everyone votes for the nearest candidate; a group splits evenly if the candidates are equally close. Each candidate wants as many votes as possible.
+
+The opponent chooses **3**. You are comparing your own positions **1 and 2**.
+
+**Calculate how many votes you receive** in each case. Does this comparison prove that 2 strictly dominates 1?
+
+<div className="numeric-answer-pair">
+<AnswerPart task={taskById["m01"]} partId="m01-at-one" config={config} unitLabel="Votes out of 60" client:load />
+<AnswerPart task={taskById["m01"]} partId="m01-at-two" config={config} unitLabel="Votes out of 60" client:load />
+</div>
+<AnswerPart task={taskById["m01"]} partId="m01-proof" config={config} client:load />
+
+<CheckTask task={taskById["m01"]} config={config} client:load />
+
+<details data-task-solution hidden>
+<summary>Answer and explanation</summary>
+
+**Position 1 gives you 15 votes; position 2 gives you 20.**
+
+At 1, you receive all 10 votes from group 1 and half of group 2: another 5. The opponent receives the other 45 votes. At 2, groups 1 and 2 are entirely yours: you get 20 votes, and the opponent gets 40.
+
+**One comparison is not enough to prove dominance.** We held the opponent's position fixed at 3. Strict dominance requires an advantage against **every** opponent position, 1–6. The claim itself may be true, but this one case does not establish it.
+
+</details>
+
+<p className="lesson-source-note">*Editorial adaptation of the rules in Problem Set 1, question 3: a new grid, counting voters rather than percentages.*</p>
+
+</Exercise>
+
+<Exercise task={taskById["m02"]}>
+
+## 02. What exactly did we eliminate?
+
+Two candidates choose integer positions **1–6**. Each position contains **10 voters**, for a total of **60**. Everyone votes for the nearest candidate; equally close candidates split the group evenly. The payoff is the number of votes.
+
+In the first round, strategies **1 and 6** were eliminated as strictly dominated **for both candidates**. Each expects the opponent not to choose them either. The voting rules and the voters' locations are unchanged.
+
+**Carry out one more round of strict deletion. Which candidate positions remain, and who still votes?**
+
+<AnswerPart task={taskById["m02"]} partId="m02-round" config={config} client:load />
+
+<CheckTask task={taskById["m02"]} config={config} client:load />
+
+<details data-task-solution hidden>
+<summary>Answer and explanation</summary>
+
+**Positions 3 and 4 remain; all 60 voters still vote.**
+
+After the first round, the opponent can choose 2, 3, 4, or 5. Compare our positions 2 and 3:
+
+| Opponent's position | Votes for our position 2 | Votes for our position 3 |
+| --- | ---: | ---: |
+| 2 | 30 | 40 |
+| 3 | 20 | 30 |
+| 4 | 25 | 30 |
+| 5 | 30 | 35 |
+
+Now 3 strictly dominates 2. By symmetry, 4 strictly dominates 5. Eliminating them leaves **3 and 4**.
+
+The voters at 1 and 6 have not disappeared: we eliminated **candidate choices**. If the opponent could still choose 1, our position 2 would give us 50 votes, while 3 would give us 45. Removing that opponent action is what changed the comparison.
+
+</details>
+
+<p className="lesson-source-note">*Editorial adaptation of iterated deletion in transcript 16:33–23:08 and the rules in Problem Set 1, question 3.*</p>
+
+</Exercise>
+
+<Exercise task={taskById["m03"]}>
+
+## 03. What if there are three candidates?
+
+There are now **three candidates**. Each chooses an integer position **1–10**, with **10% of the voters** at each position. Everyone votes for the nearest candidate. If several candidates are equally close, the group splits **equally among all of them**, including candidates at the same position. The payoff is vote share.
+
+Your two opponents are at **2 and 4**. You are comparing your own positions **2 and 3**.
+
+**What share of the vote do you receive in each case? What does this tell you about the claim “3 strictly dominates 2”?**
+
+<AnswerPart task={taskById["m03"]} partId="m03-shares" config={config} client:load />
+<AnswerPart task={taskById["m03"]} partId="m03-inference" config={config} client:load />
+
+<CheckTask task={taskById["m03"]} config={config} client:load />
+
+<details data-task-solution hidden>
+<summary>Answer and explanation</summary>
+
+**Position 2 gives you 13⅓%; position 3 gives you 10%.**
+
+When you also stand at 2, groups 1 and 2 split between the two candidates at that position: you receive 5% from each. Group 3 is equally close to **all three candidates**, giving you another 10%/3. Your total is **5%+5%+10%/3=13⅓%**.
+
+If you move to 3, only group 3 is entirely yours: **10%**. Groups 1 and 2 are closer to the opponent at 2; everyone else is closer to the opponent at 4.
+
+So **3 cannot strictly dominate 2** in this game: we have found a case in which it does worse. But this case alone does not prove that 2 dominates 3 either. A third candidate changes the allocation of votes, so the earlier argument must be rechecked.
+
+</details>
+
+<p className="lesson-source-note">*Adapted from the three-candidate extension in Problem Set 1, question 3(b), pp. 1–2. The numerical counterexample was calculated independently.*</p>
+
+</Exercise>
+
+<Exercise task={taskById["m04"]}>
+
+## 04. A different belief, a different choice
+
+You are **Player I**, choosing row U, M, or D. Your opponent is Player II, choosing L or R. Each pair gives your payoff first, then theirs. Choose the row with the highest **expected payoff**.
+
+| Player I ↓ / Player II → | L | R |
+| --- | --- | --- |
+| U | (5,1) | (0,2) |
+| M | (1,3) | (4,1) |
+| D | (4,2) | (2,3) |
+
+The notation **p=P(R)** refers to **the opponent's** action; the probability of L is 1−p.
+
+**Find your best response first at p=1/4, then at p=3/4.**
+
+<AnswerPart task={taskById["m04"]} partId="m04-quarter" config={config} client:load />
+<AnswerPart task={taskById["m04"]} partId="m04-three-quarters" config={config} client:load />
+
+<CheckTask task={taskById["m04"]} config={config} client:load />
+
+<details data-task-solution hidden>
+<summary>Answer and explanation</summary>
+
+**At p=1/4, choose U; at p=3/4, choose M.**
+
+Weight the first numbers in the matrix by the probabilities of L and R:
+
+| Strategy | At p=1/4 | At p=3/4 |
+| --- | --- | --- |
+| U | 3/4×5+1/4×0 = **3.75** | 1/4×5+3/4×0 = 1.25 |
+| M | 3/4×1+1/4×4 = 1.75 | 1/4×1+3/4×4 = **3.25** |
+| D | 3/4×4+1/4×2 = 3.5 | 1/4×4+3/4×2 = 2.5 |
+
+These are best responses **to two different beliefs**, not two dominant strategies. Neither the largest payoff in one cell nor the absence of a zero payoff replaces an expected-payoff calculation.
+
+</details>
+
+<p className="lesson-source-note">*Original matrix: blackboard notes, p. 1. The values of p are editorial test cases based on transcript 46:23–1:00:22.*</p>
+
+</Exercise>
+
+<Exercise task={taskById["m05"]}>
+
+## 05. Best under uncertainty, best in neither column
+
+You choose **A, B, or C**. Your opponent chooses **L or R**, which you believe are equally likely: **P(L)=P(R)=1/2**.
+
+The table contains **only your numerical payoffs**, used to calculate expectations. The opponent's payoffs are not specified; these entries are not payoff pairs.
+
+| Your choice | If the opponent chooses L | If the opponent chooses R |
+| --- | ---: | ---: |
+| A | 6 | 0 |
+| B | 2 | 5 |
+| C | 5 | 3 |
+
+**Choose the action with the highest expected payoff. Does the result mean that C strictly dominates A and B?**
+
+<AnswerPart task={taskById["m05"]} partId="m05-best" config={config} client:load />
+<AnswerPart task={taskById["m05"]} partId="m05-dominance" config={config} client:load />
+
+<CheckTask task={taskById["m05"]} config={config} client:load />
+
+<details data-task-solution hidden>
+<summary>Answer and explanation</summary>
+
+**The best response is C; C does not strictly dominate both alternatives.**
+
+- A: 1/2×6+1/2×0=**3**.
+- B: 1/2×2+1/2×5=**3.5**.
+- C: 1/2×5+1/2×3=**4**.
+
+Against L, however, C does worse than A: **5&lt;6**. Against R, it does worse than B: **3&lt;5**. C is a best response to neither pure column, yet it is best given this probabilistic belief. An advantage at p=1/2 is not an advantage against every possible action by the opponent.
+
+</details>
+
+<p className="lesson-source-note">*An original editorial example for transferring the expected-payoff idea; these numbers are not attributed to the Yale lecture.*</p>
+
+</Exercise>
+
+<Exercise task={taskById["m06"]}>
+
+## 06. Does an intersection always give a best response?
+
+You are **Player I** (rows); your opponent is Player II (columns). Each pair gives your payoff first, then theirs. Your objective is the highest expected payoff.
+
+| Player I ↓ / Player II → | L | R |
+| --- | --- | --- |
+| U | (5,1) | (0,2) |
+| M | (1,3) | (4,1) |
+| D | (4,2) | (2,3) |
+
+Let **p=P(R)**, with P(L)=1−p. The first numbers in the matrix give **EU(U,p)=5−5p**, **EU(M,p)=1+3p**, and **EU(D,p)=4−2p**.
+
+**Identify all best responses at each of these three values: p=1/3, p=3/5, p=1/2.** Select one option for each question; an option may contain several equally good strategies.
+
+<AnswerPart task={taskById["m06"]} partId="m06-one-third" config={config} client:load />
+<AnswerPart task={taskById["m06"]} partId="m06-three-fifths" config={config} client:load />
+<AnswerPart task={taskById["m06"]} partId="m06-one-half" config={config} client:load />
+
+<CheckTask task={taskById["m06"]} config={config} client:load />
+
+<details data-task-solution hidden>
+<summary>Answer and explanation</summary>
+
+| p=P(R) | EU(U,p) | EU(M,p) | EU(D,p) | All best responses |
+| --- | --- | --- | --- | --- |
+| 1/3 | 10/3 | 2 | 10/3 | **U and D** |
+| 3/5 | 2 | 14/5 | 14/5 | **D and M** |
+| 1/2 | 2.5 | 2.5 | 3 | **D only** |
+
+At each of the first two boundaries, **two maxima are tied**: we must include both. At p=1/2, U and M are equal, but both lie below D. A best response comes from the highest line, not from just any intersection.
+
+</details>
+
+<p className="lesson-source-note">*Original matrix and lines: blackboard notes, pp. 1–2; transcript 49:50–1:00:22. Ties and the third function were checked separately.*</p>
+
+</Exercise>
+
+<section id="self-explanation">
+
+## Optional. Where does the model's conclusion end?
+
+In the election model, **two candidates** choose integer positions **1–10**. Each position contains **10% of the voters**. Everyone votes for the nearest candidate, with ties split evenly. Candidates implement their chosen policies and maximize vote share. Iterated strict deletion, with the corresponding beliefs about each other's rationality, leaves **5 and 6**.
+
+Someone concludes: **“So rational candidates in any election must move to the center.”**
+
+In **3–5 sentences**, explain which model assumption might fail in a real election and **exactly what that changes** in the calculation or choice. You might consider the number of candidates, turnout, multiple political dimensions, or the credibility of promises. You do not need to prove a particular new outcome.
+
+<SelfExplanation config={config} label="Your explanation" client:load />
+
+<details>
+<summary>Self-assessment criteria and an example</summary>
+
+A good explanation:
+
+1. Names a specific assumption of the original model.
+2. Explains which votes, comparisons, or available actions would change without it.
+3. Distinguishes the verified result in the specified game from a new conclusion that needs its own calculation.
+
+For example: “The model has two candidates. With three, a group can split among three equally close candidates. A move that pays against one opponent may therefore pay less against two. To predict positions in the new game, we need to compare the payoffs again.”
+
+“Reality is more complicated” is not enough: identify the mechanism. This explanation receives no automatic score.
+
+</details>
+
+<p className="lesson-source-note">*An editorial exercise on the model's limits, based on transcript 27:26–39:08 and Problem Set 1, question 3.*</p>
+
+</section>

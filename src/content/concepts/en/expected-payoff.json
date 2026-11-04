@@ -1,0 +1,15 @@
+{
+  "id": "expected-payoff",
+  "title": "Expected payoff",
+  "definition": "The sum of the given numerical payoffs weighted by the probabilities of the corresponding opponent actions.",
+  "stepId": "beliefs-and-expectation",
+  "prerequisites": [
+    "payoff",
+    "strategic-belief"
+  ],
+  "related": [
+    "best-response",
+    "strategic-belief"
+  ],
+  "locale": "en"
+}

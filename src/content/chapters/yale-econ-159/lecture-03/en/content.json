@@ -1,0 +1,124 @@
+{
+  "format": "spatial-assessment",
+  "chapterId": "yale-econ-159/lecture-03",
+  "locale": "en",
+  "basedOnContentVersion": "lecture-03-ru-review-2026-11-04",
+  "terminologyVersion": 1,
+  "chapter": {
+    "title": "Elections and decisions under uncertainty",
+    "titleLead": "Elections",
+    "titleMuted": "and decisions under uncertainty",
+    "description": "How candidates' positions and beliefs about an opponent's actions guide strategic choice.",
+    "durations": { "quick": "3–5 minutes", "core": "20–30 minutes", "mastery": "15–25 minutes" },
+    "steps": {
+      "election-rules": "Two candidates, ten positions",
+      "compare-positions": "“2 is better than 1” — against whom?",
+      "iterated-election": "What changes after the first deletion?",
+      "median-and-assumptions": "Why the center — and how realistic is the model?",
+      "when-deletion-stops": "What if there is nothing to eliminate?",
+      "beliefs-and-expectation": "What if L and R are equally likely?",
+      "best-response-map": "From a payoff matrix to a graph"
+    },
+    "sourceLinkTitles": ["Yale lecture video and transcript", "Blackboard notes — Lecture 3", "Problem Set 1"]
+  },
+  "modelCaptions": { "l03-belief-game": "A game for finding best responses" },
+  "modelPlayers": {
+    "l03-belief-game": { "row": "Player I — you", "column": "Player II — your opponent", "meaning": "Each pair gives Player I's payoff first, then Player II's." }
+  },
+  "exerciseCopy": {
+    "m01": { "parts": {
+      "m01-at-one": { "label": "Your position: 1" },
+      "m01-at-two": { "label": "Your position: 2" },
+      "m01-proof": {
+        "label": "Does this comparison against position 3 prove strict dominance?",
+        "options": {
+          "a": "Yes: it is enough for 2 to beat 1 against one possible choice by the opponent.",
+          "b": "No: strict dominance requires comparing 1 and 2 against every possible choice by the opponent.",
+          "c": "No: dominance requires both candidates to receive more votes."
+        }
+      }
+    } },
+    "m02": { "parts": {
+      "m02-round": {
+        "label": "The result of the second round",
+        "options": {
+          "a": "Positions 3 and 4 remain; all 60 voters still vote.",
+          "b": "Positions 3 and 4 remain; only the 20 voters in the central groups still vote.",
+          "c": "Positions 2, 3, 4, 5 remain: no further strict dominance is possible.",
+          "d": "Only 3 remains: a rational candidate must choose one particular central position."
+        }
+      }
+    } },
+    "m03": { "parts": {
+      "m03-shares": {
+        "label": "Your vote share at position 2 and at position 3",
+        "options": {
+          "a": "At 2: 10%; at 3: 20%.",
+          "b": "At 2: 15%; at 3: 10%.",
+          "c": "At 2: 13⅓%; at 3: 10%.",
+          "d": "At 2: 10%; at 3: 13⅓%."
+        }
+      },
+      "m03-inference": {
+        "label": "What can you conclude?",
+        "options": {
+          "a": "Position 2 strictly dominates 3.",
+          "b": "3 does not strictly dominate 2: this is a counterexample. Dominance in the other direction has not been established.",
+          "c": "No dominance claim can be disproved until every strategy profile has been checked."
+        }
+      }
+    } },
+    "m04": { "parts": {
+      "m04-quarter": { "label": "Best response at p=1/4", "options": { "u": "U", "m": "M", "d": "D" } },
+      "m04-three-quarters": { "label": "Best response at p=3/4", "options": { "u": "U", "m": "M", "d": "D" } }
+    } },
+    "m05": { "parts": {
+      "m05-best": { "label": "Best response when P(L)=P(R)=1/2", "options": { "a": "A", "b": "B", "c": "C" } },
+      "m05-dominance": {
+        "label": "Does C strictly dominate A and B?",
+        "options": {
+          "a": "Yes: C has the highest expected payoff when L and R are equally likely.",
+          "b": "We cannot check because the opponent's payoffs are unknown.",
+          "c": "No: C does worse than A against L and worse than B against R."
+        }
+      }
+    } },
+    "m06": { "parts": {
+      "m06-one-third": { "label": "All best responses at p=1/3", "options": { "u": "U only", "ud": "U and D", "all": "U, M and D" } },
+      "m06-three-fifths": { "label": "All best responses at p=3/5", "options": { "m": "M only", "dm": "D and M", "um": "U and M" } },
+      "m06-one-half": { "label": "All best responses at p=1/2", "options": { "um": "U and M", "d": "D only", "all": "U, M and D" } }
+    } }
+  },
+  "interactions": {
+    "election": {
+      "title": "Where the votes go",
+      "instruction": "Choose a position for each candidate. Below, see how each group's 10% is allocated.",
+      "candidate1": "Candidate 1",
+      "candidate2": "Candidate 2",
+      "short1": "C1",
+      "short2": "C2",
+      "position": "Position {position}",
+      "voters": "Voters: ten groups of 10%",
+      "left": "1 — far left",
+      "right": "10 — far right",
+      "scrollHint": "Scroll the scale horizontally →",
+      "region": "Candidate positions and vote allocation",
+      "exampleLabel": "Examples",
+      "example": "{first} against {second}",
+      "details": "Calculation for these positions",
+      "tableRegion": "Calculation for the ten voter groups",
+      "group": "Voter position",
+      "distance1": "To C1",
+      "distance2": "To C2",
+      "share1": "C1 votes",
+      "share2": "C2 votes",
+      "total": "Total",
+      "percent": "{value}%",
+      "allocation": "{candidate} {value}%",
+      "groupLabel": "Group {position} — 10%",
+      "none": "—",
+      "fallback": "This example shows Candidate 1 at position 1 and Candidate 2 at position 3. JavaScript is needed to change positions.",
+      "sum": "Candidate 1: {first}. Candidate 2: {second}."
+    }
+  }
+}

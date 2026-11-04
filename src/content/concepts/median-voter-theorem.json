@@ -1,0 +1,13 @@
+{
+  "id": "median-voter-theorem",
+  "title": "Теорема о медианном избирателе",
+  "definition": "В рассмотренной пространственной модели два кандидата сближаются около медианы распределения избирателей. Вывод зависит от правил голосования и целей кандидатов.",
+  "stepId": "median-and-assumptions",
+  "prerequisites": [
+    "iterated-elimination",
+    "strategy"
+  ],
+  "related": [
+    "best-response"
+  ]
+}

@@ -9,13 +9,13 @@ function InlineAnswer({ text }: { text: string }) {
   return <>{text.split(/(`[^`]+`|\*\*[^*]+\*\*|\*[^*]+\*)/g).map((part, i) => part.startsWith('`') ? <code key={i}>{part.slice(1, -1)}</code> : part.startsWith('**') ? <strong key={i}>{part.slice(2, -2)}</strong> : part.startsWith('*') ? <em key={i}>{part.slice(1, -1)}</em> : part)}</>;
 }
 
-export function AnswerPart({ task, partId, config }: { task: AssessmentTask; partId: string; config: LearningConfig }) {
+export function AnswerPart({ task, partId, config, unitLabel }: { task: AssessmentTask; partId: string; config: LearningConfig; unitLabel?: string }) {
   const { state, store, persistence } = useLearning(config);
   const part = task.parts.find((p) => p.id === partId)!;
   const selected = state.answers[part.id]?.selected || '';
   const change = (value: string) => store.update((s) => changePart(s, task, part.id, value));
   if (part.kind === 'choice') return <ChoiceGroup name={part.id} label={part.label} value={selected} options={part.options.map((o) => ({ value: o.id, label: <InlineAnswer text={`${o.id.toUpperCase()}. ${o.text}`} /> }))} onChange={change} disabled={persistence === 'pending'} />;
-  return <div className="numeric-part"><label htmlFor={part.id}>{part.label}</label><input id={part.id} name={part.id} type="number" step="1" min={part.min} max={part.max} value={selected} onChange={(e) => change(e.target.value)} disabled={persistence === 'pending'} autoComplete="off" inputMode="numeric" /></div>;
+  return <div className={`numeric-part${unitLabel ? ' numeric-answer' : ''}`}><label htmlFor={part.id}>{part.label}{unitLabel && <span className="numeric-answer-unit" id={`${part.id}-unit`}>{unitLabel}</span>}</label><input id={part.id} name={part.id} type="number" step="1" min={part.min} max={part.max} value={selected} onChange={(e) => change(e.target.value)} disabled={persistence === 'pending'} autoComplete="off" inputMode="numeric" aria-describedby={unitLabel ? `${part.id}-unit` : undefined} /></div>;
 }
 export function CheckTask({ task, config }: { task: AssessmentTask; config: LearningConfig }) {
   const { state, store, persistence } = useLearning(config), t = getUI(config.locale);

@@ -1,0 +1,14 @@
+{
+  "id": "median-voter-theorem",
+  "title": "Median voter theorem",
+  "definition": "In the spatial model considered here, two candidates converge near the median of the voter distribution. The conclusion depends on the voting rules and the candidates’ objectives.",
+  "stepId": "median-and-assumptions",
+  "prerequisites": [
+    "iterated-elimination",
+    "strategy"
+  ],
+  "related": [
+    "best-response"
+  ],
+  "locale": "en"
+}

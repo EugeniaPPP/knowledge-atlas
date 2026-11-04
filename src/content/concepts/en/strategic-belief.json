@@ -1,0 +1,15 @@
+{
+  "id": "strategic-belief",
+  "title": "Belief about the opponent’s action",
+  "definition": "A probability distribution describing which action the opponent will choose. It does not require the opponent to actually randomize.",
+  "stepId": "beliefs-and-expectation",
+  "prerequisites": [
+    "strategy",
+    "payoff"
+  ],
+  "related": [
+    "expected-payoff",
+    "best-response"
+  ],
+  "locale": "en"
+}

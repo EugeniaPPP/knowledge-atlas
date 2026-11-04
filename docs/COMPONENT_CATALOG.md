@@ -16,9 +16,17 @@
 | `CheckTask` | `task`, `config` | Проверяет после валидного заполнения всех частей. Полный разбор доступен и при неверном ответе; можно исправить и перепроверить. |
 | `MasteryScore` | `tasks`, `config` | Считает задания, не поля ввода. Семь задач, даже если полей девять. Свободное объяснение не оценивается автоматически. |
 | `SelfExplanation.tsx` | `config`, `label` | Сохраняет авторский ответ в `notes.essay` без автопроверки. Возможный разбор — отдельный native details в MDX. Один такой ответ на главу. |
+| `ElectionExplorer.tsx` | `model: {positions, groupPercent, initialPositions, examples}`, `content: ElectionCopy` | Две native radio-шкалы, десять фиксированных групп, равное деление между ближайшими, живые итоги и optional расчёт. Арифметика — `allocateVoters` в `lib/games/spatial-voting.ts`; состояние transient, не меняет прогресс и не сохраняется. SSR/no-JS сохраняет исходный пример и расчёт. Все подписи приходят в content. |
+| `PayoffPlot.astro` | `images: {light, dark, lightMobile, darkMobile}`, `alt` | Статическая научная иллюстрация с локальными ресурсами; desktop/mobile и обе темы, включая ручное переключение Graphite и no-JS system theme. React не нужен. |
 | `ChoiceGroup`, `Mastery`, `WrittenResponse`, `Activity`, `QuickAnswer` | Существующие контракты главы 1 | Совместимость сохранена; `Activity` — набор конкретных демонстраций главы 1, новые лекции не добавляют ветвления в него. |
 
+Для `ElectionExplorer` полный контракт `ElectionCopy` проверяется `electionCopySchema` в `src/lib/content/election.ts`; пропущенные подписи и изменённые `{placeholders}` вызывают ошибку. RU/EN используют одну модель позиций и распределения голосов, локализуется только `content`. `PayoffPlot` получает ресурсы соответствующего языка: не оставлять русские подписи внутри EN SVG или alt.
+
+Для копии составных заданий без независимых ключей можно использовать `translateAssessmentTasks(tasks, exerciseCopy)` из `src/lib/content/translations.ts`. Copy содержит только labels и тексты options по стабильным ID; отсутствующие/лишние task, part и option IDs отклоняются. Лекция 3 применяет этот контракт в формате `spatial-assessment`; формат Лекции 2 сохранён.
+
 ## Контракт матрицы
+
+`AnswerPart` принимает необязательный `unitLabel` для числового ответа. Такая подпись показывает единицу под коротким контекстом и связывается с полем через `aria-describedby`. Два поля можно поставить в `.numeric-answer-pair`; `unitLabel` хранится в локализованном MDX. Без него старое представление главы 2 сохраняется. Вариант оформляет поле, но не меняет его integer-контракт или ключ.
 
 `Model`: `id`, `locale`, `caption`, `rows`, `columns`, `payoffs`, `players?: {row,column,meaning}`. Клетка всегда `[выигрыш строки, выигрыш столбца]`. Размерности совпадают; числа конечны, допускаются отрицательные и нули. `outcomes` остаётся для старого режима. Роли и пояснение порядка необходимо задавать явно для новых моделей.
 

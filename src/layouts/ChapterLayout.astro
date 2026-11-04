@@ -15,7 +15,7 @@ const config: LearningConfig = { chapterId: chapter.id, contentVersion: chapter.
 const headings = { quick: t.quickHeading, core: t.coreHeading, mastery: t.masteryHeading };
 ---
 <AtlasLayout title={chapter.title} description={chapter.description} courseId={chapter.courseId} locale={locale} chapter={chapter}>
-  <main id="main" data-reader data-mode={mode} data-base={base} tabindex="-1">
+  <main id="main" data-reader data-mode={mode} data-base={base} data-chapter={chapter.slug} tabindex="-1">
     <section class="hero" aria-labelledby="chapter-title">
       <div class="hero-meta eyebrow"><span>Yale Open Courses / {course.author} / {t.lecture} {lectureNumber}</span><span class="lecture-count">{lectureNumber} / {course.lectures.length} {t.lectures}</span></div>
       <div class="hero-grid"><h1 id="chapter-title">{chapter.titleLead} <span class="muted-title">{chapter.titleMuted}</span></h1><aside class="hero-detail"><strong>{lectureNumber} <span>/ {course.lectures.length}</span></strong><p>{chapter.description}</p><a href={chapter.sourceUrl} target="_blank" rel="noopener noreferrer">{t.originalLecture}</a></aside></div>

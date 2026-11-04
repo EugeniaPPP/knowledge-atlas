@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "locale": "ru",
+  "availableLocales": [
+    "ru",
+    "en"
+  ],
+  "id": "yale-econ-159/lecture-03",
+  "courseId": "yale-econ-159",
+  "slug": "lecture-03",
+  "number": 3,
+  "title": "Выборы и решения при неопределённости",
+  "titleLead": "Выборы",
+  "titleMuted": "и решения при неопределённости",
+  "description": "Как позиции кандидатов и прогноз действий соперника помогают выбрать стратегию.",
+  "contentVersion": "lecture-03-ru-review-2026-11-04",
+  "status": "published",
+  "reviewOnly": false,
+  "sourceHeader": "# Выборы и решения при неопределённости\n\n",
+  "sourceSha256": "e97264cd1ad37a489a13d08c217fb71b51d5901d21f5dd01b8048897fec395b8",
+  "durations": {
+    "quick": "3–5 минут",
+    "core": "20–30 минут",
+    "mastery": "15–25 минут"
+  },
+  "steps": [
+    {
+      "id": "election-rules",
+      "title": "Два кандидата, десять позиций",
+      "sourceStart": 130,
+      "sourceEnd": 374,
+      "conceptIds": [
+        "strategy",
+        "payoff"
+      ]
+    },
+    {
+      "id": "compare-positions",
+      "title": "«2 лучше 1» — против кого?",
+      "sourceStart": 381,
+      "sourceEnd": 985,
+      "conceptIds": [
+        "strict-dominance",
+        "dominated-strategy"
+      ]
+    },
+    {
+      "id": "iterated-election",
+      "title": "Что меняется после первого исключения?",
+      "sourceStart": 993,
+      "sourceEnd": 1388,
+      "conceptIds": [
+        "iterated-elimination",
+        "strict-dominance"
+      ]
+    },
+    {
+      "id": "median-and-assumptions",
+      "title": "Почему центр — и насколько это похоже на жизнь?",
+      "sourceStart": 1394,
+      "sourceEnd": 2348,
+      "conceptIds": [
+        "median-voter-theorem",
+        "higher-order-beliefs"
+      ]
+    },
+    {
+      "id": "when-deletion-stops",
+      "title": "Что выбирать, если исключать нечего?",
+      "sourceStart": 2440,
+      "sourceEnd": 2783,
+      "conceptIds": [
+        "best-response",
+        "normal-form"
+      ]
+    },
+    {
+      "id": "beliefs-and-expectation",
+      "title": "Если L и R одинаково вероятны?",
+      "sourceStart": 2783,
+      "sourceEnd": 2983,
+      "conceptIds": [
+        "strategic-belief",
+        "expected-payoff"
+      ]
+    },
+    {
+      "id": "best-response-map",
+      "title": "Как из матрицы получается график?",
+      "sourceStart": 2990,
+      "sourceEnd": 3622,
+      "conceptIds": [
+        "best-response",
+        "expected-payoff",
+        "strategic-belief"
+      ]
+    }
+  ],
+  "conceptIds": [
+    "strategy",
+    "payoff",
+    "strict-dominance",
+    "dominated-strategy",
+    "iterated-elimination",
+    "median-voter-theorem",
+    "higher-order-beliefs",
+    "best-response",
+    "normal-form",
+    "strategic-belief",
+    "expected-payoff"
+  ],
+  "sourceIds": [
+    "yale-l03-transcript",
+    "yale-l03-blackboard",
+    "yale-l03-problemset"
+  ],
+  "sourceUrl": "https://oyc.yale.edu/economics/econ-159/lecture-3",
+  "sourceLinks": [
+    {
+      "title": "Видеолекция и транскрипт Yale",
+      "url": "https://oyc.yale.edu/economics/econ-159/lecture-3"
+    },
+    {
+      "title": "Записи на доске — Lecture 3",
+      "url": "https://oyc.yale.edu/sites/default/files/blackboard03_0_0.pdf"
+    },
+    {
+      "title": "Problem Set 1",
+      "url": "https://oyc.yale.edu/sites/default/files/problemset1_1_0.pdf"
+    }
+  ]
+}

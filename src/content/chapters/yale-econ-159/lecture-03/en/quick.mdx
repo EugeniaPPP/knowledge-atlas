@@ -1,0 +1,84 @@
+---
+chapterId: yale-econ-159/lecture-03
+locale: en
+mode: quick
+revision: lecture-03-bilingual-r01
+editorialStatus: approved
+---
+
+import PayoffPlot from "../../../../../components/editorial/PayoffPlot.astro";
+import plotImages from "../../../../../assets/lecture-03/en/plot";
+
+**Two tools for choosing:** eliminate a strategy that does worse than an alternative against every opponent action; or, when there is nothing to eliminate, compare expected payoffs given your belief about the opponent's action.
+
+<section className="lesson-three-section" id="quick-election">
+
+## Why candidates converge
+
+Two candidates choose an integer position **1–10**, from far left to far right. Each position contains **10% of the voters**. Voters choose the nearest candidate, splitting evenly when both are equally close. The payoff is **share of the vote**.
+
+Position **2 strictly dominates 1**: it wins more votes against every choice by the opponent. By symmetry, 9 dominates 10. Remove the extreme strategies for both candidates and repeat:
+
+**1–10 → 2–9 → 3–8 → 4–7 → {5,6}.**
+
+We eliminate **candidate positions, not voters**: all ten groups still vote. After the first deletion, 3 dominates 2. This was false in the original game: against an opponent at 1, choosing 2 gives 90%, while choosing 3 gives 85%.
+
+The remaining positions are 5 and 6. All four combinations give **50% to each candidate**. One need not choose 5 and the other 6.
+
+The result is connected to the **median voter**: no more than half the voters lie strictly on either side of a median position. The median depends on the voter distribution, rather than the geometric center of the scale.
+
+This conclusion applies to the specified game: two candidates, one dimension, equal-sized groups, full turnout, voting by proximity, credible policy commitments, and a vote-share objective. Each round also requires the corresponding beliefs about each other's rational choices. If the assumptions change, recheck the payoffs and the conclusion.
+
+[Explore the election model](../core/#election-rules)
+
+</section>
+
+<section className="lesson-three-section" id="quick-expectation">
+
+## When dominance offers no answer
+
+We are Player I, choosing a row. The opponent is Player II, choosing a column. Each pair lists **our payoff first**, then theirs.
+
+| Player I ↓ / Player II → | L | R |
+| --- | --- | --- |
+| U | (5,1) | (0,2) |
+| M | (1,3) | (4,1) |
+| D | (4,2) | (2,3) |
+
+There are no dominated pure strategies here. Our best response to L is U; to R, it is M. But when L and R are equally likely, **D** is best: its expected payoff is **3**, while U and M each give **2.5**.
+
+Write **p=P(R)**, so P(L)=1−p. Weight **the first numbers** in the matrix by the probabilities:
+
+- U: (1−p)×5+p×0 = **5−5p**.
+- M: (1−p)×1+p×4 = **1+3p**.
+- D: (1−p)×4+p×2 = **4−2p**.
+
+We use the given numerical payoffs as utilities. The probabilities express our belief about the opponent's action; they do not require the opponent to toss a coin. A lack of information does not itself establish equal probabilities.
+
+</section>
+
+<section className="lesson-three-section" id="quick-best-responses">
+
+## Reading the best-response map
+
+The horizontal axis shows **the probability of R**, from 0 to 1. The vertical axis shows **our expected payoff**. Each straight line connects the payoff against L at p=0 to the payoff against R at p=1. Choose **the highest line**.
+
+<PayoffPlot images={plotImages} alt="Three expected-payoff lines: U is solid purple, 5−5p; M is dashed slate blue, 1+3p; D is dash-dot copper, 4−2p. The highest line changes at 1/3 and 3/5. At each boundary, both tied maximizers are best responses." />
+
+| Belief p=P(R) | All best responses |
+| --- | --- |
+| 0 ≤ p &lt; 1/3 | U |
+| p = 1/3 | U and D |
+| 1/3 &lt; p &lt; 3/5 | D |
+| p = 3/5 | D and M |
+| 3/5 &lt; p ≤ 1 | M |
+
+**Two equal payoffs do not necessarily mark a change in the best response.** At p=1/2, U and M intersect at 2.5, but D gives 3 and lies above them.
+
+Dominance compares strategies against **every** opponent action. A best response maximizes payoff **given a particular action or belief**. A strategy can be best against neither pure action, yet be best under uncertainty.
+
+[Build the graph and solve the intersections](../core/#best-response-map) · [Test your understanding](../mastery/#m01)
+
+<p className="lesson-source-note">*Based on the approved Russian Core and the supplied Yale ECON 159, Lecture 3 materials. Key passages: transcript 06:21–23:08 and 40:40–1:00:22; blackboard notes, pp. 1–2.*</p>
+
+</section>

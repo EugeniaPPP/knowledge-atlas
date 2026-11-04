@@ -1,0 +1,14 @@
+{
+  "id": "expected-payoff",
+  "title": "Ожидаемый выигрыш",
+  "definition": "Сумма заданных численных выигрышей, взвешенных вероятностями соответствующих действий соперника.",
+  "stepId": "beliefs-and-expectation",
+  "prerequisites": [
+    "payoff",
+    "strategic-belief"
+  ],
+  "related": [
+    "best-response",
+    "strategic-belief"
+  ]
+}
